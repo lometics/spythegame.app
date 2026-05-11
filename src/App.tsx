@@ -3,10 +3,7 @@ import { useTranslation } from 'react-i18next'
 import Home from './routes/Home'
 import LocalGame from './routes/LocalGame'
 import EditList from './routes/EditList'
-import OnlineHost from './routes/OnlineHost'
-import OnlineJoin from './routes/OnlineJoin'
 import OnlineRoom from './routes/OnlineRoom'
-import RendezvousJoin from './routes/RendezvousJoin'
 import LanguageSwitcher from './components/LanguageSwitcher'
 
 export default function App() {
@@ -20,11 +17,7 @@ export default function App() {
             <Route path="/local" element={<LocalGame />} />
             <Route path="/lists/new" element={<EditList />} />
             <Route path="/lists/:id" element={<EditList />} />
-            <Route path="/online" element={<OnlineHost />} />
-            <Route path="/join" element={<OnlineJoin />} />
-            <Route path="/join/:code" element={<OnlineJoin />} />
             <Route path="/room/:code" element={<OnlineRoom />} />
-            <Route path="/rdv/:uid" element={<RendezvousJoin />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

@@ -19,17 +19,42 @@
     "no": "No",
     "dismiss": "Chiudi"
   },
+  "wizard": {
+    "modeTitle": "Come volete giocare?",
+    "modeSingle": "Un solo dispositivo",
+    "modeSingleDesc": "Passate il telefono attorno al tavolo.",
+    "modeOnline": "Ognuno sul proprio dispositivo",
+    "modeOnlineDesc": "Ogni giocatore entra dal proprio telefono.",
+    "roleTitle": "Crea o entra?",
+    "roleHost": "Crea una stanza",
+    "roleHostDesc": "Crea una partita e condividi il codice.",
+    "roleJoin": "Entra con un codice",
+    "roleJoinDesc": "Hai un codice o un QR? Salta dentro.",
+    "back": "← Indietro",
+    "next": "Avanti →",
+    "playersTitle": "Aggiungi giocatori",
+    "playersDesc": "Aggiungi tutti i partecipanti. Servono almeno 3.",
+    "categoriesTitle": "Fonti delle parole",
+    "categoriesDesc": "Scegli le categorie da usare.",
+    "optionsTitle": "Opzioni di gioco",
+    "optionsDesc": "Difficoltà e timer di discussione.",
+    "startBtn": "Inizia round →",
+    "hostNameTitle": "Il tuo nome",
+    "hostNameDesc": "Gli altri lo vedranno nella lobby.",
+    "hostCreateBtn": "Crea stanza",
+    "creating": "Creazione…",
+    "joinCodeTitle": "Inserisci il codice",
+    "joinCodeDesc": "Digita il codice a 4 lettere o scansiona il QR.",
+    "joinNameTitle": "Il tuo nome",
+    "joinBtn": "Entra",
+    "joining": "Entrando…",
+    "stepLabel": "Passo {{current}} di {{total}}"
+  },
   "home": {
     "title": "Spy",
     "subtitle_before": "Tutti ricevono una parola. Un giocatore riceve una ",
     "subtitle_highlight": "parola simile",
     "subtitle_after": ". Smaschera la spia prima che si confonda.",
-    "rdv": {
-      "title": "Gioca con un amico vicino",
-      "desc": "Lui scansiona il tuo QR — entrate insieme nella lobby.",
-      "namePlaceholder": "Il tuo nome (es. Sam)",
-      "scanBtn": "📷 Scansiona il codice di un amico"
-    },
     "passAndPlay": {
       "title": "Passa il telefono",
       "desc": "Un telefono, amici nella stessa stanza. Zero setup."
@@ -44,13 +69,14 @@
     },
     "howTo": {
       "title": "Come si gioca",
-      "step1_before": "Tutti ricevono una parola. Una ",
+      "step1_before": "Tutti ricevono la stessa parola. La ",
       "step1_spy": "spia",
-      "step1_mid": " segreta riceve una parola ",
-      "step1_similar": "simile",
-      "step1_after": ".",
-      "step2": "A turno, ogni giocatore dice un breve indizio sulla propria parola.",
-      "step3": "Discutete. Poi votate. Se eliminate la spia, vincono i civili. Altrimenti vince la spia."
+      "step1_mid": " riceve un ",
+      "step1_similar": "indizio simile",
+      "step1_after": " — o niente del tutto.",
+      "step2": "Round di indizi: a turno, ognuno dice una sola parola che dimostri di conoscere il segreto — ma abbastanza vaga da non farla intuire alla spia.",
+      "step3": "Fase di domande: interrogatevi a vicenda. Ascoltate chi sta bluffando e cercate di smascherare la spia.",
+      "step4": "Votate il sospettato. La spia smascherata ha un ultimo tentativo per indovinare la parola — se ci riesce, vince la spia. Una spia che ha già scoperto la parola può dirla in qualsiasi momento per rubare la mano."
     }
   },
   "localGame": {
@@ -75,6 +101,10 @@
     "removeAria": "Rimuovi {{name}}",
     "empty": "Nessun giocatore ancora.",
     "defaultName": "Giocatore {{n}}",
+    "spyCountLabel": "Numero di spie",
+    "spyCountHint": "Più spie = più difficile per i civili.",
+    "spiesKnowLabel": "Le spie si conoscono",
+    "spiesKnowHint": "Vedono le altre spie sulla carta.",
     "difficultyLabel": "Difficoltà per i villici",
     "difficulty": {
       "none":   { "label": "Nessun indizio", "hint": "La spia non riceve alcuna parola — la più facile da scoprire." },
@@ -113,6 +143,8 @@
     "spyRole": "🕵️ Spia",
     "civRole": "✅ Civile",
     "spyBadge": "🕵️ Sei la spia",
+    "fellowSpiesLabel": "Altre spie",
+    "aloneSpy": "Sei l'unica spia.",
     "spyHeadsUp_before": "Attenzione:",
     "spyHeadsUp_mid": " questa parola ",
     "spyHeadsUp_not": "non",
@@ -133,6 +165,7 @@
     "title": "La rivelazione",
     "subtitle": "Avete indovinato?",
     "spyWas": "La spia era",
+    "spiesWere": "Le spie erano",
     "wordsLabel": "Le parole",
     "civilians": "Civili",
     "spy": "Spia",
@@ -237,11 +270,7 @@
     "errNoPairs": "Nessuna coppia disponibile — seleziona almeno una categoria con coppie.",
     "errMinPlayers": "Servono almeno 3 giocatori",
     "errCouldNotAllocate": "Impossibile generare un codice stanza, riprova",
-    "errNotConfigured": "Firebase non configurato",
-    "rdvConnecting": "Collegamento alla lobby…",
-    "rdvConnectingHint": "Entrambi i telefoni entreranno nella stessa lobby.",
-    "rdvFailTitle": "Connessione impossibile",
-    "rdvSelfError": "Questo è il tuo QR code."
+    "errNotConfigured": "Firebase non configurato"
   },
   "install": {
     "android": {

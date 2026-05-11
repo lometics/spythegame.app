@@ -38,12 +38,6 @@
         ".write": "auth != null && root.child('rooms').child($code).child('meta').child('hostUid').val() === auth.uid",
         ".read": "auth != null && (root.child('rooms').child($code).child('meta').child('phase').val() === 'result' || root.child('rooms').child($code).child('meta').child('hostUid').val() === auth.uid)"
       }
-    },
-    "rendezvous": {
-      "$uid": {
-        ".read": "auth != null && $uid === auth.uid",
-        ".write": "auth != null"
-      }
     }
   }
 }

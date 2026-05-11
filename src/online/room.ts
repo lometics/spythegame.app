@@ -39,6 +39,7 @@ export type OnlineRound = {
 export type PairReveal = {
   pair: Pair
   spyUid: string
+  spyUids?: string[]
 }
 
 export type RoomState = {
@@ -129,19 +130,30 @@ export function useRoom(code: string | undefined): RoomState {
 export function useMyPrivate(
   code: string | undefined,
   uid: string | undefined,
-): { word: string | null; isSpy: boolean } {
-  const [v, setV] = useState<{ word: string | null; isSpy: boolean }>({
+): {
+  word: string | null
+  isSpy: boolean
+  fellowSpyNames: string[] | null
+} {
+  const [v, setV] = useState<{
+    word: string | null
+    isSpy: boolean
+    fellowSpyNames: string[] | null
+  }>({
     word: null,
     isSpy: false,
+    fellowSpyNames: null,
   })
   useEffect(() => {
     if (!db || !code || !uid) return
     const r = ref(db, `privateWords/${code}/${uid}`)
     const unsub = onValue(r, (snap) => {
       const data = snap.val()
+      const rawFellow = data?.fellowSpyNames
       setV({
         word: data?.word ?? null,
         isSpy: Boolean(data?.isSpy),
+        fellowSpyNames: Array.isArray(rawFellow) ? (rawFellow as string[]) : null,
       })
     })
     return () => unsub()
@@ -170,20 +182,41 @@ export async function startOnlineRound(
   customLists: CustomList[],
   players: Record<string, OnlinePlayer>,
   difficulty: Difficulty = 'hard',
+  spyCount = 1,
+  spiesKnowEachOther = false,
 ) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   const pair: Pair = samplePair(pairSource, customLists, difficulty)
   const uids = Object.keys(players)
   if (uids.length < 3) throw new Error(i18n.t('online.errMinPlayers'))
-  const spyUid = uids[Math.floor(Math.random() * uids.length)]
+  // Clamp spy count: ≥1, ≤ players-2 so at least 2 civilians remain.
+  const n = Math.max(1, Math.min(Math.floor(spyCount), Math.max(1, uids.length - 2)))
+  const shuffled = [...uids]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  const spyUids = shuffled.slice(0, n)
+  const spySet = new Set(spyUids)
   const firstClueGiverId = uids[Math.floor(Math.random() * uids.length)]
 
-  const privateUpdates: Record<string, { word: string; isSpy: boolean }> = {}
+  const privateUpdates: Record<
+    string,
+    { word: string; isSpy: boolean; fellowSpyNames?: string[] }
+  > = {}
   for (const uid of uids) {
-    privateUpdates[uid] = {
-      word: uid === spyUid ? pair.spy : pair.civilian,
-      isSpy: uid === spyUid,
+    const isSpy = spySet.has(uid)
+    const entry: { word: string; isSpy: boolean; fellowSpyNames?: string[] } = {
+      word: isSpy ? pair.spy : pair.civilian,
+      isSpy,
     }
+    if (isSpy && spiesKnowEachOther) {
+      entry.fellowSpyNames = spyUids
+        .filter((u) => u !== uid)
+        .map((u) => players[u]?.name ?? '')
+        .filter((name) => name.length > 0)
+    }
+    privateUpdates[uid] = entry
   }
 
   const currentRoundSnap = await get(ref(db, `rooms/${code}/meta/round`))
@@ -198,7 +231,7 @@ export async function startOnlineRound(
       startedAt: serverTimestamp(),
     },
     [`privateWords/${code}`]: privateUpdates,
-    [`pairReveals/${code}`]: { pair, spyUid },
+    [`pairReveals/${code}`]: { pair, spyUid: spyUids[0], spyUids },
   }
   await update(ref(db), updates)
 }

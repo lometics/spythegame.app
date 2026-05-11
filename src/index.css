@@ -91,6 +91,23 @@ body {
   padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
 }
 
+/* Primary CTA pinned to the bottom of the viewport on mobile so it's always
+   reachable, with a fade so content scrolling underneath doesn't crash into it.
+   Above the iOS home indicator via safe-area padding. */
+.action-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+  background: linear-gradient(
+    to top,
+    rgb(11 16 32 / 0.96) 55%,
+    rgb(11 16 32 / 0)
+  );
+}
+
 /* Card chrome: mobile = nothing, desktop = surface. Outside @layer so the
    media query isn't hoisted by Tailwind's @apply processing. */
 @media (min-width: 640px) {

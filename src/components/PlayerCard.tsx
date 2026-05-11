@@ -8,6 +8,8 @@ type Props = {
   avatar?: string
   /** When true, the card never auto-hides on prop change — used by online mode where the card belongs to one viewer. */
   persistFlip?: boolean
+  /** Names of fellow spies, shown to a spy when "spies know each other" is enabled. */
+  fellowSpyNames?: string[]
 }
 
 export default function PlayerCard({
@@ -16,6 +18,7 @@ export default function PlayerCard({
   isSpy,
   avatar,
   persistFlip = false,
+  fellowSpyNames,
 }: Props) {
   const { t } = useTranslation()
   const [flipped, setFlipped] = useState(false)
@@ -112,6 +115,29 @@ export default function PlayerCard({
                 <div className="inline-block bg-rose-500 text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-widest">
                   {t('playerCard.spyBadge')}
                 </div>
+                {fellowSpyNames !== undefined && (
+                  <div className="w-full max-w-xs space-y-0.5">
+                    <div className="label text-rose-300/80">
+                      {t('playerCard.fellowSpiesLabel')}
+                    </div>
+                    {fellowSpyNames.length > 0 ? (
+                      <div className="flex flex-wrap justify-center gap-1">
+                        {fellowSpyNames.map((n) => (
+                          <span
+                            key={n}
+                            className="inline-block bg-rose-500/20 border border-rose-400/40 text-rose-100 px-2 py-0.5 rounded-full text-xs sm:text-sm font-semibold"
+                          >
+                            {n}
+                          </span>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-rose-300/70 text-xs sm:text-sm italic">
+                        {t('playerCard.aloneSpy')}
+                      </div>
+                    )}
+                  </div>
+                )}
                 {word ? (
                   <>
                     <p className="text-rose-200 text-xs sm:text-sm max-w-xs leading-snug sm:leading-relaxed">

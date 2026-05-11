@@ -92,6 +92,7 @@ export default function OnlineRoom() {
           isHost={isHost}
           word={myPrivate.word}
           isSpy={myPrivate.isSpy}
+          fellowSpyNames={myPrivate.fellowSpyNames}
           myName={playersList.find((p) => p.id === uid)?.name ?? 'You'}
         />
       )}
@@ -111,7 +112,9 @@ export default function OnlineRoom() {
           code={code!}
           playersList={playersList}
           pair={pairReveal?.pair ?? null}
-          spyUid={pairReveal?.spyUid ?? null}
+          spyUids={
+            pairReveal?.spyUids ?? (pairReveal?.spyUid ? [pairReveal.spyUid] : [])
+          }
           t={t}
         />
       )}
@@ -131,6 +134,8 @@ function OnlineLobby({
   const { t } = useTranslation()
   const pairSource = useGame((s) => s.settings.pairSource)
   const difficulty = useGame((s) => s.settings.difficulty)
+  const spyCount = useGame((s) => s.settings.spyCount)
+  const spiesKnowEachOther = useGame((s) => s.settings.spiesKnowEachOther)
   const customLists = useGame((s) => s.customLists)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -143,7 +148,15 @@ function OnlineLobby({
       for (const p of playersList) {
         playersMap[p.id] = { name: p.name, joinedAt: 0 }
       }
-      await startOnlineRound(code, pairSource, customLists, playersMap, difficulty)
+      await startOnlineRound(
+        code,
+        pairSource,
+        customLists,
+        playersMap,
+        difficulty,
+        spyCount,
+        spiesKnowEachOther,
+      )
     } catch (e) {
       setError(e instanceof Error ? e.message : t('online.errStartRound'))
     } finally {
@@ -199,22 +212,24 @@ function OnlineLobby({
             <PairPicker />
           </section>
           {error && <div className="text-sm text-rose-400">{error}</div>}
-          <button
-            onClick={onStart}
-            disabled={
-              busy ||
-              playersList.length < 3 ||
-              pairSource.selectedCategoryIds.length === 0
-            }
-            className="btn-primary w-full py-3 sm:py-4 text-base sm:text-lg"
-          >
-            {busy ? t('online.starting') : t('online.startRound')}
-          </button>
-          {playersList.length < 3 && (
-            <p className="text-center text-xs sm:text-sm text-slate-500">
-              {t('online.needPlayers')}
-            </p>
-          )}
+          <div className="action-bar">
+            <button
+              onClick={onStart}
+              disabled={
+                busy ||
+                playersList.length < 3 ||
+                pairSource.selectedCategoryIds.length === 0
+              }
+              className="btn-primary w-full py-3 sm:py-4 text-base sm:text-lg"
+            >
+              {busy ? t('online.starting') : t('online.startRound')}
+            </button>
+            {playersList.length < 3 && (
+              <p className="text-center text-xs sm:text-sm text-slate-500 mt-1.5">
+                {t('online.needPlayers')}
+              </p>
+            )}
+          </div>
         </>
       ) : (
         <div className="card text-center text-slate-400 text-sm">
@@ -230,12 +245,14 @@ function OnlineReveal({
   isHost,
   word,
   isSpy,
+  fellowSpyNames,
   myName,
 }: {
   code: string
   isHost: boolean
   word: string | null
   isSpy: boolean
+  fellowSpyNames: string[] | null
   myName: string
 }) {
   const { t } = useTranslation()
@@ -257,20 +274,23 @@ function OnlineReveal({
           word={word}
           isSpy={isSpy}
           persistFlip
+          fellowSpyNames={fellowSpyNames ?? undefined}
         />
       </div>
-      {isHost ? (
-        <button
-          className="btn-primary w-full"
-          onClick={() => setPhase(code, 'discussion')}
-        >
-          {t('online.hostAdvance')}
-        </button>
-      ) : (
-        <p className="text-center text-xs text-slate-500">
-          {t('online.guestAdvanceWait')}
-        </p>
-      )}
+      <div className="action-bar">
+        {isHost ? (
+          <button
+            className="btn-primary w-full py-3 sm:py-4"
+            onClick={() => setPhase(code, 'discussion')}
+          >
+            {t('online.hostAdvance')}
+          </button>
+        ) : (
+          <p className="text-center text-xs text-slate-500">
+            {t('online.guestAdvanceWait')}
+          </p>
+        )}
+      </div>
     </div>
   )
 }
@@ -328,18 +348,20 @@ function OnlineDiscussion({
         <DiscussionTimer seconds={180} />
       </section>
 
-      {isHost ? (
-        <button
-          className="btn-primary w-full py-3 sm:py-4"
-          onClick={() => revealOnline(code)}
-        >
-          {t('online.hostReveal')}
-        </button>
-      ) : (
-        <div className="card text-center text-slate-400 text-sm">
-          {t('online.guestRevealWait')}
-        </div>
-      )}
+      <div className="action-bar">
+        {isHost ? (
+          <button
+            className="btn-primary w-full py-3 sm:py-4"
+            onClick={() => revealOnline(code)}
+          >
+            {t('online.hostReveal')}
+          </button>
+        ) : (
+          <div className="card text-center text-slate-400 text-sm">
+            {t('online.guestRevealWait')}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
@@ -349,18 +371,20 @@ function OnlineResult({
   isHost,
   playersList,
   pair,
-  spyUid,
+  spyUids,
   t,
 }: {
   code: string
   isHost: boolean
   playersList: Array<{ id: string; name: string }>
   pair: { civilian: string; spy: string; categoryId: string } | null
-  spyUid: string | null
+  spyUids: string[]
   t: TFunction
 }) {
   const customLists = useGame((s) => s.customLists)
-  const spy = playersList.find((p) => p.id === spyUid)
+  const spies = spyUids
+    .map((uid) => playersList.find((p) => p.id === uid))
+    .filter((p): p is { id: string; name: string } => !!p)
 
   return (
     <div className="space-y-3 sm:space-y-6">
@@ -371,9 +395,11 @@ function OnlineResult({
       </header>
 
       <section className="card text-center space-y-1 sm:space-y-2">
-        <div className="label">{t('result.spyWas')}</div>
+        <div className="label">
+          {spies.length > 1 ? t('result.spiesWere') : t('result.spyWas')}
+        </div>
         <div className="font-display text-2xl sm:text-3xl font-bold text-rose-300">
-          {spy?.name ?? '—'}
+          {spies.length > 0 ? spies.map((s) => s.name).join(', ') : '—'}
         </div>
       </section>
 

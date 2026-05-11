@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useGame } from '../game/state'
-import Lobby from '../components/Lobby'
 import RevealDeck from '../components/RevealDeck'
 import DiscussionTimer from '../components/DiscussionTimer'
 import ResultScreen from '../components/ResultScreen'
@@ -30,13 +29,14 @@ export default function LocalGame() {
         )}
       </nav>
 
-      {phase === 'lobby' && <Lobby />}
+      {phase === 'lobby' && <Navigate to="/" replace />}
 
       {phase === 'reveal' && pair && players.length > 0 && (
         <RevealDeck
           players={players}
           pair={pair}
           onFinish={goToDiscussion}
+          spiesKnowEachOther={settings.spiesKnowEachOther}
         />
       )}
 
@@ -86,7 +86,7 @@ export default function LocalGame() {
             </section>
           )}
 
-          <div className="safe-bottom pt-1">
+          <div className="action-bar">
             <button
               onClick={revealAnswer}
               className="btn-primary w-full py-3 sm:py-4"

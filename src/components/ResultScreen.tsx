@@ -11,7 +11,7 @@ export default function ResultScreen() {
   const startRound = useGame((s) => s.startRound)
   const playAgainSamePlayers = useGame((s) => s.playAgainSamePlayers)
 
-  const spy = players.find((p) => p.isSpy)
+  const spies = players.filter((p) => p.isSpy)
 
   return (
     <div className="space-y-3 sm:space-y-6">
@@ -22,16 +22,27 @@ export default function ResultScreen() {
       </header>
 
       <section className="card text-center space-y-1.5 sm:space-y-2">
-        <div className="label">{t('result.spyWas')}</div>
-        {spy?.avatar && (
-          <img
-            src={spy.avatar}
-            alt=""
-            className="w-14 h-14 sm:w-20 sm:h-20 rounded-full mx-auto border-2 border-rose-400/60 shadow-soft"
-          />
+        <div className="label">
+          {spies.length > 1 ? t('result.spiesWere') : t('result.spyWas')}
+        </div>
+        {spies.length > 0 && (
+          <div className="flex justify-center -space-x-3">
+            {spies.map((s) =>
+              s.avatar ? (
+                <img
+                  key={s.id}
+                  src={s.avatar}
+                  alt=""
+                  className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border-2 border-rose-400/60 shadow-soft bg-ink-700"
+                />
+              ) : null,
+            )}
+          </div>
         )}
         <div className="font-display text-2xl sm:text-3xl font-bold text-rose-300">
-          {spy?.name ?? '—'}
+          {spies.length > 0
+            ? spies.map((s) => s.name).join(', ')
+            : '—'}
         </div>
       </section>
 
@@ -69,7 +80,7 @@ export default function ResultScreen() {
         </section>
       )}
 
-      <div className="grid gap-2 safe-bottom">
+      <div className="action-bar grid gap-2">
         <button
           onClick={() => {
             playAgainSamePlayers()

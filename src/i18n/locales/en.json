@@ -19,17 +19,42 @@
     "no": "No",
     "dismiss": "Dismiss"
   },
+  "wizard": {
+    "modeTitle": "How do you want to play?",
+    "modeSingle": "Single device",
+    "modeSingleDesc": "Pass the phone around the table.",
+    "modeOnline": "Everyone on their own device",
+    "modeOnlineDesc": "Each player joins from their own phone.",
+    "roleTitle": "Host or join?",
+    "roleHost": "Host a room",
+    "roleHostDesc": "Create a game and share the code.",
+    "roleJoin": "Join with a code",
+    "roleJoinDesc": "Got a code or QR from your host? Jump in.",
+    "back": "← Back",
+    "next": "Next →",
+    "playersTitle": "Add players",
+    "playersDesc": "Add everyone playing. Need at least 3.",
+    "categoriesTitle": "Pick word sources",
+    "categoriesDesc": "Choose which categories to draw from.",
+    "optionsTitle": "Game options",
+    "optionsDesc": "Adjust difficulty and discussion timer.",
+    "startBtn": "Start round →",
+    "hostNameTitle": "Your name",
+    "hostNameDesc": "Other players will see this in the lobby.",
+    "hostCreateBtn": "Create room",
+    "creating": "Creating…",
+    "joinCodeTitle": "Enter room code",
+    "joinCodeDesc": "Type the 4-letter code or scan your host's QR.",
+    "joinNameTitle": "Your name",
+    "joinBtn": "Join",
+    "joining": "Joining…",
+    "stepLabel": "Step {{current}} of {{total}}"
+  },
   "home": {
     "title": "Spy",
     "subtitle_before": "Everyone gets a word. One player gets a ",
     "subtitle_highlight": "similar word",
     "subtitle_after": ". Find the spy before they blend in.",
-    "rdv": {
-      "title": "Play with a friend nearby",
-      "desc": "They scan your QR — you both land in the lobby.",
-      "namePlaceholder": "Your name (e.g. Sam)",
-      "scanBtn": "📷 Scan a friend's code"
-    },
     "passAndPlay": {
       "title": "Pass-and-play",
       "desc": "One phone, friends in the same room. No setup."
@@ -44,13 +69,14 @@
     },
     "howTo": {
       "title": "How to play",
-      "step1_before": "Everyone gets a word. One secret ",
+      "step1_before": "Everyone gets the same word. The ",
       "step1_spy": "spy",
       "step1_mid": " gets a ",
-      "step1_similar": "similar",
-      "step1_after": " word.",
-      "step2": "Go around the table. Each player says one short clue about their word.",
-      "step3": "Discuss. Then vote. If you eliminate the spy, civilians win. If not, the spy wins."
+      "step1_similar": "similar hint",
+      "step1_after": " — or nothing at all.",
+      "step2": "Clue rounds: take turns saying one word that proves you know the secret — but stay vague enough that the spy can't lock it in.",
+      "step3": "Question time: grill each other. Listen for who's bluffing and try to spot the spy.",
+      "step4": "Vote out your suspect. The accused spy gets one last guess at the word — guess right and the spy wins. A spy who already cracked the word can call it any time to steal the round."
     }
   },
   "localGame": {
@@ -75,6 +101,10 @@
     "removeAria": "Remove {{name}}",
     "empty": "No players yet.",
     "defaultName": "Player {{n}}",
+    "spyCountLabel": "Number of spies",
+    "spyCountHint": "More spies = harder for civilians.",
+    "spiesKnowLabel": "Spies know each other",
+    "spiesKnowHint": "They see fellow spies on their card.",
     "difficultyLabel": "Difficulty for villagers",
     "difficulty": {
       "none":   { "label": "No hint", "hint": "Spy gets no word at all — easiest to catch." },
@@ -113,6 +143,8 @@
     "spyRole": "🕵️ Spy",
     "civRole": "✅ Civilian",
     "spyBadge": "🕵️ You are the spy",
+    "fellowSpiesLabel": "Fellow spies",
+    "aloneSpy": "You're the only spy.",
     "spyHeadsUp_before": "Heads up:",
     "spyHeadsUp_mid": " this word is ",
     "spyHeadsUp_not": "not",
@@ -133,6 +165,7 @@
     "title": "The reveal",
     "subtitle": "Did you guess right?",
     "spyWas": "The spy was",
+    "spiesWere": "The spies were",
     "wordsLabel": "The words",
     "civilians": "Civilians",
     "spy": "Spy",
@@ -237,11 +270,7 @@
     "errNoPairs": "No pairs available — select at least one category with pairs.",
     "errMinPlayers": "Need at least 3 players",
     "errCouldNotAllocate": "Could not allocate a room code, try again",
-    "errNotConfigured": "Firebase not configured",
-    "rdvConnecting": "Connecting you to the lobby…",
-    "rdvConnectingHint": "Both phones will end up in the same lobby.",
-    "rdvFailTitle": "Couldn't connect",
-    "rdvSelfError": "That's your own QR code."
+    "errNotConfigured": "Firebase not configured"
   },
   "install": {
     "android": {

@@ -19,17 +19,42 @@
     "no": "Non",
     "dismiss": "Fermer"
   },
+  "wizard": {
+    "modeTitle": "Comment voulez-vous jouer ?",
+    "modeSingle": "Un seul appareil",
+    "modeSingleDesc": "Le téléphone tourne autour de la table.",
+    "modeOnline": "Chacun son appareil",
+    "modeOnlineDesc": "Chaque joueur rejoint depuis son téléphone.",
+    "roleTitle": "Créer ou rejoindre ?",
+    "roleHost": "Créer une partie",
+    "roleHostDesc": "Créez une partie et partagez le code.",
+    "roleJoin": "Rejoindre avec un code",
+    "roleJoinDesc": "Vous avez un code ou un QR ? Sautez dedans.",
+    "back": "← Retour",
+    "next": "Suivant →",
+    "playersTitle": "Ajouter des joueurs",
+    "playersDesc": "Ajoutez tout le monde. Au moins 3 joueurs.",
+    "categoriesTitle": "Sources de mots",
+    "categoriesDesc": "Choisissez les catégories à utiliser.",
+    "optionsTitle": "Options de partie",
+    "optionsDesc": "Difficulté et minuteur de discussion.",
+    "startBtn": "Démarrer la manche →",
+    "hostNameTitle": "Votre nom",
+    "hostNameDesc": "Les autres joueurs le verront dans le salon.",
+    "hostCreateBtn": "Créer la partie",
+    "creating": "Création…",
+    "joinCodeTitle": "Code de partie",
+    "joinCodeDesc": "Tapez le code à 4 lettres ou scannez le QR.",
+    "joinNameTitle": "Votre nom",
+    "joinBtn": "Rejoindre",
+    "joining": "Connexion…",
+    "stepLabel": "Étape {{current}} sur {{total}}"
+  },
   "home": {
     "title": "Spy",
     "subtitle_before": "Tout le monde reçoit un mot. Un joueur reçoit un ",
     "subtitle_highlight": "mot similaire",
     "subtitle_after": ". Démasquez l'espion avant qu'il ne se fonde dans le décor.",
-    "rdv": {
-      "title": "Jouer avec un ami à proximité",
-      "desc": "Il scanne ton QR — vous arrivez tous les deux dans le salon.",
-      "namePlaceholder": "Votre nom (ex. Sam)",
-      "scanBtn": "📷 Scanner le code d'un ami"
-    },
     "passAndPlay": {
       "title": "Téléphone qui tourne",
       "desc": "Un seul téléphone, tout le monde dans la même pièce. Sans configuration."
@@ -44,13 +69,14 @@
     },
     "howTo": {
       "title": "Comment jouer",
-      "step1_before": "Tout le monde reçoit un mot. Un ",
+      "step1_before": "Tout le monde reçoit le même mot. L'",
       "step1_spy": "espion",
-      "step1_mid": " secret reçoit un mot ",
-      "step1_similar": "similaire",
-      "step1_after": ".",
-      "step2": "À tour de rôle : chaque joueur donne un indice court sur son mot.",
-      "step3": "Discutez. Puis votez. Si vous éliminez l'espion, les civils gagnent. Sinon, l'espion gagne."
+      "step1_mid": " reçoit un ",
+      "step1_similar": "indice similaire",
+      "step1_after": " — ou rien du tout.",
+      "step2": "Tours d'indices : chacun à son tour dit un seul mot prouvant qu'il connaît le mot secret — mais assez vague pour que l'espion ne puisse pas le deviner.",
+      "step3": "Phase de questions : interrogez-vous mutuellement. Écoutez qui bluffe et tentez de démasquer l'espion.",
+      "step4": "Votez contre votre suspect. L'espion démasqué a un dernier essai pour deviner le mot — s'il trouve, l'espion gagne. Un espion qui a déjà trouvé le mot peut le dire à tout moment pour voler la manche."
     }
   },
   "localGame": {
@@ -75,6 +101,10 @@
     "removeAria": "Retirer {{name}}",
     "empty": "Aucun joueur pour l'instant.",
     "defaultName": "Joueur {{n}}",
+    "spyCountLabel": "Nombre d'espions",
+    "spyCountHint": "Plus d'espions = plus dur pour les civils.",
+    "spiesKnowLabel": "Les espions se connaissent",
+    "spiesKnowHint": "Ils voient les autres espions sur leur carte.",
     "difficultyLabel": "Difficulté pour les villageois",
     "difficulty": {
       "none":   { "label": "Sans indice", "hint": "L'espion n'a aucun mot — le plus facile à attraper." },
@@ -113,6 +143,8 @@
     "spyRole": "🕵️ Espion",
     "civRole": "✅ Civil",
     "spyBadge": "🕵️ Vous êtes l'espion",
+    "fellowSpiesLabel": "Autres espions",
+    "aloneSpy": "Vous êtes le seul espion.",
     "spyHeadsUp_before": "Attention :",
     "spyHeadsUp_mid": " ce mot n'est ",
     "spyHeadsUp_not": "pas",
@@ -133,6 +165,7 @@
     "title": "La révélation",
     "subtitle": "Avez-vous deviné juste ?",
     "spyWas": "L'espion était",
+    "spiesWere": "Les espions étaient",
     "wordsLabel": "Les mots",
     "civilians": "Civils",
     "spy": "Espion",
@@ -237,11 +270,7 @@
     "errNoPairs": "Aucune paire disponible — sélectionnez au moins une catégorie avec des paires.",
     "errMinPlayers": "Il faut au moins 3 joueurs",
     "errCouldNotAllocate": "Impossible d'attribuer un code de partie, réessayez",
-    "errNotConfigured": "Firebase non configuré",
-    "rdvConnecting": "Connexion au salon…",
-    "rdvConnectingHint": "Les deux téléphones arrivent dans le même salon.",
-    "rdvFailTitle": "Connexion impossible",
-    "rdvSelfError": "C'est votre propre QR code."
+    "errNotConfigured": "Firebase non configuré"
   },
   "install": {
     "android": {

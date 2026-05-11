@@ -19,17 +19,42 @@
     "no": "Nein",
     "dismiss": "Schließen"
   },
+  "wizard": {
+    "modeTitle": "Wie wollt ihr spielen?",
+    "modeSingle": "Ein Gerät",
+    "modeSingleDesc": "Reicht das Handy am Tisch herum.",
+    "modeOnline": "Jeder auf eigenem Gerät",
+    "modeOnlineDesc": "Alle treten vom eigenen Handy aus bei.",
+    "roleTitle": "Gastgeber oder beitreten?",
+    "roleHost": "Raum erstellen",
+    "roleHostDesc": "Erstelle ein Spiel und teile den Code.",
+    "roleJoin": "Mit Code beitreten",
+    "roleJoinDesc": "Code oder QR vom Gastgeber? Spring rein.",
+    "back": "← Zurück",
+    "next": "Weiter →",
+    "playersTitle": "Spieler hinzufügen",
+    "playersDesc": "Trag alle Mitspielenden ein. Mindestens 3.",
+    "categoriesTitle": "Wortquellen wählen",
+    "categoriesDesc": "Welche Kategorien sollen verwendet werden?",
+    "optionsTitle": "Spieloptionen",
+    "optionsDesc": "Schwierigkeit und Diskussions-Timer anpassen.",
+    "startBtn": "Runde starten →",
+    "hostNameTitle": "Dein Name",
+    "hostNameDesc": "Die anderen sehen ihn in der Lobby.",
+    "hostCreateBtn": "Raum erstellen",
+    "creating": "Erstellen…",
+    "joinCodeTitle": "Raum-Code eingeben",
+    "joinCodeDesc": "Tippe den 4-Buchstaben-Code oder scanne den QR.",
+    "joinNameTitle": "Dein Name",
+    "joinBtn": "Beitreten",
+    "joining": "Beitreten…",
+    "stepLabel": "Schritt {{current}} von {{total}}"
+  },
   "home": {
     "title": "Spy",
     "subtitle_before": "Alle bekommen ein Wort. Eine Person bekommt ein ",
     "subtitle_highlight": "ähnliches Wort",
     "subtitle_after": ". Findet den Spion, bevor er sich tarnt.",
-    "rdv": {
-      "title": "Mit einem Freund vor Ort spielen",
-      "desc": "Sie scannen deinen QR — ihr landet beide in der Lobby.",
-      "namePlaceholder": "Dein Name (z. B. Sam)",
-      "scanBtn": "📷 Freundes-Code scannen"
-    },
     "passAndPlay": {
       "title": "Reihum am Handy",
       "desc": "Ein Handy, alle im selben Raum. Keine Einrichtung nötig."
@@ -44,13 +69,14 @@
     },
     "howTo": {
       "title": "So wird gespielt",
-      "step1_before": "Alle bekommen ein Wort. Ein geheimer ",
+      "step1_before": "Alle bekommen dasselbe Wort. Der ",
       "step1_spy": "Spion",
-      "step1_mid": " bekommt ein ",
-      "step1_similar": "ähnliches",
-      "step1_after": " Wort.",
-      "step2": "Reihum: Alle sagen einen kurzen Hinweis zu ihrem Wort.",
-      "step3": "Diskutiert. Dann wählt. Wird der Spion enttarnt, gewinnen die Zivilisten. Sonst gewinnt der Spion."
+      "step1_mid": " bekommt einen ",
+      "step1_similar": "ähnlichen Hinweis",
+      "step1_after": " — oder gar nichts.",
+      "step2": "Hinweisrunden: Reihum sagt jeder ein einziges Wort, das beweist, dass er das Geheimwort kennt — aber vage genug, damit der Spion es nicht erraten kann.",
+      "step3": "Fragerunde: Stellt euch gegenseitig Fragen. Hört genau hin, wer bluffen muss, und versucht den Spion zu enttarnen.",
+      "step4": "Stimmt über den Verdächtigen ab. Der enttarnte Spion hat einen letzten Versuch, das Wort zu erraten — trifft er, gewinnt der Spion. Ein Spion, der das Wort schon kennt, darf es jederzeit aussprechen und so die Runde stehlen."
     }
   },
   "localGame": {
@@ -75,6 +101,10 @@
     "removeAria": "{{name}} entfernen",
     "empty": "Noch keine Spieler.",
     "defaultName": "Spieler {{n}}",
+    "spyCountLabel": "Anzahl Spione",
+    "spyCountHint": "Mehr Spione = schwerer für die Zivilisten.",
+    "spiesKnowLabel": "Spione kennen sich",
+    "spiesKnowHint": "Sie sehen ihre Mit-Spione auf der Karte.",
     "difficultyLabel": "Schwierigkeit für die Dorfbewohner",
     "difficulty": {
       "none":   { "label": "Kein Hinweis", "hint": "Der Spion bekommt gar kein Wort — am leichtesten zu enttarnen." },
@@ -113,6 +143,8 @@
     "spyRole": "🕵️ Spion",
     "civRole": "✅ Zivilist",
     "spyBadge": "🕵️ Du bist der Spion",
+    "fellowSpiesLabel": "Mit-Spione",
+    "aloneSpy": "Du bist der einzige Spion.",
     "spyHeadsUp_before": "Achtung:",
     "spyHeadsUp_mid": " dieses Wort ist ",
     "spyHeadsUp_not": "nicht",
@@ -133,6 +165,7 @@
     "title": "Die Auflösung",
     "subtitle": "Habt ihr richtig getippt?",
     "spyWas": "Der Spion war",
+    "spiesWere": "Die Spione waren",
     "wordsLabel": "Die Wörter",
     "civilians": "Zivilisten",
     "spy": "Spion",
@@ -237,11 +270,7 @@
     "errNoPairs": "Keine Paare verfügbar — wähle mindestens eine Kategorie mit Paaren.",
     "errMinPlayers": "Mindestens 3 Spieler nötig",
     "errCouldNotAllocate": "Raum-Code konnte nicht vergeben werden, bitte erneut versuchen",
-    "errNotConfigured": "Firebase nicht konfiguriert",
-    "rdvConnecting": "Verbinde zur Lobby…",
-    "rdvConnectingHint": "Beide Handys landen in derselben Lobby.",
-    "rdvFailTitle": "Verbindung fehlgeschlagen",
-    "rdvSelfError": "Das ist dein eigener QR-Code."
+    "errNotConfigured": "Firebase nicht konfiguriert"
   },
   "install": {
     "android": {

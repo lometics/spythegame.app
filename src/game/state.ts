@@ -14,6 +14,8 @@ const DEFAULT_SETTINGS: GameSettings = {
   timerSeconds: 180,
   pairSource: { selectedCategoryIds: [...BUILTIN_CATEGORY_IDS] },
   difficulty: 'hard',
+  spyCount: 1,
+  spiesKnowEachOther: false,
 }
 
 const INITIAL: GameState = {
@@ -25,6 +27,8 @@ const INITIAL: GameState = {
   round: 0,
   settings: DEFAULT_SETTINGS,
   customLists: [],
+  onlineName: '',
+  joinCode: '',
 }
 
 type Actions = {
@@ -38,6 +42,8 @@ type Actions = {
   clearCategories: () => void
   upsertCustomList: (list: CustomList) => void
   deleteCustomList: (id: string) => void
+  setOnlineName: (name: string) => void
+  setJoinCode: (code: string) => void
   startRound: () => void
   advanceReveal: () => void
   goToDiscussion: () => void
@@ -168,6 +174,9 @@ export const useGame = create<GameState & Actions>()(
           }
         }),
 
+      setOnlineName: (name) => set({ onlineName: name }),
+      setJoinCode: (code) => set({ joinCode: code.toUpperCase() }),
+
       startRound: () => {
         const { players, settings, customLists, round } = get()
         const pair: Pair = samplePair(
@@ -175,7 +184,10 @@ export const useGame = create<GameState & Actions>()(
           customLists,
           settings.difficulty,
         )
-        set((s) => ({ ...s, ...startRoundState(players, pair, round) }))
+        set((s) => ({
+          ...s,
+          ...startRoundState(players, pair, round, settings.spyCount),
+        }))
       },
 
       advanceReveal: () => {
@@ -205,7 +217,7 @@ export const useGame = create<GameState & Actions>()(
     }),
     {
       name: 'spy-the-game-local',
-      version: 4,
+      version: 5,
       // Drop old persisted state on schema change so we don't ship users a half-broken settings object.
       migrate: (persisted, fromVersion) => {
         let p = persisted as Record<string, unknown>
@@ -241,6 +253,17 @@ export const useGame = create<GameState & Actions>()(
               )
             : []
           p = { ...p, players }
+        }
+        if (fromVersion < 5) {
+          p = {
+            ...p,
+            settings: {
+              ...DEFAULT_SETTINGS,
+              ...((p?.settings as Partial<GameSettings>) ?? {}),
+              spyCount: 1,
+              spiesKnowEachOther: false,
+            },
+          }
         }
         return p as unknown
       },

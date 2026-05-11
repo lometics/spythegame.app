@@ -7,11 +7,20 @@ type Props = {
   players: Player[]
   pair: Pair
   onFinish: () => void
+  spiesKnowEachOther?: boolean
 }
 
 const SWIPE_THRESHOLD = 60 // px horizontal delta to count as a swipe
 
-export default function RevealDeck({ players, pair, onFinish }: Props) {
+// Per-stack-layer rotation (deg) so cards behind look like a real stack.
+const STACK_ROTATES = [0, -2.5, 3.5]
+
+export default function RevealDeck({
+  players,
+  pair,
+  onFinish,
+  spiesKnowEachOther = false,
+}: Props) {
   const { t } = useTranslation()
   const [index, setIndex] = useState(0)
   const [dragX, setDragX] = useState(0)
@@ -111,8 +120,11 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
       </div>
 
       <div
-        className="swipe-stage relative w-full"
-        style={{ height: 'min(72vh, calc((100vw - 1.5rem) * 4 / 3))' }}
+        className="swipe-stage relative mx-auto"
+        style={{
+          width: 'min(100%, calc(80vh * 3 / 4))',
+          aspectRatio: '3 / 4',
+        }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -124,6 +136,13 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
           const p = players[i]
           const isTop = offset === 0
 
+          // While the top card is animating away, behind cards visually slide
+          // forward one slot so the new top is already in place when index
+          // advances — no post-swipe snap.
+          const visualOffset =
+            animating === 'left' && !isTop ? offset - 1 : offset
+          const rotateDeg = STACK_ROTATES[visualOffset] ?? 0
+
           const style: React.CSSProperties = isTop
             ? {
                 transform: `translate3d(${translatePx}px, 0, 0) rotate(${
@@ -134,17 +153,21 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
                 zIndex: 3,
               }
             : {
-                transform: `translate3d(0, ${offset * 10}px, 0) scale(${
-                  1 - offset * 0.05
-                })`,
-                transformOrigin: 'top center',
+                transform: `translate3d(0, ${visualOffset * 10}px, 0) scale(${
+                  1 - visualOffset * 0.05
+                }) rotate(${rotateDeg}deg)`,
+                transformOrigin: 'center',
                 transition: 'transform 0.28s ease-out, opacity 0.28s',
-                opacity: 1 - offset * 0.25,
+                opacity: 1 - visualOffset * 0.25,
                 zIndex: 3 - offset,
                 pointerEvents: 'none',
-                filter: `brightness(${1 - offset * 0.15})`,
+                filter: `brightness(${1 - visualOffset * 0.15})`,
               }
 
+          const fellowSpyNames =
+            isTop && p.isSpy && spiesKnowEachOther
+              ? players.filter((o) => o.isSpy && o.id !== p.id).map((o) => o.name)
+              : undefined
           return (
             <div key={p.id} className="absolute inset-0" style={style}>
               <PlayerCard
@@ -152,13 +175,14 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
                 word={isTop ? (p.isSpy ? pair.spy : pair.civilian) : ''}
                 isSpy={isTop ? p.isSpy : false}
                 avatar={p.avatar}
+                fellowSpyNames={fellowSpyNames}
               />
             </div>
           )
         })}
       </div>
 
-      <div className="flex items-center justify-between gap-2 safe-bottom">
+      <div className="action-bar flex items-center justify-between gap-2">
         <button
           className="btn-ghost px-3 py-2.5 sm:px-4 sm:py-3 text-sm"
           disabled={isFirst}

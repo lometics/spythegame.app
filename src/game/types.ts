@@ -49,6 +49,8 @@ export type GameSettings = {
   timerSeconds: number
   pairSource: PairSource
   difficulty: Difficulty
+  spyCount: number
+  spiesKnowEachOther: boolean
 }
 
 export type GameState = {
@@ -60,4 +62,6 @@ export type GameState = {
   round: number
   settings: GameSettings
   customLists: CustomList[]
+  onlineName: string
+  joinCode: string
 }

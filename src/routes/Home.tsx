@@ -1,193 +1,169 @@
-import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import InstallPrompt from '../components/InstallPrompt'
-import QrCode from '../components/QrCode'
+import { useGame } from '../game/state'
+import PairPicker from '../components/PairPicker'
 import QrScannerModal from '../components/QrScannerModal'
-import { ensureSignedIn, isFirebaseConfigured } from '../online/firebase'
-import {
-  armRendezvous,
-  clearRendezvous,
-  useMyRendezvous,
-} from '../online/rendezvous'
-import { joinRoom } from '../online/room'
-import { getStoredName, setStoredName } from '../online/playerName'
+import { createRoom, joinRoom } from '../online/room'
+import { isFirebaseConfigured } from '../online/firebase'
+import type { Difficulty } from '../game/types'
+import { maxSpiesFor, clampSpyCount } from '../game/machine'
 
-function extractRdvUid(scanned: string): string | null {
-  const trimmed = scanned.trim()
-  const match = trimmed.match(/\/rdv\/([A-Za-z0-9_-]+)/)
-  if (match) return match[1]
-  return null
+type Step =
+  | 'mode'
+  | 'sd_players'
+  | 'sd_categories'
+  | 'sd_options'
+  | 'od_role'
+  | 'host_name'
+  | 'host_categories'
+  | 'host_options'
+  | 'join_code'
+  | 'join_name'
+
+const SD_FLOW: Step[] = ['mode', 'sd_players', 'sd_categories', 'sd_options']
+const HOST_FLOW: Step[] = ['mode', 'od_role', 'host_name', 'host_categories', 'host_options']
+const JOIN_FLOW: Step[] = ['mode', 'od_role', 'join_code', 'join_name']
+
+const DIFFICULTY_OPTIONS: Array<{ value: Difficulty; icon: string }> = [
+  { value: 'none', icon: '🙈' },
+  { value: 'easy', icon: '😎' },
+  { value: 'medium', icon: '🤔' },
+  { value: 'hard', icon: '🥵' },
+]
+
+function flowFor(step: Step): Step[] {
+  if (SD_FLOW.includes(step)) return SD_FLOW
+  if (HOST_FLOW.includes(step)) return HOST_FLOW
+  if (JOIN_FLOW.includes(step)) return JOIN_FLOW
+  return SD_FLOW
 }
 
 export default function Home() {
   const { t } = useTranslation()
-  const navigate = useNavigate()
-  const configured = isFirebaseConfigured()
-  const [uid, setUid] = useState<string | null>(null)
-  const [name, setName] = useState(() => getStoredName())
-  const [scannerOpen, setScannerOpen] = useState(false)
-  const [scanError, setScanError] = useState<string | null>(null)
-  const joinedRef = useRef<string | null>(null)
+  const [history, setHistory] = useState<Step[]>(['mode'])
+  const step = history[history.length - 1]
 
-  const { roomCode } = useMyRendezvous(uid ?? undefined)
+  const go = (next: Step) => setHistory((h) => [...h, next])
+  const back = () =>
+    setHistory((h) => (h.length > 1 ? h.slice(0, -1) : h))
 
-  useEffect(() => {
-    if (!configured) return
-    let cancelled = false
-    ensureSignedIn()
-      .then((u) => {
-        if (cancelled) return
-        setUid(u.uid)
-        armRendezvous(u.uid).catch(() => {})
-      })
-      .catch(() => {})
-    return () => {
-      cancelled = true
-    }
-  }, [configured])
-
-  useEffect(() => {
-    if (!uid || !roomCode) return
-    if (joinedRef.current === roomCode) return
-    joinedRef.current = roomCode
-    const myName = name.trim() || t('online.defaultGuestName')
-    setStoredName(myName)
-    joinRoom(roomCode, myName)
-      .then(() => clearRendezvous(uid).catch(() => {}))
-      .catch(() => {})
-      .finally(() => {
-        navigate(`/room/${roomCode}`, { replace: true })
-      })
-  }, [uid, roomCode, name, navigate, t])
-
-  const onNameChange = (v: string) => {
-    setName(v)
-    setStoredName(v)
-  }
-
-  const onScan = (text: string) => {
-    const target = extractRdvUid(text)
-    if (!target) {
-      setScanError(t('online.qrInvalid'))
-      setScannerOpen(false)
-      return
-    }
-    setScannerOpen(false)
-    setScanError(null)
-    navigate(`/rdv/${target}`)
-  }
-
-  const inviteUrl =
-    uid != null
-      ? `${window.location.origin}${window.location.pathname}#/rdv/${uid}`
-      : ''
+  const flow = flowFor(step)
+  const currentIdx = flow.indexOf(step)
+  const totalSteps = flow.length
 
   return (
-    <div className="space-y-3 sm:space-y-6">
-      <header className="text-center pt-2 sm:pt-12">
-        <div className="inline-block text-3xl sm:text-5xl mb-1 sm:mb-3">🕵️</div>
-        <h1 className="font-display text-2xl sm:text-5xl font-extrabold tracking-tight">
+    <div className="space-y-3 sm:space-y-5">
+      <header className="text-center pt-2 sm:pt-6">
+        <div className="inline-block text-3xl sm:text-5xl mb-1 sm:mb-2">🕵️</div>
+        <h1 className="font-display text-2xl sm:text-4xl font-extrabold tracking-tight">
           {t('home.title')}
         </h1>
-        <p className="text-slate-400 text-xs sm:text-base mt-1 sm:mt-2 max-w-md mx-auto">
-          {t('home.subtitle_before')}
-          <span className="text-accent-400 font-semibold">
-            {t('home.subtitle_highlight')}
-          </span>
-          {t('home.subtitle_after')}
-        </p>
       </header>
 
-      {configured && (
-        <section className="card space-y-2 sm:space-y-3">
-          <div className="text-center">
-            <div className="text-base sm:text-lg font-semibold">
-              {t('home.rdv.title')}
-            </div>
-            <div className="text-xs sm:text-sm text-slate-400">
-              {t('home.rdv.desc')}
-            </div>
-          </div>
-          <div className="flex flex-col items-center gap-2 sm:gap-3">
-            {uid ? (
-              <QrCode value={inviteUrl} size={140} />
-            ) : (
-              <div
-                className="bg-white/5 rounded-xl"
-                style={{ width: 140, height: 140 }}
-                aria-hidden
-              />
-            )}
-            <input
-              className="input text-center"
-              value={name}
-              maxLength={20}
-              placeholder={t('home.rdv.namePlaceholder')}
-              onChange={(e) => onNameChange(e.target.value)}
-            />
-            <button
-              className="btn-ghost w-full"
-              onClick={() => {
-                setScanError(null)
-                setScannerOpen(true)
-              }}
-            >
-              {t('home.rdv.scanBtn')}
-            </button>
-            {scanError && (
-              <p className="text-xs text-rose-400">{scanError}</p>
-            )}
-          </div>
-        </section>
+      {step !== 'mode' && (
+        <div className="flex items-center justify-between text-xs text-slate-500">
+          <button
+            type="button"
+            onClick={back}
+            className="text-slate-400 hover:text-slate-200"
+          >
+            {t('wizard.back')}
+          </button>
+          <span>
+            {t('wizard.stepLabel', {
+              current: currentIdx + 1,
+              total: totalSteps,
+            })}
+          </span>
+        </div>
       )}
 
-      <section className="grid gap-2 sm:gap-3">
-        <Link to="/local" className="card hover:bg-ink-700/60 transition block">
+      {step === 'mode' && <ModeStep onPick={(m) => go(m)} />}
+      {step === 'sd_players' && (
+        <PlayersStep onNext={() => go('sd_categories')} />
+      )}
+      {step === 'sd_categories' && (
+        <CategoriesStep onNext={() => go('sd_options')} />
+      )}
+      {step === 'sd_options' && <SingleOptionsStep />}
+      {step === 'od_role' && (
+        <RoleStep
+          onHost={() => go('host_name')}
+          onJoin={() => go('join_code')}
+        />
+      )}
+      {step === 'host_name' && (
+        <HostNameStep onNext={() => go('host_categories')} />
+      )}
+      {step === 'host_categories' && (
+        <CategoriesStep onNext={() => go('host_options')} />
+      )}
+      {step === 'host_options' && <HostOptionsStep />}
+      {step === 'join_code' && (
+        <JoinCodeStep onNext={() => go('join_name')} />
+      )}
+      {step === 'join_name' && <JoinNameStep />}
+    </div>
+  )
+}
+
+function ModeStep({ onPick }: { onPick: (next: Step) => void }) {
+  const { t } = useTranslation()
+  const configured = isFirebaseConfigured()
+  return (
+    <div className="space-y-3">
+      <h2 className="font-display text-xl sm:text-2xl font-bold text-center">
+        {t('wizard.modeTitle')}
+      </h2>
+      <div className="grid gap-2 sm:gap-3">
+        <button
+          type="button"
+          onClick={() => onPick('sd_players')}
+          className="card hover:bg-ink-700/60 transition text-left"
+        >
           <div className="flex items-center justify-between gap-3">
             <div>
               <div className="text-base sm:text-lg font-semibold">
-                {t('home.passAndPlay.title')}
+                {t('wizard.modeSingle')}
               </div>
               <div className="text-xs sm:text-sm text-slate-400">
-                {t('home.passAndPlay.desc')}
+                {t('wizard.modeSingleDesc')}
               </div>
             </div>
             <div className="text-2xl sm:text-3xl">📱</div>
           </div>
-        </Link>
+        </button>
 
-        <Link
-          to="/online"
-          className="card hover:bg-ink-700/60 transition block"
+        <button
+          type="button"
+          onClick={() => onPick('od_role')}
+          disabled={!configured}
+          className="card hover:bg-ink-700/60 transition text-left disabled:opacity-40"
         >
           <div className="flex items-center justify-between gap-3">
             <div>
-              <div className="text-base sm:text-lg font-semibold">{t('home.host.title')}</div>
-              <div className="text-xs sm:text-sm text-slate-400">{t('home.host.desc')}</div>
+              <div className="text-base sm:text-lg font-semibold">
+                {t('wizard.modeOnline')}
+              </div>
+              <div className="text-xs sm:text-sm text-slate-400">
+                {t('wizard.modeOnlineDesc')}
+              </div>
             </div>
             <div className="text-2xl sm:text-3xl">🌐</div>
           </div>
-        </Link>
-
-        <Link to="/join" className="card hover:bg-ink-700/60 transition block">
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <div className="text-base sm:text-lg font-semibold">{t('home.join.title')}</div>
-              <div className="text-xs sm:text-sm text-slate-400">{t('home.join.desc')}</div>
-            </div>
-            <div className="text-2xl sm:text-3xl">🔑</div>
-          </div>
-        </Link>
-      </section>
-
-      <InstallPrompt />
-
-      <details className="card text-sm text-slate-300">
+        </button>
+      </div>
+      {!configured && (
+        <p className="text-xs text-amber-400 text-center">
+          {t('online.fbWarnTitleShort')}
+        </p>
+      )}
+      <details className="card">
         <summary className="cursor-pointer font-semibold text-slate-200">
           {t('home.howTo.title')}
         </summary>
-        <ol className="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2 list-decimal pl-5 text-xs sm:text-sm">
+        <ol className="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2 list-decimal pl-5 text-xs sm:text-sm text-slate-300">
           <li>
             {t('home.howTo.step1_before')}
             <em>{t('home.howTo.step1_spy')}</em>
@@ -197,14 +173,558 @@ export default function Home() {
           </li>
           <li>{t('home.howTo.step2')}</li>
           <li>{t('home.howTo.step3')}</li>
+          <li>{t('home.howTo.step4')}</li>
         </ol>
       </details>
+    </div>
+  )
+}
 
+function RoleStep({
+  onHost,
+  onJoin,
+}: {
+  onHost: () => void
+  onJoin: () => void
+}) {
+  const { t } = useTranslation()
+  return (
+    <div className="space-y-3">
+      <h2 className="font-display text-xl sm:text-2xl font-bold text-center">
+        {t('wizard.roleTitle')}
+      </h2>
+      <div className="grid gap-2 sm:gap-3">
+        <button
+          type="button"
+          onClick={onHost}
+          className="card hover:bg-ink-700/60 transition text-left"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <div className="text-base sm:text-lg font-semibold">
+                {t('wizard.roleHost')}
+              </div>
+              <div className="text-xs sm:text-sm text-slate-400">
+                {t('wizard.roleHostDesc')}
+              </div>
+            </div>
+            <div className="text-2xl sm:text-3xl">🎙️</div>
+          </div>
+        </button>
+        <button
+          type="button"
+          onClick={onJoin}
+          className="card hover:bg-ink-700/60 transition text-left"
+        >
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <div className="text-base sm:text-lg font-semibold">
+                {t('wizard.roleJoin')}
+              </div>
+              <div className="text-xs sm:text-sm text-slate-400">
+                {t('wizard.roleJoinDesc')}
+              </div>
+            </div>
+            <div className="text-2xl sm:text-3xl">🔑</div>
+          </div>
+        </button>
+      </div>
+    </div>
+  )
+}
+
+function PlayersStep({ onNext }: { onNext: () => void }) {
+  const { t } = useTranslation()
+  const players = useGame((s) => s.players)
+  const addPlayer = useGame((s) => s.addPlayer)
+  const removePlayer = useGame((s) => s.removePlayer)
+  const cycleAvatar = useGame((s) => s.cycleAvatar)
+  const [name, setName] = useState('')
+
+  const nextDefaultName = () => {
+    let n = players.length + 1
+    const taken = new Set(players.map((p) => p.name))
+    while (taken.has(t('lobby.defaultName', { n }))) n++
+    return t('lobby.defaultName', { n })
+  }
+
+  const submit = (e?: React.FormEvent) => {
+    e?.preventDefault()
+    addPlayer(name.trim() || nextDefaultName())
+    setName('')
+  }
+
+  const canNext = players.length >= 3
+
+  return (
+    <div className="space-y-3">
+      <header>
+        <h2 className="font-display text-xl sm:text-2xl font-bold">
+          {t('wizard.playersTitle')}
+        </h2>
+        <p className="text-slate-400 text-xs sm:text-sm">
+          {t('wizard.playersDesc')}
+        </p>
+      </header>
+
+      <section className="card space-y-2 sm:space-y-3">
+        <div className="flex items-center justify-between">
+          <div className="label">
+            {t('lobby.playersLabel', { count: players.length })}
+          </div>
+          <button
+            type="button"
+            onClick={() => addPlayer(nextDefaultName())}
+            className="text-xs font-semibold text-accent-400 hover:text-accent-500"
+          >
+            {t('lobby.quickAdd')}
+          </button>
+        </div>
+        <form className="flex gap-2" onSubmit={submit}>
+          <input
+            className="input flex-1"
+            placeholder={t('lobby.namePlaceholder')}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            maxLength={20}
+            autoCapitalize="words"
+          />
+          <button type="submit" className="btn-primary px-4">
+            {t('lobby.addBtn')}
+          </button>
+        </form>
+        <ul className="space-y-1.5">
+          {players.map((p) => (
+            <li
+              key={p.id}
+              className="flex items-center justify-between bg-ink-700/40 rounded-lg px-2 py-1.5"
+            >
+              <span className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => cycleAvatar(p.id)}
+                  className="w-8 h-8 rounded-full bg-ink-700 overflow-hidden border border-white/10 hover:border-accent-400/60 active:scale-95 transition shrink-0"
+                >
+                  {p.avatar ? (
+                    <img
+                      src={p.avatar}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  ) : null}
+                </button>
+                <span className="font-medium text-sm">{p.name}</span>
+              </span>
+              <button
+                onClick={() => removePlayer(p.id)}
+                className="text-slate-400 hover:text-rose-400 w-7 h-7 inline-flex items-center justify-center rounded-lg"
+                aria-label={t('lobby.removeAria', { name: p.name })}
+              >
+                ✕
+              </button>
+            </li>
+          ))}
+          {players.length === 0 && (
+            <li className="text-xs text-slate-500 italic">
+              {t('lobby.empty')}
+            </li>
+          )}
+        </ul>
+      </section>
+
+      <button
+        onClick={onNext}
+        disabled={!canNext}
+        className="btn-primary w-full"
+      >
+        {t('wizard.next')}
+      </button>
+      {!canNext && (
+        <p className="text-center text-xs text-slate-500">
+          {t('lobby.needPlayers')}
+        </p>
+      )}
+    </div>
+  )
+}
+
+function CategoriesStep({ onNext }: { onNext: () => void }) {
+  const { t } = useTranslation()
+  const selected = useGame((s) => s.settings.pairSource.selectedCategoryIds)
+  const canNext = selected.length > 0
+  return (
+    <div className="space-y-3">
+      <header>
+        <h2 className="font-display text-xl sm:text-2xl font-bold">
+          {t('wizard.categoriesTitle')}
+        </h2>
+        <p className="text-slate-400 text-xs sm:text-sm">
+          {t('wizard.categoriesDesc')}
+        </p>
+      </header>
+      <section className="card">
+        <PairPicker />
+      </section>
+      <button
+        onClick={onNext}
+        disabled={!canNext}
+        className="btn-primary w-full"
+      >
+        {t('wizard.next')}
+      </button>
+      {!canNext && (
+        <p className="text-center text-xs text-slate-500">
+          {t('lobby.needSource')}
+        </p>
+      )}
+    </div>
+  )
+}
+
+function OptionsPanel({ playerCount }: { playerCount?: number }) {
+  const { t } = useTranslation()
+  const settings = useGame((s) => s.settings)
+  const setSettings = useGame((s) => s.setSettings)
+  const maxSpies = playerCount !== undefined ? maxSpiesFor(playerCount) : 99
+  const spyOptions = Array.from(
+    { length: Math.min(maxSpies, 5) },
+    (_, i) => i + 1,
+  )
+  const currentSpyCount = clampSpyCount(
+    settings.spyCount,
+    playerCount ?? settings.spyCount + 2,
+  )
+  return (
+    <>
+      <section className="card space-y-2">
+        <div className="label">{t('lobby.spyCountLabel')}</div>
+        <div className="flex gap-1.5 flex-wrap">
+          {spyOptions.map((n) => (
+            <button
+              key={n}
+              onClick={() => setSettings({ spyCount: n })}
+              className={`px-2.5 py-1.5 rounded-full text-xs sm:text-sm border transition ${
+                currentSpyCount === n
+                  ? 'bg-accent-500 text-ink-900 border-accent-500'
+                  : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
+              }`}
+            >
+              {n}
+            </button>
+          ))}
+        </div>
+        <p className="text-[11px] sm:text-xs text-slate-500">
+          {t('lobby.spyCountHint')}
+        </p>
+      </section>
+      <section className="card">
+        <label className="flex items-center justify-between gap-2 cursor-pointer">
+          <span className="min-w-0">
+            <span className="label block">{t('lobby.spiesKnowLabel')}</span>
+            <span className="block text-[11px] sm:text-xs text-slate-500">
+              {t('lobby.spiesKnowHint')}
+            </span>
+          </span>
+          <input
+            type="checkbox"
+            checked={settings.spiesKnowEachOther}
+            onChange={(e) =>
+              setSettings({ spiesKnowEachOther: e.target.checked })
+            }
+            className="h-5 w-5 accent-accent-500 shrink-0"
+            disabled={currentSpyCount < 2}
+          />
+        </label>
+      </section>
+      <section className="card space-y-2">
+        <div className="label">{t('lobby.difficultyLabel')}</div>
+        <div className="flex gap-1.5 flex-wrap">
+          {DIFFICULTY_OPTIONS.map((opt) => (
+            <button
+              key={opt.value}
+              onClick={() => setSettings({ difficulty: opt.value })}
+              className={`px-2.5 py-1.5 rounded-full text-xs sm:text-sm border transition inline-flex items-center gap-1 ${
+                settings.difficulty === opt.value
+                  ? 'bg-accent-500 text-ink-900 border-accent-500'
+                  : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
+              }`}
+            >
+              <span aria-hidden>{opt.icon}</span>
+              <span>{t(`lobby.difficulty.${opt.value}.label`)}</span>
+            </button>
+          ))}
+        </div>
+        <p className="text-[11px] sm:text-xs text-slate-500">
+          {t(`lobby.difficulty.${settings.difficulty}.hint`)}
+        </p>
+      </section>
+      <section className="card space-y-2">
+        <div className="label">{t('lobby.timerLabel')}</div>
+        <div className="flex gap-1.5 flex-wrap">
+          {[0, 60, 120, 180, 300].map((s) => (
+            <button
+              key={s}
+              onClick={() => setSettings({ timerSeconds: s })}
+              className={`px-2.5 py-1.5 rounded-full text-xs sm:text-sm border transition ${
+                settings.timerSeconds === s
+                  ? 'bg-accent-500 text-ink-900 border-accent-500'
+                  : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
+              }`}
+            >
+              {s === 0
+                ? t('lobby.timerOff')
+                : t('lobby.timerMin', { count: s / 60 })}
+            </button>
+          ))}
+        </div>
+      </section>
+    </>
+  )
+}
+
+function SingleOptionsStep() {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const startRound = useGame((s) => s.startRound)
+  const playerCount = useGame((s) => s.players.length)
+  return (
+    <div className="space-y-3">
+      <header>
+        <h2 className="font-display text-xl sm:text-2xl font-bold">
+          {t('wizard.optionsTitle')}
+        </h2>
+        <p className="text-slate-400 text-xs sm:text-sm">
+          {t('wizard.optionsDesc')}
+        </p>
+      </header>
+      <OptionsPanel playerCount={playerCount} />
+      <button
+        onClick={() => {
+          startRound()
+          navigate('/local')
+        }}
+        className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4"
+      >
+        {t('wizard.startBtn')}
+      </button>
+    </div>
+  )
+}
+
+function HostNameStep({ onNext }: { onNext: () => void }) {
+  const { t } = useTranslation()
+  const onlineName = useGame((s) => s.onlineName)
+  const setOnlineName = useGame((s) => s.setOnlineName)
+  return (
+    <div className="space-y-3">
+      <header>
+        <h2 className="font-display text-xl sm:text-2xl font-bold">
+          {t('wizard.hostNameTitle')}
+        </h2>
+        <p className="text-slate-400 text-xs sm:text-sm">
+          {t('wizard.hostNameDesc')}
+        </p>
+      </header>
+      <section className="card space-y-2">
+        <label className="label">{t('online.yourName')}</label>
+        <input
+          className="input"
+          value={onlineName}
+          maxLength={20}
+          placeholder={t('online.hostNamePlaceholder')}
+          onChange={(e) => setOnlineName(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && onlineName.trim() && onNext()}
+          autoCapitalize="words"
+          autoFocus
+        />
+      </section>
+      <button
+        onClick={onNext}
+        disabled={!onlineName.trim()}
+        className="btn-primary w-full"
+      >
+        {t('wizard.next')}
+      </button>
+    </div>
+  )
+}
+
+function HostOptionsStep() {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const onlineName = useGame((s) => s.onlineName)
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const onCreate = async () => {
+    setBusy(true)
+    setError(null)
+    try {
+      const code = await createRoom(onlineName)
+      navigate(`/room/${code}`)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : t('online.errCreateRoom'))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <div className="space-y-3">
+      <header>
+        <h2 className="font-display text-xl sm:text-2xl font-bold">
+          {t('wizard.optionsTitle')}
+        </h2>
+        <p className="text-slate-400 text-xs sm:text-sm">
+          {t('wizard.optionsDesc')}
+        </p>
+      </header>
+      <OptionsPanel />
+      {error && <p className="text-sm text-rose-400">{error}</p>}
+      <button
+        onClick={onCreate}
+        disabled={busy}
+        className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4"
+      >
+        {busy ? t('wizard.creating') : t('wizard.hostCreateBtn')}
+      </button>
+    </div>
+  )
+}
+
+function extractCode(scanned: string): string | null {
+  const trimmed = scanned.trim()
+  const m = trimmed.match(/\/join\/([A-Za-z0-9]{4})/)
+  if (m) return m[1].toUpperCase()
+  if (/^[A-Za-z0-9]{4}$/.test(trimmed)) return trimmed.toUpperCase()
+  return null
+}
+
+function JoinCodeStep({ onNext }: { onNext: () => void }) {
+  const { t } = useTranslation()
+  const joinCode = useGame((s) => s.joinCode)
+  const setJoinCode = useGame((s) => s.setJoinCode)
+  const [scannerOpen, setScannerOpen] = useState(false)
+  const [scanError, setScanError] = useState<string | null>(null)
+
+  const canNext = joinCode.trim().length === 4
+
+  const onScan = (text: string) => {
+    const code = extractCode(text)
+    if (!code) {
+      setScanError(t('online.qrInvalid'))
+      setScannerOpen(false)
+      return
+    }
+    setJoinCode(code)
+    setScanError(null)
+    setScannerOpen(false)
+  }
+
+  return (
+    <div className="space-y-3">
+      <header>
+        <h2 className="font-display text-xl sm:text-2xl font-bold">
+          {t('wizard.joinCodeTitle')}
+        </h2>
+        <p className="text-slate-400 text-xs sm:text-sm">
+          {t('wizard.joinCodeDesc')}
+        </p>
+      </header>
+      <section className="card space-y-2">
+        <div className="flex items-center justify-between">
+          <label className="label">{t('online.roomCode')}</label>
+          <button
+            type="button"
+            className="btn-ghost px-2 py-1 text-xs"
+            onClick={() => {
+              setScanError(null)
+              setScannerOpen(true)
+            }}
+          >
+            {t('online.scanQr')}
+          </button>
+        </div>
+        <input
+          className="input font-mono uppercase tracking-widest text-center text-xl"
+          value={joinCode}
+          maxLength={4}
+          placeholder={t('online.codePlaceholder')}
+          onChange={(e) => setJoinCode(e.target.value.toUpperCase())}
+          autoFocus
+        />
+        {scanError && <p className="text-sm text-rose-400">{scanError}</p>}
+      </section>
+      <button
+        onClick={onNext}
+        disabled={!canNext}
+        className="btn-primary w-full"
+      >
+        {t('wizard.next')}
+      </button>
       <QrScannerModal
         open={scannerOpen}
         onResult={onScan}
         onClose={() => setScannerOpen(false)}
       />
+    </div>
+  )
+}
+
+function JoinNameStep() {
+  const { t } = useTranslation()
+  const navigate = useNavigate()
+  const joinCode = useGame((s) => s.joinCode)
+  const onlineName = useGame((s) => s.onlineName)
+  const setOnlineName = useGame((s) => s.setOnlineName)
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const onJoin = async () => {
+    if (!onlineName.trim() || !joinCode.trim()) {
+      setError(t('online.errNeedBoth'))
+      return
+    }
+    setBusy(true)
+    setError(null)
+    try {
+      await joinRoom(joinCode.trim().toUpperCase(), onlineName)
+      navigate(`/room/${joinCode.trim().toUpperCase()}`)
+    } catch (e) {
+      setError(e instanceof Error ? e.message : t('online.errCouldNotJoin'))
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <div className="space-y-3">
+      <header>
+        <h2 className="font-display text-xl sm:text-2xl font-bold">
+          {t('wizard.joinNameTitle')}
+        </h2>
+      </header>
+      <section className="card space-y-2">
+        <label className="label">{t('online.yourName')}</label>
+        <input
+          className="input"
+          value={onlineName}
+          maxLength={20}
+          placeholder={t('online.joinNamePlaceholder')}
+          onChange={(e) => setOnlineName(e.target.value)}
+          onKeyDown={(e) => e.key === 'Enter' && onJoin()}
+          autoCapitalize="words"
+          autoFocus
+        />
+        {error && <p className="text-sm text-rose-400">{error}</p>}
+      </section>
+      <button
+        onClick={onJoin}
+        disabled={busy || !onlineName.trim()}
+        className="btn-primary w-full"
+      >
+        {busy ? t('wizard.joining') : t('wizard.joinBtn')}
+      </button>
     </div>
   )
 }

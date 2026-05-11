@@ -201,7 +201,7 @@ export default function EditList() {
         </button>
       </section>
 
-      <footer className="flex items-center justify-between gap-2 safe-bottom">
+      <footer className="action-bar flex items-center justify-between gap-2">
         {existing ? (
           <button onClick={remove} className="btn-danger px-3 py-2 text-sm">
             {t('common.delete')}
