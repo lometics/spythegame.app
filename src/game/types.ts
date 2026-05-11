@@ -27,6 +27,7 @@ export type Player = {
   id: string
   name: string
   isSpy: boolean
+  avatar: string
 }
 
 export type GamePhase = 'lobby' | 'reveal' | 'discussion' | 'result'

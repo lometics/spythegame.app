@@ -5,6 +5,7 @@ type Props = {
   playerName: string
   word: string
   isSpy: boolean
+  avatar?: string
   /** When true, the card never auto-hides on prop change — used by online mode where the card belongs to one viewer. */
   persistFlip?: boolean
 }
@@ -13,6 +14,7 @@ export default function PlayerCard({
   playerName,
   word,
   isSpy,
+  avatar,
   persistFlip = false,
 }: Props) {
   const { t } = useTranslation()
@@ -23,8 +25,7 @@ export default function PlayerCard({
 
   return (
     <div
-      className={`flip-card w-full ${flipped ? 'flipped' : ''}`}
-      style={{ aspectRatio: '3 / 4', minHeight: 'min(520px, 70vh)' }}
+      className={`flip-card w-full h-full ${flipped ? 'flipped' : ''}`}
       onClick={onClick}
       role="button"
       tabIndex={0}
@@ -37,47 +38,83 @@ export default function PlayerCard({
     >
       <div className="flip-card-inner">
         {/* BACK */}
-        <div className="flip-card-face bg-ink-800 border border-white/10 shadow-soft p-6">
-          <div className="flex items-center justify-between text-xs uppercase tracking-widest text-slate-500">
+        <div className="flip-card-face bg-ink-800 border border-white/10 shadow-soft p-4 sm:p-6 relative">
+          {avatar && (
+            <div
+              aria-hidden
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: `url(${avatar})`,
+                backgroundSize: '85%',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center 55%',
+                opacity: 0.08,
+                filter: 'blur(3px)',
+              }}
+            />
+          )}
+          <div className="relative flex items-center justify-between text-[10px] sm:text-xs uppercase tracking-widest text-slate-500">
             <span>{t('playerCard.spyHeader')}</span>
             <span>🕵️</span>
           </div>
-          <div className="flex-1 flex flex-col items-center justify-center text-center gap-4">
-            <div className="text-6xl">📲</div>
-            <div className="text-slate-400">{t('playerCard.passTo')}</div>
-            <h2 className="font-display text-4xl sm:text-5xl font-extrabold">
+          <div className="relative flex-1 flex flex-col items-center justify-center text-center gap-2 sm:gap-3">
+            {avatar ? (
+              <img
+                src={avatar}
+                alt=""
+                className="w-20 h-20 sm:w-28 sm:h-28 rounded-full border-2 border-white/15 bg-ink-700/60 shadow-soft"
+              />
+            ) : (
+              <div className="text-5xl sm:text-6xl">📲</div>
+            )}
+            <div className="text-slate-400 text-sm">{t('playerCard.passTo')}</div>
+            <h2 className="font-display text-3xl sm:text-5xl font-extrabold">
               {playerName}
             </h2>
-            <div className="text-slate-500 text-sm max-w-xs">
+            <div className="text-slate-500 text-xs sm:text-sm max-w-xs">
               {t('playerCard.passInstruction')}
             </div>
           </div>
-          <div className="text-center text-xs text-slate-500 uppercase tracking-widest">
+          <div className="relative text-center text-[10px] sm:text-xs text-slate-500 uppercase tracking-widest">
             {t('playerCard.tapToFlip')}
           </div>
         </div>
 
         {/* FRONT */}
         <div
-          className={`flip-card-face flip-card-back p-6 border-2 shadow-soft ${
+          className={`flip-card-face flip-card-back p-4 sm:p-6 border-2 shadow-soft relative ${
             isSpy
               ? 'bg-rose-500/10 border-rose-500/60'
               : 'bg-emerald-500/5 border-emerald-500/50'
           }`}
         >
-          <div className="flex items-center justify-between text-xs uppercase tracking-widest text-slate-400">
-            <span>{playerName}</span>
+          {avatar && (
+            <div
+              aria-hidden
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                backgroundImage: `url(${avatar})`,
+                backgroundSize: '90%',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center 60%',
+                opacity: 0.1,
+                filter: 'blur(4px) saturate(0.6)',
+              }}
+            />
+          )}
+          <div className="relative flex items-center justify-between text-[10px] sm:text-xs uppercase tracking-widest text-slate-400">
+            <span className="truncate">{playerName}</span>
             <span>{isSpy ? t('playerCard.spyRole') : t('playerCard.civRole')}</span>
           </div>
-          <div className="flex-1 flex flex-col items-center justify-center text-center gap-3">
+          <div className="relative flex-1 flex flex-col items-center justify-center text-center gap-2 sm:gap-3 min-h-0">
             {isSpy ? (
               <>
-                <div className="inline-block bg-rose-500 text-white px-4 py-1.5 rounded-full text-sm font-extrabold uppercase tracking-widest">
+                <div className="inline-block bg-rose-500 text-white px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-widest">
                   {t('playerCard.spyBadge')}
                 </div>
                 {word ? (
                   <>
-                    <p className="text-rose-200 text-sm max-w-xs leading-relaxed">
+                    <p className="text-rose-200 text-xs sm:text-sm max-w-xs leading-snug sm:leading-relaxed">
                       <strong className="text-rose-100">
                         {t('playerCard.spyHeadsUp_before')}
                       </strong>
@@ -89,31 +126,31 @@ export default function PlayerCard({
                       </strong>
                       {t('playerCard.spyHeadsUp_tail')}
                     </p>
-                    <div className="label text-rose-300/80 mt-2">
+                    <div className="label text-rose-300/80 mt-1 sm:mt-2">
                       {t('playerCard.yourHint')}
                     </div>
-                    <div className="font-display text-5xl sm:text-6xl font-extrabold text-rose-100 break-words max-w-full">
+                    <div className="font-display text-4xl sm:text-6xl font-extrabold text-rose-100 break-words max-w-full">
                       {word}
                     </div>
-                    <p className="text-rose-300/70 text-xs max-w-xs">
+                    <p className="text-rose-300/70 text-[11px] sm:text-xs max-w-xs">
                       {t('playerCard.spyBluff')}
                     </p>
                   </>
                 ) : (
                   <>
-                    <p className="text-rose-200 text-sm max-w-xs leading-relaxed">
+                    <p className="text-rose-200 text-xs sm:text-sm max-w-xs leading-snug sm:leading-relaxed">
                       <strong className="text-rose-100">
                         {t('playerCard.noHintTitle')}
                       </strong>
                       {t('playerCard.noHintBody')}
                     </p>
-                    <div className="label text-rose-300/80 mt-2">
+                    <div className="label text-rose-300/80 mt-1 sm:mt-2">
                       {t('playerCard.yourHint')}
                     </div>
-                    <div className="font-display text-4xl sm:text-5xl font-extrabold text-rose-100/70 break-words max-w-full italic">
+                    <div className="font-display text-3xl sm:text-5xl font-extrabold text-rose-100/70 break-words max-w-full italic">
                       {t('playerCard.noHintPlaceholder')}
                     </div>
-                    <p className="text-rose-300/70 text-xs max-w-xs">
+                    <p className="text-rose-300/70 text-[11px] sm:text-xs max-w-xs">
                       {t('playerCard.noHintBluff')}
                     </p>
                   </>
@@ -121,22 +158,22 @@ export default function PlayerCard({
               </>
             ) : (
               <>
-                <div className="inline-block bg-emerald-500 text-ink-900 px-4 py-1.5 rounded-full text-sm font-extrabold uppercase tracking-widest">
+                <div className="inline-block bg-emerald-500 text-ink-900 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full text-xs sm:text-sm font-extrabold uppercase tracking-widest">
                   {t('playerCard.civBadge')}
                 </div>
-                <p className="text-emerald-100/80 text-sm max-w-xs">
+                <p className="text-emerald-100/80 text-xs sm:text-sm max-w-xs">
                   {t('playerCard.civBody')}
                 </p>
-                <div className="label text-emerald-300/80 mt-2">
+                <div className="label text-emerald-300/80 mt-1 sm:mt-2">
                   {t('playerCard.yourWord')}
                 </div>
-                <div className="font-display text-5xl sm:text-6xl font-extrabold text-emerald-100 break-words max-w-full">
+                <div className="font-display text-4xl sm:text-6xl font-extrabold text-emerald-100 break-words max-w-full">
                   {word}
                 </div>
               </>
             )}
           </div>
-          <div className="text-center text-xs text-slate-400 uppercase tracking-widest">
+          <div className="relative text-center text-[10px] sm:text-xs text-slate-400 uppercase tracking-widest">
             {t('playerCard.tapToHide')}
           </div>
         </div>

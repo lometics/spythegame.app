@@ -24,6 +24,12 @@
     "subtitle_before": "Todos reciben una palabra. Un jugador recibe una ",
     "subtitle_highlight": "palabra similar",
     "subtitle_after": ". Encuentra al espía antes de que se camufle.",
+    "rdv": {
+      "title": "Jugar con un amigo cercano",
+      "desc": "Escanea tu QR — entráis los dos en la sala.",
+      "namePlaceholder": "Tu nombre (ej. Sam)",
+      "scanBtn": "📷 Escanear código de un amigo"
+    },
     "passAndPlay": {
       "title": "Pasa el móvil",
       "desc": "Un móvil, todos en la misma habitación. Sin configuración."
@@ -201,6 +207,12 @@
     "roomLabel": "Sala",
     "share": "Compartir esta sala",
     "copyLink": "Copiar enlace",
+    "qrShareHint": "Los amigos pueden escanear para unirse.",
+    "scanQr": "📷 Escanear QR",
+    "qrScanTitle": "Escanear QR de la sala",
+    "qrScanHint": "Apunta la cámara al código QR del anfitrión.",
+    "qrCameraError": "No se pudo abrir la cámara",
+    "qrInvalid": "Este código QR no es un enlace a la sala.",
     "playersHeader": "Jugadores ({{count}})",
     "starting": "Iniciando…",
     "startRound": "Empezar ronda →",
@@ -225,7 +237,11 @@
     "errNoPairs": "No hay pares disponibles — selecciona al menos una categoría con pares.",
     "errMinPlayers": "Mínimo 3 jugadores",
     "errCouldNotAllocate": "No se pudo asignar un código, inténtalo de nuevo",
-    "errNotConfigured": "Firebase no configurado"
+    "errNotConfigured": "Firebase no configurado",
+    "rdvConnecting": "Conectando a la sala…",
+    "rdvConnectingHint": "Los dos móviles acabarán en la misma sala.",
+    "rdvFailTitle": "No se pudo conectar",
+    "rdvSelfError": "Ese es tu propio código QR."
   },
   "install": {
     "android": {

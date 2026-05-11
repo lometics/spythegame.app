@@ -24,6 +24,12 @@
     "subtitle_before": "Tutti ricevono una parola. Un giocatore riceve una ",
     "subtitle_highlight": "parola simile",
     "subtitle_after": ". Smaschera la spia prima che si confonda.",
+    "rdv": {
+      "title": "Gioca con un amico vicino",
+      "desc": "Lui scansiona il tuo QR — entrate insieme nella lobby.",
+      "namePlaceholder": "Il tuo nome (es. Sam)",
+      "scanBtn": "📷 Scansiona il codice di un amico"
+    },
     "passAndPlay": {
       "title": "Passa il telefono",
       "desc": "Un telefono, amici nella stessa stanza. Zero setup."
@@ -231,7 +237,11 @@
     "errNoPairs": "Nessuna coppia disponibile — seleziona almeno una categoria con coppie.",
     "errMinPlayers": "Servono almeno 3 giocatori",
     "errCouldNotAllocate": "Impossibile generare un codice stanza, riprova",
-    "errNotConfigured": "Firebase non configurato"
+    "errNotConfigured": "Firebase non configurato",
+    "rdvConnecting": "Collegamento alla lobby…",
+    "rdvConnectingHint": "Entrambi i telefoni entreranno nella stessa lobby.",
+    "rdvFailTitle": "Connessione impossibile",
+    "rdvSelfError": "Questo è il tuo QR code."
   },
   "install": {
     "android": {

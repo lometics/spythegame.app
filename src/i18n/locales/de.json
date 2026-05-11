@@ -24,6 +24,12 @@
     "subtitle_before": "Alle bekommen ein Wort. Eine Person bekommt ein ",
     "subtitle_highlight": "ähnliches Wort",
     "subtitle_after": ". Findet den Spion, bevor er sich tarnt.",
+    "rdv": {
+      "title": "Mit einem Freund vor Ort spielen",
+      "desc": "Sie scannen deinen QR — ihr landet beide in der Lobby.",
+      "namePlaceholder": "Dein Name (z. B. Sam)",
+      "scanBtn": "📷 Freundes-Code scannen"
+    },
     "passAndPlay": {
       "title": "Reihum am Handy",
       "desc": "Ein Handy, alle im selben Raum. Keine Einrichtung nötig."
@@ -231,7 +237,11 @@
     "errNoPairs": "Keine Paare verfügbar — wähle mindestens eine Kategorie mit Paaren.",
     "errMinPlayers": "Mindestens 3 Spieler nötig",
     "errCouldNotAllocate": "Raum-Code konnte nicht vergeben werden, bitte erneut versuchen",
-    "errNotConfigured": "Firebase nicht konfiguriert"
+    "errNotConfigured": "Firebase nicht konfiguriert",
+    "rdvConnecting": "Verbinde zur Lobby…",
+    "rdvConnectingHint": "Beide Handys landen in derselben Lobby.",
+    "rdvFailTitle": "Verbindung fehlgeschlagen",
+    "rdvSelfError": "Das ist dein eigener QR-Code."
   },
   "install": {
     "android": {

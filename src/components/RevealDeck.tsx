@@ -85,8 +85,8 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
   const opacity = animating ? 0 : 1
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between text-sm">
+    <div className="space-y-2 sm:space-y-4">
+      <div className="flex items-center justify-between text-xs sm:text-sm">
         <span className="text-slate-400">
           {t('revealDeck.cardProgress', {
             current: index + 1,
@@ -111,8 +111,8 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
       </div>
 
       <div
-        className="swipe-stage relative"
-        style={{ aspectRatio: '3 / 4', minHeight: 'min(520px, 70vh)' }}
+        className="swipe-stage relative w-full"
+        style={{ height: 'min(72vh, calc((100vw - 1.5rem) * 4 / 3))' }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
@@ -151,6 +151,7 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
                 playerName={p.name}
                 word={isTop ? (p.isSpy ? pair.spy : pair.civilian) : ''}
                 isSpy={isTop ? p.isSpy : false}
+                avatar={p.avatar}
               />
             </div>
           )
@@ -159,18 +160,18 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
 
       <div className="flex items-center justify-between gap-2 safe-bottom">
         <button
-          className="btn-ghost px-4 py-3"
+          className="btn-ghost px-3 py-2.5 sm:px-4 sm:py-3 text-sm"
           disabled={isFirst}
           onClick={goPrev}
         >
           {t('revealDeck.prev')}
         </button>
-        <div className="text-center text-xs text-slate-500 leading-tight">
+        <div className="text-center text-[10px] sm:text-xs text-slate-500 leading-tight">
           {t('revealDeck.tapHint')}
           <br />
           {t('revealDeck.swipeHint')}
         </div>
-        <button className="btn-primary px-4 py-3" onClick={goNext}>
+        <button className="btn-primary px-3 py-2.5 sm:px-4 sm:py-3 text-sm" onClick={goNext}>
           {isLast ? t('revealDeck.doneBtn') : t('revealDeck.next')}
         </button>
       </div>

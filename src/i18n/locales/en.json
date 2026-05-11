@@ -24,6 +24,12 @@
     "subtitle_before": "Everyone gets a word. One player gets a ",
     "subtitle_highlight": "similar word",
     "subtitle_after": ". Find the spy before they blend in.",
+    "rdv": {
+      "title": "Play with a friend nearby",
+      "desc": "They scan your QR — you both land in the lobby.",
+      "namePlaceholder": "Your name (e.g. Sam)",
+      "scanBtn": "📷 Scan a friend's code"
+    },
     "passAndPlay": {
       "title": "Pass-and-play",
       "desc": "One phone, friends in the same room. No setup."
@@ -231,7 +237,11 @@
     "errNoPairs": "No pairs available — select at least one category with pairs.",
     "errMinPlayers": "Need at least 3 players",
     "errCouldNotAllocate": "Could not allocate a room code, try again",
-    "errNotConfigured": "Firebase not configured"
+    "errNotConfigured": "Firebase not configured",
+    "rdvConnecting": "Connecting you to the lobby…",
+    "rdvConnectingHint": "Both phones will end up in the same lobby.",
+    "rdvFailTitle": "Couldn't connect",
+    "rdvSelfError": "That's your own QR code."
   },
   "install": {
     "android": {

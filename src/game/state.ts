@@ -8,6 +8,7 @@ import type {
 } from './types'
 import { BUILTIN_CATEGORY_IDS, samplePair } from './pairs'
 import { startRoundState } from './machine'
+import { AVATARS, avatarForIndex, nextAvatar } from '../data/avatars'
 
 const DEFAULT_SETTINGS: GameSettings = {
   timerSeconds: 180,
@@ -30,6 +31,7 @@ type Actions = {
   addPlayer: (name: string) => void
   removePlayer: (id: string) => void
   renamePlayer: (id: string, name: string) => void
+  cycleAvatar: (id: string) => void
   setSettings: (patch: Partial<GameSettings>) => void
   toggleCategory: (id: string) => void
   selectAllCategories: () => void
@@ -52,16 +54,23 @@ export const useGame = create<GameState & Actions>()(
       addPlayer: (name) => {
         const trimmed = name.trim()
         if (!trimmed) return
-        set((s) => ({
-          players: [
-            ...s.players,
-            {
-              id: crypto.randomUUID(),
-              name: trimmed,
-              isSpy: false,
-            },
-          ],
-        }))
+        set((s) => {
+          // Pick first avatar not yet used (else fall back to round-robin).
+          const used = new Set(s.players.map((p) => p.avatar))
+          const free = AVATARS.find((a) => !used.has(a))
+          const avatar = free ?? avatarForIndex(s.players.length)
+          return {
+            players: [
+              ...s.players,
+              {
+                id: crypto.randomUUID(),
+                name: trimmed,
+                isSpy: false,
+                avatar,
+              },
+            ],
+          }
+        })
       },
 
       removePlayer: (id) =>
@@ -70,6 +79,13 @@ export const useGame = create<GameState & Actions>()(
       renamePlayer: (id, name) =>
         set((s) => ({
           players: s.players.map((p) => (p.id === id ? { ...p, name } : p)),
+        })),
+
+      cycleAvatar: (id) =>
+        set((s) => ({
+          players: s.players.map((p) =>
+            p.id === id ? { ...p, avatar: nextAvatar(p.avatar) } : p,
+          ),
         })),
 
       setSettings: (patch) =>
@@ -189,39 +205,51 @@ export const useGame = create<GameState & Actions>()(
     }),
     {
       name: 'spy-the-game-local',
-      version: 3,
+      version: 4,
       // Drop old persisted state on schema change so we don't ship users a half-broken settings object.
       migrate: (persisted, fromVersion) => {
+        let p = persisted as Record<string, unknown>
         if (fromVersion < 2) {
-          return {
-            players: Array.isArray(
-              (persisted as Record<string, unknown>)?.players,
-            )
-              ? ((persisted as { players?: unknown }).players as Array<{
-                  id: string
-                  name: string
-                }>)
-                  .filter((p) => p && typeof p.id === 'string')
-                  .map((p) => ({ id: p.id, name: p.name, isSpy: false }))
+          p = {
+            players: Array.isArray(p?.players)
+              ? (p.players as Array<{ id: string; name: string }>)
+                  .filter((pl) => pl && typeof pl.id === 'string')
+                  .map((pl) => ({ id: pl.id, name: pl.name, isSpy: false }))
               : [],
             settings: DEFAULT_SETTINGS,
             customLists: [],
-          } as unknown
+          }
         }
         if (fromVersion < 3) {
-          const p = persisted as { settings?: Partial<GameSettings> } & Record<string, unknown>
-          return {
+          p = {
             ...p,
-            settings: { ...DEFAULT_SETTINGS, ...(p?.settings ?? {}) },
-          } as unknown
+            settings: {
+              ...DEFAULT_SETTINGS,
+              ...((p?.settings as Partial<GameSettings>) ?? {}),
+            },
+          }
         }
-        return persisted as unknown
+        if (fromVersion < 4) {
+          const players = Array.isArray(p?.players)
+            ? (p.players as Array<{ id: string; name: string; avatar?: string }>).map(
+                (pl, i) => ({
+                  id: pl.id,
+                  name: pl.name,
+                  isSpy: false,
+                  avatar: pl.avatar ?? avatarForIndex(i),
+                }),
+              )
+            : []
+          p = { ...p, players }
+        }
+        return p as unknown
       },
       partialize: (s) => ({
         players: s.players.map((p) => ({
           id: p.id,
           name: p.name,
           isSpy: false,
+          avatar: p.avatar,
         })),
         settings: s.settings,
         customLists: s.customLists,

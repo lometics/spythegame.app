@@ -87,8 +87,8 @@ export default function EditList() {
   }
 
   return (
-    <div className="space-y-4">
-      <nav className="flex items-center justify-between text-sm">
+    <div className="space-y-2 sm:space-y-4">
+      <nav className="flex items-center justify-between text-xs sm:text-sm">
         <Link to="/local" className="text-slate-400 hover:text-slate-200">
           {t('common.back')}
         </Link>
@@ -97,18 +97,18 @@ export default function EditList() {
         </span>
       </nav>
 
-      <header className="space-y-1">
-        <h1 className="font-display text-3xl font-extrabold tracking-tight">
+      <header className="space-y-0.5 sm:space-y-1">
+        <h1 className="font-display text-2xl sm:text-3xl font-extrabold tracking-tight">
           {existing ? t('editList.titleEdit') : t('editList.titleNew')}
         </h1>
-        <p className="text-slate-400 text-sm">
+        <p className="text-slate-400 text-xs sm:text-sm">
           {t('editList.intro_before')}
           <span className="text-slate-200">{t('editList.intro_similar')}</span>
           {t('editList.intro_after')}
         </p>
       </header>
 
-      <section className="card space-y-4">
+      <section className="card space-y-2 sm:space-y-4">
         <div>
           <label className="label">{t('editList.name')}</label>
           <input
@@ -123,9 +123,9 @@ export default function EditList() {
 
         <div>
           <label className="label">{t('editList.icon')}</label>
-          <div className="flex items-center gap-2 mt-1">
+          <div className="flex items-center gap-1.5 sm:gap-2 mt-1 flex-wrap">
             <input
-              className="input w-20 text-2xl text-center"
+              className="input w-16 sm:w-20 text-xl sm:text-2xl text-center"
               value={icon}
               onChange={(e) => setIcon(e.target.value)}
               maxLength={4}
@@ -136,7 +136,7 @@ export default function EditList() {
                   key={e}
                   type="button"
                   onClick={() => setIcon(e)}
-                  className={`w-9 h-9 rounded-lg text-lg transition ${
+                  className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg text-base sm:text-lg transition ${
                     icon === e
                       ? 'bg-accent-500/30 ring-1 ring-accent-500'
                       : 'bg-white/5 hover:bg-white/10'
@@ -150,21 +150,21 @@ export default function EditList() {
         </div>
       </section>
 
-      <section className="card space-y-3">
+      <section className="card space-y-2 sm:space-y-3">
         <div className="flex items-center justify-between">
           <label className="label">{t('editList.pairs')}</label>
-          <span className="text-xs text-slate-500">
+          <span className="text-[11px] sm:text-xs text-slate-500">
             {t('editList.pairsHint')}
           </span>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-1.5 sm:space-y-2">
           {pairs.map((p, i) => (
             <div
               key={i}
-              className="flex gap-2 items-center bg-ink-700/40 rounded-xl p-2"
+              className="flex gap-1.5 sm:gap-2 items-center bg-ink-700/40 rounded-lg sm:rounded-xl p-1.5 sm:p-2"
             >
-              <div className="flex-1 grid grid-cols-2 gap-2">
+              <div className="flex-1 grid grid-cols-2 gap-1.5 sm:gap-2">
                 <input
                   className="input"
                   value={p.civilian}
@@ -183,7 +183,7 @@ export default function EditList() {
               <button
                 type="button"
                 onClick={() => removePair(i)}
-                className="text-slate-400 hover:text-rose-400 w-8 h-8 rounded-lg"
+                className="text-slate-400 hover:text-rose-400 w-7 h-7 sm:w-8 sm:h-8 rounded-lg shrink-0"
                 aria-label={t('editList.removePairAria')}
               >
                 ✕
@@ -203,20 +203,20 @@ export default function EditList() {
 
       <footer className="flex items-center justify-between gap-2 safe-bottom">
         {existing ? (
-          <button onClick={remove} className="btn-danger px-4 py-2 text-sm">
+          <button onClick={remove} className="btn-danger px-3 py-2 text-sm">
             {t('common.delete')}
           </button>
         ) : (
           <span />
         )}
         <div className="flex items-center gap-2">
-          <button onClick={goBack} className="btn-ghost px-4 py-2 text-sm">
+          <button onClick={goBack} className="btn-ghost px-3 py-2 text-sm">
             {t('common.cancel')}
           </button>
           <button
             onClick={save}
             disabled={!canSave}
-            className="btn-primary px-4 py-2 text-sm"
+            className="btn-primary px-3 py-2 text-sm"
           >
             {existing ? t('common.save') : t('editList.create')}
           </button>
