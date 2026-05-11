@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   seconds: number
@@ -6,6 +7,7 @@ type Props = {
 }
 
 export default function DiscussionTimer({ seconds, autoStart = true }: Props) {
+  const { t } = useTranslation()
   const [remaining, setRemaining] = useState(seconds)
   const [running, setRunning] = useState(autoStart)
   const tickRef = useRef<number | null>(null)
@@ -49,7 +51,7 @@ export default function DiscussionTimer({ seconds, autoStart = true }: Props) {
         className="btn-ghost px-3 py-1.5 text-sm"
         onClick={() => setRunning((r) => !r)}
       >
-        {running ? 'Pause' : remaining > 0 ? 'Resume' : 'Done'}
+        {running ? t('timer.pause') : remaining > 0 ? t('timer.resume') : t('timer.done')}
       </button>
       <button
         className="btn-ghost px-3 py-1.5 text-sm"
@@ -58,7 +60,7 @@ export default function DiscussionTimer({ seconds, autoStart = true }: Props) {
           setRunning(true)
         }}
       >
-        Reset
+        {t('timer.reset')}
       </button>
     </div>
   )

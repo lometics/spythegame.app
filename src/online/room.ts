@@ -9,6 +9,7 @@ import {
 } from 'firebase/database'
 import { db, ensureSignedIn } from './firebase'
 import { samplePair } from '../game/pairs'
+import i18n from '../i18n'
 import type {
   CustomList,
   Difficulty,
@@ -57,7 +58,7 @@ function randomCode() {
 }
 
 export async function createRoom(hostName: string): Promise<string> {
-  if (!db) throw new Error('Firebase not configured')
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   const user = await ensureSignedIn()
   for (let attempt = 0; attempt < 8; attempt++) {
     const code = randomCode()
@@ -72,25 +73,25 @@ export async function createRoom(hostName: string): Promise<string> {
       },
       players: {
         [user.uid]: {
-          name: hostName.trim() || 'Host',
+          name: hostName.trim() || i18n.t('online.defaultHostName'),
           joinedAt: serverTimestamp(),
         },
       },
     })
     return code
   }
-  throw new Error('Could not allocate a room code, try again')
+  throw new Error(i18n.t('online.errCouldNotAllocate'))
 }
 
 export async function joinRoom(code: string, name: string) {
-  if (!db) throw new Error('Firebase not configured')
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   const user = await ensureSignedIn()
   const metaSnap = await get(ref(db, `rooms/${code}/meta`))
   if (!metaSnap.exists()) {
-    throw new Error('Room not found')
+    throw new Error(i18n.t('online.errRoomNotFound'))
   }
   await set(ref(db, `rooms/${code}/players/${user.uid}`), {
-    name: name.trim() || 'Guest',
+    name: name.trim() || i18n.t('online.defaultGuestName'),
     joinedAt: serverTimestamp(),
   })
   return user.uid
@@ -170,10 +171,10 @@ export async function startOnlineRound(
   players: Record<string, OnlinePlayer>,
   difficulty: Difficulty = 'hard',
 ) {
-  if (!db) throw new Error('Firebase not configured')
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   const pair: Pair = samplePair(pairSource, customLists, difficulty)
   const uids = Object.keys(players)
-  if (uids.length < 3) throw new Error('Need at least 3 players')
+  if (uids.length < 3) throw new Error(i18n.t('online.errMinPlayers'))
   const spyUid = uids[Math.floor(Math.random() * uids.length)]
   const firstClueGiverId = uids[Math.floor(Math.random() * uids.length)]
 
@@ -203,17 +204,17 @@ export async function startOnlineRound(
 }
 
 export async function setPhase(code: string, phase: GamePhase) {
-  if (!db) throw new Error('Firebase not configured')
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   await update(ref(db, `rooms/${code}/meta`), { phase })
 }
 
 export async function revealOnline(code: string) {
-  if (!db) throw new Error('Firebase not configured')
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   await update(ref(db, `rooms/${code}/meta`), { phase: 'result' })
 }
 
 export async function backToLobby(code: string) {
-  if (!db) throw new Error('Firebase not configured')
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   await update(ref(db), {
     [`rooms/${code}/meta/phase`]: 'lobby',
     [`rooms/${code}/round`]: null,
@@ -223,7 +224,7 @@ export async function backToLobby(code: string) {
 }
 
 export async function leaveRoom(code: string, uid: string) {
-  if (!db) throw new Error('Firebase not configured')
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   await set(ref(db, `rooms/${code}/players/${uid}`), null)
   await set(ref(db, `privateWords/${code}/${uid}`), null)
 }

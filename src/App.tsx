@@ -1,12 +1,15 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Home from './routes/Home'
 import LocalGame from './routes/LocalGame'
 import EditList from './routes/EditList'
 import OnlineHost from './routes/OnlineHost'
 import OnlineJoin from './routes/OnlineJoin'
 import OnlineRoom from './routes/OnlineRoom'
+import LanguageSwitcher from './components/LanguageSwitcher'
 
 export default function App() {
+  const { t } = useTranslation()
   return (
     <HashRouter>
       <div className="min-h-full flex flex-col">
@@ -23,8 +26,9 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-        <footer className="text-center text-xs text-slate-500 py-4">
-          Spy — the word game. Play in person or online with friends.
+        <footer className="mx-auto w-full max-w-2xl px-4 pb-4 flex flex-col items-center gap-2 text-xs text-slate-500">
+          <LanguageSwitcher />
+          <div className="text-center">{t('app.footer')}</div>
         </footer>
       </div>
     </HashRouter>

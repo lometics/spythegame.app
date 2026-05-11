@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import type { TFunction } from 'i18next'
 import {
   backToLobby,
   revealOnline,
@@ -13,9 +15,12 @@ import { ensureSignedIn, isFirebaseConfigured } from '../online/firebase'
 import PairPicker from '../components/PairPicker'
 import PlayerCard from '../components/PlayerCard'
 import DiscussionTimer from '../components/DiscussionTimer'
+import QrCode from '../components/QrCode'
 import { useGame } from '../game/state'
+import { categoryName } from '../game/pairs'
 
 export default function OnlineRoom() {
+  const { t } = useTranslation()
   const { code } = useParams()
   const [uid, setUid] = useState<string | null>(null)
   const room = useRoom(code)
@@ -33,9 +38,9 @@ export default function OnlineRoom() {
     return (
       <div className="space-y-4">
         <Link to="/" className="text-sm text-slate-400">
-          ← Home
+          {t('common.home')}
         </Link>
-        <div className="card text-sm">Firebase isn't configured.</div>
+        <div className="card text-sm">{t('online.fbNotConfigured')}</div>
       </div>
     )
   }
@@ -44,9 +49,11 @@ export default function OnlineRoom() {
     return (
       <div className="space-y-4">
         <Link to="/" className="text-sm text-slate-400">
-          ← Home
+          {t('common.home')}
         </Link>
-        <div className="card text-slate-400">Loading room {code}…</div>
+        <div className="card text-slate-400">
+          {t('online.loadingRoom', { code })}
+        </div>
       </div>
     )
   }
@@ -61,10 +68,10 @@ export default function OnlineRoom() {
     <div className="space-y-4">
       <nav className="flex items-center justify-between text-sm">
         <Link to="/" className="text-slate-400 hover:text-slate-200">
-          ← Home
+          {t('common.home')}
         </Link>
         <div className="flex items-center gap-3">
-          <span className="text-slate-500">Room</span>
+          <span className="text-slate-500">{t('online.roomLabel')}</span>
           <span className="font-mono font-bold text-accent-400 tracking-widest">
             {code}
           </span>
@@ -100,11 +107,12 @@ export default function OnlineRoom() {
 
       {room.meta.phase === 'result' && (
         <OnlineResult
-          code={code!}
           isHost={isHost}
+          code={code!}
           playersList={playersList}
           pair={pairReveal?.pair ?? null}
           spyUid={pairReveal?.spyUid ?? null}
+          t={t}
         />
       )}
     </div>
@@ -120,6 +128,7 @@ function OnlineLobby({
   isHost: boolean
   playersList: Array<{ id: string; name: string }>
 }) {
+  const { t } = useTranslation()
   const pairSource = useGame((s) => s.settings.pairSource)
   const difficulty = useGame((s) => s.settings.difficulty)
   const customLists = useGame((s) => s.customLists)
@@ -136,7 +145,7 @@ function OnlineLobby({
       }
       await startOnlineRound(code, pairSource, customLists, playersMap, difficulty)
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Could not start round')
+      setError(e instanceof Error ? e.message : t('online.errStartRound'))
     } finally {
       setBusy(false)
     }
@@ -146,24 +155,32 @@ function OnlineLobby({
 
   return (
     <div className="space-y-4">
-      <section className="card space-y-2">
-        <div className="label">Share this room</div>
-        <div className="flex items-center gap-3">
-          <div className="font-mono font-bold text-2xl tracking-widest text-accent-400">
-            {code}
+      <section className="card space-y-3">
+        <div className="label">{t('online.share')}</div>
+        <div className="flex items-center gap-4">
+          <QrCode value={joinUrl} size={140} />
+          <div className="flex-1 space-y-2">
+            <div className="font-mono font-bold text-2xl tracking-widest text-accent-400">
+              {code}
+            </div>
+            <button
+              className="btn-ghost px-3 py-1.5 text-sm"
+              onClick={() => navigator.clipboard?.writeText(joinUrl)}
+            >
+              {t('online.copyLink')}
+            </button>
+            <div className="text-xs text-slate-500">
+              {t('online.qrShareHint')}
+            </div>
           </div>
-          <button
-            className="btn-ghost px-3 py-1.5 text-sm"
-            onClick={() => navigator.clipboard?.writeText(joinUrl)}
-          >
-            Copy link
-          </button>
         </div>
         <div className="text-xs text-slate-500 break-all">{joinUrl}</div>
       </section>
 
       <section className="card">
-        <div className="label mb-2">Players ({playersList.length})</div>
+        <div className="label mb-2">
+          {t('online.playersHeader', { count: playersList.length })}
+        </div>
         <ul className="space-y-2">
           {playersList.map((p) => (
             <li
@@ -191,17 +208,17 @@ function OnlineLobby({
             }
             className="btn-primary w-full py-4 text-lg"
           >
-            {busy ? 'Starting…' : 'Start round →'}
+            {busy ? t('online.starting') : t('online.startRound')}
           </button>
           {playersList.length < 3 && (
             <p className="text-center text-sm text-slate-500">
-              Need at least 3 players. Share the link!
+              {t('online.needPlayers')}
             </p>
           )}
         </>
       ) : (
         <div className="card text-center text-slate-400 text-sm">
-          Waiting for the host to start the round…
+          {t('online.waitingHost')}
         </div>
       )}
     </div>
@@ -221,10 +238,11 @@ function OnlineReveal({
   isSpy: boolean
   myName: string
 }) {
+  const { t } = useTranslation()
   if (word === null) {
     return (
       <div className="card text-center py-12 text-slate-400">
-        Loading your word…
+        {t('online.loadingWord')}
       </div>
     )
   }
@@ -241,11 +259,11 @@ function OnlineReveal({
           className="btn-primary w-full"
           onClick={() => setPhase(code, 'discussion')}
         >
-          Everyone seen their word? → Discuss
+          {t('online.hostAdvance')}
         </button>
       ) : (
         <p className="text-center text-xs text-slate-500">
-          When everyone's ready, your host will advance to discussion.
+          {t('online.guestAdvanceWait')}
         </p>
       )}
     </div>
@@ -263,6 +281,7 @@ function OnlineDiscussion({
   playersList: Array<{ id: string; name: string }>
   firstClueGiverId: string | null
 }) {
+  const { t } = useTranslation()
   const startIdx = Math.max(
     0,
     playersList.findIndex((p) => p.id === firstClueGiverId),
@@ -270,15 +289,14 @@ function OnlineDiscussion({
   return (
     <div className="space-y-5">
       <header className="text-center">
-        <h2 className="font-display text-2xl font-bold">Discuss</h2>
-        <p className="text-slate-400 text-sm">
-          Each player says one short clue about their word, then debate it out
-          in person. Decide together who you think is the spy.
-        </p>
+        <h2 className="font-display text-2xl font-bold">
+          {t('online.discussTitle')}
+        </h2>
+        <p className="text-slate-400 text-sm">{t('online.discussDesc')}</p>
       </header>
 
       <section className="card">
-        <div className="label mb-2">Clue order — starts with</div>
+        <div className="label mb-2">{t('online.clueOrder')}</div>
         <div className="font-display text-xl font-bold text-accent-400 mb-3">
           {playersList[startIdx]?.name ?? '—'}
         </div>
@@ -297,8 +315,10 @@ function OnlineDiscussion({
 
       <section className="card flex items-center justify-between">
         <div>
-          <div className="label">Discussion timer</div>
-          <div className="text-xs text-slate-500">3 minutes by default.</div>
+          <div className="label">{t('online.discussTimerLabel')}</div>
+          <div className="text-xs text-slate-500">
+            {t('online.discussTimerHint')}
+          </div>
         </div>
         <DiscussionTimer seconds={180} />
       </section>
@@ -308,11 +328,11 @@ function OnlineDiscussion({
           className="btn-primary w-full py-4"
           onClick={() => revealOnline(code)}
         >
-          Reveal the spy →
+          {t('online.hostReveal')}
         </button>
       ) : (
         <div className="card text-center text-slate-400 text-sm">
-          Host will reveal the spy when everyone's ready.
+          {t('online.guestRevealWait')}
         </div>
       )}
     </div>
@@ -325,25 +345,28 @@ function OnlineResult({
   playersList,
   pair,
   spyUid,
+  t,
 }: {
   code: string
   isHost: boolean
   playersList: Array<{ id: string; name: string }>
   pair: { civilian: string; spy: string; categoryId: string } | null
   spyUid: string | null
+  t: TFunction
 }) {
+  const customLists = useGame((s) => s.customLists)
   const spy = playersList.find((p) => p.id === spyUid)
 
   return (
     <div className="space-y-6">
       <header className="text-center">
         <div className="text-6xl mb-2">🕵️</div>
-        <h2 className="font-display text-3xl font-bold">The reveal</h2>
-        <p className="text-slate-400 text-sm mt-1">Did you guess right?</p>
+        <h2 className="font-display text-3xl font-bold">{t('result.title')}</h2>
+        <p className="text-slate-400 text-sm mt-1">{t('result.subtitle')}</p>
       </header>
 
       <section className="card text-center space-y-2">
-        <div className="label">The spy was</div>
+        <div className="label">{t('result.spyWas')}</div>
         <div className="font-display text-3xl font-bold text-rose-300">
           {spy?.name ?? '—'}
         </div>
@@ -351,28 +374,34 @@ function OnlineResult({
 
       {pair && (
         <section className="card text-center space-y-3">
-          <div className="label">The words</div>
+          <div className="label">{t('result.wordsLabel')}</div>
           <div className="flex items-center justify-center gap-6">
             <div>
               <div className="text-xs text-emerald-400 uppercase tracking-wider">
-                Civilians
+                {t('result.civilians')}
               </div>
               <div className="font-display text-2xl font-bold">
                 {pair.civilian}
               </div>
             </div>
-            <div className="text-slate-500">vs</div>
+            <div className="text-slate-500">{t('result.vs')}</div>
             <div>
               <div className="text-xs text-rose-400 uppercase tracking-wider">
-                Spy
+                {t('result.spy')}
               </div>
               <div className="font-display text-2xl font-bold">
-                {pair.spy || <span className="italic text-slate-400">(no hint)</span>}
+                {pair.spy || (
+                  <span className="italic text-slate-400">
+                    {t('result.noHint')}
+                  </span>
+                )}
               </div>
             </div>
           </div>
           <div className="text-xs text-slate-500">
-            Category: {pair.categoryId}
+            {t('result.category', {
+              name: categoryName(pair.categoryId, customLists, t),
+            })}
           </div>
         </section>
       )}
@@ -382,11 +411,11 @@ function OnlineResult({
           className="btn-primary w-full py-4"
           onClick={() => backToLobby(code)}
         >
-          Back to lobby
+          {t('online.hostBackLobby')}
         </button>
       ) : (
         <div className="card text-center text-sm text-slate-400">
-          Host can take everyone back to the lobby.
+          {t('online.guestBackWait')}
         </div>
       )}
     </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   playerName: string
@@ -8,19 +9,13 @@ type Props = {
   persistFlip?: boolean
 }
 
-/**
- * A flippable card. Back = "Player X — tap to reveal". Front = role + word.
- *
- * Tap toggles the flip. Swipes are handled by the parent (`RevealDeck`) — the
- * browser only fires `click` when movement was small, so swipes don't
- * accidentally flip the card.
- */
 export default function PlayerCard({
   playerName,
   word,
   isSpy,
   persistFlip = false,
 }: Props) {
+  const { t } = useTranslation()
   const [flipped, setFlipped] = useState(false)
   void persistFlip
 
@@ -41,28 +36,28 @@ export default function PlayerCard({
       }}
     >
       <div className="flip-card-inner">
-        {/* BACK — what the player sees before flipping */}
+        {/* BACK */}
         <div className="flip-card-face bg-ink-800 border border-white/10 shadow-soft p-6">
           <div className="flex items-center justify-between text-xs uppercase tracking-widest text-slate-500">
-            <span>Spy</span>
+            <span>{t('playerCard.spyHeader')}</span>
             <span>🕵️</span>
           </div>
           <div className="flex-1 flex flex-col items-center justify-center text-center gap-4">
             <div className="text-6xl">📲</div>
-            <div className="text-slate-400">Pass to</div>
+            <div className="text-slate-400">{t('playerCard.passTo')}</div>
             <h2 className="font-display text-4xl sm:text-5xl font-extrabold">
               {playerName}
             </h2>
             <div className="text-slate-500 text-sm max-w-xs">
-              When it's safe, tap the card to reveal your word.
+              {t('playerCard.passInstruction')}
             </div>
           </div>
           <div className="text-center text-xs text-slate-500 uppercase tracking-widest">
-            tap to flip
+            {t('playerCard.tapToFlip')}
           </div>
         </div>
 
-        {/* FRONT — the word + role */}
+        {/* FRONT */}
         <div
           className={`flip-card-face flip-card-back p-6 border-2 shadow-soft ${
             isSpy
@@ -72,42 +67,54 @@ export default function PlayerCard({
         >
           <div className="flex items-center justify-between text-xs uppercase tracking-widest text-slate-400">
             <span>{playerName}</span>
-            <span>{isSpy ? '🕵️ Spy' : '✅ Civilian'}</span>
+            <span>{isSpy ? t('playerCard.spyRole') : t('playerCard.civRole')}</span>
           </div>
           <div className="flex-1 flex flex-col items-center justify-center text-center gap-3">
             {isSpy ? (
               <>
                 <div className="inline-block bg-rose-500 text-white px-4 py-1.5 rounded-full text-sm font-extrabold uppercase tracking-widest">
-                  🕵️ You are the spy
+                  {t('playerCard.spyBadge')}
                 </div>
                 {word ? (
                   <>
                     <p className="text-rose-200 text-sm max-w-xs leading-relaxed">
-                      <strong className="text-rose-100">Heads up:</strong> this
-                      word is <em>not</em> what the others have. It's a similar{' '}
-                      <strong className="text-rose-100">hint</strong>. Don't say
-                      it out loud.
+                      <strong className="text-rose-100">
+                        {t('playerCard.spyHeadsUp_before')}
+                      </strong>
+                      {t('playerCard.spyHeadsUp_mid')}
+                      <em>{t('playerCard.spyHeadsUp_not')}</em>
+                      {t('playerCard.spyHeadsUp_after')}
+                      <strong className="text-rose-100">
+                        {t('playerCard.spyHeadsUp_hint')}
+                      </strong>
+                      {t('playerCard.spyHeadsUp_tail')}
                     </p>
-                    <div className="label text-rose-300/80 mt-2">Your hint</div>
+                    <div className="label text-rose-300/80 mt-2">
+                      {t('playerCard.yourHint')}
+                    </div>
                     <div className="font-display text-5xl sm:text-6xl font-extrabold text-rose-100 break-words max-w-full">
                       {word}
                     </div>
                     <p className="text-rose-300/70 text-xs max-w-xs">
-                      Bluff your clues — make them fit your word AND theirs.
+                      {t('playerCard.spyBluff')}
                     </p>
                   </>
                 ) : (
                   <>
                     <p className="text-rose-200 text-sm max-w-xs leading-relaxed">
-                      <strong className="text-rose-100">No hint this round.</strong>{' '}
-                      You don't know the word. Listen, blend in, and bluff.
+                      <strong className="text-rose-100">
+                        {t('playerCard.noHintTitle')}
+                      </strong>
+                      {t('playerCard.noHintBody')}
                     </p>
-                    <div className="label text-rose-300/80 mt-2">Your hint</div>
+                    <div className="label text-rose-300/80 mt-2">
+                      {t('playerCard.yourHint')}
+                    </div>
                     <div className="font-display text-4xl sm:text-5xl font-extrabold text-rose-100/70 break-words max-w-full italic">
-                      (no hint)
+                      {t('playerCard.noHintPlaceholder')}
                     </div>
                     <p className="text-rose-300/70 text-xs max-w-xs">
-                      Echo what others say. Don't be the first to commit.
+                      {t('playerCard.noHintBluff')}
                     </p>
                   </>
                 )}
@@ -115,13 +122,14 @@ export default function PlayerCard({
             ) : (
               <>
                 <div className="inline-block bg-emerald-500 text-ink-900 px-4 py-1.5 rounded-full text-sm font-extrabold uppercase tracking-widest">
-                  ✅ Civilian
+                  {t('playerCard.civBadge')}
                 </div>
                 <p className="text-emerald-100/80 text-sm max-w-xs">
-                  Everyone else (except the spy) has this same word. Find the
-                  spy.
+                  {t('playerCard.civBody')}
                 </p>
-                <div className="label text-emerald-300/80 mt-2">Your word</div>
+                <div className="label text-emerald-300/80 mt-2">
+                  {t('playerCard.yourWord')}
+                </div>
                 <div className="font-display text-5xl sm:text-6xl font-extrabold text-emerald-100 break-words max-w-full">
                   {word}
                 </div>
@@ -129,7 +137,7 @@ export default function PlayerCard({
             )}
           </div>
           <div className="text-center text-xs text-slate-400 uppercase tracking-widest">
-            tap to hide
+            {t('playerCard.tapToHide')}
           </div>
         </div>
       </div>

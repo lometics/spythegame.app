@@ -1,21 +1,4 @@
 {
-  "categories": [
-    { "id": "food", "name": "Food & Drink", "description": "Edible stuff. Pairs lean tasty and close enough to confuse.", "icon": "🍕" },
-    { "id": "animals", "name": "Animals", "description": "Creatures big, small, scaly, fluffy.", "icon": "🐾" },
-    { "id": "sports", "name": "Sports", "description": "Things you do with your body, ideally outdoors.", "icon": "⚽" },
-    { "id": "places", "name": "Places", "description": "Rooms, buildings, cities, landscapes.", "icon": "🗺️" },
-    { "id": "tech", "name": "Tech", "description": "Cables, screens, anything with a battery.", "icon": "📱" },
-    { "id": "entertainment", "name": "Entertainment", "description": "Movies, books, games, music.", "icon": "🎬" },
-    { "id": "household", "name": "Household", "description": "Things in your kitchen, bathroom, garage.", "icon": "🛋️" },
-    { "id": "nature", "name": "Nature & Weather", "description": "Skies, seas, seasons, and storms.", "icon": "🌧️" },
-    { "id": "music", "name": "Music", "description": "Instruments, genres, sounds.", "icon": "🎵" },
-    { "id": "jobs", "name": "Jobs & Roles", "description": "What people do for a living.", "icon": "💼" },
-    { "id": "vehicles", "name": "Vehicles", "description": "Things that move you around.", "icon": "🚗" },
-    { "id": "clothing", "name": "Clothing", "description": "What you wear.", "icon": "👕" },
-    { "id": "body", "name": "Body & Health", "description": "Anatomy, medicine, wellness.", "icon": "💪" },
-    { "id": "myth", "name": "Mythology & Fantasy", "description": "Creatures and powers from stories.", "icon": "🐉" },
-    { "id": "tricky", "name": "Tricky / Mixed", "description": "Pairs that cross categories. The spy will sweat.", "icon": "🎲" }
-  ],
   "pairs": [
     { "civilian": "Coffee", "spy": "Hot Chocolate", "categoryId": "food" },
     { "civilian": "Pizza", "spy": "Lasagna", "categoryId": "food" },

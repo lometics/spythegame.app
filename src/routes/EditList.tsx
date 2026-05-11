@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useGame } from '../game/state'
 import type { CustomList } from '../game/types'
 
@@ -8,6 +9,7 @@ type DraftPair = { civilian: string; spy: string }
 const SUGGESTED_ICONS = ['🎴', '🎲', '🎯', '🧩', '🍀', '🔥', '💎', '🌟', '⚡', '🎨']
 
 export default function EditList() {
+  const { t } = useTranslation()
   const { id } = useParams<{ id?: string }>()
   const navigate = useNavigate()
 
@@ -25,13 +27,13 @@ export default function EditList() {
       <div className="space-y-4">
         <nav className="text-sm">
           <Link to="/local" className="text-slate-400 hover:text-slate-200">
-            ← Back
+            {t('common.back')}
           </Link>
         </nav>
         <div className="card">
-          <div className="font-semibold">List not found</div>
+          <div className="font-semibold">{t('editList.notFound')}</div>
           <div className="text-sm text-slate-400 mt-1">
-            This word list no longer exists.
+            {t('editList.notFoundDesc')}
           </div>
         </div>
       </div>
@@ -88,39 +90,39 @@ export default function EditList() {
     <div className="space-y-4">
       <nav className="flex items-center justify-between text-sm">
         <Link to="/local" className="text-slate-400 hover:text-slate-200">
-          ← Back
+          {t('common.back')}
         </Link>
         <span className="text-slate-500">
-          {existing ? 'Edit list' : 'New list'}
+          {existing ? t('editList.headerEdit') : t('editList.headerNew')}
         </span>
       </nav>
 
       <header className="space-y-1">
         <h1 className="font-display text-3xl font-extrabold tracking-tight">
-          {existing ? 'Edit word list' : 'New word list'}
+          {existing ? t('editList.titleEdit') : t('editList.titleNew')}
         </h1>
         <p className="text-slate-400 text-sm">
-          Add your own civilian / spy pairs. The spy's hint should be{' '}
-          <span className="text-slate-200">similar</span> — not identical, not
-          totally unrelated.
+          {t('editList.intro_before')}
+          <span className="text-slate-200">{t('editList.intro_similar')}</span>
+          {t('editList.intro_after')}
         </p>
       </header>
 
       <section className="card space-y-4">
         <div>
-          <label className="label">List name</label>
+          <label className="label">{t('editList.name')}</label>
           <input
             className="input mt-1"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            placeholder="e.g. Inside jokes, Office snacks…"
+            placeholder={t('editList.namePlaceholder')}
             maxLength={28}
             autoFocus={!existing}
           />
         </div>
 
         <div>
-          <label className="label">Icon</label>
+          <label className="label">{t('editList.icon')}</label>
           <div className="flex items-center gap-2 mt-1">
             <input
               className="input w-20 text-2xl text-center"
@@ -150,9 +152,9 @@ export default function EditList() {
 
       <section className="card space-y-3">
         <div className="flex items-center justify-between">
-          <label className="label">Pairs</label>
+          <label className="label">{t('editList.pairs')}</label>
           <span className="text-xs text-slate-500">
-            Civilian word → Spy hint
+            {t('editList.pairsHint')}
           </span>
         </div>
 
@@ -167,14 +169,14 @@ export default function EditList() {
                   className="input"
                   value={p.civilian}
                   onChange={(e) => updatePair(i, { civilian: e.target.value })}
-                  placeholder="Civilians' word"
+                  placeholder={t('editList.civilianPlaceholder')}
                   maxLength={30}
                 />
                 <input
                   className="input"
                   value={p.spy}
                   onChange={(e) => updatePair(i, { spy: e.target.value })}
-                  placeholder="Spy's hint"
+                  placeholder={t('editList.spyPlaceholder')}
                   maxLength={30}
                 />
               </div>
@@ -182,7 +184,7 @@ export default function EditList() {
                 type="button"
                 onClick={() => removePair(i)}
                 className="text-slate-400 hover:text-rose-400 w-8 h-8 rounded-lg"
-                aria-label="Remove pair"
+                aria-label={t('editList.removePairAria')}
               >
                 ✕
               </button>
@@ -195,28 +197,28 @@ export default function EditList() {
           onClick={addPair}
           className="w-full text-sm py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-dashed border-white/15"
         >
-          + Add pair
+          {t('editList.addPair')}
         </button>
       </section>
 
       <footer className="flex items-center justify-between gap-2 safe-bottom">
         {existing ? (
           <button onClick={remove} className="btn-danger px-4 py-2 text-sm">
-            Delete
+            {t('common.delete')}
           </button>
         ) : (
           <span />
         )}
         <div className="flex items-center gap-2">
           <button onClick={goBack} className="btn-ghost px-4 py-2 text-sm">
-            Cancel
+            {t('common.cancel')}
           </button>
           <button
             onClick={save}
             disabled={!canSave}
             className="btn-primary px-4 py-2 text-sm"
           >
-            {existing ? 'Save' : 'Create list'}
+            {existing ? t('common.save') : t('editList.create')}
           </button>
         </div>
       </footer>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useGame } from '../game/state'
 import Lobby from '../components/Lobby'
 import RevealDeck from '../components/RevealDeck'
@@ -6,6 +7,7 @@ import DiscussionTimer from '../components/DiscussionTimer'
 import ResultScreen from '../components/ResultScreen'
 
 export default function LocalGame() {
+  const { t } = useTranslation()
   const phase = useGame((s) => s.phase)
   const players = useGame((s) => s.players)
   const pair = useGame((s) => s.pair)
@@ -18,11 +20,12 @@ export default function LocalGame() {
     <div className="space-y-4">
       <nav className="flex items-center justify-between text-sm">
         <Link to="/" className="text-slate-400 hover:text-slate-200">
-          ← Home
+          {t('common.home')}
         </Link>
         {phase !== 'lobby' && (
           <span className="text-slate-500">
-            Phase: <span className="text-slate-300">{phase}</span>
+            {t('localGame.phase')}{' '}
+            <span className="text-slate-300">{phase}</span>
           </span>
         )}
       </nav>
@@ -40,15 +43,16 @@ export default function LocalGame() {
       {phase === 'discussion' && (
         <div className="space-y-5">
           <header className="text-center">
-            <h2 className="font-display text-2xl font-bold">Discuss</h2>
+            <h2 className="font-display text-2xl font-bold">
+              {t('localGame.discuss.title')}
+            </h2>
             <p className="text-slate-400 text-sm">
-              Each player says one short clue about their word, then debate it
-              out. Decide together who you think is the spy.
+              {t('localGame.discuss.desc')}
             </p>
           </header>
 
           <section className="card">
-            <div className="label mb-2">Clue order — starts with</div>
+            <div className="label mb-2">{t('localGame.discuss.clueOrder')}</div>
             <div className="font-display text-xl font-bold text-accent-400 mb-3">
               {players.find((p) => p.id === firstClueGiverId)?.name}
             </div>
@@ -73,9 +77,9 @@ export default function LocalGame() {
           {settings.timerSeconds > 0 && (
             <section className="card flex items-center justify-between">
               <div>
-                <div className="label">Discussion timer</div>
+                <div className="label">{t('localGame.discuss.timerLabel')}</div>
                 <div className="text-xs text-slate-500">
-                  Pause or reset anytime.
+                  {t('localGame.discuss.timerHint')}
                 </div>
               </div>
               <DiscussionTimer seconds={settings.timerSeconds} />
@@ -87,10 +91,10 @@ export default function LocalGame() {
               onClick={revealAnswer}
               className="btn-primary w-full py-4"
             >
-              Reveal the spy →
+              {t('localGame.discuss.revealBtn')}
             </button>
             <p className="text-center text-xs text-slate-500 mt-2">
-              Made up your minds? Tap to see who the spy actually was.
+              {t('localGame.discuss.revealHint')}
             </p>
           </div>
         </div>

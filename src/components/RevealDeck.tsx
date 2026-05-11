@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import PlayerCard from './PlayerCard'
 import type { Pair, Player } from '../game/types'
 
@@ -11,13 +12,13 @@ type Props = {
 const SWIPE_THRESHOLD = 60 // px horizontal delta to count as a swipe
 
 export default function RevealDeck({ players, pair, onFinish }: Props) {
+  const { t } = useTranslation()
   const [index, setIndex] = useState(0)
   const [dragX, setDragX] = useState(0)
   const [animating, setAnimating] = useState<'left' | 'right' | null>(null)
   const startX = useRef<number | null>(null)
   const startY = useRef<number | null>(null)
 
-  const current = players[index]
   const isLast = index >= players.length - 1
   const isFirst = index === 0
 
@@ -56,7 +57,6 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
     if (startX.current === null || startY.current === null) return
     const dx = e.clientX - startX.current
     const dy = e.clientY - startY.current
-    // If the user is scrolling vertically, abort drag.
     if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 12) {
       startX.current = null
       startY.current = null
@@ -74,7 +74,6 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
     else setDragX(0)
   }
 
-  // Build the visible transform for the current card
   let translatePx = dragX
   if (animating === 'left') translatePx = -window.innerWidth
   if (animating === 'right') translatePx = window.innerWidth
@@ -87,12 +86,13 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
 
   return (
     <div className="space-y-4">
-      {/* Top progress indicator */}
       <div className="flex items-center justify-between text-sm">
         <span className="text-slate-400">
-          Card{' '}
-          <span className="text-slate-100 font-semibold">{index + 1}</span> of{' '}
-          {players.length}
+          {t('revealDeck.cardProgress', {
+            current: index + 1,
+            total: players.length,
+            count: players.length,
+          })}
         </span>
         <div className="flex gap-1">
           {players.map((p, i) => (
@@ -110,48 +110,68 @@ export default function RevealDeck({ players, pair, onFinish }: Props) {
         </div>
       </div>
 
-      {/* Swipe stage with the current card */}
       <div
         className="swipe-stage relative"
+        style={{ aspectRatio: '3 / 4', minHeight: 'min(520px, 70vh)' }}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
       >
-        <div
-          style={{
-            transform: `translate3d(${translatePx}px, 0, 0) rotate(${
-              translatePx * 0.04
-            }deg)`,
-            transition,
-            opacity,
-          }}
-        >
-          <PlayerCard
-            key={current.id}
-            playerName={current.name}
-            word={current.isSpy ? pair.spy : pair.civilian}
-            isSpy={current.isSpy}
-          />
-        </div>
+        {[2, 1, 0].map((offset) => {
+          const i = index + offset
+          if (i >= players.length) return null
+          const p = players[i]
+          const isTop = offset === 0
+
+          const style: React.CSSProperties = isTop
+            ? {
+                transform: `translate3d(${translatePx}px, 0, 0) rotate(${
+                  translatePx * 0.04
+                }deg)`,
+                transition,
+                opacity,
+                zIndex: 3,
+              }
+            : {
+                transform: `translate3d(0, ${offset * 10}px, 0) scale(${
+                  1 - offset * 0.05
+                })`,
+                transformOrigin: 'top center',
+                transition: 'transform 0.28s ease-out, opacity 0.28s',
+                opacity: 1 - offset * 0.25,
+                zIndex: 3 - offset,
+                pointerEvents: 'none',
+                filter: `brightness(${1 - offset * 0.15})`,
+              }
+
+          return (
+            <div key={p.id} className="absolute inset-0" style={style}>
+              <PlayerCard
+                playerName={p.name}
+                word={isTop ? (p.isSpy ? pair.spy : pair.civilian) : ''}
+                isSpy={isTop ? p.isSpy : false}
+              />
+            </div>
+          )
+        })}
       </div>
 
-      {/* Bottom controls + hint */}
       <div className="flex items-center justify-between gap-2 safe-bottom">
         <button
           className="btn-ghost px-4 py-3"
           disabled={isFirst}
           onClick={goPrev}
         >
-          ← Prev
+          {t('revealDeck.prev')}
         </button>
         <div className="text-center text-xs text-slate-500 leading-tight">
-          tap card to flip
+          {t('revealDeck.tapHint')}
           <br />
-          swipe ← for next
+          {t('revealDeck.swipeHint')}
         </div>
         <button className="btn-primary px-4 py-3" onClick={goNext}>
-          {isLast ? 'Done →' : 'Next →'}
+          {isLast ? t('revealDeck.doneBtn') : t('revealDeck.next')}
         </button>
       </div>
     </div>
