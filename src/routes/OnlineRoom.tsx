@@ -121,6 +121,7 @@ function OnlineLobby({
   playersList: Array<{ id: string; name: string }>
 }) {
   const pairSource = useGame((s) => s.settings.pairSource)
+  const difficulty = useGame((s) => s.settings.difficulty)
   const customLists = useGame((s) => s.customLists)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -133,7 +134,7 @@ function OnlineLobby({
       for (const p of playersList) {
         playersMap[p.id] = { name: p.name, joinedAt: 0 }
       }
-      await startOnlineRound(code, pairSource, customLists, playersMap)
+      await startOnlineRound(code, pairSource, customLists, playersMap, difficulty)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Could not start round')
     } finally {
@@ -220,7 +221,7 @@ function OnlineReveal({
   isSpy: boolean
   myName: string
 }) {
-  if (!word) {
+  if (word === null) {
     return (
       <div className="card text-center py-12 text-slate-400">
         Loading your word…
@@ -365,7 +366,9 @@ function OnlineResult({
               <div className="text-xs text-rose-400 uppercase tracking-wider">
                 Spy
               </div>
-              <div className="font-display text-2xl font-bold">{pair.spy}</div>
+              <div className="font-display text-2xl font-bold">
+                {pair.spy || <span className="italic text-slate-400">(no hint)</span>}
+              </div>
             </div>
           </div>
           <div className="text-xs text-slate-500">

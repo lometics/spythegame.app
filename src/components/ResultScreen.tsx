@@ -45,7 +45,9 @@ export default function ResultScreen() {
               <div className="text-xs text-rose-400 uppercase tracking-wider">
                 Spy
               </div>
-              <div className="font-display text-2xl font-bold">{pair.spy}</div>
+              <div className="font-display text-2xl font-bold">
+                {pair.spy || <span className="italic text-slate-400">(no hint)</span>}
+              </div>
             </div>
           </div>
           <div className="text-xs text-slate-500">

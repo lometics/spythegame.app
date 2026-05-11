@@ -11,6 +11,7 @@ import { db, ensureSignedIn } from './firebase'
 import { samplePair } from '../game/pairs'
 import type {
   CustomList,
+  Difficulty,
   GamePhase,
   Pair,
   PairSource,
@@ -167,9 +168,10 @@ export async function startOnlineRound(
   pairSource: PairSource,
   customLists: CustomList[],
   players: Record<string, OnlinePlayer>,
+  difficulty: Difficulty = 'hard',
 ) {
   if (!db) throw new Error('Firebase not configured')
-  const pair: Pair = samplePair(pairSource, customLists)
+  const pair: Pair = samplePair(pairSource, customLists, difficulty)
   const uids = Object.keys(players)
   if (uids.length < 3) throw new Error('Need at least 3 players')
   const spyUid = uids[Math.floor(Math.random() * uids.length)]

@@ -12,6 +12,7 @@ import { startRoundState } from './machine'
 const DEFAULT_SETTINGS: GameSettings = {
   timerSeconds: 180,
   pairSource: { selectedCategoryIds: [...BUILTIN_CATEGORY_IDS] },
+  difficulty: 'hard',
 }
 
 const INITIAL: GameState = {
@@ -153,7 +154,11 @@ export const useGame = create<GameState & Actions>()(
 
       startRound: () => {
         const { players, settings, customLists, round } = get()
-        const pair: Pair = samplePair(settings.pairSource, customLists)
+        const pair: Pair = samplePair(
+          settings.pairSource,
+          customLists,
+          settings.difficulty,
+        )
         set((s) => ({ ...s, ...startRoundState(players, pair, round) }))
       },
 
@@ -184,7 +189,7 @@ export const useGame = create<GameState & Actions>()(
     }),
     {
       name: 'spy-the-game-local',
-      version: 2,
+      version: 3,
       // Drop old persisted state on schema change so we don't ship users a half-broken settings object.
       migrate: (persisted, fromVersion) => {
         if (fromVersion < 2) {
@@ -201,6 +206,13 @@ export const useGame = create<GameState & Actions>()(
               : [],
             settings: DEFAULT_SETTINGS,
             customLists: [],
+          } as unknown
+        }
+        if (fromVersion < 3) {
+          const p = persisted as { settings?: Partial<GameSettings> } & Record<string, unknown>
+          return {
+            ...p,
+            settings: { ...DEFAULT_SETTINGS, ...(p?.settings ?? {}) },
           } as unknown
         }
         return persisted as unknown

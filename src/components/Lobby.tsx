@@ -1,6 +1,17 @@
 import { useState } from 'react'
 import { useGame } from '../game/state'
 import PairPicker from './PairPicker'
+import type { Difficulty } from '../game/types'
+
+const DIFFICULTY_OPTIONS: Array<{
+  value: Difficulty
+  label: string
+  hint: string
+}> = [
+  { value: 'easy', label: 'Easy', hint: "Spy's hint is loosely related — beginner friendly." },
+  { value: 'hard', label: 'Hard', hint: "Spy's hint is very close to the real word — classic." },
+  { value: 'none', label: 'No hint', hint: "Spy gets no word at all — pure bluffing." },
+]
 
 export default function Lobby() {
   const players = useGame((s) => s.players)
@@ -93,6 +104,28 @@ export default function Lobby() {
 
       <section className="card">
         <PairPicker />
+      </section>
+
+      <section className="card space-y-3">
+        <div className="label">Difficulty</div>
+        <div className="flex gap-2 flex-wrap">
+          {DIFFICULTY_OPTIONS.map((opt) => (
+            <button
+              key={opt.value}
+              onClick={() => setSettings({ difficulty: opt.value })}
+              className={`px-3 py-2 rounded-full text-sm border transition ${
+                settings.difficulty === opt.value
+                  ? 'bg-accent-500 text-ink-900 border-accent-500'
+                  : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+        <p className="text-xs text-slate-500">
+          {DIFFICULTY_OPTIONS.find((o) => o.value === settings.difficulty)?.hint}
+        </p>
       </section>
 
       <section className="card space-y-3">

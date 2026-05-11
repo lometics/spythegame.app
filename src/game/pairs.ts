@@ -1,5 +1,5 @@
 import data from '../data/pairs.json'
-import type { Category, CustomList, Pair, PairSource } from './types'
+import type { Category, CustomList, Difficulty, Pair, PairSource } from './types'
 
 type BuiltInCategory = {
   id: string
@@ -40,10 +40,22 @@ export function listCategories(customLists: CustomList[]): Category[] {
   return [...builtIns, ...customs]
 }
 
-/** Sample one pair from the union of all pairs in the selected categories. */
+/**
+ * Sample one pair from the union of all pairs in the selected categories.
+ * Difficulty is from the villagers' point of view (how hard it is to spot the spy):
+ *  - 'hard' (default): curated close spy word — classic gameplay
+ *  - 'medium': spy gets a sibling civilian from the same category
+ *  - 'easy': spy gets a random civilian from a DIFFERENT category (very distant)
+ *  - 'none': spy gets no hint at all
+ *
+ * Easy/medium fall back gracefully if the pool can't satisfy them
+ * (e.g. only one category selected → easy degrades to medium; single-pair
+ * category → medium degrades to hard).
+ */
 export function samplePair(
   source: PairSource,
   customLists: CustomList[],
+  difficulty: Difficulty = 'hard',
 ): Pair {
   const selected = new Set(source.selectedCategoryIds)
   const pool: Pair[] = []
@@ -74,7 +86,20 @@ export function samplePair(
   if (pool.length === 0) {
     throw new Error('No pairs available — select at least one category with pairs.')
   }
-  return pool[Math.floor(Math.random() * pool.length)]
+  const chosen = pool[Math.floor(Math.random() * pool.length)]
+
+  if (difficulty === 'none') {
+    return { ...chosen, spy: '' }
+  }
+  if (difficulty === 'easy') {
+    const siblings = pool.filter(
+      (p) => p.categoryId === chosen.categoryId && p.civilian !== chosen.civilian,
+    )
+    if (siblings.length === 0) return chosen
+    const sib = siblings[Math.floor(Math.random() * siblings.length)]
+    return { ...chosen, spy: sib.civilian }
+  }
+  return chosen
 }
 
 /** Resolve a category id to its display name (built-in or custom). */

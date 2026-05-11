@@ -80,19 +80,37 @@ export default function PlayerCard({
                 <div className="inline-block bg-rose-500 text-white px-4 py-1.5 rounded-full text-sm font-extrabold uppercase tracking-widest">
                   🕵️ You are the spy
                 </div>
-                <p className="text-rose-200 text-sm max-w-xs leading-relaxed">
-                  <strong className="text-rose-100">Heads up:</strong> this
-                  word is <em>not</em> what the others have. It's a similar{' '}
-                  <strong className="text-rose-100">hint</strong>. Don't say
-                  it out loud.
-                </p>
-                <div className="label text-rose-300/80 mt-2">Your hint</div>
-                <div className="font-display text-5xl sm:text-6xl font-extrabold text-rose-100 break-words max-w-full">
-                  {word}
-                </div>
-                <p className="text-rose-300/70 text-xs max-w-xs">
-                  Bluff your clues — make them fit your word AND theirs.
-                </p>
+                {word ? (
+                  <>
+                    <p className="text-rose-200 text-sm max-w-xs leading-relaxed">
+                      <strong className="text-rose-100">Heads up:</strong> this
+                      word is <em>not</em> what the others have. It's a similar{' '}
+                      <strong className="text-rose-100">hint</strong>. Don't say
+                      it out loud.
+                    </p>
+                    <div className="label text-rose-300/80 mt-2">Your hint</div>
+                    <div className="font-display text-5xl sm:text-6xl font-extrabold text-rose-100 break-words max-w-full">
+                      {word}
+                    </div>
+                    <p className="text-rose-300/70 text-xs max-w-xs">
+                      Bluff your clues — make them fit your word AND theirs.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-rose-200 text-sm max-w-xs leading-relaxed">
+                      <strong className="text-rose-100">No hint this round.</strong>{' '}
+                      You don't know the word. Listen, blend in, and bluff.
+                    </p>
+                    <div className="label text-rose-300/80 mt-2">Your hint</div>
+                    <div className="font-display text-4xl sm:text-5xl font-extrabold text-rose-100/70 break-words max-w-full italic">
+                      (no hint)
+                    </div>
+                    <p className="text-rose-300/70 text-xs max-w-xs">
+                      Echo what others say. Don't be the first to commit.
+                    </p>
+                  </>
+                )}
               </>
             ) : (
               <>
