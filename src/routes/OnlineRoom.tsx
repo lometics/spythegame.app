@@ -167,7 +167,7 @@ function OnlineLobby({
   const joinUrl = `${window.location.origin}${window.location.pathname}#/join/${code}`
 
   return (
-    <div className="space-y-2 sm:space-y-4">
+    <div className="space-y-2 sm:space-y-4 flex flex-col flex-1">
       <section className="card space-y-2 sm:space-y-3">
         <div className="label">{t('online.share')}</div>
         <div className="flex items-center gap-3 sm:gap-4">
@@ -264,7 +264,7 @@ function OnlineReveal({
     )
   }
   return (
-    <div className="space-y-2 sm:space-y-3">
+    <div className="space-y-2 sm:space-y-3 flex flex-col flex-1">
       <div
         className="w-full"
         style={{ height: 'min(72vh, calc((100vw - 1.5rem) * 4 / 3))' }}
@@ -312,7 +312,7 @@ function OnlineDiscussion({
     playersList.findIndex((p) => p.id === firstClueGiverId),
   )
   return (
-    <div className="space-y-2 sm:space-y-5">
+    <div className="space-y-2 sm:space-y-5 flex flex-col flex-1">
       <header className="text-center">
         <h2 className="font-display text-xl sm:text-2xl font-bold">
           {t('online.discussTitle')}
@@ -387,7 +387,7 @@ function OnlineResult({
     .filter((p): p is { id: string; name: string } => !!p)
 
   return (
-    <div className="space-y-3 sm:space-y-6">
+    <div className="space-y-3 sm:space-y-6 flex flex-col flex-1">
       <header className="text-center">
         <div className="text-4xl sm:text-6xl mb-1 sm:mb-2">🕵️</div>
         <h2 className="font-display text-2xl sm:text-3xl font-bold">{t('result.title')}</h2>

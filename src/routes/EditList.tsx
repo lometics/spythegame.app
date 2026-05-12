@@ -24,7 +24,7 @@ export default function EditList() {
 
   if (id && !existing) {
     return (
-      <div className="space-y-4">
+      <div className="space-y-4 flex flex-col flex-1">
         <nav className="text-sm">
           <Link to="/local" className="text-slate-400 hover:text-slate-200">
             {t('common.back')}
@@ -87,7 +87,7 @@ export default function EditList() {
   }
 
   return (
-    <div className="space-y-2 sm:space-y-4">
+    <div className="space-y-2 sm:space-y-4 flex flex-col flex-1">
       <nav className="flex items-center justify-between text-xs sm:text-sm">
         <Link to="/local" className="text-slate-400 hover:text-slate-200">
           {t('common.back')}

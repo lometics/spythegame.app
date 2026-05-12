@@ -119,17 +119,18 @@ export default function RevealDeck({
         </div>
       </div>
 
-      <div
-        className="swipe-stage relative mx-auto"
-        style={{
-          width: 'min(100%, calc(80vh * 3 / 4))',
-          aspectRatio: '3 / 4',
-        }}
-        onPointerDown={onPointerDown}
-        onPointerMove={onPointerMove}
-        onPointerUp={onPointerUp}
-        onPointerCancel={onPointerUp}
-      >
+      <div className="flex-1 flex items-center justify-center min-h-0">
+        <div
+          className="swipe-stage relative"
+          style={{
+            width: 'min(100%, calc(85vh * 5 / 7))',
+            aspectRatio: '5 / 7',
+          }}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+        >
         {[2, 1, 0].map((offset) => {
           const i = index + offset
           if (i >= players.length) return null
@@ -180,6 +181,7 @@ export default function RevealDeck({
             </div>
           )
         })}
+        </div>
       </div>
 
       <div className="action-bar flex items-center justify-between gap-2">

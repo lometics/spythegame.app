@@ -196,32 +196,15 @@
     "create": "Crea lista"
   },
   "online": {
-    "hostTitle": "Crea una stanza online",
     "yourName": "Il tuo nome",
     "hostNamePlaceholder": "es. Alex",
-    "errEnterName": "Inserisci prima il tuo nome.",
     "errCreateRoom": "Impossibile creare la stanza",
-    "creating": "Creazione…",
-    "createBtn": "Crea stanza",
-    "joinTitle": "Entra in una stanza",
     "roomCode": "Codice stanza",
     "codePlaceholder": "ABCD",
     "joinNamePlaceholder": "es. Sam",
     "errNeedBoth": "Servono sia codice che nome.",
     "errCouldNotJoin": "Impossibile entrare nella stanza",
-    "joining": "Ingresso…",
-    "joinBtn": "Entra",
-    "fbWarnTitle": "Firebase non è ancora configurato",
     "fbWarnTitleShort": "Firebase non è configurato",
-    "fbWarnBody_before": "La modalità online richiede un progetto Firebase. Creane uno su ",
-    "fbWarnBody_link": "console.firebase.google.com",
-    "fbWarnBody_after": " e aggiungi un Realtime Database. Poi copia la config dell'app web in un file ",
-    "fbWarnBody_envfile": ".env.local",
-    "fbWarnBody_tail": ":",
-    "fbWarnRestart_before": "Riavvia ",
-    "fbWarnRestart_cmd": "npm run dev",
-    "fbWarnRestart_after": " dopo la modifica.",
-    "fbWarnJoin": "Chiedi a chi ha configurato il sito di aggiungere le variabili Firebase.",
     "fbNotConfigured": "Firebase non è configurato.",
     "loadingRoom": "Caricamento stanza {{code}}…",
     "roomLabel": "Stanza",
@@ -258,19 +241,6 @@
     "errMinPlayers": "Servono almeno 3 giocatori",
     "errCouldNotAllocate": "Impossibile generare un codice stanza, riprova",
     "errNotConfigured": "Firebase non configurato"
-  },
-  "install": {
-    "android": {
-      "title": "Installa Spy sul telefono",
-      "body": "Aperture più rapide, offline, schermo intero.",
-      "btn": "Installa"
-    },
-    "ios": {
-      "title": "Installa su iPhone",
-      "body_before": "Tocca l'icona di condivisione ⎙ in Safari, poi ",
-      "body_action": "Aggiungi a Home",
-      "body_after": "."
-    }
   },
   "categories": {
     "food":          { "name": "Cibo & Bevande",       "description": "Roba commestibile. Coppie gustose e abbastanza simili da confondere.", "icon": "🍕" },

@@ -98,7 +98,8 @@ body {
   position: sticky;
   bottom: 0;
   z-index: 10;
-  margin-top: auto;
+  /* !important so Tailwind's `space-y-*` margin-top doesn't beat us. */
+  margin-top: auto !important;
   padding-top: 0.75rem;
   padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
   background: linear-gradient(
@@ -106,6 +107,24 @@ body {
     rgb(11 16 32 / 0.96) 55%,
     rgb(11 16 32 / 0)
   );
+}
+
+/* On phones, pin to the viewport via fixed so the CTA stays reachable even
+   when the parent container is shorter than the scroll area. Add a spacer
+   on <main> so content isn't hidden behind the bar. */
+@media (max-width: 639px) {
+  .action-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    margin-top: 0 !important;
+  }
+  main {
+    padding-bottom: calc(5.5rem + max(env(safe-area-inset-bottom), 0.5rem)) !important;
+  }
 }
 
 /* Card chrome: mobile = nothing, desktop = surface. Outside @layer so the

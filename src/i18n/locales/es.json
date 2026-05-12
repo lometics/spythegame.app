@@ -52,21 +52,6 @@
   },
   "home": {
     "title": "Spy",
-    "subtitle_before": "Todos reciben una palabra. Un jugador recibe una ",
-    "subtitle_highlight": "palabra similar",
-    "subtitle_after": ". Encuentra al espía antes de que se camufle.",
-    "passAndPlay": {
-      "title": "Pasa el móvil",
-      "desc": "Un móvil, todos en la misma habitación. Sin configuración."
-    },
-    "host": {
-      "title": "Crear sala en línea",
-      "desc": "Cada amigo se une desde su móvil con un código."
-    },
-    "join": {
-      "title": "Unirse a una sala",
-      "desc": "¿Tienes un código del anfitrión? Adentro."
-    },
     "howTo": {
       "title": "Cómo jugar",
       "step1_title": "Preparación",
@@ -97,8 +82,6 @@
     }
   },
   "lobby": {
-    "title": "Pasa el móvil",
-    "subtitle": "Añade a todos los jugadores. Mínimo 3.",
     "playersLabel": "Jugadores ({{count}})",
     "quickAdd": "+ Añadir rápido",
     "namePlaceholder": "Nombre (o déjalo en blanco)",
@@ -120,7 +103,6 @@
     "timerLabel": "Temporizador de debate",
     "timerOff": "Sin temporizador",
     "timerMin": "{{count}} min",
-    "startBtn": "Empezar ronda →",
     "needPlayers": "Añade al menos 3 jugadores para empezar.",
     "needSource": "Elige al menos una fuente de palabras."
   },
@@ -214,32 +196,15 @@
     "create": "Crear lista"
   },
   "online": {
-    "hostTitle": "Crear sala en línea",
     "yourName": "Tu nombre",
     "hostNamePlaceholder": "p. ej. Alex",
-    "errEnterName": "Introduce primero tu nombre.",
     "errCreateRoom": "No se pudo crear la sala",
-    "creating": "Creando…",
-    "createBtn": "Crear sala",
-    "joinTitle": "Unirse a una sala",
     "roomCode": "Código de sala",
     "codePlaceholder": "ABCD",
     "joinNamePlaceholder": "p. ej. Sam",
     "errNeedBoth": "Hace falta código y nombre.",
     "errCouldNotJoin": "No se pudo entrar en la sala",
-    "joining": "Entrando…",
-    "joinBtn": "Entrar",
-    "fbWarnTitle": "Firebase aún no está configurado",
     "fbWarnTitleShort": "Firebase no está configurado",
-    "fbWarnBody_before": "El modo en línea necesita un proyecto de Firebase. Crea uno en ",
-    "fbWarnBody_link": "console.firebase.google.com",
-    "fbWarnBody_after": " y añade una Realtime Database. Después copia la config de la web app en un archivo ",
-    "fbWarnBody_envfile": ".env.local",
-    "fbWarnBody_tail": ":",
-    "fbWarnRestart_before": "Reinicia ",
-    "fbWarnRestart_cmd": "npm run dev",
-    "fbWarnRestart_after": " tras editar.",
-    "fbWarnJoin": "Pide a quien configuró el sitio que añada las variables de Firebase.",
     "fbNotConfigured": "Firebase no está configurado.",
     "loadingRoom": "Cargando sala {{code}}…",
     "roomLabel": "Sala",
@@ -276,19 +241,6 @@
     "errMinPlayers": "Mínimo 3 jugadores",
     "errCouldNotAllocate": "No se pudo asignar un código, inténtalo de nuevo",
     "errNotConfigured": "Firebase no configurado"
-  },
-  "install": {
-    "android": {
-      "title": "Instala Spy en tu móvil",
-      "body": "Apertura más rápida, sin conexión, pantalla completa.",
-      "btn": "Instalar"
-    },
-    "ios": {
-      "title": "Instalar en iPhone",
-      "body_before": "Toca el icono de compartir ⎙ en Safari y luego ",
-      "body_action": "Añadir a inicio",
-      "body_after": "."
-    }
   },
   "categories": {
     "food":          { "name": "Comida & Bebida",       "description": "Cosas comestibles. Pares sabrosos y suficientemente parecidos para confundir.", "icon": "🍕" },
