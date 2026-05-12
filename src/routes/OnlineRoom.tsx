@@ -31,7 +31,7 @@ export default function OnlineRoom() {
   const [uid, setUid] = useState<string | null>(null)
   const room = useRoom(code)
   const myPrivate = useMyPrivate(code, uid ?? undefined)
-  const pairReveal = usePairReveal(code)
+  const pairReveal = usePairReveal(code, room.meta?.phase === 'result')
   const [joinOpen, setJoinOpen] = useState(false)
   const onlineName = useGame((s) => s.onlineName)
   const isHost = !!(uid && room.meta && uid === room.meta.hostUid)

@@ -183,10 +183,16 @@ export function useMyPrivate(
   return v
 }
 
-export function usePairReveal(code: string | undefined): PairReveal | null {
+export function usePairReveal(
+  code: string | undefined,
+  enabled = true,
+): PairReveal | null {
   const [v, setV] = useState<PairReveal | null>(null)
   useEffect(() => {
-    if (!db || !code) return
+    if (!db || !code || !enabled) {
+      setV(null)
+      return
+    }
     const r = ref(db, `pairReveals/${code}`)
     const unsub = onValue(
       r,
@@ -194,7 +200,7 @@ export function usePairReveal(code: string | undefined): PairReveal | null {
       () => setV(null),
     )
     return () => unsub()
-  }, [code])
+  }, [code, enabled])
   return v
 }
 

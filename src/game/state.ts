@@ -267,7 +267,9 @@ export const useGame = create<GameState & Actions>()(
         }
         if (fromVersion < 6) {
           // Difficulty collapsed from 4 tiers to 3: 'none' → 'easy' (both = no hint).
-          const prev = (p?.settings as Partial<GameSettings> & { difficulty?: string }) ?? {}
+          const prev = (p?.settings as Omit<Partial<GameSettings>, 'difficulty'> & {
+            difficulty?: string
+          }) ?? {}
           const remapped =
             prev.difficulty === 'none' ? 'easy' : prev.difficulty
           p = {
