@@ -1,6 +1,6 @@
 {
   "meta": { "title": "Spy — El juego de palabras" },
-  "app": { "footer": "Spy — el juego de palabras. Juega en persona o en línea con amigos." },
+  "app": { "footer": "Spy — el juego de palabras. Juega en persona o en línea con amigos.", "exitConfirm": "Pulsa de nuevo para salir" },
   "languages": {
     "label": "Idioma",
     "en": "English",

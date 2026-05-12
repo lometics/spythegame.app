@@ -1,6 +1,6 @@
 {
   "meta": { "title": "Spion — Ordspelet" },
-  "app": { "footer": "Spion — ordspelet. Spela på plats eller online med vänner." },
+  "app": { "footer": "Spion — ordspelet. Spela på plats eller online med vänner.", "exitConfirm": "Tryck igen för att avsluta" },
   "languages": {
     "label": "Språk",
     "en": "English",

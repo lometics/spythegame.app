@@ -1,6 +1,6 @@
 {
   "meta": { "title": "间谍 — 单词游戏" },
-  "app": { "footer": "间谍 — 单词游戏。和朋友面对面或线上玩。" },
+  "app": { "footer": "间谍 — 单词游戏。和朋友面对面或线上玩。", "exitConfirm": "再次按下退出" },
   "languages": {
     "label": "语言",
     "en": "English",

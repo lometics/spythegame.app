@@ -1,6 +1,6 @@
 {
   "meta": { "title": "Spy — Das Wortspiel" },
-  "app": { "footer": "Spy — das Wortspiel. Spiel es vor Ort oder online mit Freunden." },
+  "app": { "footer": "Spy — das Wortspiel. Spiel es vor Ort oder online mit Freunden.", "exitConfirm": "Erneut zurück drücken zum Beenden" },
   "languages": {
     "label": "Sprache",
     "en": "English",

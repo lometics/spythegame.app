@@ -6,7 +6,7 @@ import LocalGame from './routes/LocalGame'
 import EditList from './routes/EditList'
 import OnlineRoom from './routes/OnlineRoom'
 import Options from './routes/Options'
-import LanguageSwitcher from './components/LanguageSwitcher'
+import BackHandler from './components/BackHandler'
 import { useGame } from './game/state'
 import { randomSpyName } from './data/spyNames'
 
@@ -23,6 +23,7 @@ export default function App() {
   }, [])
   return (
     <HashRouter>
+      <BackHandler />
       <div className="min-h-full flex flex-col">
         <main className="flex-1 flex flex-col mx-auto w-full max-w-2xl px-3 sm:px-4 py-3 sm:py-10">
           <Routes>
@@ -37,7 +38,6 @@ export default function App() {
           </Routes>
         </main>
         <footer className="mx-auto w-full max-w-2xl px-3 sm:px-4 pb-2 sm:pb-4 flex flex-col items-center gap-1 sm:gap-2 text-[10px] sm:text-xs text-slate-500">
-          <LanguageSwitcher />
           <div className="text-center">{t('app.footer')}</div>
         </footer>
       </div>

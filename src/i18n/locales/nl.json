@@ -1,6 +1,6 @@
 {
   "meta": { "title": "Spion — Het Woordspel" },
-  "app": { "footer": "Spion — het woordspel. Speel live of online met vrienden." },
+  "app": { "footer": "Spion — het woordspel. Speel live of online met vrienden.", "exitConfirm": "Druk nogmaals om af te sluiten" },
   "languages": {
     "label": "Taal",
     "en": "English",

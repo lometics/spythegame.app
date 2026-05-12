@@ -1,6 +1,6 @@
 {
   "meta": { "title": "Casus — Kelime Oyunu" },
-  "app": { "footer": "Casus — kelime oyunu. Arkadaşlarınla yüz yüze veya çevrimiçi oyna." },
+  "app": { "footer": "Casus — kelime oyunu. Arkadaşlarınla yüz yüze veya çevrimiçi oyna.", "exitConfirm": "Çıkmak için tekrar bas" },
   "languages": {
     "label": "Dil",
     "en": "English",

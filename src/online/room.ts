@@ -5,8 +5,6 @@ import {
   get,
   update,
   onValue,
-  onDisconnect,
-  remove,
   serverTimestamp,
 } from 'firebase/database'
 import { db, ensureSignedIn } from './firebase'
@@ -27,7 +25,6 @@ export type OnlinePlayer = {
 }
 
 export type OnlineMeta = {
-  hostUid: string
   createdAt: number
   phase: GamePhase
   round: number
@@ -71,7 +68,6 @@ export async function createRoom(hostName: string): Promise<string> {
     if (existing.exists()) continue
     await set(ref(db, `rooms/${code}`), {
       meta: {
-        hostUid: user.uid,
         createdAt: serverTimestamp(),
         phase: 'lobby',
         round: 0,
@@ -294,87 +290,13 @@ export async function renamePlayerInRoom(
   await update(ref(db, `rooms/${code}/players/${uid}`), { name: trimmed })
 }
 
-function closePayload(code: string): Record<string, null> {
-  return {
-    [`rooms/${code}/meta`]: null,
-    [`rooms/${code}/players`]: null,
-    [`rooms/${code}/round`]: null,
-    [`privateWords/${code}`]: null,
-    [`pairReveals/${code}`]: null,
-  }
-}
-
-export async function closeRoom(code: string) {
+export async function leaveRoom(code: string, uid: string) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
-  await update(ref(db), closePayload(code))
-}
-
-export async function leaveRoom(code: string, uid: string, isHost = false) {
-  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
-  if (isHost) {
-    await closeRoom(code)
-    return
-  }
   await set(ref(db, `rooms/${code}/players/${uid}`), null)
-  await set(ref(db, `privateWords/${code}/${uid}`), null)
+  await set(ref(db, `privateWords/${code}/${uid}`), null).catch(() => {})
 }
 
-const pendingLeaves = new Map<string, ReturnType<typeof setTimeout>>()
-
-export function usePresence(
-  code: string | undefined,
-  uid: string | null,
-  isHost: boolean,
-) {
-  useEffect(() => {
-    if (!db || !code || !uid) return
-    const key = `${code}:${uid}`
-    const pending = pendingLeaves.get(key)
-    if (pending) {
-      clearTimeout(pending)
-      pendingLeaves.delete(key)
-    }
-
-    const playerRef = ref(db, `rooms/${code}/players/${uid}`)
-    const rootRef = ref(db)
-    const connectedRef = ref(db, '.info/connected')
-
-    const unsub = onValue(connectedRef, (snap) => {
-      if (snap.val() !== true) return
-      if (isHost) {
-        onDisconnect(rootRef)
-          .update(closePayload(code))
-          .catch(() => {})
-      } else {
-        onDisconnect(playerRef)
-          .remove()
-          .catch(() => {})
-      }
-    })
-
-    const onPageHide = () => {
-      if (isHost) {
-        update(rootRef, closePayload(code)).catch(() => {})
-      } else {
-        remove(playerRef).catch(() => {})
-      }
-    }
-    window.addEventListener('pagehide', onPageHide)
-
-    return () => {
-      unsub()
-      window.removeEventListener('pagehide', onPageHide)
-      onDisconnect(playerRef)
-        .cancel()
-        .catch(() => {})
-      onDisconnect(rootRef)
-        .cancel()
-        .catch(() => {})
-      const handle = setTimeout(() => {
-        pendingLeaves.delete(key)
-        leaveRoom(code, uid, isHost).catch(() => {})
-      }, 0)
-      pendingLeaves.set(key, handle)
-    }
-  }, [code, uid, isHost])
+export async function kickPlayer(code: string, uid: string) {
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
+  await set(ref(db, `rooms/${code}/players/${uid}`), null)
 }

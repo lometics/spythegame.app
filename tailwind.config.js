@@ -3,6 +3,9 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
+      screens: {
+        xs: '380px',
+      },
       fontFamily: {
         // Single typeface — shadcn ships with Inter. `display` kept as an
         // alias so existing `font-display` classes still resolve.

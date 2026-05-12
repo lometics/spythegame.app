@@ -59,10 +59,53 @@ body {
 }
 
 @layer components {
-  /* Button base — shadcn primitive: h-9-ish, rounded-md, ring on focus. */
+  /* Button base — shadcn primitive: 44px min-height for thumb-friendly taps. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-1;
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md min-h-11 px-4 py-2.5 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-1;
     --tw-ring-color: hsl(var(--ring));
+  }
+
+  /* 44x44 icon-only chrome affordance (close, settings, edit, back). */
+  .btn-icon {
+    @apply inline-flex items-center justify-center w-11 h-11 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50;
+    color: hsl(var(--foreground) / 0.7);
+    --tw-ring-color: hsl(var(--ring));
+  }
+  .btn-icon:hover:not(:disabled) {
+    background-color: hsl(var(--foreground) / 0.06);
+    color: hsl(var(--foreground));
+  }
+
+  /* Chip / pill toggle (spy count, difficulty, timer, etc.). */
+  .pill {
+    @apply inline-flex items-center justify-center gap-1 min-h-9 px-3 py-1.5 rounded-full text-sm border transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-40;
+    background-color: hsl(var(--foreground) / 0.05);
+    border-color: hsl(var(--foreground) / 0.1);
+    color: hsl(var(--foreground) / 0.9);
+    --tw-ring-color: hsl(var(--ring));
+  }
+  .pill:hover:not(:disabled) {
+    background-color: hsl(var(--foreground) / 0.1);
+  }
+  .pill-selected {
+    background-color: #f59e0b;
+    border-color: #f59e0b;
+    color: #0a0a0a;
+  }
+  .pill-selected:hover:not(:disabled) {
+    background-color: #f59e0b;
+  }
+
+  /* Shared neutral surface used inside cards (rows, tags). */
+  .surface-muted {
+    background-color: hsl(var(--foreground) / 0.05);
+    border: 1px solid hsl(var(--foreground) / 0.08);
+  }
+
+  /* Small uppercase label used in headers and meta rows. */
+  .label-tiny {
+    @apply text-[0.6875rem] uppercase tracking-wider font-medium;
+    color: hsl(var(--foreground) / 0.5);
   }
   .btn-primary {
     @apply btn;

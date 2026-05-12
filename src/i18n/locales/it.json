@@ -1,6 +1,6 @@
 {
   "meta": { "title": "Spy — Il gioco di parole" },
-  "app": { "footer": "Spy — il gioco di parole. Gioca dal vivo o online con gli amici." },
+  "app": { "footer": "Spy — il gioco di parole. Gioca dal vivo o online con gli amici.", "exitConfirm": "Premi di nuovo per uscire" },
   "languages": {
     "label": "Lingua",
     "en": "English",

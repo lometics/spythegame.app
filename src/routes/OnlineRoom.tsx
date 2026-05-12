@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import type { TFunction } from 'i18next'
 import {
   backToLobby,
+  kickPlayer,
   leaveRoom,
   rejoinIfMissing,
   renamePlayerInRoom,
@@ -12,7 +13,6 @@ import {
   startOnlineRound,
   useMyPrivate,
   usePairReveal,
-  usePresence,
   useRoom,
 } from '../online/room'
 import { ensureSignedIn, isFirebaseConfigured } from '../online/firebase'
@@ -34,19 +34,21 @@ export default function OnlineRoom() {
   const pairReveal = usePairReveal(code, room.meta?.phase === 'result')
   const [joinOpen, setJoinOpen] = useState(false)
   const onlineName = useGame((s) => s.onlineName)
-  const isHost = !!(uid && room.meta && uid === room.meta.hostUid)
-  usePresence(code, uid, isHost)
-
-  useEffect(() => {
-    if (!code || !uid || !room.meta) return
-    if (room.players[uid]) return
-    rejoinIfMissing(code, uid, onlineName).catch(() => {})
-  }, [code, uid, room.meta, room.players, onlineName])
 
   const wasInRoomRef = useRef(false)
   useEffect(() => {
     if (uid && room.players[uid]) wasInRoomRef.current = true
   }, [uid, room.players])
+
+  useEffect(() => {
+    if (!code || !uid || !room.meta) return
+    if (room.players[uid]) return
+    if (wasInRoomRef.current) {
+      navigate('/', { replace: true })
+      return
+    }
+    rejoinIfMissing(code, uid, onlineName).catch(() => {})
+  }, [code, uid, room.meta, room.players, onlineName, navigate])
 
   useEffect(() => {
     if (room.loaded && !room.meta && wasInRoomRef.current) {
@@ -129,7 +131,6 @@ export default function OnlineRoom() {
         <OnlineLobby
           code={code!}
           uid={uid}
-          isHost={isHost}
           playersList={playersList}
         />
       )}
@@ -137,7 +138,6 @@ export default function OnlineRoom() {
       {room.meta.phase === 'reveal' && (
         <OnlineReveal
           code={code!}
-          isHost={isHost}
           word={myPrivate.word}
           isSpy={myPrivate.isSpy}
           fellowSpyNames={myPrivate.fellowSpyNames}
@@ -148,7 +148,6 @@ export default function OnlineRoom() {
       {room.meta.phase === 'discussion' && (
         <OnlineDiscussion
           code={code!}
-          isHost={isHost}
           playersList={playersList}
           firstClueGiverId={room.round?.firstClueGiverId ?? null}
         />
@@ -156,7 +155,6 @@ export default function OnlineRoom() {
 
       {room.meta.phase === 'result' && (
         <OnlineResult
-          isHost={isHost}
           code={code!}
           playersList={playersList}
           pair={pairReveal?.pair ?? null}
@@ -262,12 +260,10 @@ function RoomHeader({ code, compact }: { code: string; compact?: boolean }) {
 function OnlineLobby({
   code,
   uid,
-  isHost,
   playersList,
 }: {
   code: string
   uid: string | null
-  isHost: boolean
   playersList: Array<{ id: string; name: string }>
 }) {
   const { t } = useTranslation()
@@ -328,12 +324,20 @@ function OnlineLobby({
   const onLeave = async () => {
     if (uid) {
       try {
-        await leaveRoom(code, uid, isHost)
+        await leaveRoom(code, uid)
       } catch {
         /* swallow */
       }
     }
     navigate('/')
+  }
+
+  const onKick = async (targetUid: string) => {
+    try {
+      await kickPlayer(code, targetUid)
+    } catch {
+      /* swallow */
+    }
   }
 
   return (
@@ -388,73 +392,64 @@ function OnlineLobby({
                     {t('online.renameSelf')}
                   </button>
                 )}
+                {!isMe && (
+                  <button
+                    type="button"
+                    onClick={() => onKick(p.id)}
+                    aria-label="Kick"
+                    title="Kick"
+                    className="text-xs text-rose-400 hover:text-rose-300 px-2 py-0.5 leading-none"
+                  >
+                    ×
+                  </button>
+                )}
               </li>
             )
           })}
         </ul>
       </section>
 
-      {isHost ? (
-        <>
-          <section className="card">
-            <PairPicker />
-          </section>
-          <OptionsPanel playerCount={playersList.length} />
-          {error && <div className="text-sm text-rose-400">{error}</div>}
-          <div className="action-bar space-y-2">
-            <button
-              onClick={onStart}
-              disabled={
-                busy ||
-                playersList.length < 3 ||
-                pairSource.selectedCategoryIds.length === 0
-              }
-              className="btn-primary w-full py-3 sm:py-4 text-base sm:text-lg"
-            >
-              {busy ? t('online.starting') : t('online.startRound')}
-            </button>
-            {playersList.length < 3 && (
-              <p className="text-center text-xs sm:text-sm text-slate-500">
-                {t('online.needPlayers')}
-              </p>
-            )}
-            <button
-              onClick={onLeave}
-              className="btn-ghost w-full py-2 text-xs"
-            >
-              {t('online.leaveRoom')}
-            </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="card text-center text-slate-400 text-sm">
-            {t('online.waitingHost')}
-          </div>
-          <div className="action-bar">
-            <button
-              onClick={onLeave}
-              className="btn-ghost w-full py-2 text-xs"
-            >
-              {t('online.leaveRoom')}
-            </button>
-          </div>
-        </>
-      )}
+      <section className="card">
+        <PairPicker />
+      </section>
+      <OptionsPanel playerCount={playersList.length} />
+      {error && <div className="text-sm text-rose-400">{error}</div>}
+      <div className="action-bar space-y-2">
+        <button
+          onClick={onStart}
+          disabled={
+            busy ||
+            playersList.length < 3 ||
+            pairSource.selectedCategoryIds.length === 0
+          }
+          className="btn-primary w-full py-3 sm:py-4 text-base sm:text-lg"
+        >
+          {busy ? t('online.starting') : t('online.startRound')}
+        </button>
+        {playersList.length < 3 && (
+          <p className="text-center text-xs sm:text-sm text-slate-500">
+            {t('online.needPlayers')}
+          </p>
+        )}
+        <button
+          onClick={onLeave}
+          className="btn-ghost w-full py-2 text-xs"
+        >
+          {t('online.leaveRoom')}
+        </button>
+      </div>
     </div>
   )
 }
 
 function OnlineReveal({
   code,
-  isHost,
   word,
   isSpy,
   fellowSpyNames,
   myName,
 }: {
   code: string
-  isHost: boolean
   word: string | null
   isSpy: boolean
   fellowSpyNames: string[] | null
@@ -483,18 +478,12 @@ function OnlineReveal({
         />
       </div>
       <div className="action-bar">
-        {isHost ? (
-          <button
-            className="btn-primary w-full py-3 sm:py-4"
-            onClick={() => setPhase(code, 'discussion')}
-          >
-            {t('online.hostAdvance')}
-          </button>
-        ) : (
-          <p className="text-center text-xs text-slate-500">
-            {t('online.guestAdvanceWait')}
-          </p>
-        )}
+        <button
+          className="btn-primary w-full py-3 sm:py-4"
+          onClick={() => setPhase(code, 'discussion')}
+        >
+          {t('online.hostAdvance')}
+        </button>
       </div>
     </div>
   )
@@ -502,12 +491,10 @@ function OnlineReveal({
 
 function OnlineDiscussion({
   code,
-  isHost,
   playersList,
   firstClueGiverId,
 }: {
   code: string
-  isHost: boolean
   playersList: Array<{ id: string; name: string }>
   firstClueGiverId: string | null
 }) {
@@ -554,18 +541,12 @@ function OnlineDiscussion({
       </section>
 
       <div className="action-bar">
-        {isHost ? (
-          <button
-            className="btn-primary w-full py-3 sm:py-4"
-            onClick={() => revealOnline(code)}
-          >
-            {t('online.hostReveal')}
-          </button>
-        ) : (
-          <div className="card text-center text-slate-400 text-sm">
-            {t('online.guestRevealWait')}
-          </div>
-        )}
+        <button
+          className="btn-primary w-full py-3 sm:py-4"
+          onClick={() => revealOnline(code)}
+        >
+          {t('online.hostReveal')}
+        </button>
       </div>
     </div>
   )
@@ -573,14 +554,12 @@ function OnlineDiscussion({
 
 function OnlineResult({
   code,
-  isHost,
   playersList,
   pair,
   spyUids,
   t,
 }: {
   code: string
-  isHost: boolean
   playersList: Array<{ id: string; name: string }>
   pair: { civilian: string; spy: string; categoryId: string } | null
   spyUids: string[]
@@ -643,18 +622,12 @@ function OnlineResult({
       )}
 
       <div className="action-bar">
-        {isHost ? (
-          <button
-            className="btn-primary w-full py-3 sm:py-4"
-            onClick={() => backToLobby(code)}
-          >
-            {t('online.hostBackLobby')}
-          </button>
-        ) : (
-          <div className="card text-center text-sm text-slate-400">
-            {t('online.guestBackWait')}
-          </div>
-        )}
+        <button
+          className="btn-primary w-full py-3 sm:py-4"
+          onClick={() => backToLobby(code)}
+        >
+          {t('online.hostBackLobby')}
+        </button>
       </div>
     </div>
   )

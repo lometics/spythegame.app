@@ -1,6 +1,6 @@
 {
   "meta": { "title": "Espião — O Jogo das Palavras" },
-  "app": { "footer": "Espião — o jogo das palavras. Jogue presencialmente ou online com amigos." },
+  "app": { "footer": "Espião — o jogo das palavras. Jogue presencialmente ou online com amigos.", "exitConfirm": "Pressione novamente para sair" },
   "languages": {
     "label": "Idioma",
     "en": "English",

@@ -1,6 +1,6 @@
 {
   "meta": { "title": "Szpieg — Gra Słowna" },
-  "app": { "footer": "Szpieg — gra słowna. Graj na żywo lub online ze znajomymi." },
+  "app": { "footer": "Szpieg — gra słowna. Graj na żywo lub online ze znajomymi.", "exitConfirm": "Naciśnij ponownie, aby wyjść" },
   "languages": {
     "label": "Język",
     "en": "English",

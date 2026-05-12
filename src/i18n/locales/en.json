@@ -1,6 +1,9 @@
 {
   "meta": { "title": "Spy — The Word Game" },
-  "app": { "footer": "Spy — the word game. Play in person or online with friends." },
+  "app": {
+    "footer": "Spy — the word game. Play in person or online with friends.",
+    "exitConfirm": "Press back again to exit"
+  },
   "languages": {
     "label": "Language",
     "en": "English",
