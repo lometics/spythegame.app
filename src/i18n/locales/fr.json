@@ -52,31 +52,21 @@
   },
   "home": {
     "title": "Spy",
-    "subtitle_before": "Tout le monde reçoit un mot. Un joueur reçoit un ",
-    "subtitle_highlight": "mot similaire",
-    "subtitle_after": ". Démasquez l'espion avant qu'il ne se fonde dans le décor.",
-    "passAndPlay": {
-      "title": "Téléphone qui tourne",
-      "desc": "Un seul téléphone, tout le monde dans la même pièce. Sans configuration."
-    },
-    "host": {
-      "title": "Créer une partie en ligne",
-      "desc": "Chacun rejoint depuis son téléphone avec un code."
-    },
-    "join": {
-      "title": "Rejoindre une partie",
-      "desc": "Vous avez un code de l'hôte ? Sautez dedans."
-    },
     "howTo": {
       "title": "Comment jouer",
-      "step1_before": "Tout le monde reçoit le même mot. L'",
-      "step1_spy": "espion",
-      "step1_mid": " reçoit un ",
-      "step1_similar": "indice similaire",
-      "step1_after": " — ou rien du tout.",
-      "step2": "Tours d'indices : chacun à son tour dit un seul mot prouvant qu'il connaît le mot secret — mais assez vague pour que l'espion ne puisse pas le deviner.",
-      "step3": "Phase de questions : interrogez-vous mutuellement. Écoutez qui bluffe et tentez de démasquer l'espion.",
-      "step4": "Votez contre votre suspect. L'espion démasqué a un dernier essai pour deviner le mot — s'il trouve, l'espion gagne. Un espion qui a déjà trouvé le mot peut le dire à tout moment pour voler la manche."
+      "step1_title": "Préparation",
+      "step1": "Tout le monde reçoit le même mot. L'espion reçoit un indice similaire — ou rien du tout.",
+      "step2_title": "Tours d'indices",
+      "step2": "Chacun à son tour dit un seul mot prouvant qu'il connaît le mot secret — mais assez vague pour que l'espion ne puisse pas le deviner.",
+      "step3_title": "Phase de questions",
+      "step3": "Interrogez-vous mutuellement. Écoutez qui bluffe et tentez de démasquer l'espion.",
+      "step4_title": "Vote",
+      "step4": "Votez contre votre suspect. L'espion démasqué a ensuite un dernier essai pour deviner le mot.",
+      "winTitle": "Qui gagne",
+      "civWinLabel": "Les civils gagnent si",
+      "civWin": "vous démasquez l'espion ET que l'espion rate son dernier essai pour deviner le mot.",
+      "spyWinLabel": "L'espion gagne si",
+      "spyWin": "il survit au vote, OU s'il dit le mot secret une fois qu'il l'a trouvé, OU s'il le devine après avoir été démasqué."
     }
   },
   "localGame": {
@@ -92,8 +82,6 @@
     }
   },
   "lobby": {
-    "title": "Téléphone qui tourne",
-    "subtitle": "Ajoutez tous les joueurs. Il en faut au moins 3.",
     "playersLabel": "Joueurs ({{count}})",
     "quickAdd": "+ Ajout rapide",
     "namePlaceholder": "Nom (ou laisser vide)",
@@ -115,7 +103,6 @@
     "timerLabel": "Minuteur de discussion",
     "timerOff": "Sans minuteur",
     "timerMin": "{{count}} min",
-    "startBtn": "Démarrer la manche →",
     "needPlayers": "Ajoutez au moins 3 joueurs pour démarrer.",
     "needSource": "Choisissez au moins une source de mots."
   },
@@ -209,32 +196,15 @@
     "create": "Créer la liste"
   },
   "online": {
-    "hostTitle": "Créer une partie en ligne",
     "yourName": "Votre nom",
     "hostNamePlaceholder": "ex. Alex",
-    "errEnterName": "Entrez d'abord votre nom.",
     "errCreateRoom": "Impossible de créer la partie",
-    "creating": "Création…",
-    "createBtn": "Créer la partie",
-    "joinTitle": "Rejoindre une partie",
     "roomCode": "Code de partie",
     "codePlaceholder": "ABCD",
     "joinNamePlaceholder": "ex. Sam",
     "errNeedBoth": "Il faut un code et un nom.",
     "errCouldNotJoin": "Impossible de rejoindre la partie",
-    "joining": "Connexion…",
-    "joinBtn": "Rejoindre",
-    "fbWarnTitle": "Firebase n'est pas encore configuré",
     "fbWarnTitleShort": "Firebase n'est pas configuré",
-    "fbWarnBody_before": "Le mode en ligne nécessite un projet Firebase. Créez-en un sur ",
-    "fbWarnBody_link": "console.firebase.google.com",
-    "fbWarnBody_after": " et ajoutez une Realtime Database. Puis copiez la configuration de l'app web dans un fichier ",
-    "fbWarnBody_envfile": ".env.local",
-    "fbWarnBody_tail": " :",
-    "fbWarnRestart_before": "Relancez ",
-    "fbWarnRestart_cmd": "npm run dev",
-    "fbWarnRestart_after": " après modification.",
-    "fbWarnJoin": "Demandez à qui a configuré le site d'ajouter les variables Firebase.",
     "fbNotConfigured": "Firebase n'est pas configuré.",
     "loadingRoom": "Chargement de la partie {{code}}…",
     "roomLabel": "Partie",
@@ -271,19 +241,6 @@
     "errMinPlayers": "Il faut au moins 3 joueurs",
     "errCouldNotAllocate": "Impossible d'attribuer un code de partie, réessayez",
     "errNotConfigured": "Firebase non configuré"
-  },
-  "install": {
-    "android": {
-      "title": "Installer Spy sur votre téléphone",
-      "body": "Ouverture plus rapide, hors-ligne, plein écran.",
-      "btn": "Installer"
-    },
-    "ios": {
-      "title": "Installer sur iPhone",
-      "body_before": "Touchez l'icône de partage ⎙ dans Safari, puis ",
-      "body_action": "Sur l'écran d'accueil",
-      "body_after": "."
-    }
   },
   "categories": {
     "food":          { "name": "Nourriture & Boissons", "description": "Des choses à manger. Paires gourmandes et assez proches pour vous tromper.", "icon": "🍕" },

@@ -26,10 +26,10 @@ const HOST_FLOW: Step[] = ['mode', 'od_role', 'host_name', 'host_categories', 'h
 const JOIN_FLOW: Step[] = ['mode', 'od_role', 'join_code', 'join_name']
 
 const DIFFICULTY_OPTIONS: Array<{ value: Difficulty; icon: string }> = [
-  { value: 'none', icon: '🙈' },
-  { value: 'easy', icon: '😎' },
-  { value: 'medium', icon: '🤔' },
-  { value: 'hard', icon: '🥵' },
+  { value: 'none', icon: 'ðŸ™ˆ' },
+  { value: 'easy', icon: 'ðŸ˜Ž' },
+  { value: 'medium', icon: 'ðŸ¤”' },
+  { value: 'hard', icon: 'ðŸ¥µ' },
 ]
 
 function flowFor(step: Step): Step[] {
@@ -53,9 +53,9 @@ export default function Home() {
   const totalSteps = flow.length
 
   return (
-    <div className="space-y-3 sm:space-y-5">
+    <div className="space-y-3 sm:space-y-5 flex flex-col flex-1">
       <header className="text-center pt-2 sm:pt-6">
-        <div className="inline-block text-3xl sm:text-5xl mb-1 sm:mb-2">🕵️</div>
+        <div className="inline-block text-3xl sm:text-5xl mb-1 sm:mb-2">ðŸ•µï¸</div>
         <h1 className="font-display text-2xl sm:text-4xl font-extrabold tracking-tight">
           {t('home.title')}
         </h1>
@@ -112,7 +112,7 @@ function ModeStep({ onPick }: { onPick: (next: Step) => void }) {
   const { t } = useTranslation()
   const configured = isFirebaseConfigured()
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col flex-1">
       <h2 className="font-display text-xl sm:text-2xl font-bold text-center">
         {t('wizard.modeTitle')}
       </h2>
@@ -131,7 +131,7 @@ function ModeStep({ onPick }: { onPick: (next: Step) => void }) {
                 {t('wizard.modeSingleDesc')}
               </div>
             </div>
-            <div className="text-2xl sm:text-3xl">📱</div>
+            <div className="text-2xl sm:text-3xl">ðŸ“±</div>
           </div>
         </button>
 
@@ -150,7 +150,7 @@ function ModeStep({ onPick }: { onPick: (next: Step) => void }) {
                 {t('wizard.modeOnlineDesc')}
               </div>
             </div>
-            <div className="text-2xl sm:text-3xl">🌐</div>
+            <div className="text-2xl sm:text-3xl">ðŸŒ</div>
           </div>
         </button>
       </div>
@@ -159,27 +159,73 @@ function ModeStep({ onPick }: { onPick: (next: Step) => void }) {
           {t('online.fbWarnTitleShort')}
         </p>
       )}
-      <details className="card">
-        <summary className="cursor-pointer font-semibold text-slate-200">
-          {t('home.howTo.title')}
-        </summary>
-        <ol className="mt-2 sm:mt-3 space-y-1.5 sm:space-y-2 list-decimal pl-5 text-xs sm:text-sm text-slate-300">
-          <li>
-            {t('home.howTo.step1_before')}
-            <em>{t('home.howTo.step1_spy')}</em>
-            {t('home.howTo.step1_mid')}
-            <em>{t('home.howTo.step1_similar')}</em>
-            {t('home.howTo.step1_after')}
-          </li>
-          <li>{t('home.howTo.step2')}</li>
-          <li>{t('home.howTo.step3')}</li>
-          <li>{t('home.howTo.step4')}</li>
-        </ol>
-      </details>
+      <HowToPlay />
     </div>
   )
 }
 
+function HowToPlay() {
+  const { t } = useTranslation()
+  const steps = [1, 2, 3, 4] as const
+  return (
+    <details className="card group">
+      <summary className="flex items-center justify-between cursor-pointer list-none">
+        <span className="font-display font-bold text-base sm:text-lg flex items-center gap-2">
+          <span aria-hidden>📖</span>
+          {t('home.howTo.title')}
+        </span>
+        <span
+          aria-hidden
+          className="text-slate-400 transition-transform group-open:rotate-180"
+        >
+          ▾
+        </span>
+      </summary>
+      <ol className="mt-3 sm:mt-4 space-y-2.5 sm:space-y-3">
+        {steps.map((n) => (
+          <li key={n} className="flex gap-3">
+            <span className="shrink-0 w-7 h-7 rounded-full bg-accent-500/15 text-accent-400 inline-flex items-center justify-center font-bold text-sm border border-accent-500/30">
+              {n}
+            </span>
+            <div className="min-w-0">
+              <div className="font-semibold text-sm text-slate-100">
+                {t(`home.howTo.step${n}_title`)}
+              </div>
+              <p className="text-xs sm:text-sm text-slate-400 mt-0.5 leading-relaxed">
+                {t(`home.howTo.step${n}`)}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <div className="mt-4 pt-3 sm:pt-4 border-t border-white/10">
+        <div className="text-[10px] sm:text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">
+          {t('home.howTo.winTitle')}
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="rounded-lg bg-emerald-500/10 border border-emerald-500/25 p-2.5">
+            <div className="text-xs sm:text-sm font-semibold text-emerald-300 mb-1 flex items-center gap-1.5">
+              <span aria-hidden>✅</span>
+              {t('home.howTo.civWinLabel')}
+            </div>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              {t('home.howTo.civWin')}
+            </p>
+          </div>
+          <div className="rounded-lg bg-rose-500/10 border border-rose-500/25 p-2.5">
+            <div className="text-xs sm:text-sm font-semibold text-rose-300 mb-1 flex items-center gap-1.5">
+              <span aria-hidden>🕵️</span>
+              {t('home.howTo.spyWinLabel')}
+            </div>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              {t('home.howTo.spyWin')}
+            </p>
+          </div>
+        </div>
+      </div>
+    </details>
+  )
+}
 function RoleStep({
   onHost,
   onJoin,
@@ -189,7 +235,7 @@ function RoleStep({
 }) {
   const { t } = useTranslation()
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col flex-1">
       <h2 className="font-display text-xl sm:text-2xl font-bold text-center">
         {t('wizard.roleTitle')}
       </h2>
@@ -208,7 +254,7 @@ function RoleStep({
                 {t('wizard.roleHostDesc')}
               </div>
             </div>
-            <div className="text-2xl sm:text-3xl">🎙️</div>
+            <div className="text-2xl sm:text-3xl">ðŸŽ™ï¸</div>
           </div>
         </button>
         <button
@@ -225,7 +271,7 @@ function RoleStep({
                 {t('wizard.roleJoinDesc')}
               </div>
             </div>
-            <div className="text-2xl sm:text-3xl">🔑</div>
+            <div className="text-2xl sm:text-3xl">ðŸ”‘</div>
           </div>
         </button>
       </div>
@@ -257,7 +303,7 @@ function PlayersStep({ onNext }: { onNext: () => void }) {
   const canNext = players.length >= 3
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col flex-1">
       <header>
         <h2 className="font-display text-xl sm:text-2xl font-bold">
           {t('wizard.playersTitle')}
@@ -320,7 +366,7 @@ function PlayersStep({ onNext }: { onNext: () => void }) {
                 className="text-slate-400 hover:text-rose-400 w-7 h-7 inline-flex items-center justify-center rounded-lg"
                 aria-label={t('lobby.removeAria', { name: p.name })}
               >
-                ✕
+                âœ•
               </button>
             </li>
           ))}
@@ -332,18 +378,20 @@ function PlayersStep({ onNext }: { onNext: () => void }) {
         </ul>
       </section>
 
-      <button
-        onClick={onNext}
-        disabled={!canNext}
-        className="btn-primary w-full"
-      >
-        {t('wizard.next')}
-      </button>
-      {!canNext && (
-        <p className="text-center text-xs text-slate-500">
-          {t('lobby.needPlayers')}
-        </p>
-      )}
+      <div className="action-bar">
+        <button
+          onClick={onNext}
+          disabled={!canNext}
+          className="btn-primary w-full py-3 sm:py-4"
+        >
+          {t('wizard.next')}
+        </button>
+        {!canNext && (
+          <p className="text-center text-xs text-slate-500 mt-1.5">
+            {t('lobby.needPlayers')}
+          </p>
+        )}
+      </div>
     </div>
   )
 }
@@ -353,7 +401,7 @@ function CategoriesStep({ onNext }: { onNext: () => void }) {
   const selected = useGame((s) => s.settings.pairSource.selectedCategoryIds)
   const canNext = selected.length > 0
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col flex-1">
       <header>
         <h2 className="font-display text-xl sm:text-2xl font-bold">
           {t('wizard.categoriesTitle')}
@@ -365,18 +413,20 @@ function CategoriesStep({ onNext }: { onNext: () => void }) {
       <section className="card">
         <PairPicker />
       </section>
-      <button
-        onClick={onNext}
-        disabled={!canNext}
-        className="btn-primary w-full"
-      >
-        {t('wizard.next')}
-      </button>
-      {!canNext && (
-        <p className="text-center text-xs text-slate-500">
-          {t('lobby.needSource')}
-        </p>
-      )}
+      <div className="action-bar">
+        <button
+          onClick={onNext}
+          disabled={!canNext}
+          className="btn-primary w-full py-3 sm:py-4"
+        >
+          {t('wizard.next')}
+        </button>
+        {!canNext && (
+          <p className="text-center text-xs text-slate-500 mt-1.5">
+            {t('lobby.needSource')}
+          </p>
+        )}
+      </div>
     </div>
   )
 }
@@ -488,7 +538,7 @@ function SingleOptionsStep() {
   const startRound = useGame((s) => s.startRound)
   const playerCount = useGame((s) => s.players.length)
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col flex-1">
       <header>
         <h2 className="font-display text-xl sm:text-2xl font-bold">
           {t('wizard.optionsTitle')}
@@ -498,15 +548,17 @@ function SingleOptionsStep() {
         </p>
       </header>
       <OptionsPanel playerCount={playerCount} />
-      <button
-        onClick={() => {
-          startRound()
-          navigate('/local')
-        }}
-        className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4"
-      >
-        {t('wizard.startBtn')}
-      </button>
+      <div className="action-bar">
+        <button
+          onClick={() => {
+            startRound()
+            navigate('/local')
+          }}
+          className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4"
+        >
+          {t('wizard.startBtn')}
+        </button>
+      </div>
     </div>
   )
 }
@@ -516,7 +568,7 @@ function HostNameStep({ onNext }: { onNext: () => void }) {
   const onlineName = useGame((s) => s.onlineName)
   const setOnlineName = useGame((s) => s.setOnlineName)
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col flex-1">
       <header>
         <h2 className="font-display text-xl sm:text-2xl font-bold">
           {t('wizard.hostNameTitle')}
@@ -538,13 +590,15 @@ function HostNameStep({ onNext }: { onNext: () => void }) {
           autoFocus
         />
       </section>
-      <button
-        onClick={onNext}
-        disabled={!onlineName.trim()}
-        className="btn-primary w-full"
-      >
-        {t('wizard.next')}
-      </button>
+      <div className="action-bar">
+        <button
+          onClick={onNext}
+          disabled={!onlineName.trim()}
+          className="btn-primary w-full py-3 sm:py-4"
+        >
+          {t('wizard.next')}
+        </button>
+      </div>
     </div>
   )
 }
@@ -570,7 +624,7 @@ function HostOptionsStep() {
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col flex-1">
       <header>
         <h2 className="font-display text-xl sm:text-2xl font-bold">
           {t('wizard.optionsTitle')}
@@ -581,13 +635,15 @@ function HostOptionsStep() {
       </header>
       <OptionsPanel />
       {error && <p className="text-sm text-rose-400">{error}</p>}
-      <button
-        onClick={onCreate}
-        disabled={busy}
-        className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4"
-      >
-        {busy ? t('wizard.creating') : t('wizard.hostCreateBtn')}
-      </button>
+      <div className="action-bar">
+        <button
+          onClick={onCreate}
+          disabled={busy}
+          className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4"
+        >
+          {busy ? t('wizard.creating') : t('wizard.hostCreateBtn')}
+        </button>
+      </div>
     </div>
   )
 }
@@ -622,7 +678,7 @@ function JoinCodeStep({ onNext }: { onNext: () => void }) {
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col flex-1">
       <header>
         <h2 className="font-display text-xl sm:text-2xl font-bold">
           {t('wizard.joinCodeTitle')}
@@ -655,13 +711,15 @@ function JoinCodeStep({ onNext }: { onNext: () => void }) {
         />
         {scanError && <p className="text-sm text-rose-400">{scanError}</p>}
       </section>
-      <button
-        onClick={onNext}
-        disabled={!canNext}
-        className="btn-primary w-full"
-      >
-        {t('wizard.next')}
-      </button>
+      <div className="action-bar">
+        <button
+          onClick={onNext}
+          disabled={!canNext}
+          className="btn-primary w-full py-3 sm:py-4"
+        >
+          {t('wizard.next')}
+        </button>
+      </div>
       <QrScannerModal
         open={scannerOpen}
         onResult={onScan}
@@ -698,7 +756,7 @@ function JoinNameStep() {
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 flex flex-col flex-1">
       <header>
         <h2 className="font-display text-xl sm:text-2xl font-bold">
           {t('wizard.joinNameTitle')}
@@ -718,13 +776,15 @@ function JoinNameStep() {
         />
         {error && <p className="text-sm text-rose-400">{error}</p>}
       </section>
-      <button
-        onClick={onJoin}
-        disabled={busy || !onlineName.trim()}
-        className="btn-primary w-full"
-      >
-        {busy ? t('wizard.joining') : t('wizard.joinBtn')}
-      </button>
+      <div className="action-bar">
+        <button
+          onClick={onJoin}
+          disabled={busy || !onlineName.trim()}
+          className="btn-primary w-full py-3 sm:py-4"
+        >
+          {busy ? t('wizard.joining') : t('wizard.joinBtn')}
+        </button>
+      </div>
     </div>
   )
 }

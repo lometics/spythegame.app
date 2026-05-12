@@ -11,7 +11,7 @@ export default function App() {
   return (
     <HashRouter>
       <div className="min-h-full flex flex-col">
-        <main className="flex-1 mx-auto w-full max-w-2xl px-3 sm:px-4 py-3 sm:py-10">
+        <main className="flex-1 flex flex-col mx-auto w-full max-w-2xl px-3 sm:px-4 py-3 sm:py-10">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/local" element={<LocalGame />} />

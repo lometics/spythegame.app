@@ -52,31 +52,21 @@
   },
   "home": {
     "title": "Spy",
-    "subtitle_before": "Tutti ricevono una parola. Un giocatore riceve una ",
-    "subtitle_highlight": "parola simile",
-    "subtitle_after": ". Smaschera la spia prima che si confonda.",
-    "passAndPlay": {
-      "title": "Passa il telefono",
-      "desc": "Un telefono, amici nella stessa stanza. Zero setup."
-    },
-    "host": {
-      "title": "Crea una stanza online",
-      "desc": "Ogni amico entra dal proprio telefono con un codice."
-    },
-    "join": {
-      "title": "Entra in una stanza",
-      "desc": "Hai ricevuto un codice? Salta dentro."
-    },
     "howTo": {
       "title": "Come si gioca",
-      "step1_before": "Tutti ricevono la stessa parola. La ",
-      "step1_spy": "spia",
-      "step1_mid": " riceve un ",
-      "step1_similar": "indizio simile",
-      "step1_after": " — o niente del tutto.",
-      "step2": "Round di indizi: a turno, ognuno dice una sola parola che dimostri di conoscere il segreto — ma abbastanza vaga da non farla intuire alla spia.",
-      "step3": "Fase di domande: interrogatevi a vicenda. Ascoltate chi sta bluffando e cercate di smascherare la spia.",
-      "step4": "Votate il sospettato. La spia smascherata ha un ultimo tentativo per indovinare la parola — se ci riesce, vince la spia. Una spia che ha già scoperto la parola può dirla in qualsiasi momento per rubare la mano."
+      "step1_title": "Preparazione",
+      "step1": "Tutti ricevono la stessa parola. La spia riceve un indizio simile — o niente del tutto.",
+      "step2_title": "Round di indizi",
+      "step2": "A turno, ognuno dice una sola parola che dimostri di conoscere il segreto — ma abbastanza vaga da non farla intuire alla spia.",
+      "step3_title": "Fase di domande",
+      "step3": "Interrogatevi a vicenda. Ascoltate chi sta bluffando e cercate di smascherare la spia.",
+      "step4_title": "Votazione",
+      "step4": "Votate il sospettato. La spia smascherata ha poi un ultimo tentativo per indovinare la parola.",
+      "winTitle": "Come si vince",
+      "civWinLabel": "I civili vincono se",
+      "civWin": "smascherate la spia E la spia sbaglia l'ultimo tentativo di indovinare la parola.",
+      "spyWinLabel": "La spia vince se",
+      "spyWin": "sopravvive alla votazione, OPPURE pronuncia la parola segreta una volta scoperta, OPPURE la indovina correttamente dopo essere stata smascherata."
     }
   },
   "localGame": {
@@ -92,8 +82,6 @@
     }
   },
   "lobby": {
-    "title": "Passa il telefono",
-    "subtitle": "Aggiungi tutti i giocatori. Servono almeno 3.",
     "playersLabel": "Giocatori ({{count}})",
     "quickAdd": "+ Aggiunta rapida",
     "namePlaceholder": "Nome (o lascia vuoto)",
@@ -115,7 +103,6 @@
     "timerLabel": "Timer discussione",
     "timerOff": "Nessun timer",
     "timerMin": "{{count}} min",
-    "startBtn": "Inizia round →",
     "needPlayers": "Servono almeno 3 giocatori per iniziare.",
     "needSource": "Scegli almeno una fonte di parole."
   },

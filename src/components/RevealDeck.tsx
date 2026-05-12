@@ -94,7 +94,7 @@ export default function RevealDeck({
   const opacity = animating ? 0 : 1
 
   return (
-    <div className="space-y-2 sm:space-y-4">
+    <div className="space-y-2 sm:space-y-4 flex flex-col flex-1">
       <div className="flex items-center justify-between text-xs sm:text-sm">
         <span className="text-slate-400">
           {t('revealDeck.cardProgress', {

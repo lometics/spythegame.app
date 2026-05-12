@@ -14,7 +14,7 @@ export default function ResultScreen() {
   const spies = players.filter((p) => p.isSpy)
 
   return (
-    <div className="space-y-3 sm:space-y-6">
+    <div className="space-y-3 sm:space-y-6 flex flex-col flex-1">
       <header className="text-center">
         <div className="text-4xl sm:text-6xl mb-1 sm:mb-2">🕵️</div>
         <h2 className="font-display text-2xl sm:text-3xl font-bold">{t('result.title')}</h2>

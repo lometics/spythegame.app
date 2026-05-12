@@ -52,31 +52,21 @@
   },
   "home": {
     "title": "Spy",
-    "subtitle_before": "Alle bekommen ein Wort. Eine Person bekommt ein ",
-    "subtitle_highlight": "ähnliches Wort",
-    "subtitle_after": ". Findet den Spion, bevor er sich tarnt.",
-    "passAndPlay": {
-      "title": "Reihum am Handy",
-      "desc": "Ein Handy, alle im selben Raum. Keine Einrichtung nötig."
-    },
-    "host": {
-      "title": "Online-Raum erstellen",
-      "desc": "Alle treten mit einem Code von ihrem eigenen Handy bei."
-    },
-    "join": {
-      "title": "Einem Raum beitreten",
-      "desc": "Code vom Gastgeber bekommen? Spring rein."
-    },
     "howTo": {
       "title": "So wird gespielt",
-      "step1_before": "Alle bekommen dasselbe Wort. Der ",
-      "step1_spy": "Spion",
-      "step1_mid": " bekommt einen ",
-      "step1_similar": "ähnlichen Hinweis",
-      "step1_after": " — oder gar nichts.",
-      "step2": "Hinweisrunden: Reihum sagt jeder ein einziges Wort, das beweist, dass er das Geheimwort kennt — aber vage genug, damit der Spion es nicht erraten kann.",
-      "step3": "Fragerunde: Stellt euch gegenseitig Fragen. Hört genau hin, wer bluffen muss, und versucht den Spion zu enttarnen.",
-      "step4": "Stimmt über den Verdächtigen ab. Der enttarnte Spion hat einen letzten Versuch, das Wort zu erraten — trifft er, gewinnt der Spion. Ein Spion, der das Wort schon kennt, darf es jederzeit aussprechen und so die Runde stehlen."
+      "step1_title": "Vorbereitung",
+      "step1": "Alle bekommen dasselbe Wort. Der Spion bekommt einen ähnlichen Hinweis — oder gar nichts.",
+      "step2_title": "Hinweisrunden",
+      "step2": "Reihum sagt jeder ein einziges Wort, das beweist, dass er das Geheimwort kennt — aber vage genug, damit der Spion es nicht erraten kann.",
+      "step3_title": "Fragerunde",
+      "step3": "Stellt euch gegenseitig Fragen. Hört genau hin, wer bluffen muss, und versucht den Spion zu enttarnen.",
+      "step4_title": "Abstimmung",
+      "step4": "Stimmt über den Verdächtigen ab. Der enttarnte Spion bekommt dann einen letzten Versuch, das Wort zu erraten.",
+      "winTitle": "Wer gewinnt",
+      "civWinLabel": "Zivilisten gewinnen, wenn",
+      "civWin": "ihr den Spion enttarnt UND der Spion das Wort am Ende falsch errät.",
+      "spyWinLabel": "Spion gewinnt, wenn",
+      "spyWin": "er die Abstimmung übersteht, ODER das Geheimwort selbst ausspricht, sobald er es kennt, ODER es nach der Enttarnung richtig errät."
     }
   },
   "localGame": {
@@ -92,8 +82,6 @@
     }
   },
   "lobby": {
-    "title": "Reihum am Handy",
-    "subtitle": "Alle Mitspielenden eintragen. Mindestens 3 nötig.",
     "playersLabel": "Spieler ({{count}})",
     "quickAdd": "+ Schnell hinzufügen",
     "namePlaceholder": "Name (oder leer lassen)",
@@ -115,7 +103,6 @@
     "timerLabel": "Diskussions-Timer",
     "timerOff": "Kein Timer",
     "timerMin": "{{count}} Min.",
-    "startBtn": "Runde starten →",
     "needPlayers": "Mindestens 3 Spieler nötig, um zu starten.",
     "needSource": "Wähle mindestens eine Wortquelle."
   },
@@ -209,32 +196,15 @@
     "create": "Liste erstellen"
   },
   "online": {
-    "hostTitle": "Online-Raum erstellen",
     "yourName": "Dein Name",
     "hostNamePlaceholder": "z. B. Alex",
-    "errEnterName": "Trage zuerst deinen Namen ein.",
     "errCreateRoom": "Raum konnte nicht erstellt werden",
-    "creating": "Erstellen…",
-    "createBtn": "Raum erstellen",
-    "joinTitle": "Einem Raum beitreten",
     "roomCode": "Raum-Code",
     "codePlaceholder": "ABCD",
     "joinNamePlaceholder": "z. B. Sam",
     "errNeedBoth": "Raum-Code und Name nötig.",
     "errCouldNotJoin": "Beitritt fehlgeschlagen",
-    "joining": "Beitreten…",
-    "joinBtn": "Beitreten",
-    "fbWarnTitle": "Firebase ist noch nicht konfiguriert",
     "fbWarnTitleShort": "Firebase ist nicht konfiguriert",
-    "fbWarnBody_before": "Der Online-Modus benötigt ein Firebase-Projekt. Erstelle eines auf ",
-    "fbWarnBody_link": "console.firebase.google.com",
-    "fbWarnBody_after": " und füge eine Realtime Database hinzu. Kopiere dann die Web-App-Konfiguration in eine ",
-    "fbWarnBody_envfile": ".env.local",
-    "fbWarnBody_tail": "-Datei:",
-    "fbWarnRestart_before": "Starte ",
-    "fbWarnRestart_cmd": "npm run dev",
-    "fbWarnRestart_after": " nach dem Bearbeiten neu.",
-    "fbWarnJoin": "Frag den, der die Seite eingerichtet hat, die Firebase-Variablen einzutragen.",
     "fbNotConfigured": "Firebase ist nicht konfiguriert.",
     "loadingRoom": "Lade Raum {{code}}…",
     "roomLabel": "Raum",
@@ -271,19 +241,6 @@
     "errMinPlayers": "Mindestens 3 Spieler nötig",
     "errCouldNotAllocate": "Raum-Code konnte nicht vergeben werden, bitte erneut versuchen",
     "errNotConfigured": "Firebase nicht konfiguriert"
-  },
-  "install": {
-    "android": {
-      "title": "Spy aufs Handy installieren",
-      "body": "Schnellerer Start, offline nutzbar, Vollbildspiel.",
-      "btn": "Installieren"
-    },
-    "ios": {
-      "title": "Auf dem iPhone installieren",
-      "body_before": "Tippe in Safari auf das Teilen-Symbol ⎙, dann ",
-      "body_action": "Zum Home-Bildschirm",
-      "body_after": "."
-    }
   },
   "categories": {
     "food":          { "name": "Essen & Trinken",     "description": "Essbares. Paare sind lecker und nah genug, um zu verwirren.", "icon": "🍕" },

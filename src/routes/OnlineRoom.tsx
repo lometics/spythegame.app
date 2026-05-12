@@ -65,7 +65,7 @@ export default function OnlineRoom() {
   }))
 
   return (
-    <div className="space-y-2 sm:space-y-4">
+    <div className="space-y-2 sm:space-y-4 flex flex-col flex-1">
       <nav className="flex items-center justify-between text-xs sm:text-sm">
         <Link to="/" className="text-slate-400 hover:text-slate-200">
           {t('common.home')}
@@ -437,18 +437,20 @@ function OnlineResult({
         </section>
       )}
 
-      {isHost ? (
-        <button
-          className="btn-primary w-full py-3 sm:py-4"
-          onClick={() => backToLobby(code)}
-        >
-          {t('online.hostBackLobby')}
-        </button>
-      ) : (
-        <div className="card text-center text-sm text-slate-400">
-          {t('online.guestBackWait')}
-        </div>
-      )}
+      <div className="action-bar">
+        {isHost ? (
+          <button
+            className="btn-primary w-full py-3 sm:py-4"
+            onClick={() => backToLobby(code)}
+          >
+            {t('online.hostBackLobby')}
+          </button>
+        ) : (
+          <div className="card text-center text-sm text-slate-400">
+            {t('online.guestBackWait')}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

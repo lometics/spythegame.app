@@ -16,7 +16,7 @@ export default function LocalGame() {
   const revealAnswer = useGame((s) => s.revealAnswer)
 
   return (
-    <div className="space-y-2 sm:space-y-4">
+    <div className="space-y-2 sm:space-y-4 flex flex-col flex-1">
       <nav className="flex items-center justify-between text-xs sm:text-sm">
         <Link to="/" className="text-slate-400 hover:text-slate-200">
           {t('common.home')}
@@ -41,7 +41,7 @@ export default function LocalGame() {
       )}
 
       {phase === 'discussion' && (
-        <div className="space-y-2 sm:space-y-5">
+        <div className="space-y-2 sm:space-y-5 flex flex-col flex-1">
           <header className="text-center">
             <h2 className="font-display text-xl sm:text-2xl font-bold">
               {t('localGame.discuss.title')}

@@ -52,31 +52,21 @@
   },
   "home": {
     "title": "Spy",
-    "subtitle_before": "Everyone gets a word. One player gets a ",
-    "subtitle_highlight": "similar word",
-    "subtitle_after": ". Find the spy before they blend in.",
-    "passAndPlay": {
-      "title": "Pass-and-play",
-      "desc": "One phone, friends in the same room. No setup."
-    },
-    "host": {
-      "title": "Host an online room",
-      "desc": "Each friend joins from their own phone with a code."
-    },
-    "join": {
-      "title": "Join a room",
-      "desc": "Got a code from your host? Jump in."
-    },
     "howTo": {
       "title": "How to play",
-      "step1_before": "Everyone gets the same word. The ",
-      "step1_spy": "spy",
-      "step1_mid": " gets a ",
-      "step1_similar": "similar hint",
-      "step1_after": " — or nothing at all.",
-      "step2": "Clue rounds: take turns saying one word that proves you know the secret — but stay vague enough that the spy can't lock it in.",
-      "step3": "Question time: grill each other. Listen for who's bluffing and try to spot the spy.",
-      "step4": "Vote out your suspect. The accused spy gets one last guess at the word — guess right and the spy wins. A spy who already cracked the word can call it any time to steal the round."
+      "step1_title": "Setup",
+      "step1": "Everyone gets the same word. The spy gets a similar hint — or nothing at all.",
+      "step2_title": "Clue rounds",
+      "step2": "Take turns saying one word that proves you know the secret — but stay vague enough that the spy can't lock it in.",
+      "step3_title": "Question time",
+      "step3": "Grill each other. Listen for who's bluffing and try to spot the spy.",
+      "step4_title": "Vote",
+      "step4": "Vote out your suspect. The accused spy then gets one final guess at the word.",
+      "winTitle": "How to win",
+      "civWinLabel": "Civilians win if",
+      "civWin": "You vote out the spy AND the spy fails the final guess at the word.",
+      "spyWinLabel": "Spy wins if",
+      "spyWin": "The spy survives the vote, OR says the secret word once they've figured it out, OR guesses it correctly after being caught."
     }
   },
   "localGame": {
@@ -92,8 +82,6 @@
     }
   },
   "lobby": {
-    "title": "Pass-and-play",
-    "subtitle": "Add everyone playing. Need at least 3.",
     "playersLabel": "Players ({{count}})",
     "quickAdd": "+ Quick add",
     "namePlaceholder": "Name (or leave blank)",
@@ -115,7 +103,6 @@
     "timerLabel": "Discussion timer",
     "timerOff": "No timer",
     "timerMin": "{{count}} min",
-    "startBtn": "Start round →",
     "needPlayers": "Add at least 3 players to start.",
     "needSource": "Pick at least one word source."
   },
@@ -209,32 +196,15 @@
     "create": "Create list"
   },
   "online": {
-    "hostTitle": "Host an online room",
     "yourName": "Your name",
     "hostNamePlaceholder": "e.g. Alex",
-    "errEnterName": "Enter your name first.",
     "errCreateRoom": "Could not create room",
-    "creating": "Creating…",
-    "createBtn": "Create room",
-    "joinTitle": "Join a room",
     "roomCode": "Room code",
     "codePlaceholder": "ABCD",
     "joinNamePlaceholder": "e.g. Sam",
     "errNeedBoth": "Need both a room code and a name.",
     "errCouldNotJoin": "Could not join room",
-    "joining": "Joining…",
-    "joinBtn": "Join",
-    "fbWarnTitle": "Firebase isn't configured yet",
     "fbWarnTitleShort": "Firebase isn't configured",
-    "fbWarnBody_before": "Online mode needs a Firebase project. Create one at ",
-    "fbWarnBody_link": "console.firebase.google.com",
-    "fbWarnBody_after": " and add a Realtime Database. Then copy the web-app config into a ",
-    "fbWarnBody_envfile": ".env.local",
-    "fbWarnBody_tail": " file:",
-    "fbWarnRestart_before": "Restart ",
-    "fbWarnRestart_cmd": "npm run dev",
-    "fbWarnRestart_after": " after editing.",
-    "fbWarnJoin": "Ask whoever set up the site to add the Firebase env vars.",
     "fbNotConfigured": "Firebase isn't configured.",
     "loadingRoom": "Loading room {{code}}…",
     "roomLabel": "Room",
@@ -271,19 +241,6 @@
     "errMinPlayers": "Need at least 3 players",
     "errCouldNotAllocate": "Could not allocate a room code, try again",
     "errNotConfigured": "Firebase not configured"
-  },
-  "install": {
-    "android": {
-      "title": "Install Spy on your phone",
-      "body": "Faster opens, works offline, full-screen game.",
-      "btn": "Install"
-    },
-    "ios": {
-      "title": "Install on iPhone",
-      "body_before": "Tap the share icon ⎙ in Safari, then ",
-      "body_action": "Add to Home Screen",
-      "body_after": "."
-    }
   },
   "categories": {
     "food":          { "name": "Food & Drink",        "description": "Edible stuff. Pairs lean tasty and close enough to confuse.", "icon": "🍕" },

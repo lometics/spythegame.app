@@ -69,14 +69,19 @@
     },
     "howTo": {
       "title": "Cómo jugar",
-      "step1_before": "Todos reciben la misma palabra. El ",
-      "step1_spy": "espía",
-      "step1_mid": " recibe una ",
-      "step1_similar": "pista similar",
-      "step1_after": " — o nada en absoluto.",
-      "step2": "Rondas de pistas: por turnos, cada uno dice una sola palabra que demuestre que conoce el secreto — pero lo bastante vaga para que el espía no la atrape.",
-      "step3": "Turno de preguntas: interrogaos entre vosotros. Escuchad quién farolea e intentad descubrir al espía.",
-      "step4": "Votad al sospechoso. El espía descubierto tiene un último intento de adivinar la palabra — si acierta, gana el espía. Un espía que ya ha descifrado la palabra puede decirla en cualquier momento para robar la ronda."
+      "step1_title": "Preparación",
+      "step1": "Todos reciben la misma palabra. El espía recibe una pista similar — o nada en absoluto.",
+      "step2_title": "Rondas de pistas",
+      "step2": "Por turnos, cada uno dice una sola palabra que demuestre que conoce el secreto — pero lo bastante vaga para que el espía no la atrape.",
+      "step3_title": "Turno de preguntas",
+      "step3": "Interrogaos entre vosotros. Escuchad quién farolea e intentad descubrir al espía.",
+      "step4_title": "Votación",
+      "step4": "Votad al sospechoso. El espía descubierto tiene entonces un último intento de adivinar la palabra.",
+      "winTitle": "Cómo se gana",
+      "civWinLabel": "Los civiles ganan si",
+      "civWin": "votáis al espía Y el espía falla el último intento de adivinar la palabra.",
+      "spyWinLabel": "El espía gana si",
+      "spyWin": "sobrevive a la votación, O dice la palabra secreta una vez que la ha descubierto, O la adivina correctamente tras ser descubierto."
     }
   },
   "localGame": {
