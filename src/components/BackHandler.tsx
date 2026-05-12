@@ -46,7 +46,7 @@ export default function BackHandler() {
 
   if (!showToast) return null
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-3 py-2 rounded-lg bg-slate-900/90 text-slate-100 text-xs shadow-lg pointer-events-none">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-ink-800/95 border border-white/10 text-foreground text-xs shadow-soft pointer-events-none backdrop-blur-sm">
       {t('app.exitConfirm')}
     </div>
   )

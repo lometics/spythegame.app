@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "Casus — Kelime Oyunu" },
-  "app": { "footer": "Casus — kelime oyunu. Arkadaşlarınla yüz yüze veya çevrimiçi oyna.", "exitConfirm": "Çıkmak için tekrar bas" },
+  "meta": {
+    "title": "Casus — Kelime Oyunu"
+  },
+  "app": {
+    "footer": "Casus — kelime oyunu. Arkadaşlarınla yüz yüze veya çevrimiçi oyna.",
+    "exitConfirm": "Çıkmak için tekrar bas"
+  },
   "languages": {
     "label": "Dil",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← Ana sayfa",
-    "back": "← Geri",
+    "home": "Ana sayfa",
+    "back": "Geri",
     "cancel": "İptal",
     "save": "Kaydet",
     "delete": "Sil",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "Kartlarında diğer casusları görürler.",
     "difficultyLabel": "Köylüler için zorluk",
     "difficulty": {
-      "easy":   { "label": "Kolay", "hint": "Casusun ipucu yok — saf blöf, yakalaması en kolay." },
-      "medium": { "label": "Orta",  "hint": "Casusun ipucu aynı kategoriden." },
-      "hard":   { "label": "Zor",   "hint": "Casusun ipucu gerçek kelimeye çok yakın, aynı kategori — klasik." }
+      "easy": {
+        "label": "Kolay",
+        "hint": "Casusun ipucu yok — saf blöf, yakalaması en kolay."
+      },
+      "medium": {
+        "label": "Orta",
+        "hint": "Casusun ipucu aynı kategoriden."
+      },
+      "hard": {
+        "label": "Zor",
+        "hint": "Casusun ipucu gerçek kelimeye çok yakın, aynı kategori — klasik."
+      }
     },
     "timerLabel": "Tartışma süresi",
     "timerOff": "Süre yok",
@@ -256,21 +270,81 @@
     "errNotConfigured": "Firebase yapılandırılmadı"
   },
   "categories": {
-    "food":          { "name": "Yiyecek ve İçecek",  "description": "Yenebilir şeyler. Çiftler lezzetli ve karıştıracak kadar yakın.", "icon": "🍕" },
-    "animals":       { "name": "Hayvanlar",           "description": "Büyük, küçük, pullu, tüylü.",                                    "icon": "🐾" },
-    "sports":        { "name": "Sporlar",             "description": "Vücutla yapılan, tercihen açık havada.",                          "icon": "⚽" },
-    "places":        { "name": "Yerler",              "description": "Odalar, binalar, şehirler, manzaralar.",                          "icon": "🗺️" },
-    "tech":          { "name": "Teknoloji",           "description": "Kablolar, ekranlar, pili olan her şey.",                          "icon": "📱" },
-    "entertainment": { "name": "Eğlence",             "description": "Filmler, kitaplar, oyunlar, müzik.",                              "icon": "🎬" },
-    "household":     { "name": "Ev",                  "description": "Mutfak, banyo, garaj şeyleri.",                                   "icon": "🛋️" },
-    "nature":        { "name": "Doğa ve Hava",        "description": "Gökyüzü, deniz, mevsim, fırtına.",                                "icon": "🌧️" },
-    "music":         { "name": "Müzik",               "description": "Enstrümanlar, türler, sesler.",                                   "icon": "🎵" },
-    "jobs":          { "name": "Meslekler",           "description": "İnsanların geçimi için yaptığı şeyler.",                          "icon": "💼" },
-    "vehicles":      { "name": "Araçlar",             "description": "Seni taşıyan şeyler.",                                            "icon": "🚗" },
-    "clothing":      { "name": "Giysiler",            "description": "Giydiğin şeyler.",                                                "icon": "👕" },
-    "body":          { "name": "Vücut ve Sağlık",     "description": "Anatomi, tıp, sağlık.",                                           "icon": "💪" },
-    "myth":          { "name": "Mitoloji ve Fantezi", "description": "Hikayelerdeki yaratıklar ve güçler.",                             "icon": "🐉" },
-    "tricky":        { "name": "Zor / Karışık",       "description": "Kategorileri aşan çiftler. Casus terleyecek.",                    "icon": "🎲" }
+    "food": {
+      "name": "Yiyecek ve İçecek",
+      "description": "Yenebilir şeyler. Çiftler lezzetli ve karıştıracak kadar yakın.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "Hayvanlar",
+      "description": "Büyük, küçük, pullu, tüylü.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "Sporlar",
+      "description": "Vücutla yapılan, tercihen açık havada.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "Yerler",
+      "description": "Odalar, binalar, şehirler, manzaralar.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "Teknoloji",
+      "description": "Kablolar, ekranlar, pili olan her şey.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "Eğlence",
+      "description": "Filmler, kitaplar, oyunlar, müzik.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "Ev",
+      "description": "Mutfak, banyo, garaj şeyleri.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "Doğa ve Hava",
+      "description": "Gökyüzü, deniz, mevsim, fırtına.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "Müzik",
+      "description": "Enstrümanlar, türler, sesler.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "Meslekler",
+      "description": "İnsanların geçimi için yaptığı şeyler.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "Araçlar",
+      "description": "Seni taşıyan şeyler.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "Giysiler",
+      "description": "Giydiğin şeyler.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "Vücut ve Sağlık",
+      "description": "Anatomi, tıp, sağlık.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "Mitoloji ve Fantezi",
+      "description": "Hikayelerdeki yaratıklar ve güçler.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "Zor / Karışık",
+      "description": "Kategorileri aşan çiftler. Casus terleyecek.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "Özel listen ({{count}} çift)",

@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "Spy — Le jeu de mots" },
-  "app": { "footer": "Spy — le jeu de mots. Jouez en personne ou en ligne avec vos amis.", "exitConfirm": "Appuyez à nouveau pour quitter" },
+  "meta": {
+    "title": "Spy — Le jeu de mots"
+  },
+  "app": {
+    "footer": "Spy — le jeu de mots. Jouez en personne ou en ligne avec vos amis.",
+    "exitConfirm": "Appuyez à nouveau pour quitter"
+  },
   "languages": {
     "label": "Langue",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← Accueil",
-    "back": "← Retour",
+    "home": "Accueil",
+    "back": "Retour",
     "cancel": "Annuler",
     "save": "Enregistrer",
     "delete": "Supprimer",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "Ils voient les autres espions sur leur carte.",
     "difficultyLabel": "Difficulté pour les villageois",
     "difficulty": {
-      "easy":   { "label": "Facile",    "hint": "L'espion n'a aucun indice — pur bluff, le plus facile à attraper." },
-      "medium": { "label": "Moyen",     "hint": "L'indice de l'espion est un proche de la même catégorie." },
-      "hard":   { "label": "Difficile", "hint": "L'indice de l'espion est très proche du vrai mot, même catégorie — classique." }
+      "easy": {
+        "label": "Facile",
+        "hint": "L'espion n'a aucun indice — pur bluff, le plus facile à attraper."
+      },
+      "medium": {
+        "label": "Moyen",
+        "hint": "L'indice de l'espion est un proche de la même catégorie."
+      },
+      "hard": {
+        "label": "Difficile",
+        "hint": "L'indice de l'espion est très proche du vrai mot, même catégorie — classique."
+      }
     },
     "timerLabel": "Minuteur de discussion",
     "timerOff": "Sans minuteur",
@@ -256,21 +270,81 @@
     "errNotConfigured": "Firebase non configuré"
   },
   "categories": {
-    "food":          { "name": "Nourriture & Boissons", "description": "Des choses à manger. Paires gourmandes et assez proches pour vous tromper.", "icon": "🍕" },
-    "animals":       { "name": "Animaux",                "description": "Des créatures grandes, petites, écailleuses, à poils.",                     "icon": "🐾" },
-    "sports":        { "name": "Sports",                 "description": "Ce qu'on fait avec son corps, idéalement dehors.",                          "icon": "⚽" },
-    "places":        { "name": "Lieux",                  "description": "Pièces, bâtiments, villes, paysages.",                                      "icon": "🗺️" },
-    "tech":          { "name": "Tech",                   "description": "Câbles, écrans, tout ce qui a une batterie.",                               "icon": "📱" },
-    "entertainment": { "name": "Divertissement",         "description": "Films, livres, jeux, musique.",                                             "icon": "🎬" },
-    "household":     { "name": "Maison",                 "description": "Choses de la cuisine, salle de bain, garage.",                              "icon": "🛋️" },
-    "nature":        { "name": "Nature & Météo",         "description": "Cieux, mers, saisons, tempêtes.",                                           "icon": "🌧️" },
-    "music":         { "name": "Musique",                "description": "Instruments, genres, sons.",                                                "icon": "🎵" },
-    "jobs":          { "name": "Métiers & Rôles",        "description": "Ce que les gens font dans la vie.",                                         "icon": "💼" },
-    "vehicles":      { "name": "Véhicules",              "description": "Des choses qui vous déplacent.",                                            "icon": "🚗" },
-    "clothing":      { "name": "Vêtements",              "description": "Ce que l'on porte.",                                                        "icon": "👕" },
-    "body":          { "name": "Corps & Santé",          "description": "Anatomie, médecine, bien-être.",                                            "icon": "💪" },
-    "myth":          { "name": "Mythologie & Fantasy",   "description": "Créatures et pouvoirs venus des récits.",                                   "icon": "🐉" },
-    "tricky":        { "name": "Piégeux / Mixte",        "description": "Des paires qui croisent les catégories. L'espion va transpirer.",           "icon": "🎲" }
+    "food": {
+      "name": "Nourriture & Boissons",
+      "description": "Des choses à manger. Paires gourmandes et assez proches pour vous tromper.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "Animaux",
+      "description": "Des créatures grandes, petites, écailleuses, à poils.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "Sports",
+      "description": "Ce qu'on fait avec son corps, idéalement dehors.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "Lieux",
+      "description": "Pièces, bâtiments, villes, paysages.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "Tech",
+      "description": "Câbles, écrans, tout ce qui a une batterie.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "Divertissement",
+      "description": "Films, livres, jeux, musique.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "Maison",
+      "description": "Choses de la cuisine, salle de bain, garage.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "Nature & Météo",
+      "description": "Cieux, mers, saisons, tempêtes.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "Musique",
+      "description": "Instruments, genres, sons.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "Métiers & Rôles",
+      "description": "Ce que les gens font dans la vie.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "Véhicules",
+      "description": "Des choses qui vous déplacent.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "Vêtements",
+      "description": "Ce que l'on porte.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "Corps & Santé",
+      "description": "Anatomie, médecine, bien-être.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "Mythologie & Fantasy",
+      "description": "Créatures et pouvoirs venus des récits.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "Piégeux / Mixte",
+      "description": "Des paires qui croisent les catégories. L'espion va transpirer.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "Votre liste personnelle ({{count}} paire)",

@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "Spy — Il gioco di parole" },
-  "app": { "footer": "Spy — il gioco di parole. Gioca dal vivo o online con gli amici.", "exitConfirm": "Premi di nuovo per uscire" },
+  "meta": {
+    "title": "Spy — Il gioco di parole"
+  },
+  "app": {
+    "footer": "Spy — il gioco di parole. Gioca dal vivo o online con gli amici.",
+    "exitConfirm": "Premi di nuovo per uscire"
+  },
   "languages": {
     "label": "Lingua",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← Home",
-    "back": "← Indietro",
+    "home": "Home",
+    "back": "Indietro",
     "cancel": "Annulla",
     "save": "Salva",
     "delete": "Elimina",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "Vedono le altre spie sulla carta.",
     "difficultyLabel": "Difficoltà per i villici",
     "difficulty": {
-      "easy":   { "label": "Facile",    "hint": "La spia non riceve alcun indizio — puro bluff, la più facile da scoprire." },
-      "medium": { "label": "Media",     "hint": "L'indizio della spia è un parente della stessa categoria." },
-      "hard":   { "label": "Difficile", "hint": "L'indizio della spia è molto vicino alla parola vera, stessa categoria — classico." }
+      "easy": {
+        "label": "Facile",
+        "hint": "La spia non riceve alcun indizio — puro bluff, la più facile da scoprire."
+      },
+      "medium": {
+        "label": "Media",
+        "hint": "L'indizio della spia è un parente della stessa categoria."
+      },
+      "hard": {
+        "label": "Difficile",
+        "hint": "L'indizio della spia è molto vicino alla parola vera, stessa categoria — classico."
+      }
     },
     "timerLabel": "Timer discussione",
     "timerOff": "Nessun timer",
@@ -256,21 +270,81 @@
     "errNotConfigured": "Firebase non configurato"
   },
   "categories": {
-    "food":          { "name": "Cibo & Bevande",       "description": "Roba commestibile. Coppie gustose e abbastanza simili da confondere.", "icon": "🍕" },
-    "animals":       { "name": "Animali",              "description": "Creature grandi, piccole, squamose, pelose.",                          "icon": "🐾" },
-    "sports":        { "name": "Sport",                "description": "Cose che fai col corpo, meglio se all'aria aperta.",                   "icon": "⚽" },
-    "places":        { "name": "Luoghi",               "description": "Stanze, edifici, città, paesaggi.",                                    "icon": "🗺️" },
-    "tech":          { "name": "Tecnologia",           "description": "Cavi, schermi, tutto ciò che ha una batteria.",                        "icon": "📱" },
-    "entertainment": { "name": "Intrattenimento",      "description": "Film, libri, giochi, musica.",                                         "icon": "🎬" },
-    "household":     { "name": "Casa",                 "description": "Cose di cucina, bagno, garage.",                                       "icon": "🛋️" },
-    "nature":        { "name": "Natura & Meteo",       "description": "Cieli, mari, stagioni e tempeste.",                                    "icon": "🌧️" },
-    "music":         { "name": "Musica",               "description": "Strumenti, generi, suoni.",                                            "icon": "🎵" },
-    "jobs":          { "name": "Mestieri & Ruoli",     "description": "Cosa fanno le persone per vivere.",                                    "icon": "💼" },
-    "vehicles":      { "name": "Veicoli",              "description": "Cose che ti spostano in giro.",                                        "icon": "🚗" },
-    "clothing":      { "name": "Abbigliamento",        "description": "Ciò che indossi.",                                                     "icon": "👕" },
-    "body":          { "name": "Corpo & Salute",       "description": "Anatomia, medicina, benessere.",                                       "icon": "💪" },
-    "myth":          { "name": "Mitologia & Fantasy",  "description": "Creature e poteri tratti dalle storie.",                               "icon": "🐉" },
-    "tricky":        { "name": "Furbo / Misto",        "description": "Coppie che attraversano le categorie. La spia suderà.",                "icon": "🎲" }
+    "food": {
+      "name": "Cibo & Bevande",
+      "description": "Roba commestibile. Coppie gustose e abbastanza simili da confondere.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "Animali",
+      "description": "Creature grandi, piccole, squamose, pelose.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "Sport",
+      "description": "Cose che fai col corpo, meglio se all'aria aperta.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "Luoghi",
+      "description": "Stanze, edifici, città, paesaggi.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "Tecnologia",
+      "description": "Cavi, schermi, tutto ciò che ha una batteria.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "Intrattenimento",
+      "description": "Film, libri, giochi, musica.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "Casa",
+      "description": "Cose di cucina, bagno, garage.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "Natura & Meteo",
+      "description": "Cieli, mari, stagioni e tempeste.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "Musica",
+      "description": "Strumenti, generi, suoni.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "Mestieri & Ruoli",
+      "description": "Cosa fanno le persone per vivere.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "Veicoli",
+      "description": "Cose che ti spostano in giro.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "Abbigliamento",
+      "description": "Ciò che indossi.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "Corpo & Salute",
+      "description": "Anatomia, medicina, benessere.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "Mitologia & Fantasy",
+      "description": "Creature e poteri tratti dalle storie.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "Furbo / Misto",
+      "description": "Coppie che attraversano le categorie. La spia suderà.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "La tua lista personale ({{count}} coppia)",

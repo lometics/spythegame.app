@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "Spion — Ordspelet" },
-  "app": { "footer": "Spion — ordspelet. Spela på plats eller online med vänner.", "exitConfirm": "Tryck igen för att avsluta" },
+  "meta": {
+    "title": "Spion — Ordspelet"
+  },
+  "app": {
+    "footer": "Spion — ordspelet. Spela på plats eller online med vänner.",
+    "exitConfirm": "Tryck igen för att avsluta"
+  },
   "languages": {
     "label": "Språk",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← Hem",
-    "back": "← Tillbaka",
+    "home": "Hem",
+    "back": "Tillbaka",
     "cancel": "Avbryt",
     "save": "Spara",
     "delete": "Ta bort",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "De ser andra spioner på kortet.",
     "difficultyLabel": "Svårighet för byborna",
     "difficulty": {
-      "easy":   { "label": "Lätt",  "hint": "Spionen får ingen ledtråd — ren bluff, lättast att fånga." },
-      "medium": { "label": "Medel", "hint": "Spionens ledtråd är ett syskon från samma kategori." },
-      "hard":   { "label": "Svår",  "hint": "Spionens ledtråd är väldigt nära riktiga ordet, samma kategori — klassiskt." }
+      "easy": {
+        "label": "Lätt",
+        "hint": "Spionen får ingen ledtråd — ren bluff, lättast att fånga."
+      },
+      "medium": {
+        "label": "Medel",
+        "hint": "Spionens ledtråd är ett syskon från samma kategori."
+      },
+      "hard": {
+        "label": "Svår",
+        "hint": "Spionens ledtråd är väldigt nära riktiga ordet, samma kategori — klassiskt."
+      }
     },
     "timerLabel": "Diskussionstimer",
     "timerOff": "Ingen timer",
@@ -256,21 +270,81 @@
     "errNotConfigured": "Firebase ej konfigurerad"
   },
   "categories": {
-    "food":          { "name": "Mat och Dryck",       "description": "Ätbara saker. Par är goda och tillräckligt lika för förvirring.", "icon": "🍕" },
-    "animals":       { "name": "Djur",                 "description": "Stora, små, fjälliga, fluffiga.",                                "icon": "🐾" },
-    "sports":        { "name": "Sport",                "description": "Saker att göra med kroppen, helst utomhus.",                     "icon": "⚽" },
-    "places":        { "name": "Platser",              "description": "Rum, byggnader, städer, landskap.",                              "icon": "🗺️" },
-    "tech":          { "name": "Teknik",               "description": "Kablar, skärmar, allt med batteri.",                             "icon": "📱" },
-    "entertainment": { "name": "Underhållning",        "description": "Filmer, böcker, spel, musik.",                                   "icon": "🎬" },
-    "household":     { "name": "Hushåll",              "description": "Saker i kök, badrum, garage.",                                   "icon": "🛋️" },
-    "nature":        { "name": "Natur och Väder",      "description": "Himlar, hav, årstider, stormar.",                                "icon": "🌧️" },
-    "music":         { "name": "Musik",                "description": "Instrument, genrer, ljud.",                                      "icon": "🎵" },
-    "jobs":          { "name": "Yrken",                "description": "Vad folk gör för sitt levebröd.",                                "icon": "💼" },
-    "vehicles":      { "name": "Fordon",               "description": "Saker som förflyttar dig.",                                      "icon": "🚗" },
-    "clothing":      { "name": "Kläder",               "description": "Det du bär.",                                                    "icon": "👕" },
-    "body":          { "name": "Kropp och Hälsa",      "description": "Anatomi, medicin, välmående.",                                   "icon": "💪" },
-    "myth":          { "name": "Mytologi och Fantasy", "description": "Varelser och krafter från berättelser.",                         "icon": "🐉" },
-    "tricky":        { "name": "Svåra / Blandade",     "description": "Par som korsar kategorier. Spionen kommer svettas.",             "icon": "🎲" }
+    "food": {
+      "name": "Mat och Dryck",
+      "description": "Ätbara saker. Par är goda och tillräckligt lika för förvirring.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "Djur",
+      "description": "Stora, små, fjälliga, fluffiga.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "Sport",
+      "description": "Saker att göra med kroppen, helst utomhus.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "Platser",
+      "description": "Rum, byggnader, städer, landskap.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "Teknik",
+      "description": "Kablar, skärmar, allt med batteri.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "Underhållning",
+      "description": "Filmer, böcker, spel, musik.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "Hushåll",
+      "description": "Saker i kök, badrum, garage.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "Natur och Väder",
+      "description": "Himlar, hav, årstider, stormar.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "Musik",
+      "description": "Instrument, genrer, ljud.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "Yrken",
+      "description": "Vad folk gör för sitt levebröd.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "Fordon",
+      "description": "Saker som förflyttar dig.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "Kläder",
+      "description": "Det du bär.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "Kropp och Hälsa",
+      "description": "Anatomi, medicin, välmående.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "Mytologi och Fantasy",
+      "description": "Varelser och krafter från berättelser.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "Svåra / Blandade",
+      "description": "Par som korsar kategorier. Spionen kommer svettas.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "Din egna lista ({{count}} par)",

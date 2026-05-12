@@ -1,5 +1,7 @@
 {
-  "meta": { "title": "Spy — The Word Game" },
+  "meta": {
+    "title": "Spy — The Word Game"
+  },
   "app": {
     "footer": "Spy — the word game. Play in person or online with friends.",
     "exitConfirm": "Press back again to exit"
@@ -23,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← Home",
-    "back": "← Back",
+    "home": "Home",
+    "back": "Back",
     "cancel": "Cancel",
     "save": "Save",
     "delete": "Delete",
@@ -121,9 +123,18 @@
     "spiesKnowHint": "They see fellow spies on their card.",
     "difficultyLabel": "Difficulty for villagers",
     "difficulty": {
-      "easy":   { "label": "Easy",   "hint": "Spy gets no hint — pure bluffing, easiest to catch." },
-      "medium": { "label": "Medium", "hint": "Spy's hint is a sibling from the same category." },
-      "hard":   { "label": "Hard",   "hint": "Spy's hint is very close to the real word, same category — classic." }
+      "easy": {
+        "label": "Easy",
+        "hint": "Spy gets no hint — pure bluffing, easiest to catch."
+      },
+      "medium": {
+        "label": "Medium",
+        "hint": "Spy's hint is a sibling from the same category."
+      },
+      "hard": {
+        "label": "Hard",
+        "hint": "Spy's hint is very close to the real word, same category — classic."
+      }
     },
     "timerLabel": "Discussion timer",
     "timerOff": "No timer",
@@ -275,21 +286,81 @@
     "leaveRoom": "Leave room"
   },
   "categories": {
-    "food":          { "name": "Food & Drink",        "description": "Edible stuff. Pairs lean tasty and close enough to confuse.", "icon": "🍕" },
-    "animals":       { "name": "Animals",             "description": "Creatures big, small, scaly, fluffy.",                         "icon": "🐾" },
-    "sports":        { "name": "Sports",              "description": "Things you do with your body, ideally outdoors.",              "icon": "⚽" },
-    "places":        { "name": "Places",              "description": "Rooms, buildings, cities, landscapes.",                        "icon": "🗺️" },
-    "tech":          { "name": "Tech",                "description": "Cables, screens, anything with a battery.",                    "icon": "📱" },
-    "entertainment": { "name": "Entertainment",       "description": "Movies, books, games, music.",                                 "icon": "🎬" },
-    "household":     { "name": "Household",           "description": "Things in your kitchen, bathroom, garage.",                    "icon": "🛋️" },
-    "nature":        { "name": "Nature & Weather",    "description": "Skies, seas, seasons, and storms.",                            "icon": "🌧️" },
-    "music":         { "name": "Music",               "description": "Instruments, genres, sounds.",                                 "icon": "🎵" },
-    "jobs":          { "name": "Jobs & Roles",        "description": "What people do for a living.",                                 "icon": "💼" },
-    "vehicles":      { "name": "Vehicles",            "description": "Things that move you around.",                                 "icon": "🚗" },
-    "clothing":      { "name": "Clothing",            "description": "What you wear.",                                               "icon": "👕" },
-    "body":          { "name": "Body & Health",       "description": "Anatomy, medicine, wellness.",                                 "icon": "💪" },
-    "myth":          { "name": "Mythology & Fantasy", "description": "Creatures and powers from stories.",                           "icon": "🐉" },
-    "tricky":        { "name": "Tricky / Mixed",      "description": "Pairs that cross categories. The spy will sweat.",             "icon": "🎲" }
+    "food": {
+      "name": "Food & Drink",
+      "description": "Edible stuff. Pairs lean tasty and close enough to confuse.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "Animals",
+      "description": "Creatures big, small, scaly, fluffy.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "Sports",
+      "description": "Things you do with your body, ideally outdoors.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "Places",
+      "description": "Rooms, buildings, cities, landscapes.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "Tech",
+      "description": "Cables, screens, anything with a battery.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "Entertainment",
+      "description": "Movies, books, games, music.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "Household",
+      "description": "Things in your kitchen, bathroom, garage.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "Nature & Weather",
+      "description": "Skies, seas, seasons, and storms.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "Music",
+      "description": "Instruments, genres, sounds.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "Jobs & Roles",
+      "description": "What people do for a living.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "Vehicles",
+      "description": "Things that move you around.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "Clothing",
+      "description": "What you wear.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "Body & Health",
+      "description": "Anatomy, medicine, wellness.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "Mythology & Fantasy",
+      "description": "Creatures and powers from stories.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "Tricky / Mixed",
+      "description": "Pairs that cross categories. The spy will sweat.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "Your custom list ({{count}} pair)",

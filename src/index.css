@@ -230,7 +230,7 @@ body {
     margin-top: 0 !important;
   }
   main {
-    padding-bottom: calc(5.5rem + max(env(safe-area-inset-bottom), 0.5rem)) !important;
+    padding-bottom: calc(var(--action-bar-h, 4.5rem) + max(env(safe-area-inset-bottom), 0.5rem)) !important;
   }
 }
 

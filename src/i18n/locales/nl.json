@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "Spion — Het Woordspel" },
-  "app": { "footer": "Spion — het woordspel. Speel live of online met vrienden.", "exitConfirm": "Druk nogmaals om af te sluiten" },
+  "meta": {
+    "title": "Spion — Het Woordspel"
+  },
+  "app": {
+    "footer": "Spion — het woordspel. Speel live of online met vrienden.",
+    "exitConfirm": "Druk nogmaals om af te sluiten"
+  },
   "languages": {
     "label": "Taal",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← Begin",
-    "back": "← Terug",
+    "home": "Begin",
+    "back": "Terug",
     "cancel": "Annuleren",
     "save": "Opslaan",
     "delete": "Verwijderen",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "Ze zien medespionnen op hun kaart.",
     "difficultyLabel": "Moeilijkheid voor burgers",
     "difficulty": {
-      "easy":   { "label": "Makkelijk", "hint": "Spion krijgt geen hint — pure bluf, makkelijkst te pakken." },
-      "medium": { "label": "Gemiddeld", "hint": "Hint van spion is een buur uit dezelfde categorie." },
-      "hard":   { "label": "Moeilijk",  "hint": "Hint van spion ligt heel dicht bij het echte woord, zelfde categorie — klassiek." }
+      "easy": {
+        "label": "Makkelijk",
+        "hint": "Spion krijgt geen hint — pure bluf, makkelijkst te pakken."
+      },
+      "medium": {
+        "label": "Gemiddeld",
+        "hint": "Hint van spion is een buur uit dezelfde categorie."
+      },
+      "hard": {
+        "label": "Moeilijk",
+        "hint": "Hint van spion ligt heel dicht bij het echte woord, zelfde categorie — klassiek."
+      }
     },
     "timerLabel": "Discussietijd",
     "timerOff": "Geen timer",
@@ -256,21 +270,81 @@
     "errNotConfigured": "Firebase niet ingesteld"
   },
   "categories": {
-    "food":          { "name": "Eten en Drinken",    "description": "Eetbare dingen. Paren zijn smakelijk en lijken op elkaar.", "icon": "🍕" },
-    "animals":       { "name": "Dieren",              "description": "Groot, klein, schubbig, pluizig.",                          "icon": "🐾" },
-    "sports":        { "name": "Sport",               "description": "Dingen om met je lichaam te doen, liefst buiten.",          "icon": "⚽" },
-    "places":        { "name": "Plekken",             "description": "Kamers, gebouwen, steden, landschappen.",                   "icon": "🗺️" },
-    "tech":          { "name": "Tech",                "description": "Kabels, schermen, alles met een batterij.",                 "icon": "📱" },
-    "entertainment": { "name": "Entertainment",       "description": "Films, boeken, games, muziek.",                             "icon": "🎬" },
-    "household":     { "name": "Huishouden",          "description": "Dingen in keuken, badkamer, garage.",                       "icon": "🛋️" },
-    "nature":        { "name": "Natuur en Weer",      "description": "Luchten, zeeën, seizoenen, stormen.",                       "icon": "🌧️" },
-    "music":         { "name": "Muziek",              "description": "Instrumenten, genres, klanken.",                            "icon": "🎵" },
-    "jobs":          { "name": "Beroepen",            "description": "Wat mensen doen voor de kost.",                             "icon": "💼" },
-    "vehicles":      { "name": "Voertuigen",          "description": "Dingen die je vervoeren.",                                  "icon": "🚗" },
-    "clothing":      { "name": "Kleding",             "description": "Wat je draagt.",                                            "icon": "👕" },
-    "body":          { "name": "Lichaam en Gezondheid","description": "Anatomie, geneeskunde, welzijn.",                          "icon": "💪" },
-    "myth":          { "name": "Mythen en Fantasie",  "description": "Wezens en krachten uit verhalen.",                          "icon": "🐉" },
-    "tricky":        { "name": "Lastig / Gemengd",    "description": "Paren door categorieën heen. De spion gaat zweten.",        "icon": "🎲" }
+    "food": {
+      "name": "Eten en Drinken",
+      "description": "Eetbare dingen. Paren zijn smakelijk en lijken op elkaar.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "Dieren",
+      "description": "Groot, klein, schubbig, pluizig.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "Sport",
+      "description": "Dingen om met je lichaam te doen, liefst buiten.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "Plekken",
+      "description": "Kamers, gebouwen, steden, landschappen.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "Tech",
+      "description": "Kabels, schermen, alles met een batterij.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "Entertainment",
+      "description": "Films, boeken, games, muziek.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "Huishouden",
+      "description": "Dingen in keuken, badkamer, garage.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "Natuur en Weer",
+      "description": "Luchten, zeeën, seizoenen, stormen.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "Muziek",
+      "description": "Instrumenten, genres, klanken.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "Beroepen",
+      "description": "Wat mensen doen voor de kost.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "Voertuigen",
+      "description": "Dingen die je vervoeren.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "Kleding",
+      "description": "Wat je draagt.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "Lichaam en Gezondheid",
+      "description": "Anatomie, geneeskunde, welzijn.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "Mythen en Fantasie",
+      "description": "Wezens en krachten uit verhalen.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "Lastig / Gemengd",
+      "description": "Paren door categorieën heen. De spion gaat zweten.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "Jouw lijst ({{count}} paar)",

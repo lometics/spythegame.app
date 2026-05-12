@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "间谍 — 单词游戏" },
-  "app": { "footer": "间谍 — 单词游戏。和朋友面对面或线上玩。", "exitConfirm": "再次按下退出" },
+  "meta": {
+    "title": "间谍 — 单词游戏"
+  },
+  "app": {
+    "footer": "间谍 — 单词游戏。和朋友面对面或线上玩。",
+    "exitConfirm": "再次按下退出"
+  },
   "languages": {
     "label": "语言",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← 首页",
-    "back": "← 返回",
+    "home": "首页",
+    "back": "返回",
     "cancel": "取消",
     "save": "保存",
     "delete": "删除",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "他们在卡上看到同伴间谍。",
     "difficultyLabel": "村民难度",
     "difficulty": {
-      "easy":   { "label": "简单", "hint": "间谍无提示 — 纯靠虚张声势,最易被抓。" },
-      "medium": { "label": "中等", "hint": "间谍提示是同类别的相邻词。" },
-      "hard":   { "label": "困难", "hint": "间谍提示非常接近真实词,同类别 — 经典。" }
+      "easy": {
+        "label": "简单",
+        "hint": "间谍无提示 — 纯靠虚张声势,最易被抓。"
+      },
+      "medium": {
+        "label": "中等",
+        "hint": "间谍提示是同类别的相邻词。"
+      },
+      "hard": {
+        "label": "困难",
+        "hint": "间谍提示非常接近真实词,同类别 — 经典。"
+      }
     },
     "timerLabel": "讨论计时",
     "timerOff": "无计时",
@@ -256,21 +270,81 @@
     "errNotConfigured": "Firebase 未配置"
   },
   "categories": {
-    "food":          { "name": "食物与饮料",   "description": "能吃的东西。词对美味且足够接近以混淆。", "icon": "🍕" },
-    "animals":       { "name": "动物",          "description": "大的、小的、有鳞的、毛茸茸的。",         "icon": "🐾" },
-    "sports":        { "name": "运动",          "description": "用身体做的事，最好在户外。",             "icon": "⚽" },
-    "places":        { "name": "地点",          "description": "房间、建筑、城市、风景。",               "icon": "🗺️" },
-    "tech":          { "name": "科技",          "description": "线缆、屏幕、带电池的一切。",             "icon": "📱" },
-    "entertainment": { "name": "娱乐",          "description": "电影、书、游戏、音乐。",                 "icon": "🎬" },
-    "household":     { "name": "家居",          "description": "厨房、浴室、车库的东西。",               "icon": "🛋️" },
-    "nature":        { "name": "自然与天气",    "description": "天空、海洋、季节、风暴。",               "icon": "🌧️" },
-    "music":         { "name": "音乐",          "description": "乐器、流派、声音。",                     "icon": "🎵" },
-    "jobs":          { "name": "职业",          "description": "人们以此为生。",                         "icon": "💼" },
-    "vehicles":      { "name": "交通工具",      "description": "带你四处走的东西。",                     "icon": "🚗" },
-    "clothing":      { "name": "服装",          "description": "你穿的东西。",                           "icon": "👕" },
-    "body":          { "name": "身体与健康",    "description": "解剖、医学、健康。",                     "icon": "💪" },
-    "myth":          { "name": "神话与奇幻",    "description": "故事里的生物和力量。",                   "icon": "🐉" },
-    "tricky":        { "name": "棘手 / 混合",   "description": "跨类别的词对。间谍要冒汗了。",           "icon": "🎲" }
+    "food": {
+      "name": "食物与饮料",
+      "description": "能吃的东西。词对美味且足够接近以混淆。",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "动物",
+      "description": "大的、小的、有鳞的、毛茸茸的。",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "运动",
+      "description": "用身体做的事，最好在户外。",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "地点",
+      "description": "房间、建筑、城市、风景。",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "科技",
+      "description": "线缆、屏幕、带电池的一切。",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "娱乐",
+      "description": "电影、书、游戏、音乐。",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "家居",
+      "description": "厨房、浴室、车库的东西。",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "自然与天气",
+      "description": "天空、海洋、季节、风暴。",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "音乐",
+      "description": "乐器、流派、声音。",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "职业",
+      "description": "人们以此为生。",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "交通工具",
+      "description": "带你四处走的东西。",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "服装",
+      "description": "你穿的东西。",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "身体与健康",
+      "description": "解剖、医学、健康。",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "神话与奇幻",
+      "description": "故事里的生物和力量。",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "棘手 / 混合",
+      "description": "跨类别的词对。间谍要冒汗了。",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "你的自定义列表（{{count}} 对）",

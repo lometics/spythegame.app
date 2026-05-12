@@ -25,6 +25,11 @@ export default {
           400: '#fbbf24',
           500: '#f59e0b',
         },
+        // shadcn token bridge — enables `text-foreground/60`, `bg-card`, etc.
+        background: 'hsl(var(--background) / <alpha-value>)',
+        foreground: 'hsl(var(--foreground) / <alpha-value>)',
+        card: 'hsl(var(--card) / <alpha-value>)',
+        border: 'hsl(var(--border) / <alpha-value>)',
       },
       borderRadius: {
         // shadcn default scale: --radius 0.5rem; lg = radius, md = radius - 2px.

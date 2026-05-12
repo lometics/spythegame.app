@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "スパイ — ワードゲーム" },
-  "app": { "footer": "スパイ — ワードゲーム。対面でもオンラインでも友達と遊ぼう。", "exitConfirm": "もう一度押すと終了します" },
+  "meta": {
+    "title": "スパイ — ワードゲーム"
+  },
+  "app": {
+    "footer": "スパイ — ワードゲーム。対面でもオンラインでも友達と遊ぼう。",
+    "exitConfirm": "もう一度押すと終了します"
+  },
   "languages": {
     "label": "言語",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← ホーム",
-    "back": "← 戻る",
+    "home": "ホーム",
+    "back": "戻る",
     "cancel": "キャンセル",
     "save": "保存",
     "delete": "削除",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "カードに仲間のスパイが表示される。",
     "difficultyLabel": "村人の難易度",
     "difficulty": {
-      "easy":   { "label": "簡単",   "hint": "スパイはヒントなし — 純粋なブラフ、最も捕まえやすい。" },
-      "medium": { "label": "普通",   "hint": "スパイのヒントは同じカテゴリ。" },
-      "hard":   { "label": "難しい", "hint": "スパイのヒントは本物にとても近い、同じカテゴリ — 古典。" }
+      "easy": {
+        "label": "簡単",
+        "hint": "スパイはヒントなし — 純粋なブラフ、最も捕まえやすい。"
+      },
+      "medium": {
+        "label": "普通",
+        "hint": "スパイのヒントは同じカテゴリ。"
+      },
+      "hard": {
+        "label": "難しい",
+        "hint": "スパイのヒントは本物にとても近い、同じカテゴリ — 古典。"
+      }
     },
     "timerLabel": "議論タイマー",
     "timerOff": "タイマーなし",
@@ -256,21 +270,81 @@
     "errNotConfigured": "Firebase未設定"
   },
   "categories": {
-    "food":          { "name": "食べ物・飲み物",  "description": "食べられるもの。ペアは美味しく紛らわしい。", "icon": "🍕" },
-    "animals":       { "name": "動物",            "description": "大小、うろこ、もふもふ。",                    "icon": "🐾" },
-    "sports":        { "name": "スポーツ",        "description": "体を動かすもの、できれば屋外。",              "icon": "⚽" },
-    "places":        { "name": "場所",            "description": "部屋、建物、都市、風景。",                    "icon": "🗺️" },
-    "tech":          { "name": "テクノロジー",    "description": "ケーブル、画面、電池があるもの全部。",        "icon": "📱" },
-    "entertainment": { "name": "エンタメ",        "description": "映画、本、ゲーム、音楽。",                    "icon": "🎬" },
-    "household":     { "name": "家庭用品",        "description": "台所、浴室、車庫のもの。",                    "icon": "🛋️" },
-    "nature":        { "name": "自然と天気",      "description": "空、海、季節、嵐。",                          "icon": "🌧️" },
-    "music":         { "name": "音楽",            "description": "楽器、ジャンル、音。",                        "icon": "🎵" },
-    "jobs":          { "name": "職業",            "description": "人々の生計。",                                "icon": "💼" },
-    "vehicles":      { "name": "乗り物",          "description": "あなたを運ぶもの。",                          "icon": "🚗" },
-    "clothing":      { "name": "服",              "description": "着るもの。",                                  "icon": "👕" },
-    "body":          { "name": "体と健康",        "description": "解剖、医学、健康。",                          "icon": "💪" },
-    "myth":          { "name": "神話とファンタジー","description": "物語の生き物と力。",                        "icon": "🐉" },
-    "tricky":        { "name": "難問・ミックス",  "description": "カテゴリを跨ぐペア。スパイは汗をかく。",      "icon": "🎲" }
+    "food": {
+      "name": "食べ物・飲み物",
+      "description": "食べられるもの。ペアは美味しく紛らわしい。",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "動物",
+      "description": "大小、うろこ、もふもふ。",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "スポーツ",
+      "description": "体を動かすもの、できれば屋外。",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "場所",
+      "description": "部屋、建物、都市、風景。",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "テクノロジー",
+      "description": "ケーブル、画面、電池があるもの全部。",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "エンタメ",
+      "description": "映画、本、ゲーム、音楽。",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "家庭用品",
+      "description": "台所、浴室、車庫のもの。",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "自然と天気",
+      "description": "空、海、季節、嵐。",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "音楽",
+      "description": "楽器、ジャンル、音。",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "職業",
+      "description": "人々の生計。",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "乗り物",
+      "description": "あなたを運ぶもの。",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "服",
+      "description": "着るもの。",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "体と健康",
+      "description": "解剖、医学、健康。",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "神話とファンタジー",
+      "description": "物語の生き物と力。",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "難問・ミックス",
+      "description": "カテゴリを跨ぐペア。スパイは汗をかく。",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "あなたのカスタムリスト（{{count}}ペア）",

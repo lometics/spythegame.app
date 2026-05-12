@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { ArrowLeft } from 'lucide-react'
 import { useGame } from '../game/state'
 import type { CustomList } from '../game/types'
 
@@ -48,7 +49,8 @@ export default function EditList() {
     return (
       <div className="space-y-4 flex flex-col flex-1">
         <nav className="text-sm">
-          <Link to="/local" className="text-slate-400 hover:text-slate-200">
+          <Link to="/local" className="inline-flex items-center gap-1.5 text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md">
+            <ArrowLeft size={16} />
             {t('common.back')}
           </Link>
         </nav>
@@ -131,8 +133,9 @@ export default function EditList() {
 
   return (
     <div className="space-y-3 sm:space-y-5 flex flex-col flex-1">
-      <nav className="flex items-center justify-between text-xs sm:text-sm">
-        <Link to="/local" className="text-slate-400 hover:text-slate-200">
+      <nav className="flex items-center justify-between text-sm">
+        <Link to="/local" className="inline-flex items-center gap-1.5 text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md">
+          <ArrowLeft size={16} />
           {t('common.back')}
         </Link>
         <span className="text-slate-500">

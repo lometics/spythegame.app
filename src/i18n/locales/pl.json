@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "Szpieg — Gra Słowna" },
-  "app": { "footer": "Szpieg — gra słowna. Graj na żywo lub online ze znajomymi.", "exitConfirm": "Naciśnij ponownie, aby wyjść" },
+  "meta": {
+    "title": "Szpieg — Gra Słowna"
+  },
+  "app": {
+    "footer": "Szpieg — gra słowna. Graj na żywo lub online ze znajomymi.",
+    "exitConfirm": "Naciśnij ponownie, aby wyjść"
+  },
   "languages": {
     "label": "Język",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← Start",
-    "back": "← Wstecz",
+    "home": "Start",
+    "back": "Wstecz",
     "cancel": "Anuluj",
     "save": "Zapisz",
     "delete": "Usuń",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "Widzą się na karcie.",
     "difficultyLabel": "Trudność dla cywili",
     "difficulty": {
-      "easy":   { "label": "Łatwy",  "hint": "Szpieg bez wskazówki — czysty blef, najłatwiej go złapać." },
-      "medium": { "label": "Średni", "hint": "Wskazówka z tej samej kategorii." },
-      "hard":   { "label": "Trudny", "hint": "Wskazówka bardzo blisko prawdziwego słowa, ta sama kategoria — klasyk." }
+      "easy": {
+        "label": "Łatwy",
+        "hint": "Szpieg bez wskazówki — czysty blef, najłatwiej go złapać."
+      },
+      "medium": {
+        "label": "Średni",
+        "hint": "Wskazówka z tej samej kategorii."
+      },
+      "hard": {
+        "label": "Trudny",
+        "hint": "Wskazówka bardzo blisko prawdziwego słowa, ta sama kategoria — klasyk."
+      }
     },
     "timerLabel": "Czas dyskusji",
     "timerOff": "Bez czasu",
@@ -260,21 +274,81 @@
     "errNotConfigured": "Firebase nieskonfigurowane"
   },
   "categories": {
-    "food":          { "name": "Jedzenie i Napoje",  "description": "Coś do jedzenia. Pary smaczne i podobne, by zmylić.", "icon": "🍕" },
-    "animals":       { "name": "Zwierzęta",           "description": "Duże, małe, łuskate, puchate.",                       "icon": "🐾" },
-    "sports":        { "name": "Sporty",              "description": "Coś dla ciała, najlepiej na świeżym powietrzu.",      "icon": "⚽" },
-    "places":        { "name": "Miejsca",             "description": "Pokoje, budynki, miasta, krajobrazy.",                "icon": "🗺️" },
-    "tech":          { "name": "Technologia",         "description": "Kable, ekrany, wszystko z baterią.",                  "icon": "📱" },
-    "entertainment": { "name": "Rozrywka",            "description": "Filmy, książki, gry, muzyka.",                        "icon": "🎬" },
-    "household":     { "name": "Dom",                 "description": "Kuchnia, łazienka, garaż.",                           "icon": "🛋️" },
-    "nature":        { "name": "Natura i Pogoda",     "description": "Niebo, morza, pory roku, burze.",                     "icon": "🌧️" },
-    "music":         { "name": "Muzyka",              "description": "Instrumenty, gatunki, dźwięki.",                      "icon": "🎵" },
-    "jobs":          { "name": "Zawody",              "description": "Co ludzie robią zawodowo.",                           "icon": "💼" },
-    "vehicles":      { "name": "Pojazdy",             "description": "Coś, co cię przemieszcza.",                           "icon": "🚗" },
-    "clothing":      { "name": "Ubrania",             "description": "Co nosisz.",                                          "icon": "👕" },
-    "body":          { "name": "Ciało i Zdrowie",     "description": "Anatomia, medycyna, dobrostan.",                      "icon": "💪" },
-    "myth":          { "name": "Mitologia i Fantasy", "description": "Stworzenia i moce z opowieści.",                      "icon": "🐉" },
-    "tricky":        { "name": "Trudne / Mieszane",   "description": "Pary przekraczające kategorie. Szpieg się spoci.",    "icon": "🎲" }
+    "food": {
+      "name": "Jedzenie i Napoje",
+      "description": "Coś do jedzenia. Pary smaczne i podobne, by zmylić.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "Zwierzęta",
+      "description": "Duże, małe, łuskate, puchate.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "Sporty",
+      "description": "Coś dla ciała, najlepiej na świeżym powietrzu.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "Miejsca",
+      "description": "Pokoje, budynki, miasta, krajobrazy.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "Technologia",
+      "description": "Kable, ekrany, wszystko z baterią.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "Rozrywka",
+      "description": "Filmy, książki, gry, muzyka.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "Dom",
+      "description": "Kuchnia, łazienka, garaż.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "Natura i Pogoda",
+      "description": "Niebo, morza, pory roku, burze.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "Muzyka",
+      "description": "Instrumenty, gatunki, dźwięki.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "Zawody",
+      "description": "Co ludzie robią zawodowo.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "Pojazdy",
+      "description": "Coś, co cię przemieszcza.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "Ubrania",
+      "description": "Co nosisz.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "Ciało i Zdrowie",
+      "description": "Anatomia, medycyna, dobrostan.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "Mitologia i Fantasy",
+      "description": "Stworzenia i moce z opowieści.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "Trudne / Mieszane",
+      "description": "Pary przekraczające kategorie. Szpieg się spoci.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "Twoja lista ({{count}} para)",

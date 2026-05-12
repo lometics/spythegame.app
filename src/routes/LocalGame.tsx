@@ -1,5 +1,6 @@
 import { Link, Navigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { ArrowLeft } from 'lucide-react'
 import { useGame } from '../game/state'
 import RevealDeck from '../components/RevealDeck'
 import DiscussionTimer from '../components/DiscussionTimer'
@@ -16,15 +17,19 @@ export default function LocalGame() {
   const revealAnswer = useGame((s) => s.revealAnswer)
 
   return (
-    <div className="space-y-2 sm:space-y-4 flex flex-col flex-1">
-      <nav className="flex items-center justify-between text-xs sm:text-sm">
-        <Link to="/" className="text-slate-400 hover:text-slate-200">
+    <div className="space-y-3 flex flex-col flex-1">
+      <nav className="flex items-center justify-between text-sm">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-1.5 text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md"
+        >
+          <ArrowLeft size={16} />
           {t('common.home')}
         </Link>
         {phase !== 'lobby' && (
-          <span className="text-slate-500">
+          <span className="text-foreground/50">
             {t('localGame.phase')}{' '}
-            <span className="text-slate-300">{phase}</span>
+            <span className="text-foreground/80">{phase}</span>
           </span>
         )}
       </nav>
@@ -41,22 +46,22 @@ export default function LocalGame() {
       )}
 
       {phase === 'discussion' && (
-        <div className="space-y-2 sm:space-y-5 flex flex-col flex-1">
+        <div className="space-y-4 flex flex-col flex-1">
           <header className="text-center">
-            <h2 className="font-display text-xl sm:text-2xl font-bold">
+            <h2 className="font-display text-xl font-bold">
               {t('localGame.discuss.title')}
             </h2>
-            <p className="text-slate-400 text-xs sm:text-sm">
+            <p className="text-foreground/60 text-sm">
               {t('localGame.discuss.desc')}
             </p>
           </header>
 
           <section className="card">
-            <div className="label mb-1.5 sm:mb-2">{t('localGame.discuss.clueOrder')}</div>
-            <div className="font-display text-lg sm:text-xl font-bold text-accent-400 mb-2 sm:mb-3">
+            <div className="label mb-2">{t('localGame.discuss.clueOrder')}</div>
+            <div className="font-display text-xl font-bold text-accent-400 mb-3">
               {players.find((p) => p.id === firstClueGiverId)?.name}
             </div>
-            <ol className="text-sm space-y-1 text-slate-300">
+            <ol className="text-sm space-y-1 text-foreground/80">
               {(() => {
                 const startIdx = players.findIndex(
                   (p) => p.id === firstClueGiverId,
@@ -65,7 +70,7 @@ export default function LocalGame() {
                   const p = players[(startIdx + i) % players.length]
                   return (
                     <li key={p.id} className="flex gap-2">
-                      <span className="text-slate-500 w-5">{i + 1}.</span>
+                      <span className="text-foreground/50 w-5">{i + 1}.</span>
                       <span>{p.name}</span>
                     </li>
                   )
@@ -78,7 +83,7 @@ export default function LocalGame() {
             <section className="card flex items-center justify-between gap-2">
               <div className="min-w-0">
                 <div className="label">{t('localGame.discuss.timerLabel')}</div>
-                <div className="text-[11px] sm:text-xs text-slate-500">
+                <div className="text-xs text-foreground/50">
                   {t('localGame.discuss.timerHint')}
                 </div>
               </div>
@@ -89,11 +94,11 @@ export default function LocalGame() {
           <div className="action-bar">
             <button
               onClick={revealAnswer}
-              className="btn-primary w-full py-3 sm:py-4"
+              className="btn-primary w-full py-3.5"
             >
               {t('localGame.discuss.revealBtn')}
             </button>
-            <p className="text-center text-[11px] sm:text-xs text-slate-500 mt-1.5 sm:mt-2">
+            <p className="text-center text-xs text-foreground/50 mt-2">
               {t('localGame.discuss.revealHint')}
             </p>
           </div>

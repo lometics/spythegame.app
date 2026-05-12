@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import PlayerCard from './PlayerCard'
 import type { Pair, Player } from '../game/types'
 
@@ -98,9 +99,9 @@ export default function RevealDeck({
   const opacity = animating ? 0 : 1
 
   return (
-    <div className="space-y-2 sm:space-y-4 flex flex-col flex-1">
-      <div className="flex items-center justify-between text-xs sm:text-sm">
-        <span className="text-slate-400">
+    <div className="space-y-3 flex flex-col flex-1">
+      <div className="flex items-center justify-between text-sm">
+        <span className="text-foreground/60">
           {t('revealDeck.cardProgress', {
             current: index + 1,
             total: players.length,
@@ -127,10 +128,7 @@ export default function RevealDeck({
         <div
           className="swipe-stage relative"
           style={{
-            // Card is always taller than wide (2:3 portrait). Drive height
-            // from viewport; width is derived from aspect ratio and capped
-            // to the column so it never exceeds it.
-            height: '75vh',
+            height: 'min(72vh, calc(100dvh - 12rem))',
             aspectRatio: '2 / 3',
             maxWidth: '100%',
           }}
@@ -195,19 +193,19 @@ export default function RevealDeck({
 
       <div className="action-bar flex items-center justify-between gap-2">
         <button
-          className="btn-ghost px-3 py-2.5 sm:px-4 sm:py-3 text-sm"
+          className="btn-ghost px-3 text-sm"
           disabled={isFirst}
           onClick={goPrev}
         >
-          {t('revealDeck.prev')}
+          <ChevronLeft size={16} />
+          <span>{t('revealDeck.prev')}</span>
         </button>
-        <div className="text-center text-[10px] sm:text-xs text-slate-500 leading-tight">
+        <div className="hidden xs:block text-center text-xs text-foreground/50 leading-tight">
           {t('revealDeck.tapHint')}
-          <br />
-          {t('revealDeck.swipeHint')}
         </div>
-        <button className="btn-primary px-3 py-2.5 sm:px-4 sm:py-3 text-sm" onClick={() => goNext()}>
-          {isLast ? t('revealDeck.doneBtn') : t('revealDeck.next')}
+        <button className="btn-primary px-3 text-sm" onClick={() => goNext()}>
+          <span>{isLast ? t('revealDeck.doneBtn') : t('revealDeck.next')}</span>
+          <ChevronRight size={16} />
         </button>
       </div>
     </div>

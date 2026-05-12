@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { Check, Pencil, Plus } from 'lucide-react'
 import { useGame } from '../game/state'
 import { listCategories } from '../game/pairs'
 
@@ -24,29 +25,29 @@ export default function PairPicker() {
   }
 
   return (
-    <div className="space-y-2 sm:space-y-3">
+    <div className="space-y-3">
       <div className="flex items-center justify-between">
         <div className="label">{t('pairPicker.label')}</div>
-        <div className="flex items-center gap-2 sm:gap-3 text-xs">
+        <div className="flex items-center gap-3 text-sm">
           <button
             type="button"
             onClick={selectAll}
-            className="text-accent-400 hover:text-accent-500 font-semibold"
+            className="text-accent-400 hover:text-accent-500 font-semibold min-h-11 px-1"
           >
             {t('pairPicker.selectAll')}
           </button>
-          <span className="text-slate-700">|</span>
+          <span className="text-foreground/20">|</span>
           <button
             type="button"
             onClick={clearAll}
-            className="text-slate-400 hover:text-slate-200 font-semibold"
+            className="text-foreground/60 hover:text-foreground font-semibold min-h-11 px-1"
           >
             {t('pairPicker.clear')}
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-3 sm:grid-cols-3 gap-1.5 sm:gap-2">
+      <div className="grid grid-cols-2 xs:grid-cols-3 gap-2">
         {categories.map((c) => {
           const sel = selectedSet.has(c.id)
           const disabled = c.pairCount === 0
@@ -56,24 +57,24 @@ export default function PairPicker() {
               type="button"
               onClick={() => !disabled && toggle(c.id)}
               disabled={disabled}
-              className={`relative text-left p-2 sm:p-3 rounded-xl sm:rounded-2xl border transition disabled:opacity-50 ${
+              className={`relative text-left p-3 rounded-xl border transition disabled:opacity-50 ${
                 sel
                   ? 'bg-accent-500/15 border-accent-500/70'
                   : 'bg-white/5 border-white/10 hover:bg-white/10'
               }`}
             >
               <div className="flex items-start justify-between gap-1">
-                <div className="text-xl sm:text-2xl leading-none">{c.icon}</div>
+                <div className="text-2xl leading-none">{c.icon}</div>
                 {sel && (
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-accent-500 text-ink-900 text-[10px] sm:text-xs font-bold flex items-center justify-center">
-                    ✓
+                  <div className="w-5 h-5 rounded-full bg-accent-500 text-ink-900 flex items-center justify-center">
+                    <Check size={12} strokeWidth={3} />
                   </div>
                 )}
               </div>
-              <div className="mt-1 sm:mt-2 font-semibold text-xs sm:text-sm leading-tight">
+              <div className="mt-2 font-semibold text-sm leading-tight">
                 {c.name}
               </div>
-              <div className="text-[10px] sm:text-xs text-slate-500 mt-0.5">
+              <div className="text-xs text-foreground/50 mt-0.5">
                 {t('pairPicker.pairCount', { count: c.pairCount })}
               </div>
               {c.isCustom && (
@@ -91,10 +92,10 @@ export default function PairPicker() {
                       openEdit(c.id)
                     }
                   }}
-                  className="absolute top-0.5 right-0.5 text-slate-400 hover:text-slate-100 text-xs px-1 py-0.5 rounded cursor-pointer"
+                  className="absolute top-1 right-1 text-foreground/50 hover:text-foreground w-7 h-7 inline-flex items-center justify-center rounded-full hover:bg-white/5 cursor-pointer"
                   title={t('pairPicker.editAria')}
                 >
-                  ✎
+                  <Pencil size={12} />
                 </span>
               )}
             </button>
@@ -104,13 +105,13 @@ export default function PairPicker() {
         <button
           type="button"
           onClick={openNew}
-          className="text-left p-2 sm:p-3 rounded-xl sm:rounded-2xl border border-dashed border-white/15 bg-transparent hover:bg-white/5 transition flex flex-col"
+          className="text-left p-3 rounded-xl border border-dashed border-white/15 bg-transparent hover:bg-white/5 transition flex flex-col"
         >
-          <div className="text-xl sm:text-2xl leading-none">＋</div>
-          <div className="mt-1 sm:mt-2 font-semibold text-xs sm:text-sm leading-tight">
+          <Plus size={22} className="text-foreground/70" strokeWidth={2} />
+          <div className="mt-2 font-semibold text-sm leading-tight">
             {t('pairPicker.newList')}
           </div>
-          <div className="text-[10px] sm:text-xs text-slate-500 mt-0.5">
+          <div className="text-xs text-foreground/50 mt-0.5">
             {t('pairPicker.newListDesc')}
           </div>
         </button>

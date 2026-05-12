@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "Spy — Das Wortspiel" },
-  "app": { "footer": "Spy — das Wortspiel. Spiel es vor Ort oder online mit Freunden.", "exitConfirm": "Erneut zurück drücken zum Beenden" },
+  "meta": {
+    "title": "Spy — Das Wortspiel"
+  },
+  "app": {
+    "footer": "Spy — das Wortspiel. Spiel es vor Ort oder online mit Freunden.",
+    "exitConfirm": "Erneut zurück drücken zum Beenden"
+  },
   "languages": {
     "label": "Sprache",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← Startseite",
-    "back": "← Zurück",
+    "home": "Startseite",
+    "back": "Zurück",
     "cancel": "Abbrechen",
     "save": "Speichern",
     "delete": "Löschen",
@@ -111,9 +116,18 @@
     "spiesKnowHint": "Sie sehen ihre Mit-Spione auf der Karte.",
     "difficultyLabel": "Schwierigkeit für die Dorfbewohner",
     "difficulty": {
-      "easy":   { "label": "Einfach", "hint": "Der Spion bekommt keinen Hinweis — reines Bluffen, am leichtesten zu enttarnen." },
-      "medium": { "label": "Mittel",  "hint": "Der Hinweis des Spions ist ein Verwandter aus derselben Kategorie." },
-      "hard":   { "label": "Schwer",  "hint": "Der Hinweis des Spions liegt sehr nah am echten Wort, gleiche Kategorie — Klassiker." }
+      "easy": {
+        "label": "Einfach",
+        "hint": "Der Spion bekommt keinen Hinweis — reines Bluffen, am leichtesten zu enttarnen."
+      },
+      "medium": {
+        "label": "Mittel",
+        "hint": "Der Hinweis des Spions ist ein Verwandter aus derselben Kategorie."
+      },
+      "hard": {
+        "label": "Schwer",
+        "hint": "Der Hinweis des Spions liegt sehr nah am echten Wort, gleiche Kategorie — Klassiker."
+      }
     },
     "timerLabel": "Diskussions-Timer",
     "timerOff": "Kein Timer",
@@ -261,21 +275,81 @@
     "errNotConfigured": "Firebase nicht konfiguriert"
   },
   "categories": {
-    "food":          { "name": "Essen & Trinken",     "description": "Essbares. Paare sind lecker und nah genug, um zu verwirren.", "icon": "🍕" },
-    "animals":       { "name": "Tiere",                "description": "Tiere — groß, klein, schuppig, flauschig.",                   "icon": "🐾" },
-    "sports":        { "name": "Sport",                "description": "Was man mit dem Körper macht, am liebsten draußen.",          "icon": "⚽" },
-    "places":        { "name": "Orte",                 "description": "Räume, Gebäude, Städte, Landschaften.",                       "icon": "🗺️" },
-    "tech":          { "name": "Technik",              "description": "Kabel, Bildschirme, alles mit Akku.",                         "icon": "📱" },
-    "entertainment": { "name": "Unterhaltung",         "description": "Filme, Bücher, Spiele, Musik.",                               "icon": "🎬" },
-    "household":     { "name": "Haushalt",             "description": "Dinge aus Küche, Bad und Garage.",                            "icon": "🛋️" },
-    "nature":        { "name": "Natur & Wetter",       "description": "Himmel, Meere, Jahreszeiten und Stürme.",                     "icon": "🌧️" },
-    "music":         { "name": "Musik",                "description": "Instrumente, Genres, Klänge.",                                "icon": "🎵" },
-    "jobs":          { "name": "Berufe & Rollen",      "description": "Was Leute beruflich machen.",                                 "icon": "💼" },
-    "vehicles":      { "name": "Fahrzeuge",            "description": "Dinge, die dich von A nach B bringen.",                       "icon": "🚗" },
-    "clothing":      { "name": "Kleidung",             "description": "Was man trägt.",                                              "icon": "👕" },
-    "body":          { "name": "Körper & Gesundheit",  "description": "Anatomie, Medizin, Wohlbefinden.",                            "icon": "💪" },
-    "myth":          { "name": "Mythen & Fantasie",    "description": "Wesen und Kräfte aus Geschichten.",                           "icon": "🐉" },
-    "tricky":        { "name": "Knifflig / Gemischt",  "description": "Paare quer durch alles. Der Spion wird schwitzen.",           "icon": "🎲" }
+    "food": {
+      "name": "Essen & Trinken",
+      "description": "Essbares. Paare sind lecker und nah genug, um zu verwirren.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "Tiere",
+      "description": "Tiere — groß, klein, schuppig, flauschig.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "Sport",
+      "description": "Was man mit dem Körper macht, am liebsten draußen.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "Orte",
+      "description": "Räume, Gebäude, Städte, Landschaften.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "Technik",
+      "description": "Kabel, Bildschirme, alles mit Akku.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "Unterhaltung",
+      "description": "Filme, Bücher, Spiele, Musik.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "Haushalt",
+      "description": "Dinge aus Küche, Bad und Garage.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "Natur & Wetter",
+      "description": "Himmel, Meere, Jahreszeiten und Stürme.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "Musik",
+      "description": "Instrumente, Genres, Klänge.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "Berufe & Rollen",
+      "description": "Was Leute beruflich machen.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "Fahrzeuge",
+      "description": "Dinge, die dich von A nach B bringen.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "Kleidung",
+      "description": "Was man trägt.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "Körper & Gesundheit",
+      "description": "Anatomie, Medizin, Wohlbefinden.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "Mythen & Fantasie",
+      "description": "Wesen und Kräfte aus Geschichten.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "Knifflig / Gemischt",
+      "description": "Paare quer durch alles. Der Spion wird schwitzen.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "Deine eigene Liste ({{count}} Paar)",

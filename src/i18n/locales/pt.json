@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "Espião — O Jogo das Palavras" },
-  "app": { "footer": "Espião — o jogo das palavras. Jogue presencialmente ou online com amigos.", "exitConfirm": "Pressione novamente para sair" },
+  "meta": {
+    "title": "Espião — O Jogo das Palavras"
+  },
+  "app": {
+    "footer": "Espião — o jogo das palavras. Jogue presencialmente ou online com amigos.",
+    "exitConfirm": "Pressione novamente para sair"
+  },
   "languages": {
     "label": "Idioma",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← Início",
-    "back": "← Voltar",
+    "home": "Início",
+    "back": "Voltar",
     "cancel": "Cancelar",
     "save": "Salvar",
     "delete": "Excluir",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "Eles veem os outros espiões no cartão.",
     "difficultyLabel": "Dificuldade para civis",
     "difficulty": {
-      "easy":   { "label": "Fácil",   "hint": "Espião sem dica — puro blefe, mais fácil de pegar." },
-      "medium": { "label": "Médio",   "hint": "A dica do espião é da mesma categoria." },
-      "hard":   { "label": "Difícil", "hint": "A dica do espião é muito próxima da palavra real, mesma categoria — clássico." }
+      "easy": {
+        "label": "Fácil",
+        "hint": "Espião sem dica — puro blefe, mais fácil de pegar."
+      },
+      "medium": {
+        "label": "Médio",
+        "hint": "A dica do espião é da mesma categoria."
+      },
+      "hard": {
+        "label": "Difícil",
+        "hint": "A dica do espião é muito próxima da palavra real, mesma categoria — clássico."
+      }
     },
     "timerLabel": "Tempo de discussão",
     "timerOff": "Sem tempo",
@@ -256,21 +270,81 @@
     "errNotConfigured": "Firebase não configurado"
   },
   "categories": {
-    "food":          { "name": "Comida e Bebida",   "description": "Coisas comestíveis. Pares saborosos e próximos para confundir.", "icon": "🍕" },
-    "animals":       { "name": "Animais",            "description": "Bichos grandes, pequenos, escamosos, peludos.",                  "icon": "🐾" },
-    "sports":        { "name": "Esportes",           "description": "Coisas para fazer com o corpo, de preferência ao ar livre.",     "icon": "⚽" },
-    "places":        { "name": "Lugares",            "description": "Cômodos, prédios, cidades, paisagens.",                          "icon": "🗺️" },
-    "tech":          { "name": "Tecnologia",         "description": "Cabos, telas, qualquer coisa com bateria.",                      "icon": "📱" },
-    "entertainment": { "name": "Entretenimento",     "description": "Filmes, livros, jogos, música.",                                 "icon": "🎬" },
-    "household":     { "name": "Doméstico",          "description": "Coisas da cozinha, banheiro, garagem.",                          "icon": "🛋️" },
-    "nature":        { "name": "Natureza e Clima",   "description": "Céus, mares, estações e tempestades.",                           "icon": "🌧️" },
-    "music":         { "name": "Música",             "description": "Instrumentos, gêneros, sons.",                                   "icon": "🎵" },
-    "jobs":          { "name": "Profissões",         "description": "O que as pessoas fazem para viver.",                             "icon": "💼" },
-    "vehicles":      { "name": "Veículos",           "description": "Coisas que levam você por aí.",                                  "icon": "🚗" },
-    "clothing":      { "name": "Roupas",             "description": "O que você veste.",                                              "icon": "👕" },
-    "body":          { "name": "Corpo e Saúde",      "description": "Anatomia, medicina, bem-estar.",                                 "icon": "💪" },
-    "myth":          { "name": "Mitologia e Fantasia","description": "Criaturas e poderes das histórias.",                            "icon": "🐉" },
-    "tricky":        { "name": "Difíceis / Mistos",  "description": "Pares que cruzam categorias. O espião vai suar.",                "icon": "🎲" }
+    "food": {
+      "name": "Comida e Bebida",
+      "description": "Coisas comestíveis. Pares saborosos e próximos para confundir.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "Animais",
+      "description": "Bichos grandes, pequenos, escamosos, peludos.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "Esportes",
+      "description": "Coisas para fazer com o corpo, de preferência ao ar livre.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "Lugares",
+      "description": "Cômodos, prédios, cidades, paisagens.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "Tecnologia",
+      "description": "Cabos, telas, qualquer coisa com bateria.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "Entretenimento",
+      "description": "Filmes, livros, jogos, música.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "Doméstico",
+      "description": "Coisas da cozinha, banheiro, garagem.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "Natureza e Clima",
+      "description": "Céus, mares, estações e tempestades.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "Música",
+      "description": "Instrumentos, gêneros, sons.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "Profissões",
+      "description": "O que as pessoas fazem para viver.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "Veículos",
+      "description": "Coisas que levam você por aí.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "Roupas",
+      "description": "O que você veste.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "Corpo e Saúde",
+      "description": "Anatomia, medicina, bem-estar.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "Mitologia e Fantasia",
+      "description": "Criaturas e poderes das histórias.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "Difíceis / Mistos",
+      "description": "Pares que cruzam categorias. O espião vai suar.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "Sua lista personalizada ({{count}} par)",

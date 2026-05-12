@@ -1,6 +1,11 @@
 {
-  "meta": { "title": "스파이 — 단어 게임" },
-  "app": { "footer": "스파이 — 단어 게임. 친구들과 대면 또는 온라인으로 플레이.", "exitConfirm": "한 번 더 누르면 종료됩니다" },
+  "meta": {
+    "title": "스파이 — 단어 게임"
+  },
+  "app": {
+    "footer": "스파이 — 단어 게임. 친구들과 대면 또는 온라인으로 플레이.",
+    "exitConfirm": "한 번 더 누르면 종료됩니다"
+  },
   "languages": {
     "label": "언어",
     "en": "English",
@@ -20,8 +25,8 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "← 홈",
-    "back": "← 뒤로",
+    "home": "홈",
+    "back": "뒤로",
     "cancel": "취소",
     "save": "저장",
     "delete": "삭제",
@@ -107,9 +112,18 @@
     "spiesKnowHint": "카드에서 다른 스파이를 봄.",
     "difficultyLabel": "마을 사람 난이도",
     "difficulty": {
-      "easy":   { "label": "쉬움",   "hint": "스파이에게 힌트 없음 — 순수 블러핑, 가장 잡기 쉬움." },
-      "medium": { "label": "보통",   "hint": "스파이 힌트는 같은 카테고리의 비슷한 단어." },
-      "hard":   { "label": "어려움", "hint": "스파이 힌트가 실제 단어와 매우 가까움, 같은 카테고리 — 클래식." }
+      "easy": {
+        "label": "쉬움",
+        "hint": "스파이에게 힌트 없음 — 순수 블러핑, 가장 잡기 쉬움."
+      },
+      "medium": {
+        "label": "보통",
+        "hint": "스파이 힌트는 같은 카테고리의 비슷한 단어."
+      },
+      "hard": {
+        "label": "어려움",
+        "hint": "스파이 힌트가 실제 단어와 매우 가까움, 같은 카테고리 — 클래식."
+      }
     },
     "timerLabel": "토론 타이머",
     "timerOff": "타이머 없음",
@@ -256,21 +270,81 @@
     "errNotConfigured": "Firebase 미설정"
   },
   "categories": {
-    "food":          { "name": "음식과 음료",     "description": "먹을 수 있는 것. 쌍은 맛있고 헷갈리게 비슷.",  "icon": "🍕" },
-    "animals":       { "name": "동물",             "description": "크고 작고, 비늘 있고, 복슬복슬한.",             "icon": "🐾" },
-    "sports":        { "name": "스포츠",           "description": "몸으로 하는 것, 가급적 야외.",                  "icon": "⚽" },
-    "places":        { "name": "장소",             "description": "방, 건물, 도시, 풍경.",                         "icon": "🗺️" },
-    "tech":          { "name": "기술",             "description": "케이블, 화면, 배터리 있는 모든 것.",            "icon": "📱" },
-    "entertainment": { "name": "엔터테인먼트",     "description": "영화, 책, 게임, 음악.",                         "icon": "🎬" },
-    "household":     { "name": "가정용품",         "description": "주방, 욕실, 차고에 있는 것.",                   "icon": "🛋️" },
-    "nature":        { "name": "자연과 날씨",      "description": "하늘, 바다, 계절, 폭풍.",                       "icon": "🌧️" },
-    "music":         { "name": "음악",             "description": "악기, 장르, 소리.",                             "icon": "🎵" },
-    "jobs":          { "name": "직업",             "description": "사람들이 생계를 위해 하는 일.",                 "icon": "💼" },
-    "vehicles":      { "name": "탈것",             "description": "당신을 이동시키는 것.",                         "icon": "🚗" },
-    "clothing":      { "name": "의류",             "description": "당신이 입는 것.",                               "icon": "👕" },
-    "body":          { "name": "몸과 건강",        "description": "해부, 의학, 웰빙.",                             "icon": "💪" },
-    "myth":          { "name": "신화와 판타지",    "description": "이야기 속 생물과 힘.",                          "icon": "🐉" },
-    "tricky":        { "name": "어려움 / 혼합",    "description": "카테고리를 넘나드는 쌍. 스파이가 땀 흘릴 것.",  "icon": "🎲" }
+    "food": {
+      "name": "음식과 음료",
+      "description": "먹을 수 있는 것. 쌍은 맛있고 헷갈리게 비슷.",
+      "icon": "🍕"
+    },
+    "animals": {
+      "name": "동물",
+      "description": "크고 작고, 비늘 있고, 복슬복슬한.",
+      "icon": "🐾"
+    },
+    "sports": {
+      "name": "스포츠",
+      "description": "몸으로 하는 것, 가급적 야외.",
+      "icon": "⚽"
+    },
+    "places": {
+      "name": "장소",
+      "description": "방, 건물, 도시, 풍경.",
+      "icon": "🗺️"
+    },
+    "tech": {
+      "name": "기술",
+      "description": "케이블, 화면, 배터리 있는 모든 것.",
+      "icon": "📱"
+    },
+    "entertainment": {
+      "name": "엔터테인먼트",
+      "description": "영화, 책, 게임, 음악.",
+      "icon": "🎬"
+    },
+    "household": {
+      "name": "가정용품",
+      "description": "주방, 욕실, 차고에 있는 것.",
+      "icon": "🛋️"
+    },
+    "nature": {
+      "name": "자연과 날씨",
+      "description": "하늘, 바다, 계절, 폭풍.",
+      "icon": "🌧️"
+    },
+    "music": {
+      "name": "음악",
+      "description": "악기, 장르, 소리.",
+      "icon": "🎵"
+    },
+    "jobs": {
+      "name": "직업",
+      "description": "사람들이 생계를 위해 하는 일.",
+      "icon": "💼"
+    },
+    "vehicles": {
+      "name": "탈것",
+      "description": "당신을 이동시키는 것.",
+      "icon": "🚗"
+    },
+    "clothing": {
+      "name": "의류",
+      "description": "당신이 입는 것.",
+      "icon": "👕"
+    },
+    "body": {
+      "name": "몸과 건강",
+      "description": "해부, 의학, 웰빙.",
+      "icon": "💪"
+    },
+    "myth": {
+      "name": "신화와 판타지",
+      "description": "이야기 속 생물과 힘.",
+      "icon": "🐉"
+    },
+    "tricky": {
+      "name": "어려움 / 혼합",
+      "description": "카테고리를 넘나드는 쌍. 스파이가 땀 흘릴 것.",
+      "icon": "🎲"
+    }
   },
   "customList": {
     "description_one": "당신의 커스텀 리스트 ({{count}} 쌍)",

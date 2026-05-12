@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { ArrowLeft, ChevronDown, Settings, X } from 'lucide-react'
 import { useGame } from '../game/state'
 import PairPicker from '../components/PairPicker'
 import QrScannerModal from '../components/QrScannerModal'
@@ -25,10 +26,10 @@ export default function Home({
   const [joinOpen, setJoinOpen] = useState(false)
 
   return (
-    <div className="space-y-3 sm:space-y-5 flex flex-col flex-1">
+    <div className="space-y-4 flex flex-col flex-1">
       <header className="relative text-center pt-2 sm:pt-6">
-        <div className="inline-block text-3xl sm:text-5xl mb-1 sm:mb-2">🕵️</div>
-        <h1 className="font-display text-2xl sm:text-4xl font-extrabold tracking-tight">
+        <div className="inline-block text-3xl sm:text-4xl mb-2">🕵️</div>
+        <h1 className="font-display text-2xl sm:text-3xl font-bold tracking-tight">
           {t('home.title')}
         </h1>
         {view === 'home' && (
@@ -36,9 +37,9 @@ export default function Home({
             to="/options"
             aria-label={t('options.title')}
             title={t('options.title')}
-            className="absolute right-0 top-2 sm:top-6 w-9 h-9 sm:w-10 sm:h-10 inline-flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-lg sm:text-xl transition"
+            className="btn-icon absolute right-0 top-1 sm:top-4"
           >
-            ⚙️
+            <Settings size={20} />
           </Link>
         )}
       </header>
@@ -117,7 +118,7 @@ function YourNameField() {
           setDraft(onlineName)
           setEditing(true)
         }}
-        className="text-xs text-accent-400 hover:text-accent-300"
+        className="text-sm font-medium text-accent-400 hover:text-accent-300 min-h-11 px-2"
       >
         {t('home.changeName')}
       </button>
@@ -156,10 +157,10 @@ function ModeView({
 
   return (
     <div className="space-y-3 flex flex-col flex-1">
-      <h2 className="font-display text-xl sm:text-2xl font-bold text-center">
+      <h2 className="font-display text-xl font-semibold text-center text-foreground/85">
         {t('wizard.modeTitle')}
       </h2>
-      <div className="grid gap-2 sm:gap-3">
+      <div className="grid gap-3">
         <button
           type="button"
           onClick={onSingle}
@@ -167,10 +168,10 @@ function ModeView({
         >
           <div className="flex items-center justify-between gap-3">
             <div>
-              <div className="text-base sm:text-lg font-semibold">
+              <div className="text-base font-semibold">
                 {t('wizard.modeSingle')}
               </div>
-              <div className="text-xs sm:text-sm text-slate-400">
+              <div className="text-sm text-foreground/60">
                 {t('wizard.modeSingleDesc')}
               </div>
             </div>
@@ -186,10 +187,10 @@ function ModeView({
         >
           <div className="flex items-center justify-between gap-3">
             <div>
-              <div className="text-base sm:text-lg font-semibold">
+              <div className="text-base font-semibold">
                 {t('home.createRoom')}
               </div>
-              <div className="text-xs sm:text-sm text-slate-400">
+              <div className="text-sm text-foreground/60">
                 {busy ? t('wizard.creating') : t('home.createRoomDesc')}
               </div>
             </div>
@@ -205,10 +206,10 @@ function ModeView({
         >
           <div className="flex items-center justify-between gap-3">
             <div>
-              <div className="text-base sm:text-lg font-semibold">
+              <div className="text-base font-semibold">
                 {t('home.joinRoom')}
               </div>
-              <div className="text-xs sm:text-sm text-slate-400">
+              <div className="text-sm text-foreground/60">
                 {t('home.joinRoomDesc')}
               </div>
             </div>
@@ -217,7 +218,7 @@ function ModeView({
         </button>
       </div>
       {!hasName && configured && (
-        <p className="text-xs text-slate-500 text-center">
+        <p className="text-xs text-foreground/50 text-center">
           {t('home.setNameFirst')}
         </p>
       )}
@@ -238,55 +239,52 @@ function HowToPlay() {
   const steps = [1, 2, 3, 4] as const
   return (
     <details className="card group">
-      <summary className="flex items-center justify-between cursor-pointer list-none">
-        <span className="font-display font-bold text-base sm:text-lg flex items-center gap-2">
+      <summary className="flex items-center justify-between cursor-pointer list-none min-h-11">
+        <span className="font-display font-semibold text-base flex items-center gap-2">
           <span aria-hidden>📖</span>
           {t('home.howTo.title')}
         </span>
-        <span
+        <ChevronDown
+          size={18}
+          className="text-foreground/60 transition-transform group-open:rotate-180"
           aria-hidden
-          className="text-slate-400 transition-transform group-open:rotate-180"
-        >
-          ▾
-        </span>
+        />
       </summary>
-      <ol className="mt-3 sm:mt-4 space-y-2.5 sm:space-y-3">
+      <ol className="mt-4 space-y-3">
         {steps.map((n) => (
           <li key={n} className="flex gap-3">
             <span className="shrink-0 w-7 h-7 rounded-full bg-accent-500/15 text-accent-400 inline-flex items-center justify-center font-bold text-sm border border-accent-500/30">
               {n}
             </span>
             <div className="min-w-0">
-              <div className="font-semibold text-sm text-slate-100">
+              <div className="font-semibold text-sm">
                 {t(`home.howTo.step${n}_title`)}
               </div>
-              <p className="text-xs sm:text-sm text-slate-400 mt-0.5 leading-relaxed">
+              <p className="text-sm text-foreground/60 mt-0.5 leading-relaxed">
                 {t(`home.howTo.step${n}`)}
               </p>
             </div>
           </li>
         ))}
       </ol>
-      <div className="mt-4 pt-3 sm:pt-4 border-t border-white/10">
-        <div className="text-[10px] sm:text-xs uppercase tracking-wider text-slate-500 font-semibold mb-2">
-          {t('home.howTo.winTitle')}
-        </div>
+      <div className="mt-4 pt-4 border-t border-white/10">
+        <div className="label-tiny mb-2">{t('home.howTo.winTitle')}</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          <div className="rounded-lg bg-emerald-500/10 border border-emerald-500/25 p-2.5">
-            <div className="text-xs sm:text-sm font-semibold text-emerald-300 mb-1 flex items-center gap-1.5">
+          <div className="rounded-lg bg-emerald-500/10 border border-emerald-500/25 p-3 flex flex-col">
+            <div className="text-sm font-semibold text-emerald-300 mb-1 flex items-center gap-1.5">
               <span aria-hidden>✅</span>
               {t('home.howTo.civWinLabel')}
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-foreground/75 leading-relaxed">
               {t('home.howTo.civWin')}
             </p>
           </div>
-          <div className="rounded-lg bg-rose-500/10 border border-rose-500/25 p-2.5">
-            <div className="text-xs sm:text-sm font-semibold text-rose-300 mb-1 flex items-center gap-1.5">
+          <div className="rounded-lg bg-rose-500/10 border border-rose-500/25 p-3 flex flex-col">
+            <div className="text-sm font-semibold text-rose-300 mb-1 flex items-center gap-1.5">
               <span aria-hidden>🕵️</span>
               {t('home.howTo.spyWinLabel')}
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-xs text-foreground/75 leading-relaxed">
               {t('home.howTo.spyWin')}
             </p>
           </div>
@@ -345,17 +343,18 @@ function SingleDeviceConfig({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="space-y-3 flex flex-col flex-1">
-      <div className="flex items-center justify-between text-xs">
+      <div className="flex items-center justify-between">
         <button
           type="button"
           onClick={onBack}
-          className="text-slate-400 hover:text-slate-200"
+          className="inline-flex items-center gap-1.5 text-sm text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md"
         >
+          <ArrowLeft size={16} />
           {t('wizard.back')}
         </button>
       </div>
 
-      <section className="card space-y-2 sm:space-y-3">
+      <section className="card space-y-3">
         <div className="flex items-center justify-between">
           <div className="label">
             {t('lobby.playersLabel', { count: players.length })}
@@ -363,7 +362,7 @@ function SingleDeviceConfig({ onBack }: { onBack: () => void }) {
           <button
             type="button"
             onClick={() => addPlayer(nextDefaultName())}
-            className="text-xs font-semibold text-accent-400 hover:text-accent-500"
+            className="text-sm font-semibold text-accent-400 hover:text-accent-500 min-h-11 px-2"
           >
             {t('lobby.quickAdd')}
           </button>
@@ -385,13 +384,14 @@ function SingleDeviceConfig({ onBack }: { onBack: () => void }) {
           {players.map((p) => (
             <li
               key={p.id}
-              className="flex items-center justify-between gap-2 bg-ink-700/40 rounded-lg px-2 py-1.5"
+              className="flex items-center justify-between gap-2 surface-muted rounded-lg pl-2 pr-1 py-1.5 min-h-12"
             >
-              <span className="flex items-center gap-2 flex-1 min-w-0">
+              <span className="flex items-center gap-2.5 flex-1 min-w-0">
                 <button
                   type="button"
                   onClick={() => cycleAvatar(p.id)}
-                  className="w-8 h-8 rounded-full bg-ink-700 overflow-hidden border border-white/10 hover:border-accent-400/60 active:scale-95 transition shrink-0"
+                  className="w-9 h-9 rounded-full bg-ink-700 overflow-hidden border border-white/10 hover:border-accent-400/60 active:scale-95 transition shrink-0"
+                  aria-label="Change avatar"
                 >
                   {p.avatar ? (
                     <img
@@ -418,13 +418,13 @@ function SingleDeviceConfig({ onBack }: { onBack: () => void }) {
                     }}
                     maxLength={20}
                     autoCapitalize="words"
-                    className="font-medium text-sm bg-ink-900/60 border border-accent-500/60 rounded px-2 py-0.5 min-w-0 flex-1 focus:outline-none focus:border-accent-400"
+                    className="font-medium text-sm bg-ink-900/60 border border-accent-500/60 rounded px-2 py-1 min-w-0 flex-1 focus:outline-none focus:border-accent-400"
                   />
                 ) : (
                   <button
                     type="button"
                     onClick={() => startEdit(p.id, p.name)}
-                    className="font-medium text-sm text-left truncate hover:text-accent-400 transition min-w-0 flex-1"
+                    className="font-medium text-sm text-left truncate hover:text-accent-400 transition min-w-0 flex-1 py-2"
                     aria-label={t('lobby.renameAria', {
                       name: p.name,
                       defaultValue: `Rename ${p.name}`,
@@ -436,15 +436,15 @@ function SingleDeviceConfig({ onBack }: { onBack: () => void }) {
               </span>
               <button
                 onClick={() => removePlayer(p.id)}
-                className="text-slate-400 hover:text-rose-400 w-7 h-7 inline-flex items-center justify-center rounded-lg shrink-0"
+                className="btn-icon w-9 h-9 hover:text-rose-400 shrink-0"
                 aria-label={t('lobby.removeAria', { name: p.name })}
               >
-                ✕
+                <X size={16} />
               </button>
             </li>
           ))}
           {players.length === 0 && (
-            <li className="text-xs text-slate-500 italic">
+            <li className="text-sm text-foreground/50 italic">
               {t('lobby.empty')}
             </li>
           )}
@@ -464,17 +464,17 @@ function SingleDeviceConfig({ onBack }: { onBack: () => void }) {
             navigate('/local')
           }}
           disabled={!canStart}
-          className="btn-primary w-full text-base sm:text-lg py-3 sm:py-4"
+          className="btn-primary w-full text-base py-3.5"
         >
           {t('wizard.startBtn')}
         </button>
         {players.length < 3 && (
-          <p className="text-center text-xs text-slate-500 mt-1.5">
+          <p className="text-center text-xs text-foreground/50 mt-1.5">
             {t('lobby.needPlayers')}
           </p>
         )}
         {players.length >= 3 && selected.length === 0 && (
-          <p className="text-center text-xs text-slate-500 mt-1.5">
+          <p className="text-center text-xs text-foreground/50 mt-1.5">
             {t('lobby.needSource')}
           </p>
         )}
@@ -526,18 +526,14 @@ export function OptionsPanel({ playerCount }: { playerCount?: number }) {
   }
   return (
     <>
-      <section className="card space-y-2">
+      <section className="card space-y-3">
         <div className="label">{t('lobby.spyCountLabel')}</div>
         <div className="flex gap-1.5 flex-wrap">
           {spyOptions.map((n) => (
             <button
               key={n}
               onClick={() => setSettings({ spyCount: n })}
-              className={`px-2.5 py-1.5 rounded-full text-xs sm:text-sm border transition ${
-                currentSpyCount === n
-                  ? 'bg-accent-500 text-ink-900 border-accent-500'
-                  : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
-              }`}
+              className={`pill ${currentSpyCount === n ? 'pill-selected' : ''}`}
             >
               {n}
             </button>
@@ -545,11 +541,7 @@ export function OptionsPanel({ playerCount }: { playerCount?: number }) {
           {showRandom && (
             <button
               onClick={pickRandom}
-              className={`px-2.5 py-1.5 rounded-full text-xs sm:text-sm border transition inline-flex items-center gap-1 ${
-                isRandom
-                  ? 'bg-accent-500 text-ink-900 border-accent-500'
-                  : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
-              }`}
+              className={`pill ${isRandom ? 'pill-selected' : ''}`}
             >
               <span aria-hidden>🎲</span>
               <span>{t('lobby.spyCountRandom')}</span>
@@ -559,7 +551,7 @@ export function OptionsPanel({ playerCount }: { playerCount?: number }) {
         {isRandom && currentRange && (
           <div className="space-y-2 pt-1">
             <div>
-              <div className="label text-[10px] sm:text-xs">
+              <div className="label-tiny">
                 {t('lobby.spyCountFromLabel', { defaultValue: 'From' })}
               </div>
               <div className="flex gap-1.5 flex-wrap mt-1">
@@ -567,11 +559,7 @@ export function OptionsPanel({ playerCount }: { playerCount?: number }) {
                   <button
                     key={`min-${n}`}
                     onClick={() => setRangeMin(n)}
-                    className={`px-2.5 py-1.5 rounded-full text-xs sm:text-sm border transition ${
-                      currentRange.min === n
-                        ? 'bg-accent-500 text-ink-900 border-accent-500'
-                        : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
-                    }`}
+                    className={`pill ${currentRange.min === n ? 'pill-selected' : ''}`}
                   >
                     {n}
                   </button>
@@ -579,7 +567,7 @@ export function OptionsPanel({ playerCount }: { playerCount?: number }) {
               </div>
             </div>
             <div>
-              <div className="label text-[10px] sm:text-xs">
+              <div className="label-tiny">
                 {t('lobby.spyCountToLabel', { defaultValue: 'To' })}
               </div>
               <div className="flex gap-1.5 flex-wrap mt-1">
@@ -590,11 +578,7 @@ export function OptionsPanel({ playerCount }: { playerCount?: number }) {
                       key={`max-${n}`}
                       onClick={() => setRangeMax(n)}
                       disabled={disabled}
-                      className={`px-2.5 py-1.5 rounded-full text-xs sm:text-sm border transition disabled:opacity-30 ${
-                        currentRange.max === n
-                          ? 'bg-accent-500 text-ink-900 border-accent-500'
-                          : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
-                      }`}
+                      className={`pill ${currentRange.max === n ? 'pill-selected' : ''}`}
                     >
                       {n}
                     </button>
@@ -604,7 +588,7 @@ export function OptionsPanel({ playerCount }: { playerCount?: number }) {
             </div>
           </div>
         )}
-        <p className="text-[11px] sm:text-xs text-slate-500">
+        <p className="text-xs text-foreground/50">
           {isRandom && currentRange
             ? currentRange.min === currentRange.max
               ? t('lobby.spyCountRandomFixedHint', {
@@ -620,10 +604,10 @@ export function OptionsPanel({ playerCount }: { playerCount?: number }) {
         </p>
       </section>
       <section className="card">
-        <label className="flex items-center justify-between gap-2 cursor-pointer">
+        <label className="flex items-center justify-between gap-3 cursor-pointer min-h-11 py-1">
           <span className="min-w-0">
             <span className="label block">{t('lobby.spiesKnowLabel')}</span>
-            <span className="block text-[11px] sm:text-xs text-slate-500">
+            <span className="block text-xs text-foreground/50 mt-0.5">
               {t('lobby.spiesKnowHint')}
             </span>
           </span>
@@ -638,40 +622,32 @@ export function OptionsPanel({ playerCount }: { playerCount?: number }) {
           />
         </label>
       </section>
-      <section className="card space-y-2">
+      <section className="card space-y-3">
         <div className="label">{t('lobby.difficultyLabel')}</div>
         <div className="flex gap-1.5 flex-wrap">
           {DIFFICULTY_OPTIONS.map((opt) => (
             <button
               key={opt.value}
               onClick={() => setSettings({ difficulty: opt.value })}
-              className={`px-2.5 py-1.5 rounded-full text-xs sm:text-sm border transition inline-flex items-center gap-1 ${
-                settings.difficulty === opt.value
-                  ? 'bg-accent-500 text-ink-900 border-accent-500'
-                  : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
-              }`}
+              className={`pill ${settings.difficulty === opt.value ? 'pill-selected' : ''}`}
             >
               <span aria-hidden>{opt.icon}</span>
               <span>{t(`lobby.difficulty.${opt.value}.label`)}</span>
             </button>
           ))}
         </div>
-        <p className="text-[11px] sm:text-xs text-slate-500">
+        <p className="text-xs text-foreground/50">
           {t(`lobby.difficulty.${settings.difficulty}.hint`)}
         </p>
       </section>
-      <section className="card space-y-2">
+      <section className="card space-y-3">
         <div className="label">{t('lobby.timerLabel')}</div>
         <div className="flex gap-1.5 flex-wrap">
           {[0, 60, 120, 180, 300, 600].map((s) => (
             <button
               key={s}
               onClick={() => setSettings({ timerSeconds: s })}
-              className={`px-2.5 py-1.5 rounded-full text-xs sm:text-sm border transition ${
-                settings.timerSeconds === s
-                  ? 'bg-accent-500 text-ink-900 border-accent-500'
-                  : 'bg-white/5 text-slate-200 border-white/10 hover:bg-white/10'
-              }`}
+              className={`pill ${settings.timerSeconds === s ? 'pill-selected' : ''}`}
             >
               {s === 0
                 ? t('lobby.timerOff')
@@ -746,16 +722,16 @@ export function JoinRoomModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center justify-between">
-          <h3 className="font-display text-lg sm:text-xl font-bold">
+          <h3 className="font-display text-lg font-bold">
             {title ?? t('home.joinExisting')}
           </h3>
           <button
             type="button"
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-200 w-7 h-7 inline-flex items-center justify-center"
+            className="btn-icon -mr-2"
             aria-label={t('common.dismiss')}
           >
-            ✕
+            <X size={18} />
           </button>
         </div>
         <div className="space-y-2">

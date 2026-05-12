@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { ArrowLeft } from 'lucide-react'
 import type { TFunction } from 'i18next'
 import {
   backToLobby,
@@ -66,7 +67,8 @@ export default function OnlineRoom() {
   if (!isFirebaseConfigured()) {
     return (
       <div className="space-y-4">
-        <Link to="/" className="text-sm text-slate-400">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md">
+          <ArrowLeft size={16} />
           {t('common.home')}
         </Link>
         <div className="card text-sm">{t('online.fbNotConfigured')}</div>
@@ -77,7 +79,8 @@ export default function OnlineRoom() {
   if (room.loaded && !room.meta) {
     return (
       <div className="space-y-4">
-        <Link to="/" className="text-sm text-slate-400">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md">
+          <ArrowLeft size={16} />
           {t('common.home')}
         </Link>
         <div className="card text-sm text-rose-300">
@@ -90,7 +93,8 @@ export default function OnlineRoom() {
   if (!room.meta) {
     return (
       <div className="space-y-4">
-        <Link to="/" className="text-sm text-slate-400">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md">
+          <ArrowLeft size={16} />
           {t('common.home')}
         </Link>
         <div className="card text-slate-400">
@@ -113,7 +117,8 @@ export default function OnlineRoom() {
   return (
     <div className="space-y-2 sm:space-y-4 flex flex-col flex-1">
       <nav className="flex items-center justify-between text-xs sm:text-sm">
-        <Link to="/" className="text-slate-400 hover:text-slate-200">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md">
+          <ArrowLeft size={16} />
           {t('common.home')}
         </Link>
         <button
@@ -184,7 +189,8 @@ function NamePromptGate({ code }: { code: string }) {
   }
   return (
     <div className="space-y-3 sm:space-y-4">
-      <Link to="/" className="text-sm text-slate-400">
+      <Link to="/" className="inline-flex items-center gap-1.5 text-sm text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md">
+        <ArrowLeft size={16} />
         {t('common.home')}
       </Link>
       <section className="card space-y-3">
