@@ -35,11 +35,7 @@ jobs:
           SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SPY_THE_GAME_WALSER }}
         run: |
           printf '%s' "$SA_KEY" > "$RUNNER_TEMP/sa-key.json"
-          # Diagnostics: file size + sanity-check JSON
-          ls -la "$RUNNER_TEMP/sa-key.json"
-          echo "client_email in key:"
-          node -e 'console.log(require(process.env.RUNNER_TEMP + "/sa-key.json").client_email)'
           echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/sa-key.json" >> "$GITHUB_ENV"
 
       - name: Deploy hosting + database rules
-        run: npx firebase-tools deploy --only hosting,database --project spy-the-game-walser --non-interactive --debug
+        run: npx firebase-tools deploy --only hosting,database --project spy-the-game-walser --non-interactive
