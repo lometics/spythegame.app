@@ -7,7 +7,17 @@
     "de": "Deutsch",
     "fr": "Français",
     "it": "Italiano",
-    "es": "Español"
+    "es": "Español",
+    "pt": "Português",
+    "nl": "Nederlands",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "tr": "Türkçe",
+    "ru": "Русский",
+    "ja": "日本語",
+    "zh": "中文",
+    "ko": "한국어",
+    "ar": "العربية"
   },
   "common": {
     "home": "← Home",
@@ -52,6 +62,13 @@
   },
   "home": {
     "title": "Spy",
+    "joinExisting": "Join a room with a code",
+    "createRoom": "Create a room",
+    "createRoomDesc": "Start a new game and share the code.",
+    "joinRoom": "Join a room",
+    "joinRoomDesc": "Got a code or QR from a host? Jump in.",
+    "changeName": "Change",
+    "setNameFirst": "Set your name first.",
     "howTo": {
       "title": "How to play",
       "step1_title": "Setup",
@@ -91,14 +108,19 @@
     "defaultName": "Player {{n}}",
     "spyCountLabel": "Number of spies",
     "spyCountHint": "More spies = harder for civilians.",
+    "spyCountRandom": "Random",
+    "spyCountRandomHint": "Picks 1–{{max}} spies each round.",
+    "spyCountRandomRangeHint": "Picks {{min}}–{{max}} spies each round.",
+    "spyCountRandomFixedHint": "Always {{n}} spies.",
+    "spyCountFromLabel": "From",
+    "spyCountToLabel": "To",
     "spiesKnowLabel": "Spies know each other",
     "spiesKnowHint": "They see fellow spies on their card.",
     "difficultyLabel": "Difficulty for villagers",
     "difficulty": {
-      "none":   { "label": "No hint", "hint": "Spy gets no word at all — easiest to catch." },
-      "easy":   { "label": "Easy",    "hint": "Spy's hint is from a different category — easy to spot." },
-      "medium": { "label": "Medium",  "hint": "Spy's hint is a sibling from the same category." },
-      "hard":   { "label": "Hard",    "hint": "Spy's hint is very close to the real word — classic." }
+      "easy":   { "label": "Easy",   "hint": "Spy gets no hint — pure bluffing, easiest to catch." },
+      "medium": { "label": "Medium", "hint": "Spy's hint is a sibling from the same category." },
+      "hard":   { "label": "Hard",   "hint": "Spy's hint is very close to the real word, same category — classic." }
     },
     "timerLabel": "Discussion timer",
     "timerOff": "No timer",
@@ -119,11 +141,12 @@
     "next": "Next →",
     "doneBtn": "Done →",
     "tapHint": "tap card to flip",
-    "swipeHint": "swipe ← for next"
+    "swipeHint": "swipe to go to next"
   },
   "playerCard": {
     "spyHeader": "Spy",
     "passTo": "Pass to",
+    "cardOwner": "{{name}}'s card",
     "passInstruction": "When it's safe, tap the card to reveal your word.",
     "tapToFlip": "tap to flip",
     "tapToHide": "tap to hide",
@@ -193,7 +216,9 @@
     "spyPlaceholder": "Spy's hint",
     "removePairAria": "Remove pair",
     "addPair": "+ Add pair",
-    "create": "Create list"
+    "create": "Create list",
+    "deleteConfirmTitle": "Delete this list?",
+    "deleteConfirmDesc": "This can't be undone."
   },
   "online": {
     "yourName": "Your name",
@@ -240,7 +265,11 @@
     "errNoPairs": "No pairs available — select at least one category with pairs.",
     "errMinPlayers": "Need at least 3 players",
     "errCouldNotAllocate": "Could not allocate a room code, try again",
-    "errNotConfigured": "Firebase not configured"
+    "errNotConfigured": "Firebase not configured",
+    "joinAnother": "Join another room",
+    "youTag": "(you)",
+    "renameSelf": "Rename",
+    "leaveRoom": "Leave room"
   },
   "categories": {
     "food":          { "name": "Food & Drink",        "description": "Edible stuff. Pairs lean tasty and close enough to confuse.", "icon": "🍕" },
@@ -263,5 +292,16 @@
     "description_one": "Your custom list ({{count}} pair)",
     "description_other": "Your custom list ({{count}} pairs)",
     "fallback": "Custom"
+  },
+  "options": {
+    "title": "Options",
+    "header": "Settings",
+    "usernameLabel": "Your name",
+    "usernameHint": "Shown to others when you host or join an online room.",
+    "languageLabel": "Language",
+    "wordListsLabel": "Your word lists",
+    "wordListsHint": "Create and edit custom civilian / spy word pairs.",
+    "newList": "+ New list",
+    "noCustomLists": "No custom lists yet."
   }
 }

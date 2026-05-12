@@ -41,7 +41,7 @@ export default function PlayerCard({
     >
       <div className="flip-card-inner">
         {/* BACK */}
-        <div className="flip-card-face bg-ink-800 border border-white/10 shadow-soft p-4 sm:p-6 relative">
+        <div className="flip-card-face bg-ink-800 border border-white/10 shadow-soft p-4 sm:p-6">
           {avatar && (
             <div
               aria-hidden
@@ -70,9 +70,8 @@ export default function PlayerCard({
             ) : (
               <div className="text-5xl sm:text-6xl">📲</div>
             )}
-            <div className="text-slate-400 text-sm">{t('playerCard.passTo')}</div>
             <h2 className="font-display text-3xl sm:text-5xl font-extrabold">
-              {playerName}
+              {t('playerCard.cardOwner', { name: playerName })}
             </h2>
             <div className="text-slate-500 text-xs sm:text-sm max-w-xs">
               {t('playerCard.passInstruction')}
@@ -85,10 +84,10 @@ export default function PlayerCard({
 
         {/* FRONT */}
         <div
-          className={`flip-card-face flip-card-back p-4 sm:p-6 border-2 shadow-soft relative ${
+          className={`flip-card-face flip-card-back p-4 sm:p-6 border-2 shadow-soft ${
             isSpy
-              ? 'bg-rose-500/10 border-rose-500/60'
-              : 'bg-emerald-500/5 border-emerald-500/50'
+              ? 'bg-rose-950 border-rose-500/60'
+              : 'bg-emerald-950 border-emerald-500/50'
           }`}
         >
           {avatar && (

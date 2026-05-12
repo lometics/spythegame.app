@@ -75,11 +75,10 @@ export function listCategories(
  * unioned with selected custom lists (language-neutral user input).
  *
  * Difficulty is from the villagers' point of view:
- *  - 'hard' (default): curated close spy word — classic
- *  - 'medium': spy gets a sibling civilian from same category
- *  - 'easy': spy gets a random civilian from a DIFFERENT category
- *  - 'none': spy gets no hint at all
- * Easy/medium degrade gracefully when the pool can't satisfy them.
+ *  - 'hard' (default): curated close spy word in the same category — classic
+ *  - 'medium': spy gets a sibling civilian from the same category
+ *  - 'easy': spy gets no hint at all (pure bluffing)
+ * Medium degrades gracefully when the pool has no sibling in the category.
  */
 export function samplePair(
   source: PairSource,
@@ -115,17 +114,10 @@ export function samplePair(
   }
   const chosen = pool[Math.floor(Math.random() * pool.length)]
 
-  if (difficulty === 'none') {
+  if (difficulty === 'easy') {
     return { ...chosen, spy: '' }
   }
-  if (difficulty === 'easy') {
-    const others = pool.filter((p) => p.categoryId !== chosen.categoryId)
-    if (others.length > 0) {
-      const o = others[Math.floor(Math.random() * others.length)]
-      return { ...chosen, spy: o.civilian }
-    }
-  }
-  if (difficulty === 'easy' || difficulty === 'medium') {
+  if (difficulty === 'medium') {
     const siblings = pool.filter(
       (p) => p.categoryId === chosen.categoryId && p.civilian !== chosen.civilian,
     )

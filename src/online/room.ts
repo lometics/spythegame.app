@@ -5,10 +5,13 @@ import {
   get,
   update,
   onValue,
+  onDisconnect,
+  remove,
   serverTimestamp,
 } from 'firebase/database'
 import { db, ensureSignedIn } from './firebase'
 import { samplePair } from '../game/pairs'
+import { resolveSpyCount, type SpyCountSetting } from '../game/machine'
 import i18n from '../i18n'
 import type {
   CustomList,
@@ -46,6 +49,7 @@ export type RoomState = {
   meta: OnlineMeta | null
   players: Record<string, OnlinePlayer>
   round: OnlineRound | null
+  loaded: boolean
 }
 
 const ROOM_CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
@@ -98,19 +102,37 @@ export async function joinRoom(code: string, name: string) {
   return user.uid
 }
 
+export async function rejoinIfMissing(
+  code: string,
+  uid: string,
+  name: string,
+) {
+  if (!db) return
+  const playerSnap = await get(ref(db, `rooms/${code}/players/${uid}`))
+  if (playerSnap.exists()) return
+  const metaSnap = await get(ref(db, `rooms/${code}/meta`))
+  if (!metaSnap.exists()) return
+  await set(ref(db, `rooms/${code}/players/${uid}`), {
+    name: name.trim() || i18n.t('online.defaultGuestName'),
+    joinedAt: serverTimestamp(),
+  })
+}
+
 export function useRoom(code: string | undefined): RoomState {
   const [state, setState] = useState<RoomState>({
     meta: null,
     players: {},
     round: null,
+    loaded: false,
   })
   useEffect(() => {
     if (!db || !code) return
+    setState({ meta: null, players: {}, round: null, loaded: false })
     const metaRef = ref(db, `rooms/${code}/meta`)
     const playersRef = ref(db, `rooms/${code}/players`)
     const roundRef = ref(db, `rooms/${code}/round`)
     const unsubMeta = onValue(metaRef, (s) =>
-      setState((prev) => ({ ...prev, meta: s.val() ?? null })),
+      setState((prev) => ({ ...prev, meta: s.val() ?? null, loaded: true })),
     )
     const unsubPlayers = onValue(playersRef, (s) =>
       setState((prev) => ({ ...prev, players: s.val() ?? {} })),
@@ -182,15 +204,14 @@ export async function startOnlineRound(
   customLists: CustomList[],
   players: Record<string, OnlinePlayer>,
   difficulty: Difficulty = 'hard',
-  spyCount = 1,
+  spyCount: SpyCountSetting = 1,
   spiesKnowEachOther = false,
 ) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   const pair: Pair = samplePair(pairSource, customLists, difficulty)
   const uids = Object.keys(players)
   if (uids.length < 3) throw new Error(i18n.t('online.errMinPlayers'))
-  // Clamp spy count: ≥1, ≤ players-2 so at least 2 civilians remain.
-  const n = Math.max(1, Math.min(Math.floor(spyCount), Math.max(1, uids.length - 2)))
+  const n = resolveSpyCount(spyCount, uids.length)
   const shuffled = [...uids]
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
@@ -256,8 +277,98 @@ export async function backToLobby(code: string) {
   })
 }
 
-export async function leaveRoom(code: string, uid: string) {
+export async function renamePlayerInRoom(
+  code: string,
+  uid: string,
+  name: string,
+) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
+  const trimmed = name.trim()
+  if (!trimmed) return
+  await update(ref(db, `rooms/${code}/players/${uid}`), { name: trimmed })
+}
+
+function closePayload(code: string): Record<string, null> {
+  return {
+    [`rooms/${code}/meta`]: null,
+    [`rooms/${code}/players`]: null,
+    [`rooms/${code}/round`]: null,
+    [`privateWords/${code}`]: null,
+    [`pairReveals/${code}`]: null,
+  }
+}
+
+export async function closeRoom(code: string) {
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
+  await update(ref(db), closePayload(code))
+}
+
+export async function leaveRoom(code: string, uid: string, isHost = false) {
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
+  if (isHost) {
+    await closeRoom(code)
+    return
+  }
   await set(ref(db, `rooms/${code}/players/${uid}`), null)
   await set(ref(db, `privateWords/${code}/${uid}`), null)
+}
+
+const pendingLeaves = new Map<string, ReturnType<typeof setTimeout>>()
+
+export function usePresence(
+  code: string | undefined,
+  uid: string | null,
+  isHost: boolean,
+) {
+  useEffect(() => {
+    if (!db || !code || !uid) return
+    const key = `${code}:${uid}`
+    const pending = pendingLeaves.get(key)
+    if (pending) {
+      clearTimeout(pending)
+      pendingLeaves.delete(key)
+    }
+
+    const playerRef = ref(db, `rooms/${code}/players/${uid}`)
+    const rootRef = ref(db)
+    const connectedRef = ref(db, '.info/connected')
+
+    const unsub = onValue(connectedRef, (snap) => {
+      if (snap.val() !== true) return
+      if (isHost) {
+        onDisconnect(rootRef)
+          .update(closePayload(code))
+          .catch(() => {})
+      } else {
+        onDisconnect(playerRef)
+          .remove()
+          .catch(() => {})
+      }
+    })
+
+    const onPageHide = () => {
+      if (isHost) {
+        update(rootRef, closePayload(code)).catch(() => {})
+      } else {
+        remove(playerRef).catch(() => {})
+      }
+    }
+    window.addEventListener('pagehide', onPageHide)
+
+    return () => {
+      unsub()
+      window.removeEventListener('pagehide', onPageHide)
+      onDisconnect(playerRef)
+        .cancel()
+        .catch(() => {})
+      onDisconnect(rootRef)
+        .cancel()
+        .catch(() => {})
+      const handle = setTimeout(() => {
+        pendingLeaves.delete(key)
+        leaveRoom(code, uid, isHost).catch(() => {})
+      }, 0)
+      pendingLeaves.set(key, handle)
+    }
+  }, [code, uid, isHost])
 }

@@ -38,18 +38,17 @@ export type PairSource = {
 
 /**
  * Difficulty for the villagers — how hard it is to spot the spy.
- *  easy   = spy's hint is wildly different (random pair from a different category)
- *  medium = spy's hint is loosely related (sibling civilian from same category)
- *  hard   = spy's hint is the curated close word — classic gameplay
- *  none   = spy gets no hint at all (pure bluffing)
+ *  easy   = spy gets no hint at all (pure bluffing — easiest to catch)
+ *  medium = spy's hint is a sibling civilian from the same category
+ *  hard   = spy's hint is the curated close word in the same category — classic
  */
-export type Difficulty = 'easy' | 'medium' | 'hard' | 'none'
+export type Difficulty = 'easy' | 'medium' | 'hard'
 
 export type GameSettings = {
   timerSeconds: number
   pairSource: PairSource
   difficulty: Difficulty
-  spyCount: number
+  spyCount: number | { min: number; max: number }
   spiesKnowEachOther: boolean
 }
 

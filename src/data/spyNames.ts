@@ -1,0 +1,36 @@
+export const SPY_NAMES = [
+  'Echo',
+  'Nova',
+  'Sage',
+  'Wren',
+  'Rio',
+  'Cleo',
+  'Sky',
+  'Zen',
+  'Vox',
+  'Ace',
+  'Kai',
+  'Quill',
+  'Hex',
+  'Mira',
+  'Lux',
+  'Onyx',
+  'Ember',
+  'Flint',
+  'Indi',
+  'Juno',
+  'Koda',
+  'Lyra',
+  'Marlo',
+  'Nyx',
+  'Orion',
+  'Phoenix',
+  'Quinn',
+  'Raven',
+  'Slate',
+  'Tess',
+]
+
+export function randomSpyName(): string {
+  return SPY_NAMES[Math.floor(Math.random() * SPY_NAMES.length)]
+}

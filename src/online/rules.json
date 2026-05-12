@@ -29,7 +29,8 @@
       "$code": {
         ".write": "auth != null && root.child('rooms').child($code).child('meta').child('hostUid').val() === auth.uid",
         "$uid": {
-          ".read": "auth != null && $uid === auth.uid"
+          ".read": "auth != null && $uid === auth.uid",
+          ".write": "auth != null && $uid === auth.uid && !newData.exists()"
         }
       }
     },

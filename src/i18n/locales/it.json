@@ -7,7 +7,17 @@
     "de": "Deutsch",
     "fr": "Français",
     "it": "Italiano",
-    "es": "Español"
+    "es": "Español",
+    "pt": "Português",
+    "nl": "Nederlands",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "tr": "Türkçe",
+    "ru": "Русский",
+    "ja": "日本語",
+    "zh": "中文",
+    "ko": "한국어",
+    "ar": "العربية"
   },
   "common": {
     "home": "← Home",
@@ -91,14 +101,15 @@
     "defaultName": "Giocatore {{n}}",
     "spyCountLabel": "Numero di spie",
     "spyCountHint": "Più spie = più difficile per i civili.",
+    "spyCountRandom": "Casuale",
+    "spyCountRandomHint": "Sceglie 1–{{max}} spie per round.",
     "spiesKnowLabel": "Le spie si conoscono",
     "spiesKnowHint": "Vedono le altre spie sulla carta.",
     "difficultyLabel": "Difficoltà per i villici",
     "difficulty": {
-      "none":   { "label": "Nessun indizio", "hint": "La spia non riceve alcuna parola — la più facile da scoprire." },
-      "easy":   { "label": "Facile",         "hint": "L'indizio della spia viene da un'altra categoria — facile da individuare." },
-      "medium": { "label": "Media",          "hint": "L'indizio della spia è un parente della stessa categoria." },
-      "hard":   { "label": "Difficile",      "hint": "L'indizio della spia è molto vicino alla parola vera — classico." }
+      "easy":   { "label": "Facile",    "hint": "La spia non riceve alcun indizio — puro bluff, la più facile da scoprire." },
+      "medium": { "label": "Media",     "hint": "L'indizio della spia è un parente della stessa categoria." },
+      "hard":   { "label": "Difficile", "hint": "L'indizio della spia è molto vicino alla parola vera, stessa categoria — classico." }
     },
     "timerLabel": "Timer discussione",
     "timerOff": "Nessun timer",
@@ -193,7 +204,9 @@
     "spyPlaceholder": "Indizio della spia",
     "removePairAria": "Rimuovi coppia",
     "addPair": "+ Aggiungi coppia",
-    "create": "Crea lista"
+    "create": "Crea lista",
+    "deleteConfirmTitle": "Eliminare questa lista?",
+    "deleteConfirmDesc": "Questa azione è irreversibile."
   },
   "online": {
     "yourName": "Il tuo nome",

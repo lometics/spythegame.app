@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,6 +6,27 @@
 
 :root {
   color-scheme: dark;
+  /* shadcn-ui canonical dark theme tokens (zinc, hue 0%). */
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+  --radius: 0.5rem;
 }
 
 html,
@@ -15,50 +36,99 @@ body,
 }
 
 body {
-  @apply bg-ink-900 text-slate-100 font-body antialiased;
-  background-image:
-    radial-gradient(at 20% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
-    radial-gradient(at 80% 100%, rgba(99, 102, 241, 0.12) 0px, transparent 50%);
-  background-attachment: fixed;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  @apply font-body antialiased;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   overscroll-behavior: none;
   -webkit-tap-highlight-color: transparent;
 }
 
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+  ::selection {
+    background-color: hsl(var(--primary) / 0.2);
+  }
+  /* shadcn-style heading defaults: Inter, semibold, tracking-tight. */
+  h1, h2, h3 {
+    @apply tracking-tight;
+    font-weight: 600;
+  }
+}
+
 @layer components {
+  /* Button base — shadcn primitive: h-9-ish, rounded-md, ring on focus. */
   .btn {
-    @apply inline-flex items-center justify-center px-4 py-2.5 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl font-semibold transition active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed select-none;
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-1;
+    --tw-ring-color: hsl(var(--ring));
   }
   .btn-primary {
-    @apply btn bg-accent-500 hover:bg-accent-400 text-ink-900 shadow-soft;
+    @apply btn;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  .btn-primary:hover:not(:disabled) {
+    background-color: hsl(var(--primary) / 0.9);
   }
   .btn-ghost {
-    @apply btn bg-white/5 hover:bg-white/10 text-slate-100 border border-white/10;
+    @apply btn;
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background-color: hsl(var(--secondary) / 0.8);
   }
   .btn-danger {
-    @apply btn bg-rose-500/90 hover:bg-rose-500 text-white;
+    @apply btn;
+    background-color: hsl(var(--destructive));
+    color: hsl(var(--destructive-foreground));
   }
-  /* Mobile: no chrome — just title + content. Desktop: full card look. */
-  .card {
-    /* No styles on mobile. */
-  }
-  .input {
-    @apply w-full px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-ink-700/60 border border-white/10 focus:border-accent-500 focus:outline-none placeholder:text-slate-500;
-  }
-  .label {
-    @apply text-xs uppercase tracking-wider text-slate-400 font-semibold;
+  .btn-danger:hover:not(:disabled) {
+    background-color: hsl(var(--destructive) / 0.9);
   }
 
-  /* 3D flip card */
+  /* Card — shadcn pattern: same bg as page, separation comes from the border. */
+  .card {
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: calc(var(--radius) + 4px); /* shadcn card = rounded-xl */
+    padding: 1rem;
+    color: hsl(var(--card-foreground));
+  }
+
+  /* Input — flat with border, ring on focus. */
+  .input {
+    @apply flex w-full rounded-md px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50;
+    background-color: transparent;
+    color: hsl(var(--foreground));
+    border: 1px solid hsl(var(--input));
+    --tw-ring-color: hsl(var(--ring));
+  }
+  .input::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Label — shadcn small + medium-weight, no uppercase. */
+  .label {
+    @apply text-sm font-medium leading-none;
+    color: hsl(var(--foreground));
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  /* Card reveal — 3D Y-axis flip (preserved). */
   .flip-card {
-    perspective: 1400px;
+    perspective: 2400px;
     -webkit-tap-highlight-color: transparent;
   }
   .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.55s cubic-bezier(0.4, 0.0, 0.2, 1);
     transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.34, 1.18, 0.64, 1);
     will-change: transform;
   }
   .flip-card.flipped .flip-card-inner {
@@ -67,14 +137,14 @@ body {
   .flip-card-face {
     position: absolute;
     inset: 0;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    border-radius: 1.75rem;
+    border-radius: calc(var(--radius) + 8px);
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
-  .flip-card-back {
+  .flip-card-face.flip-card-back {
     transform: rotateY(180deg);
   }
 
@@ -91,27 +161,21 @@ body {
   padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
 }
 
-/* Primary CTA pinned to the bottom of the viewport on mobile so it's always
-   reachable, with a fade so content scrolling underneath doesn't crash into it.
-   Above the iOS home indicator via safe-area padding. */
+/* Sticky CTA bar — fade-out lets content scroll cleanly underneath. */
 .action-bar {
   position: sticky;
   bottom: 0;
   z-index: 10;
-  /* !important so Tailwind's `space-y-*` margin-top doesn't beat us. */
   margin-top: auto !important;
   padding-top: 0.75rem;
   padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
   background: linear-gradient(
     to top,
-    rgb(11 16 32 / 0.96) 55%,
-    rgb(11 16 32 / 0)
+    hsl(var(--background) / 0.96) 55%,
+    hsl(var(--background) / 0)
   );
 }
 
-/* On phones, pin to the viewport via fixed so the CTA stays reachable even
-   when the parent container is shorter than the scroll area. Add a spacer
-   on <main> so content isn't hidden behind the bar. */
 @media (max-width: 639px) {
   .action-bar {
     position: fixed;
@@ -127,16 +191,8 @@ body {
   }
 }
 
-/* Card chrome: mobile = nothing, desktop = surface. Outside @layer so the
-   media query isn't hoisted by Tailwind's @apply processing. */
 @media (min-width: 640px) {
   .card {
-    background-color: rgb(17 23 46 / 0.8);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgb(255 255 255 / 0.05);
-    border-radius: 1.5rem;
     padding: 1.5rem;
-    box-shadow: 0 10px 40px -10px rgb(0 0 0 / 0.4);
   }
 }

@@ -217,7 +217,7 @@ export const useGame = create<GameState & Actions>()(
     }),
     {
       name: 'spy-the-game-local',
-      version: 5,
+      version: 6,
       // Drop old persisted state on schema change so we don't ship users a half-broken settings object.
       migrate: (persisted, fromVersion) => {
         let p = persisted as Record<string, unknown>
@@ -265,6 +265,23 @@ export const useGame = create<GameState & Actions>()(
             },
           }
         }
+        if (fromVersion < 6) {
+          // Difficulty collapsed from 4 tiers to 3: 'none' → 'easy' (both = no hint).
+          const prev = (p?.settings as Partial<GameSettings> & { difficulty?: string }) ?? {}
+          const remapped =
+            prev.difficulty === 'none' ? 'easy' : prev.difficulty
+          p = {
+            ...p,
+            settings: {
+              ...DEFAULT_SETTINGS,
+              ...prev,
+              difficulty:
+                remapped === 'easy' || remapped === 'medium' || remapped === 'hard'
+                  ? remapped
+                  : 'hard',
+            },
+          }
+        }
         return p as unknown
       },
       partialize: (s) => ({
@@ -276,6 +293,7 @@ export const useGame = create<GameState & Actions>()(
         })),
         settings: s.settings,
         customLists: s.customLists,
+        onlineName: s.onlineName,
       }),
     },
   ),

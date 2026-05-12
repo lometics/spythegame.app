@@ -7,7 +7,17 @@
     "de": "Deutsch",
     "fr": "Français",
     "it": "Italiano",
-    "es": "Español"
+    "es": "Español",
+    "pt": "Português",
+    "nl": "Nederlands",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "tr": "Türkçe",
+    "ru": "Русский",
+    "ja": "日本語",
+    "zh": "中文",
+    "ko": "한국어",
+    "ar": "العربية"
   },
   "common": {
     "home": "← Inicio",
@@ -91,14 +101,15 @@
     "defaultName": "Jugador {{n}}",
     "spyCountLabel": "Número de espías",
     "spyCountHint": "Más espías = más difícil para los civiles.",
+    "spyCountRandom": "Aleatorio",
+    "spyCountRandomHint": "Elige 1–{{max}} espías por ronda.",
     "spiesKnowLabel": "Los espías se conocen",
     "spiesKnowHint": "Ven a los otros espías en su carta.",
     "difficultyLabel": "Dificultad para los aldeanos",
     "difficulty": {
-      "none":   { "label": "Sin pista", "hint": "El espía no recibe palabra — el más fácil de pillar." },
-      "easy":   { "label": "Fácil",     "hint": "La pista del espía viene de otra categoría — fácil de detectar." },
-      "medium": { "label": "Media",     "hint": "La pista del espía es un pariente de la misma categoría." },
-      "hard":   { "label": "Difícil",   "hint": "La pista del espía está muy cerca de la palabra real — clásico." }
+      "easy":   { "label": "Fácil",   "hint": "El espía no recibe pista — puro farol, el más fácil de pillar." },
+      "medium": { "label": "Media",   "hint": "La pista del espía es un pariente de la misma categoría." },
+      "hard":   { "label": "Difícil", "hint": "La pista del espía está muy cerca de la palabra real, misma categoría — clásico." }
     },
     "timerLabel": "Temporizador de debate",
     "timerOff": "Sin temporizador",
@@ -193,7 +204,9 @@
     "spyPlaceholder": "Pista del espía",
     "removePairAria": "Quitar par",
     "addPair": "+ Añadir par",
-    "create": "Crear lista"
+    "create": "Crear lista",
+    "deleteConfirmTitle": "¿Eliminar esta lista?",
+    "deleteConfirmDesc": "Esta acción no se puede deshacer."
   },
   "online": {
     "yourName": "Tu nombre",

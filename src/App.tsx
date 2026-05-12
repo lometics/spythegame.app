@@ -1,13 +1,26 @@
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { HashRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Home from './routes/Home'
 import LocalGame from './routes/LocalGame'
 import EditList from './routes/EditList'
 import OnlineRoom from './routes/OnlineRoom'
+import Options from './routes/Options'
 import LanguageSwitcher from './components/LanguageSwitcher'
+import { useGame } from './game/state'
+import { randomSpyName } from './data/spyNames'
+
+function JoinRedirect() {
+  const { code } = useParams()
+  return <Navigate to={`/room/${(code ?? '').toUpperCase()}`} replace />
+}
 
 export default function App() {
   const { t } = useTranslation()
+  useEffect(() => {
+    const { onlineName, setOnlineName } = useGame.getState()
+    if (!onlineName.trim()) setOnlineName(randomSpyName())
+  }, [])
   return (
     <HashRouter>
       <div className="min-h-full flex flex-col">
@@ -17,7 +30,9 @@ export default function App() {
             <Route path="/local" element={<LocalGame />} />
             <Route path="/lists/new" element={<EditList />} />
             <Route path="/lists/:id" element={<EditList />} />
+            <Route path="/options" element={<Options />} />
             <Route path="/room/:code" element={<OnlineRoom />} />
+            <Route path="/join/:code" element={<JoinRedirect />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

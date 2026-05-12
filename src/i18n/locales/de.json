@@ -7,7 +7,17 @@
     "de": "Deutsch",
     "fr": "Français",
     "it": "Italiano",
-    "es": "Español"
+    "es": "Español",
+    "pt": "Português",
+    "nl": "Nederlands",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "tr": "Türkçe",
+    "ru": "Русский",
+    "ja": "日本語",
+    "zh": "中文",
+    "ko": "한국어",
+    "ar": "العربية"
   },
   "common": {
     "home": "← Startseite",
@@ -91,14 +101,19 @@
     "defaultName": "Spieler {{n}}",
     "spyCountLabel": "Anzahl Spione",
     "spyCountHint": "Mehr Spione = schwerer für die Zivilisten.",
+    "spyCountRandom": "Zufällig",
+    "spyCountRandomHint": "Wählt 1–{{max}} Spione pro Runde.",
+    "spyCountRandomRangeHint": "Wählt {{min}}–{{max}} Spione pro Runde.",
+    "spyCountRandomFixedHint": "Immer {{n}} Spione.",
+    "spyCountFromLabel": "Von",
+    "spyCountToLabel": "Bis",
     "spiesKnowLabel": "Spione kennen sich",
     "spiesKnowHint": "Sie sehen ihre Mit-Spione auf der Karte.",
     "difficultyLabel": "Schwierigkeit für die Dorfbewohner",
     "difficulty": {
-      "none":   { "label": "Kein Hinweis", "hint": "Der Spion bekommt gar kein Wort — am leichtesten zu enttarnen." },
-      "easy":   { "label": "Einfach",      "hint": "Der Hinweis des Spions kommt aus einer anderen Kategorie — leicht zu erkennen." },
-      "medium": { "label": "Mittel",       "hint": "Der Hinweis des Spions ist ein Verwandter aus derselben Kategorie." },
-      "hard":   { "label": "Schwer",       "hint": "Der Hinweis des Spions liegt sehr nah am echten Wort — Klassiker." }
+      "easy":   { "label": "Einfach", "hint": "Der Spion bekommt keinen Hinweis — reines Bluffen, am leichtesten zu enttarnen." },
+      "medium": { "label": "Mittel",  "hint": "Der Hinweis des Spions ist ein Verwandter aus derselben Kategorie." },
+      "hard":   { "label": "Schwer",  "hint": "Der Hinweis des Spions liegt sehr nah am echten Wort, gleiche Kategorie — Klassiker." }
     },
     "timerLabel": "Diskussions-Timer",
     "timerOff": "Kein Timer",
@@ -119,11 +134,12 @@
     "next": "Weiter →",
     "doneBtn": "Fertig →",
     "tapHint": "tippen zum Umdrehen",
-    "swipeHint": "← wischen für die nächste"
+    "swipeHint": "wischen für die nächste"
   },
   "playerCard": {
     "spyHeader": "Spy",
     "passTo": "Weitergeben an",
+    "cardOwner": "Karte von {{name}}",
     "passInstruction": "Sobald es sicher ist, tippe die Karte an, um dein Wort zu sehen.",
     "tapToFlip": "tippen zum Umdrehen",
     "tapToHide": "tippen zum Verbergen",
@@ -193,7 +209,9 @@
     "spyPlaceholder": "Hinweis des Spions",
     "removePairAria": "Paar entfernen",
     "addPair": "+ Paar hinzufügen",
-    "create": "Liste erstellen"
+    "create": "Liste erstellen",
+    "deleteConfirmTitle": "Diese Liste löschen?",
+    "deleteConfirmDesc": "Dies kann nicht rückgängig gemacht werden."
   },
   "online": {
     "yourName": "Dein Name",

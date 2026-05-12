@@ -7,7 +7,17 @@
     "de": "Deutsch",
     "fr": "Français",
     "it": "Italiano",
-    "es": "Español"
+    "es": "Español",
+    "pt": "Português",
+    "nl": "Nederlands",
+    "pl": "Polski",
+    "sv": "Svenska",
+    "tr": "Türkçe",
+    "ru": "Русский",
+    "ja": "日本語",
+    "zh": "中文",
+    "ko": "한국어",
+    "ar": "العربية"
   },
   "common": {
     "home": "← Accueil",
@@ -91,14 +101,15 @@
     "defaultName": "Joueur {{n}}",
     "spyCountLabel": "Nombre d'espions",
     "spyCountHint": "Plus d'espions = plus dur pour les civils.",
+    "spyCountRandom": "Aléatoire",
+    "spyCountRandomHint": "Choisit 1–{{max}} espions par manche.",
     "spiesKnowLabel": "Les espions se connaissent",
     "spiesKnowHint": "Ils voient les autres espions sur leur carte.",
     "difficultyLabel": "Difficulté pour les villageois",
     "difficulty": {
-      "none":   { "label": "Sans indice", "hint": "L'espion n'a aucun mot — le plus facile à attraper." },
-      "easy":   { "label": "Facile",      "hint": "L'indice de l'espion vient d'une autre catégorie — facile à repérer." },
-      "medium": { "label": "Moyen",       "hint": "L'indice de l'espion est un proche de la même catégorie." },
-      "hard":   { "label": "Difficile",   "hint": "L'indice de l'espion est très proche du vrai mot — classique." }
+      "easy":   { "label": "Facile",    "hint": "L'espion n'a aucun indice — pur bluff, le plus facile à attraper." },
+      "medium": { "label": "Moyen",     "hint": "L'indice de l'espion est un proche de la même catégorie." },
+      "hard":   { "label": "Difficile", "hint": "L'indice de l'espion est très proche du vrai mot, même catégorie — classique." }
     },
     "timerLabel": "Minuteur de discussion",
     "timerOff": "Sans minuteur",
@@ -193,7 +204,9 @@
     "spyPlaceholder": "Indice de l'espion",
     "removePairAria": "Retirer la paire",
     "addPair": "+ Ajouter une paire",
-    "create": "Créer la liste"
+    "create": "Créer la liste",
+    "deleteConfirmTitle": "Supprimer cette liste ?",
+    "deleteConfirmDesc": "Cette action est irréversible."
   },
   "online": {
     "yourName": "Votre nom",

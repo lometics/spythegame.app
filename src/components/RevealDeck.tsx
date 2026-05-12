@@ -24,19 +24,21 @@ export default function RevealDeck({
   const { t } = useTranslation()
   const [index, setIndex] = useState(0)
   const [dragX, setDragX] = useState(0)
-  const [animating, setAnimating] = useState<'left' | 'right' | null>(null)
+  const [animating, setAnimating] = useState<'left' | 'right' | 'prev' | null>(
+    null,
+  )
   const startX = useRef<number | null>(null)
   const startY = useRef<number | null>(null)
 
   const isLast = index >= players.length - 1
   const isFirst = index === 0
 
-  const goNext = () => {
+  const goNext = (dir: 'left' | 'right' = 'left') => {
     if (isLast) {
       onFinish()
       return
     }
-    setAnimating('left')
+    setAnimating(dir)
     window.setTimeout(() => {
       setIndex((i) => Math.min(i + 1, players.length - 1))
       setDragX(0)
@@ -49,7 +51,7 @@ export default function RevealDeck({
       setDragX(0)
       return
     }
-    setAnimating('right')
+    setAnimating('prev')
     window.setTimeout(() => {
       setIndex((i) => Math.max(i - 1, 0))
       setDragX(0)
@@ -78,14 +80,16 @@ export default function RevealDeck({
     const dx = dragX
     startX.current = null
     startY.current = null
-    if (dx < -SWIPE_THRESHOLD) goNext()
-    else if (dx > SWIPE_THRESHOLD) goPrev()
+    // Swipe in either direction advances. Previous is button-only.
+    if (dx < -SWIPE_THRESHOLD) goNext('left')
+    else if (dx > SWIPE_THRESHOLD) goNext('right')
     else setDragX(0)
   }
 
   let translatePx = dragX
   if (animating === 'left') translatePx = -window.innerWidth
-  if (animating === 'right') translatePx = window.innerWidth
+  if (animating === 'right' || animating === 'prev')
+    translatePx = window.innerWidth
   const transition = animating
     ? 'transform 0.28s cubic-bezier(0.4, 0.0, 0.2, 1), opacity 0.28s'
     : startX.current !== null
@@ -123,8 +127,12 @@ export default function RevealDeck({
         <div
           className="swipe-stage relative"
           style={{
-            width: 'min(100%, calc(85vh * 5 / 7))',
-            aspectRatio: '5 / 7',
+            // Card is always taller than wide (2:3 portrait). Drive height
+            // from viewport; width is derived from aspect ratio and capped
+            // to the column so it never exceeds it.
+            height: '75vh',
+            aspectRatio: '2 / 3',
+            maxWidth: '100%',
           }}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
@@ -137,11 +145,12 @@ export default function RevealDeck({
           const p = players[i]
           const isTop = offset === 0
 
-          // While the top card is animating away, behind cards visually slide
-          // forward one slot so the new top is already in place when index
-          // advances — no post-swipe snap.
-          const visualOffset =
-            animating === 'left' && !isTop ? offset - 1 : offset
+          // While the top card is animating to the NEXT player (either swipe
+          // direction), behind cards slide forward one slot so the new top is
+          // already in place when index advances — no post-swipe snap.
+          // (Prev-button rewind doesn't shift the stack forward.)
+          const isAdvancing = animating === 'left' || animating === 'right'
+          const visualOffset = isAdvancing && !isTop ? offset - 1 : offset
           const rotateDeg = STACK_ROTATES[visualOffset] ?? 0
 
           const style: React.CSSProperties = isTop
@@ -197,7 +206,7 @@ export default function RevealDeck({
           <br />
           {t('revealDeck.swipeHint')}
         </div>
-        <button className="btn-primary px-3 py-2.5 sm:px-4 sm:py-3 text-sm" onClick={goNext}>
+        <button className="btn-primary px-3 py-2.5 sm:px-4 sm:py-3 text-sm" onClick={() => goNext()}>
           {isLast ? t('revealDeck.doneBtn') : t('revealDeck.next')}
         </button>
       </div>
