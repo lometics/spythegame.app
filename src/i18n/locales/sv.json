@@ -349,6 +349,11 @@
       "name": "Tyranner & Despoter",
       "description": "Ökända härskare och diktatorer från historien.",
       "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Svart Humor",
+      "description": "Galgar, tabun — skratta för att slippa gråta.",
+      "icon": "💀"
     }
   },
   "customList": {

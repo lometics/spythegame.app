@@ -349,6 +349,11 @@
       "name": "暴君与独裁者",
       "description": "历史上臭名昭著的统治者和独裁者。",
       "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "黑色幽默",
+      "description": "绞架、禁忌——苦中作乐。",
+      "icon": "💀"
     }
   },
   "customList": {

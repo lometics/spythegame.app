@@ -349,6 +349,11 @@
       "name": "Tiranlar ve Despotlar",
       "description": "Tarihteki kötü şöhretli liderler ve diktatörler.",
       "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Kara Mizah",
+      "description": "Darağacı ve tabular — ağlamamak için gülünür.",
+      "icon": "💀"
     }
   },
   "customList": {
