@@ -344,6 +344,16 @@
       "name": "Lastig / Gemengd",
       "description": "Paren door categorieën heen. De spion gaat zweten.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tirannen & Despoten",
+      "description": "Beruchte heersers en dictators uit de geschiedenis.",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Zwarte Humor",
+      "description": "Galgen, taboes — lachen om niet te huilen.",
+      "icon": "💀"
     }
   },
   "customList": {

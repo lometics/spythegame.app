@@ -348,6 +348,16 @@
       "name": "Trudne / Mieszane",
       "description": "Pary przekraczające kategorie. Szpieg się spoci.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tyrani i despoci",
+      "description": "Niesławni władcy i dyktatorzy z historii.",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Czarny humor",
+      "description": "Szubienice i tabu — śmiech, by nie płakać.",
+      "icon": "💀"
     }
   },
   "customList": {

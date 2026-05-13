@@ -344,6 +344,16 @@
       "name": "Tramposo / Mixto",
       "description": "Pares que cruzan categorías. El espía sudará.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tiranos y Déspotas",
+      "description": "Gobernantes y dictadores infames de la historia.",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Humor Negro",
+      "description": "Horca, tabúes — uno ríe para no llorar.",
+      "icon": "💀"
     }
   },
   "customList": {

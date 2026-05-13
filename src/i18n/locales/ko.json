@@ -344,6 +344,16 @@
       "name": "어려움 / 혼합",
       "description": "카테고리를 넘나드는 쌍. 스파이가 땀 흘릴 것.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "폭군과 독재자",
+      "description": "역사 속 악명 높은 통치자와 독재자.",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "블랙 유머",
+      "description": "죽음과 금기 — 울지 않으려 웃는다.",
+      "icon": "💀"
     }
   },
   "customList": {

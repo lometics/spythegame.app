@@ -344,6 +344,11 @@
       "name": "棘手 / 混合",
       "description": "跨类别的词对。间谍要冒汗了。",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "暴君与独裁者",
+      "description": "历史上臭名昭著的统治者和独裁者。",
+      "icon": "⚔️"
     }
   },
   "customList": {

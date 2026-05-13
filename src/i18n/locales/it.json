@@ -344,6 +344,16 @@
       "name": "Furbo / Misto",
       "description": "Coppie che attraversano le categorie. La spia suderà.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tiranni & Despoti",
+      "description": "Sovrani e dittatori famigerati della storia.",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Umorismo Nero",
+      "description": "Forca, tabù — si ride per non piangere.",
+      "icon": "💀"
     }
   },
   "customList": {

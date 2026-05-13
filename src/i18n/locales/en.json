@@ -360,6 +360,16 @@
       "name": "Tricky / Mixed",
       "description": "Pairs that cross categories. The spy will sweat.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tyrants & Despots",
+      "description": "Infamous rulers and dictators from history.",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Dark Humor",
+      "description": "Gallows, taboo, things you laugh at to cope.",
+      "icon": "💀"
     }
   },
   "customList": {

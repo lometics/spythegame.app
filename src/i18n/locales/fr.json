@@ -344,6 +344,16 @@
       "name": "Piégeux / Mixte",
       "description": "Des paires qui croisent les catégories. L'espion va transpirer.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tyrans & Despotes",
+      "description": "Dirigeants et dictateurs tristement célèbres de l'histoire.",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Humour Noir",
+      "description": "Potence, tabous — on en rit pour ne pas pleurer.",
+      "icon": "💀"
     }
   },
   "customList": {

@@ -344,6 +344,11 @@
       "name": "Zor / Karışık",
       "description": "Kategorileri aşan çiftler. Casus terleyecek.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tiranlar ve Despotlar",
+      "description": "Tarihteki kötü şöhretli liderler ve diktatörler.",
+      "icon": "⚔️"
     }
   },
   "customList": {

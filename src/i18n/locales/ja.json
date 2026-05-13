@@ -344,6 +344,16 @@
       "name": "難問・ミックス",
       "description": "カテゴリを跨ぐペア。スパイは汗をかく。",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "暴君と独裁者",
+      "description": "歴史上の悪名高き支配者と独裁者。",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "ブラックユーモア",
+      "description": "死、タブー、笑うしかないネタ。",
+      "icon": "💀"
     }
   },
   "customList": {

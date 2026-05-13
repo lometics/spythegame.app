@@ -344,6 +344,16 @@
       "name": "Difíceis / Mistos",
       "description": "Pares que cruzam categorias. O espião vai suar.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tiranos & Déspotas",
+      "description": "Governantes e ditadores infames da história.",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Humor Negro",
+      "description": "Forca, tabus — rir para não chorar.",
+      "icon": "💀"
     }
   },
   "customList": {

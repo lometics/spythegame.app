@@ -344,6 +344,11 @@
       "name": "Svåra / Blandade",
       "description": "Par som korsar kategorier. Spionen kommer svettas.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tyranner & Despoter",
+      "description": "Ökända härskare och diktatorer från historien.",
+      "icon": "⚔️"
     }
   },
   "customList": {

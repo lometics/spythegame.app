@@ -349,6 +349,16 @@
       "name": "Knifflig / Gemischt",
       "description": "Paare quer durch alles. Der Spion wird schwitzen.",
       "icon": "🎲"
+    },
+    "tyrants": {
+      "name": "Tyrannen & Despoten",
+      "description": "Berüchtigte Herrscher und Diktatoren der Geschichte.",
+      "icon": "⚔️"
+    },
+    "darkhumor": {
+      "name": "Schwarzer Humor",
+      "description": "Galgen, Tabus — Lachen, um nicht zu weinen.",
+      "icon": "💀"
     }
   },
   "customList": {
