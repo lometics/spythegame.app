@@ -366,9 +366,9 @@
       "icon": "🎭"
     },
     "races": {
-      "name": "レース",
-      "description": "スプリントからグランプリまで——速さと持久力の競技。",
-      "icon": "🏁"
+      "name": "民族",
+      "description": "民族と国籍——同じ地域、異なるルーツ。",
+      "icon": "🌍"
     },
     "religions": {
       "name": "宗教",

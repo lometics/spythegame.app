@@ -366,9 +366,9 @@
       "icon": "🎭"
     },
     "races": {
-      "name": "Courses",
-      "description": "Du sprint au grand prix — épreuves de vitesse et d'endurance.",
-      "icon": "🏁"
+      "name": "Peuples",
+      "description": "Peuples et nationalités — même région, racines différentes.",
+      "icon": "🌍"
     },
     "infamous": {
       "name": "Lieux Critiques",

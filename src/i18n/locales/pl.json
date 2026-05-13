@@ -370,9 +370,9 @@
       "icon": "🎭"
     },
     "races": {
-      "name": "Wyścigi",
-      "description": "Od sprintów po grand prix — zawody szybkości i wytrzymałości.",
-      "icon": "🏁"
+      "name": "Ludy",
+      "description": "Ludy i narodowości — ten sam region, różne korzenie.",
+      "icon": "🌍"
     },
     "religions": {
       "name": "Religie",

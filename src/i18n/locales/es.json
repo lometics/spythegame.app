@@ -366,9 +366,9 @@
       "icon": "🎭"
     },
     "races": {
-      "name": "Carreras",
-      "description": "Del sprint al gran premio — pruebas de velocidad y resistencia.",
-      "icon": "🏁"
+      "name": "Pueblos",
+      "description": "Pueblos y nacionalidades — misma región, raíces distintas.",
+      "icon": "🌍"
     },
     "infamous": {
       "name": "Lugares Críticos",

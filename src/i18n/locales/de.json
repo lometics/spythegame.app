@@ -371,9 +371,9 @@
       "icon": "🎭"
     },
     "races": {
-      "name": "Rennen",
-      "description": "Vom Sprint bis zum Grand Prix — Wettkämpfe um Tempo und Ausdauer.",
-      "icon": "🏁"
+      "name": "Völker",
+      "description": "Völker und Nationalitäten — gleiche Gegend, andere Wurzeln.",
+      "icon": "🌍"
     },
     "infamous": {
       "name": "Kritische Orte",

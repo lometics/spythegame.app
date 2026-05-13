@@ -366,9 +366,9 @@
       "icon": "🎭"
     },
     "races": {
-      "name": "Corridas",
-      "description": "Do sprint ao grande prêmio — provas de velocidade e resistência.",
-      "icon": "🏁"
+      "name": "Povos",
+      "description": "Povos e nacionalidades — mesma região, raízes diferentes.",
+      "icon": "🌍"
     },
     "religions": {
       "name": "Religiões",

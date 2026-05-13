@@ -366,9 +366,9 @@
       "icon": "🎭"
     },
     "races": {
-      "name": "레이스",
-      "description": "단거리부터 그랑프리까지 — 속도와 지구력의 경기.",
-      "icon": "🏁"
+      "name": "민족",
+      "description": "민족과 국적 — 같은 지역, 다른 뿌리.",
+      "icon": "🌍"
     },
     "religions": {
       "name": "종교",

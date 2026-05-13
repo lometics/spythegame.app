@@ -366,9 +366,9 @@
       "icon": "🎭"
     },
     "races": {
-      "name": "Yarışlar",
-      "description": "Sprintlerden grand prix'ye — hız ve dayanıklılık yarışmaları.",
-      "icon": "🏁"
+      "name": "Halklar",
+      "description": "Halklar ve milletler — aynı bölge, farklı kökler.",
+      "icon": "🌍"
     },
     "infamous": {
       "name": "Kritik Yerler",

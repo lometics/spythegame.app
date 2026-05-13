@@ -366,9 +366,9 @@
       "icon": "🎭"
     },
     "races": {
-      "name": "竞速",
-      "description": "从短跑到大奖赛——速度与耐力的较量。",
-      "icon": "🏁"
+      "name": "民族",
+      "description": "民族与国籍——同地区，不同根源。",
+      "icon": "🌍"
     },
     "infamous": {
       "name": "重大事件之地",
