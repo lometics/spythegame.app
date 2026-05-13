@@ -354,6 +354,36 @@
       "name": "Kara Mizah",
       "description": "Darağacı ve tabular — ağlamamak için gülünür.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Peygamberler",
+      "description": "Büyük dinlerin kutsal adamları ve elçileri.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Stereotipler",
+      "description": "Klişeler ve karikatürler, mizahla.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Yarışlar",
+      "description": "Sprintlerden grand prix'ye — hız ve dayanıklılık yarışmaları.",
+      "icon": "🏁"
+    },
+    "infamous": {
+      "name": "Kritik Yerler",
+      "description": "Trajedi yerleri: katliamlar, savaşlar, felaketler.",
+      "icon": "🕯️"
+    },
+    "religions": {
+      "name": "Dinler",
+      "description": "İnançlar, kutsal kitaplar, kutsal günler ve ritüeller — mezhepler arası.",
+      "icon": "🛐"
+    },
+    "terror": {
+      "name": "Terör Saldırıları",
+      "description": "Kötü şöhretli terör saldırıları ve vahşetler.",
+      "icon": "💥"
     }
   },
   "customList": {

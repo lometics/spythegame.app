@@ -354,6 +354,36 @@
       "name": "ブラックユーモア",
       "description": "死、タブー、笑うしかないネタ。",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "預言者",
+      "description": "諸宗教における聖者と使徒たち。",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "ステレオタイプ",
+      "description": "クリシェとカリカチュア、ユーモラスに。",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "レース",
+      "description": "スプリントからグランプリまで——速さと持久力の競技。",
+      "icon": "🏁"
+    },
+    "religions": {
+      "name": "宗教",
+      "description": "信仰、聖典、祝祭日、儀式——宗派を超えて。",
+      "icon": "🛐"
+    },
+    "terror": {
+      "name": "テロ攻撃",
+      "description": "悪名高いテロ事件と惨事。",
+      "icon": "💥"
+    },
+    "infamous": {
+      "name": "重大事件の地",
+      "description": "悲劇の現場：虐殺、戦争、災害。",
+      "icon": "🕯️"
     }
   },
   "customList": {

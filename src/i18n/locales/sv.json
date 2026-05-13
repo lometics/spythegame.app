@@ -354,6 +354,36 @@
       "name": "Svart Humor",
       "description": "Galgar, tabun — skratta för att slippa gråta.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Profeter",
+      "description": "Heliga män och budbärare i de stora religionerna.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Stereotyper",
+      "description": "Klichéer och karikatyrer, med glimten i ögat.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Lopp",
+      "description": "Från sprint till grand prix — tävlingar i fart och uthållighet.",
+      "icon": "🏁"
+    },
+    "infamous": {
+      "name": "Kritiska Platser",
+      "description": "Platser för tragedi: massakrer, krig, katastrofer.",
+      "icon": "🕯️"
+    },
+    "religions": {
+      "name": "Religioner",
+      "description": "Tro, heliga skrifter, högtider och riter — över trosriktningar.",
+      "icon": "🛐"
+    },
+    "terror": {
+      "name": "Terrorattacker",
+      "description": "Ökända terrordåd och illdåd.",
+      "icon": "💥"
     }
   },
   "customList": {

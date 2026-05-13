@@ -359,6 +359,36 @@
       "name": "Schwarzer Humor",
       "description": "Galgen, Tabus — Lachen, um nicht zu weinen.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Propheten",
+      "description": "Heilige Männer und Boten der Weltreligionen.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Stereotypen",
+      "description": "Klischees und Karikaturen, mit Augenzwinkern.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Rennen",
+      "description": "Vom Sprint bis zum Grand Prix — Wettkämpfe um Tempo und Ausdauer.",
+      "icon": "🏁"
+    },
+    "infamous": {
+      "name": "Kritische Orte",
+      "description": "Orte der Tragödie: Massaker, Kriege, Katastrophen.",
+      "icon": "🕯️"
+    },
+    "terror": {
+      "name": "Terroranschläge",
+      "description": "Berüchtigte terroristische Anschläge.",
+      "icon": "💥"
+    },
+    "religions": {
+      "name": "Religionen",
+      "description": "Glauben, heilige Schriften, Festtage und Riten — quer durch die Bekenntnisse.",
+      "icon": "🛐"
     }
   },
   "customList": {

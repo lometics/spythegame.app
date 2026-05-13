@@ -354,6 +354,36 @@
       "name": "Humor Negro",
       "description": "Horca, tabúes — uno ríe para no llorar.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Profetas",
+      "description": "Hombres santos y mensajeros de las grandes religiones.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Estereotipos",
+      "description": "Clichés y caricaturas, con humor.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Carreras",
+      "description": "Del sprint al gran premio — pruebas de velocidad y resistencia.",
+      "icon": "🏁"
+    },
+    "infamous": {
+      "name": "Lugares Críticos",
+      "description": "Sitios de tragedia: masacres, guerras, desastres.",
+      "icon": "🕯️"
+    },
+    "religions": {
+      "name": "Religiones",
+      "description": "Credos, libros sagrados, días santos y ritos — entre confesiones.",
+      "icon": "🛐"
+    },
+    "terror": {
+      "name": "Atentados terroristas",
+      "description": "Atentados y atrocidades tristemente célebres.",
+      "icon": "💥"
     }
   },
   "customList": {

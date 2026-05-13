@@ -358,6 +358,36 @@
       "name": "Czarny humor",
       "description": "Szubienice i tabu — śmiech, by nie płakać.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Prorocy",
+      "description": "Święci mężowie i posłańcy wielkich religii.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Stereotypy",
+      "description": "Klisze i karykatury, z przymrużeniem oka.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Wyścigi",
+      "description": "Od sprintów po grand prix — zawody szybkości i wytrzymałości.",
+      "icon": "🏁"
+    },
+    "religions": {
+      "name": "Religie",
+      "description": "Wyznania, święte księgi, święta i obrzędy — w różnych religiach.",
+      "icon": "🛐"
+    },
+    "terror": {
+      "name": "Ataki terrorystyczne",
+      "description": "Niesławne zamachy i akty terroru.",
+      "icon": "💥"
+    },
+    "infamous": {
+      "name": "Krytyczne Miejsca",
+      "description": "Miejsca tragedii: masakry, wojny, katastrofy.",
+      "icon": "🕯️"
     }
   },
   "customList": {

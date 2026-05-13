@@ -36,6 +36,12 @@ export const BUILTIN_CATEGORY_IDS = [
   'tricky',
   'tyrants',
   'darkhumor',
+  'prophets',
+  'stereotypes',
+  'races',
+  'terror',
+  'infamous',
+  'religions',
 ]
 
 function activePairs(): RawPair[] {

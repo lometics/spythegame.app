@@ -354,6 +354,36 @@
       "name": "黑色幽默",
       "description": "绞架、禁忌——苦中作乐。",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "先知",
+      "description": "各大宗教中的圣人与使者。",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "刻板印象",
+      "description": "陈词滥调与漫画式形象，博君一笑。",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "竞速",
+      "description": "从短跑到大奖赛——速度与耐力的较量。",
+      "icon": "🏁"
+    },
+    "infamous": {
+      "name": "重大事件之地",
+      "description": "悲剧现场：屠杀、战争、灾难。",
+      "icon": "🕯️"
+    },
+    "religions": {
+      "name": "宗教",
+      "description": "信仰、经典、节日与仪式——跨越教派。",
+      "icon": "🛐"
+    },
+    "terror": {
+      "name": "恐怖袭击",
+      "description": "臭名昭著的恐怖袭击与暴行。",
+      "icon": "💥"
     }
   },
   "customList": {

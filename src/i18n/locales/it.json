@@ -354,6 +354,36 @@
       "name": "Umorismo Nero",
       "description": "Forca, tabù — si ride per non piangere.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Profeti",
+      "description": "Uomini santi e messaggeri delle grandi fedi.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Stereotipi",
+      "description": "Cliché e caricature, presi con ironia.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Gare",
+      "description": "Dagli sprint ai gran premi — prove di velocità e resistenza.",
+      "icon": "🏁"
+    },
+    "infamous": {
+      "name": "Luoghi Critici",
+      "description": "Luoghi di tragedia: massacri, guerre, disastri.",
+      "icon": "🕯️"
+    },
+    "religions": {
+      "name": "Religioni",
+      "description": "Fedi, libri sacri, giorni santi e riti — tra confessioni diverse.",
+      "icon": "🛐"
+    },
+    "terror": {
+      "name": "Attentati terroristici",
+      "description": "Attentati e atrocità tristemente note.",
+      "icon": "💥"
     }
   },
   "customList": {

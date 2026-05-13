@@ -354,6 +354,36 @@
       "name": "Zwarte Humor",
       "description": "Galgen, taboes — lachen om niet te huilen.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Profeten",
+      "description": "Heilige mannen en boodschappers van de grote religies.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Stereotypen",
+      "description": "Clichés en karikaturen, met humor.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Races",
+      "description": "Van sprints tot grand prix — wedstrijden van snelheid en uithoudingsvermogen.",
+      "icon": "🏁"
+    },
+    "religions": {
+      "name": "Religies",
+      "description": "Geloven, heilige boeken, feestdagen en riten — door alle gezindten heen.",
+      "icon": "🛐"
+    },
+    "terror": {
+      "name": "Terreuraanslagen",
+      "description": "Beruchte aanslagen en gruweldaden.",
+      "icon": "💥"
+    },
+    "infamous": {
+      "name": "Kritieke Plaatsen",
+      "description": "Plekken van tragedie: bloedbaden, oorlogen, rampen.",
+      "icon": "🕯️"
     }
   },
   "customList": {

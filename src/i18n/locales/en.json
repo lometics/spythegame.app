@@ -370,6 +370,36 @@
       "name": "Dark Humor",
       "description": "Gallows, taboo, things you laugh at to cope.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Prophets",
+      "description": "Holy men and messengers across the great faiths.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Stereotypes",
+      "description": "Clichés and caricatures, played for laughs.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Races",
+      "description": "From sprints to grand prix — events of speed and stamina.",
+      "icon": "🏁"
+    },
+    "infamous": {
+      "name": "Critical Places",
+      "description": "Sites of tragedy: massacres, wars, disasters.",
+      "icon": "🕯️"
+    },
+    "terror": {
+      "name": "Terror Attacks",
+      "description": "Notorious terrorist incidents and atrocities.",
+      "icon": "💥"
+    },
+    "religions": {
+      "name": "Religions",
+      "description": "Faiths, sacred books, holy days and rites — across creeds.",
+      "icon": "🛐"
     }
   },
   "customList": {

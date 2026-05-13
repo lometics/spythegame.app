@@ -354,6 +354,36 @@
       "name": "Humor Negro",
       "description": "Forca, tabus — rir para não chorar.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Profetas",
+      "description": "Homens santos e mensageiros das grandes religiões.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Estereótipos",
+      "description": "Clichês e caricaturas, com humor.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Corridas",
+      "description": "Do sprint ao grande prêmio — provas de velocidade e resistência.",
+      "icon": "🏁"
+    },
+    "religions": {
+      "name": "Religiões",
+      "description": "Credos, livros sagrados, dias santos e ritos — entre confissões.",
+      "icon": "🛐"
+    },
+    "terror": {
+      "name": "Ataques terroristas",
+      "description": "Atentados e atrocidades infames.",
+      "icon": "💥"
+    },
+    "infamous": {
+      "name": "Lugares Críticos",
+      "description": "Locais de tragédia: massacres, guerras, desastres.",
+      "icon": "🕯️"
     }
   },
   "customList": {

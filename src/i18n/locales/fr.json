@@ -354,6 +354,36 @@
       "name": "Humour Noir",
       "description": "Potence, tabous — on en rit pour ne pas pleurer.",
       "icon": "💀"
+    },
+    "prophets": {
+      "name": "Prophètes",
+      "description": "Saints hommes et messagers des grandes religions.",
+      "icon": "📜"
+    },
+    "stereotypes": {
+      "name": "Stéréotypes",
+      "description": "Clichés et caricatures, à prendre avec humour.",
+      "icon": "🎭"
+    },
+    "races": {
+      "name": "Courses",
+      "description": "Du sprint au grand prix — épreuves de vitesse et d'endurance.",
+      "icon": "🏁"
+    },
+    "infamous": {
+      "name": "Lieux Critiques",
+      "description": "Lieux de tragédie : massacres, guerres, catastrophes.",
+      "icon": "🕯️"
+    },
+    "terror": {
+      "name": "Attentats terroristes",
+      "description": "Attentats et atrocités tristement célèbres.",
+      "icon": "💥"
+    },
+    "religions": {
+      "name": "Religions",
+      "description": "Croyances, livres sacrés, jours saints et rites — toutes confessions confondues.",
+      "icon": "🛐"
     }
   },
   "customList": {
