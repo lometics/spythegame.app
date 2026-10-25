@@ -1,4 +1,4 @@
-import type { OnlineMeta, OnlinePlayer } from './room'
+import type { OnlinePlayer } from './room'
 
 export type RosterEntry = OnlinePlayer & { id: string }
 
@@ -12,20 +12,6 @@ export function sortedRoster(
       (a, b) =>
         (a.joinedAt ?? 0) - (b.joinedAt ?? 0) || a.id.localeCompare(b.id),
     )
-}
-
-/**
- * Who runs the room: the creator while they're still in it, otherwise the
- * longest-standing player, so a room never gets stuck without a host.
- */
-export function resolveHost(
-  meta: Pick<OnlineMeta, 'hostUid'> | null,
-  roster: RosterEntry[],
-): string | null {
-  if (meta?.hostUid && roster.some((p) => p.id === meta.hostUid)) {
-    return meta.hostUid
-  }
-  return roster[0]?.id ?? null
 }
 
 /** Pull a 4-char room code out of a scanned QR (room link) or typed text. */

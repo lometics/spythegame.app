@@ -40,7 +40,8 @@
     "ownDeviceDesc": "Cada jugador se une a una sala desde su teléfono.",
     "continueRound": "Continuar ronda actual",
     "playAgain": "Jugar otra vez",
-    "howToPlay": "Cómo jugar"
+    "howToPlay": "Cómo jugar",
+    "backToRoom": "Volver a la sala {{code}}"
   },
   "setup": {
     "players": "Jugadores",
@@ -197,35 +198,32 @@
     "invite": "Invitar",
     "copied": "Enlace copiado",
     "scanQr": "Escanear QR",
-    "qrScanHint": "Apunta la cámara al código QR del anfitrión.",
+    "qrScanHint": "Apunta la cámara al código QR de la sala en el móvil de otro jugador.",
     "qrCameraError": "No se pudo abrir la cámara",
     "qrInvalid": "Este código QR no es un enlace a la sala.",
     "you": "Tú",
-    "host": "Anfitrión",
     "kick": "Expulsar a {{name}}",
     "roundSettings": "Ajustes de la ronda",
     "needPlayers_one": "Esperando {{count}} jugador más.",
     "needPlayers_other": "Esperando {{count}} jugadores más.",
     "starting": "Iniciando…",
-    "waitStart": "Esperando a que el anfitrión empiece la ronda…",
     "loadingWord": "Cargando tu palabra…",
     "cardReady": "Tu carta está lista",
     "cardReadyHint": "Asegúrate de que nadie mire y luego muéstrala.",
     "toDiscussion": "Todos listos: empezar debate",
-    "waitDiscussion": "El anfitrión empieza el debate cuando todos hayan visto su carta.",
-    "waitReveal": "El anfitrión revelará al espía al terminar.",
-    "waitNext": "Esperando al anfitrión…",
     "backToLobby": "Volver a la sala",
     "loadingRoom": "Cargando sala {{code}}…",
     "fbNotConfigured": "El juego online no está configurado en esta versión.",
     "errStartRound": "No se pudo empezar la ronda",
-    "defaultHostName": "Anfitrión",
     "defaultGuestName": "Invitado",
     "errRoomNotFound": "Sala no encontrada",
     "errNoPairs": "No hay pares disponibles — selecciona al menos una categoría con pares.",
     "errMinPlayers": "Mínimo 3 jugadores",
     "errCouldNotAllocate": "No se pudo asignar un código, inténtalo de nuevo",
-    "errNotConfigured": "Firebase no configurado"
+    "errNotConfigured": "Firebase no configurado",
+    "continue": "Continuar",
+    "leaveRoom": "Salir de la sala",
+    "leaveConfirm": "¿Salir de esta sala? Puedes volver a entrar con el código."
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "Se abre como una app y funciona sin conexión, listo para la próxima noche de juegos.",
     "button": "Instalar",
     "iosHint": "En Safari, toca Compartir y luego «Añadir a pantalla de inicio»."
+  },
+  "rules": {
+    "title": "Cómo se juega",
+    "s1": "Todos reciben la misma palabra secreta. El espía recibe una pista en su lugar, o nada.",
+    "s2": "Por turnos, cada uno da una pista corta sobre su palabra. ¡Sin ser demasiado obvio!",
+    "s3": "Hablad y votad: ¿quién es el espía?",
+    "s4": "¿Pillado? El espía aún puede ganar si adivina la palabra.",
+    "win": "Los civiles ganan si descubren al espía. El espía gana si nadie lo descubre, o si adivina la palabra.",
+    "players": "3 jugadores o más. Un solo móvil que va pasando, o cada uno el suyo.",
+    "play": "A jugar"
   }
 }

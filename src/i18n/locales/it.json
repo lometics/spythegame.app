@@ -40,7 +40,8 @@
     "ownDeviceDesc": "Ogni giocatore entra in una stanza dal proprio telefono.",
     "continueRound": "Continua il round in corso",
     "playAgain": "Gioca ancora",
-    "howToPlay": "Come si gioca"
+    "howToPlay": "Come si gioca",
+    "backToRoom": "Torna alla stanza {{code}}"
   },
   "setup": {
     "players": "Giocatori",
@@ -197,35 +198,32 @@
     "invite": "Invita",
     "copied": "Link copiato",
     "scanQr": "Scansiona QR",
-    "qrScanHint": "Punta la fotocamera sul QR code dell'host.",
+    "qrScanHint": "Punta la fotocamera sul QR code della stanza, sul telefono di un altro giocatore.",
     "qrCameraError": "Impossibile aprire la fotocamera",
     "qrInvalid": "Questo QR code non è un link a una stanza.",
     "you": "Tu",
-    "host": "Host",
     "kick": "Rimuovi {{name}}",
     "roundSettings": "Impostazioni del round",
     "needPlayers_one": "In attesa di {{count}} altro giocatore.",
     "needPlayers_other": "In attesa di altri {{count}} giocatori.",
     "starting": "Avvio…",
-    "waitStart": "In attesa che l'host avvii il round…",
     "loadingWord": "Caricamento della tua parola…",
     "cardReady": "La tua carta è pronta",
     "cardReadyHint": "Assicurati che nessuno guardi, poi mostrala.",
     "toDiscussion": "Tutti pronti: inizia la discussione",
-    "waitDiscussion": "L'host avvia la discussione quando tutti hanno visto la propria carta.",
-    "waitReveal": "L'host smaschera la spia quando avete finito.",
-    "waitNext": "In attesa dell'host…",
     "backToLobby": "Torna alla stanza",
     "loadingRoom": "Caricamento stanza {{code}}…",
     "fbNotConfigured": "Il gioco online non è configurato in questa versione.",
     "errStartRound": "Impossibile avviare il round",
-    "defaultHostName": "Host",
     "defaultGuestName": "Ospite",
     "errRoomNotFound": "Stanza non trovata",
     "errNoPairs": "Nessuna coppia disponibile — seleziona almeno una categoria con coppie.",
     "errMinPlayers": "Servono almeno 3 giocatori",
     "errCouldNotAllocate": "Impossibile generare un codice stanza, riprova",
-    "errNotConfigured": "Firebase non configurato"
+    "errNotConfigured": "Firebase non configurato",
+    "continue": "Continua",
+    "leaveRoom": "Esci dalla stanza",
+    "leaveConfirm": "Uscire da questa stanza? Puoi rientrare con il codice."
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "Si apre come un'app e funziona offline, pronto per la prossima serata giochi.",
     "button": "Installa",
     "iosHint": "In Safari tocca Condividi, poi «Aggiungi alla schermata Home»."
+  },
+  "rules": {
+    "title": "Come si gioca",
+    "s1": "Tutti ricevono la stessa parola segreta. La spia riceve invece un indizio, o niente.",
+    "s2": "A turno, ognuno dà un breve indizio sulla sua parola. Non troppo ovvio!",
+    "s3": "Discutete e votate: chi è la spia?",
+    "s4": "Scoperta? La spia può ancora vincere indovinando la parola.",
+    "win": "I civili vincono se scoprono la spia. La spia vince se nessuno la trova, o indovinando la parola.",
+    "players": "Da 3 giocatori in su. Un telefono che passa di mano, o ognuno il suo.",
+    "play": "Giochiamo"
   }
 }

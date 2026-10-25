@@ -8,6 +8,7 @@ import { hintExample, listCategories } from '../game/pairs'
 import { iconFor } from '../game/icons'
 import { availableSpyCounts, maxSpiesFor, toggleSpyCount } from '../game/machine'
 import { DIFFICULTIES } from '../game/types'
+import { useSettingsEditor } from '../online/settingsEditor'
 
 function DoneFooter() {
   const { t } = useTranslation()
@@ -184,13 +185,11 @@ export function PlayersPage() {
 export function WordsPage() {
   const { t } = useTranslation()
   const navigate = useNavigate()
-  const customLists = useGame((s) => s.customLists)
-  const selected = useGame((s) => s.settings.pairSource.selectedCategoryIds)
-  const toggle = useGame((s) => s.toggleCategory)
-  const selectAll = useGame((s) => s.selectAllCategories)
-  const clearAll = useGame((s) => s.clearCategories)
+  const editor = useSettingsEditor()
+  const selected = editor.settings.pairSource.selectedCategoryIds
+  const { toggleCategory: toggle, selectAll, clearAll } = editor
 
-  const categories = listCategories(customLists, t)
+  const categories = listCategories(editor.lists, t)
   const selectedSet = new Set(selected)
   const allSelected = categories
     .filter((c) => c.pairCount > 0)
@@ -226,7 +225,9 @@ export function WordsPage() {
         {categories.map((c) => {
           const Icon = iconFor(c.id, c.icon)
           const sel = selectedSet.has(c.id)
+          // Lists shared by someone else in the room can be picked, not edited.
           const listId = c.isCustom ? c.id.slice('custom:'.length) : null
+          const editable = listId !== null && editor.ownListIds.has(listId)
           return (
             <div key={c.id} className="flex items-center">
               <button
@@ -252,7 +253,7 @@ export function WordsPage() {
                   {sel && <Check size={14} strokeWidth={3} />}
                 </span>
               </button>
-              {listId && (
+              {editable && (
                 <button
                   type="button"
                   onClick={() => navigate(`/lists/${listId}`)}
@@ -284,8 +285,7 @@ export function WordsPage() {
 export function SpiesPage() {
   const { t, i18n } = useTranslation()
   const [params] = useSearchParams()
-  const settings = useGame((s) => s.settings)
-  const setSettings = useGame((s) => s.setSettings)
+  const { settings, setSettings } = useSettingsEditor()
   const localCount = useGame((s) => s.players.length)
 
   const playerCount = Number(params.get('players') ?? localCount) || 0
@@ -361,8 +361,8 @@ export function SpiesPage() {
 
 export function HintPage() {
   const { t } = useTranslation()
-  const difficulty = useGame((s) => s.settings.difficulty)
-  const setSettings = useGame((s) => s.setSettings)
+  const { settings, setSettings } = useSettingsEditor()
+  const difficulty = settings.difficulty
   const ex = hintExample()
   const spyWord = ex.hints
 
@@ -419,8 +419,8 @@ const TIMER_OPTIONS = [0, 60, 120, 180, 300, 600]
 
 export function TimerPage() {
   const { t } = useTranslation()
-  const timerSeconds = useGame((s) => s.settings.timerSeconds)
-  const setSettings = useGame((s) => s.setSettings)
+  const { settings, setSettings } = useSettingsEditor()
+  const timerSeconds = settings.timerSeconds
   return (
     <Screen title={t('setup.timer')} back footer={<DoneFooter />}>
       <p className="px-1 muted">{t('timer.intro')}</p>

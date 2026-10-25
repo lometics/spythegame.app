@@ -9,15 +9,17 @@ import {
 } from 'firebase/database'
 import { db, ensureSignedIn } from './firebase'
 import { samplePair } from '../game/pairs'
-import { resolveSpyCount, type SpyCountSetting } from '../game/machine'
+import { resolveSpyCount } from '../game/machine'
+import { useGame } from '../game/state'
 import i18n from '../i18n'
-import type {
-  CustomList,
-  Difficulty,
-  GamePhase,
-  Pair,
-  PairSource,
-} from '../game/types'
+import type { Difficulty, GamePhase, Pair } from '../game/types'
+import {
+  normalizeRoomSettings,
+  roomSettingsCache,
+  seedRoomSettings,
+  toRoomData,
+  type RoomSettings,
+} from './roomSettings'
 
 export type OnlinePlayer = {
   name: string
@@ -28,17 +30,15 @@ export type OnlineMeta = {
   createdAt: number
   phase: GamePhase
   round: number
-  /** Creator of the room. Missing on rooms made by older builds. */
-  hostUid?: string
 }
 
 export type OnlineRound = {
   pairPublic: { categoryId: string } | null
   firstClueGiverId: string | null
   startedAt: number
-  /** Host's discussion timer setting; 0 = off. Missing on older rounds. */
+  /** Discussion timer for this round; 0 = off. Missing on older rounds. */
   timerSeconds?: number
-  /** Host's hint level, so every spy's card explains its hint the same way. */
+  /** Hint level of this round, so every spy's card explains its hint the same way. */
   hintLevel?: Difficulty
 }
 
@@ -52,8 +52,11 @@ export type RoomState = {
   meta: OnlineMeta | null
   players: Record<string, OnlinePlayer>
   round: OnlineRound | null
+  /** Null until loaded, and on rooms made before settings were shared. */
+  settings: RoomSettings | null
   loaded: boolean
   playersLoaded: boolean
+  settingsLoaded: boolean
 }
 
 const ROOM_CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
@@ -66,26 +69,28 @@ function randomCode() {
   return s
 }
 
-export async function createRoom(hostName: string): Promise<string> {
+export async function createRoom(name: string): Promise<string> {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   const user = await ensureSignedIn()
   for (let attempt = 0; attempt < 8; attempt++) {
     const code = randomCode()
     const existing = await get(ref(db, `rooms/${code}/meta`))
     if (existing.exists()) continue
+    // The room starts with the creator's settings; from then on they're shared.
+    const { settings, customLists } = useGame.getState()
     await set(ref(db, `rooms/${code}`), {
       meta: {
         createdAt: serverTimestamp(),
         phase: 'lobby',
         round: 0,
-        hostUid: user.uid,
       },
       players: {
         [user.uid]: {
-          name: hostName.trim() || i18n.t('online.defaultHostName'),
+          name: name.trim() || i18n.t('online.defaultGuestName'),
           joinedAt: serverTimestamp(),
         },
       },
+      settings: toRoomData(seedRoomSettings(settings, customLists)),
     })
     return code
   }
@@ -110,8 +115,10 @@ const EMPTY_ROOM: RoomState = {
   meta: null,
   players: {},
   round: null,
+  settings: null,
   loaded: false,
   playersLoaded: false,
+  settingsLoaded: false,
 }
 
 export function useRoom(code: string | undefined): RoomState {
@@ -145,13 +152,46 @@ export function useRoom(code: string | undefined): RoomState {
         round: s.val() ?? null,
       })),
     )
+    const unsubSettings = subscribeRoomSettings(code, (settings) =>
+      setState((prev) => ({
+        ...(prev.code === code ? prev : EMPTY_ROOM),
+        code,
+        settings,
+        settingsLoaded: true,
+      })),
+    )
     return () => {
       unsubMeta()
       unsubPlayers()
       unsubRound()
+      unsubSettings()
     }
   }, [code])
   return state.code === code ? state : EMPTY_ROOM
+}
+
+/** Live room settings; also kept in the cache so setup pages open with them. */
+export function subscribeRoomSettings(
+  code: string,
+  cb: (settings: RoomSettings | null) => void,
+): () => void {
+  if (!db) return () => {}
+  return onValue(
+    ref(db, `rooms/${code}/settings`),
+    (s) => {
+      const settings = normalizeRoomSettings(s.val())
+      if (settings) roomSettingsCache.set(code, settings)
+      else roomSettingsCache.delete(code)
+      cb(settings)
+    },
+    () => cb(null),
+  )
+}
+
+/** Anyone in the room may change its settings; the last change wins. */
+export async function saveRoomSettings(code: string, settings: RoomSettings) {
+  if (!db) throw new Error(i18n.t('online.errNotConfigured'))
+  await set(ref(db, `rooms/${code}/settings`), toRoomData(settings))
 }
 
 export function useMyPrivate(
@@ -207,18 +247,15 @@ export function usePairReveal(
   return enabled ? v : null
 }
 
+/** Deals a round from the room's shared settings, whoever presses start. */
 export async function startOnlineRound(
   code: string,
-  pairSource: PairSource,
-  customLists: CustomList[],
+  { settings, lists }: RoomSettings,
   players: Record<string, OnlinePlayer>,
-  difficulty: Difficulty = 'close',
-  spyCount: SpyCountSetting = [1],
-  spiesKnowEachOther = false,
-  timerSeconds = 0,
 ) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
-  const pair: Pair = samplePair(pairSource, customLists, difficulty)
+  const { difficulty, spyCount, spiesKnowEachOther, timerSeconds } = settings
+  const pair: Pair = samplePair(settings.pairSource, lists, difficulty)
   const uids = Object.keys(players)
   if (uids.length < 3) throw new Error(i18n.t('online.errMinPlayers'))
   const n = resolveSpyCount(spyCount, uids.length)

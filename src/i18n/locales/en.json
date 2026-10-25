@@ -40,7 +40,8 @@
     "ownDeviceDesc": "Each player joins a room on their phone.",
     "continueRound": "Continue current round",
     "playAgain": "Play again",
-    "howToPlay": "How to play"
+    "howToPlay": "How to play",
+    "backToRoom": "Back to room {{code}}"
   },
   "setup": {
     "players": "Players",
@@ -197,35 +198,32 @@
     "invite": "Invite",
     "copied": "Link copied",
     "scanQr": "Scan QR code",
-    "qrScanHint": "Point your camera at the host's QR code.",
+    "qrScanHint": "Point your camera at the room's QR code on another player's phone.",
     "qrCameraError": "Couldn't open camera",
     "qrInvalid": "That QR code isn't a room link.",
     "you": "You",
-    "host": "Host",
     "kick": "Remove {{name}}",
     "roundSettings": "Round settings",
     "needPlayers_one": "Waiting for {{count}} more player.",
     "needPlayers_other": "Waiting for {{count}} more players.",
     "starting": "Starting…",
-    "waitStart": "Waiting for the host to start the round…",
     "loadingWord": "Loading your word…",
     "cardReady": "Your card is ready",
     "cardReadyHint": "Make sure nobody is looking, then show it.",
     "toDiscussion": "Everyone's ready: start discussion",
-    "waitDiscussion": "The host starts the discussion when everyone has seen their card.",
-    "waitReveal": "The host reveals the spy when you're done.",
-    "waitNext": "Waiting for the host…",
     "backToLobby": "Back to room",
     "loadingRoom": "Loading room {{code}}…",
     "fbNotConfigured": "Online play isn't set up on this build.",
     "errStartRound": "Could not start round",
-    "defaultHostName": "Host",
     "defaultGuestName": "Guest",
     "errRoomNotFound": "Room not found",
     "errNoPairs": "No pairs available — select at least one category with pairs.",
     "errMinPlayers": "Need at least 3 players",
     "errCouldNotAllocate": "Could not allocate a room code, try again",
-    "errNotConfigured": "Firebase not configured"
+    "errNotConfigured": "Firebase not configured",
+    "continue": "Continue",
+    "leaveRoom": "Leave room",
+    "leaveConfirm": "Leave this room? You can join again with the code."
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "Opens like an app and works offline, ready for the next game night.",
     "button": "Install",
     "iosHint": "In Safari, tap Share, then \"Add to Home Screen\"."
+  },
+  "rules": {
+    "title": "How to play",
+    "s1": "Everyone gets the same secret word. The spy gets a hint instead, or nothing.",
+    "s2": "Take turns giving one short clue about your word. Not too obvious!",
+    "s3": "Talk it over and vote: who is the spy?",
+    "s4": "Caught? The spy can still win by guessing the word.",
+    "win": "Civilians win if they catch the spy. The spy wins if nobody finds them, or by guessing the word.",
+    "players": "3 or more players. Pass one phone around, or everyone uses their own.",
+    "play": "Let's play"
   }
 }

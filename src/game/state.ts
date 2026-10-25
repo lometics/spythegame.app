@@ -13,7 +13,7 @@ import { AVATARS, avatarForIndex, nextAvatar } from '../data/avatars'
 import { DEFAULT_LIST_ICON, isListIcon } from './icons'
 
 const DEFAULT_SETTINGS: GameSettings = {
-  timerSeconds: 180,
+  timerSeconds: 0,
   pairSource: { selectedCategoryIds: [...BUILTIN_CATEGORY_IDS] },
   difficulty: 'close',
   spyCount: [1],
@@ -38,6 +38,7 @@ const INITIAL: GameState = {
   customLists: [],
   onlineName: '',
   joinCode: '',
+  activeRoom: '',
 }
 
 type Actions = {
@@ -55,6 +56,7 @@ type Actions = {
   deleteCustomList: (id: string) => void
   setOnlineName: (name: string) => void
   setJoinCode: (code: string) => void
+  setActiveRoom: (code: string) => void
   /** Starts a round; returns an error message instead of throwing. */
   startRound: () => string | null
   setRevealIndex: (i: number) => void
@@ -204,6 +206,7 @@ export const useGame = create<GameState & Actions>()(
 
       setOnlineName: (name) => set({ onlineName: name }),
       setJoinCode: (code) => set({ joinCode: code.toUpperCase() }),
+      setActiveRoom: (code) => set({ activeRoom: code }),
 
       startRound: () => {
         const { players, settings, customLists, round } = get()
@@ -364,6 +367,7 @@ export const useGame = create<GameState & Actions>()(
         settings: s.settings,
         customLists: s.customLists,
         onlineName: s.onlineName,
+        activeRoom: s.activeRoom,
       }),
     },
   ),

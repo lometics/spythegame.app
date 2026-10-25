@@ -40,7 +40,8 @@
     "ownDeviceDesc": "Elke speler gaat met de eigen telefoon een kamer in.",
     "continueRound": "Doorgaan met huidige ronde",
     "playAgain": "Opnieuw spelen",
-    "howToPlay": "Speluitleg"
+    "howToPlay": "Speluitleg",
+    "backToRoom": "Terug naar kamer {{code}}"
   },
   "setup": {
     "players": "Spelers",
@@ -197,35 +198,32 @@
     "invite": "Uitnodigen",
     "copied": "Link gekopieerd",
     "scanQr": "QR-code scannen",
-    "qrScanHint": "Richt je camera op de QR van de host.",
+    "qrScanHint": "Richt je camera op de QR van de kamer op de telefoon van een andere speler.",
     "qrCameraError": "Kan camera niet openen",
     "qrInvalid": "Die QR is geen kamerlink.",
     "you": "Jij",
-    "host": "Host",
     "kick": "{{name}} verwijderen",
     "roundSettings": "Ronde-instellingen",
     "needPlayers_one": "Wachten op nog {{count}} speler.",
     "needPlayers_other": "Wachten op nog {{count}} spelers.",
     "starting": "Bezig…",
-    "waitStart": "Wachten tot de host de ronde start…",
     "loadingWord": "Je woord laden…",
     "cardReady": "Je kaart is klaar",
     "cardReadyHint": "Zorg dat niemand meekijkt en toon hem dan.",
     "toDiscussion": "Iedereen klaar: discussie starten",
-    "waitDiscussion": "De host start de discussie als iedereen zijn kaart heeft gezien.",
-    "waitReveal": "De host onthult de spion als jullie klaar zijn.",
-    "waitNext": "Wachten op de host…",
     "backToLobby": "Terug naar kamer",
     "loadingRoom": "Kamer {{code}} laden…",
     "fbNotConfigured": "Online spelen is niet ingesteld in deze versie.",
     "errStartRound": "Kan ronde niet starten",
-    "defaultHostName": "Host",
     "defaultGuestName": "Gast",
     "errRoomNotFound": "Kamer niet gevonden",
     "errNoPairs": "Geen paren — kies minstens één categorie.",
     "errMinPlayers": "Minstens 3 spelers nodig",
     "errCouldNotAllocate": "Kan geen code toewijzen, probeer opnieuw",
-    "errNotConfigured": "Firebase niet ingesteld"
+    "errNotConfigured": "Firebase niet ingesteld",
+    "continue": "Doorgaan",
+    "leaveRoom": "Kamer verlaten",
+    "leaveConfirm": "Deze kamer verlaten? Met de code kun je weer meedoen."
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "Opent als een app en werkt offline, klaar voor de volgende spelletjesavond.",
     "button": "Installeren",
     "iosHint": "Tik in Safari op Deel en dan op 'Zet op beginscherm'."
+  },
+  "rules": {
+    "title": "Zo speel je",
+    "s1": "Iedereen krijgt hetzelfde geheime woord. De spion krijgt in plaats daarvan een hint, of niets.",
+    "s2": "Om de beurt geeft iedereen een korte hint over zijn woord. Niet te duidelijk!",
+    "s3": "Overleg en stem: wie is de spion?",
+    "s4": "Betrapt? De spion kan nog winnen door het woord te raden.",
+    "win": "De burgers winnen als ze de spion vinden. De spion wint als niemand hem ontmaskert, of door het woord te raden.",
+    "players": "3 of meer spelers. Eén telefoon die rondgaat, of iedereen op zijn eigen.",
+    "play": "Spelen maar"
   }
 }

@@ -1,7 +1,7 @@
 import type { TFunction } from 'i18next'
 import i18n from '../i18n'
 import { getPairs, type RawPair } from '../data/pairStore'
-import { WORD_BANK_CATEGORIES, wordEntries } from './words'
+import { WORD_BANK_CATEGORIES, isPlayable, wordEntries } from './words'
 import type { Category, CustomList, Difficulty, Pair, PairSource } from './types'
 
 export const BUILTIN_CATEGORY_IDS = [
@@ -53,7 +53,7 @@ function fromPair(civilian: string, spy: string, categoryId: string, category: s
 }
 
 function builtInCandidates(): Candidate[] {
-  const fromBank: Candidate[] = wordEntries(lang()).map((e) => ({
+  const fromBank: Candidate[] = wordEntries(lang()).filter(isPlayable).map((e) => ({
     civilian: e.word,
     categoryId: e.category,
     hints: { word: e.sibling, close: e.associated, category: e.subName },

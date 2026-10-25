@@ -40,7 +40,8 @@
     "ownDeviceDesc": "Każdy gracz dołącza do pokoju na swoim telefonie.",
     "continueRound": "Kontynuuj bieżącą rundę",
     "playAgain": "Zagraj jeszcze raz",
-    "howToPlay": "Jak grać"
+    "howToPlay": "Jak grać",
+    "backToRoom": "Wróć do pokoju {{code}}"
   },
   "setup": {
     "players": "Gracze",
@@ -205,11 +206,10 @@
     "invite": "Zaproś",
     "copied": "Link skopiowany",
     "scanQr": "Skanuj kod QR",
-    "qrScanHint": "Skieruj aparat na QR hosta.",
+    "qrScanHint": "Skieruj aparat na QR pokoju na telefonie innego gracza.",
     "qrCameraError": "Nie można otworzyć aparatu",
     "qrInvalid": "Ten QR nie jest linkiem do pokoju.",
     "you": "Ty",
-    "host": "Host",
     "kick": "Usuń: {{name}}",
     "roundSettings": "Ustawienia rundy",
     "needPlayers_one": "Czekamy na jeszcze {{count}} gracza.",
@@ -217,25 +217,23 @@
     "needPlayers_many": "Czekamy na jeszcze {{count}} graczy.",
     "needPlayers_other": "Czekamy na jeszcze {{count}} gracza.",
     "starting": "Start…",
-    "waitStart": "Czekamy, aż host zacznie rundę…",
     "loadingWord": "Ładuję twoje słowo…",
     "cardReady": "Twoja karta jest gotowa",
     "cardReadyHint": "Upewnij się, że nikt nie patrzy, i ją pokaż.",
     "toDiscussion": "Wszyscy gotowi: zacznij dyskusję",
-    "waitDiscussion": "Host zacznie dyskusję, gdy wszyscy zobaczą swoje karty.",
-    "waitReveal": "Host pokaże szpiega, gdy skończycie.",
-    "waitNext": "Czekamy na hosta…",
     "backToLobby": "Wróć do pokoju",
     "loadingRoom": "Ładowanie pokoju {{code}}…",
     "fbNotConfigured": "Gra online nie jest skonfigurowana w tej wersji.",
     "errStartRound": "Nie udało się zacząć rundy",
-    "defaultHostName": "Host",
     "defaultGuestName": "Gość",
     "errRoomNotFound": "Nie znaleziono pokoju",
     "errNoPairs": "Brak par — wybierz co najmniej jedną kategorię.",
     "errMinPlayers": "Min. 3 graczy",
     "errCouldNotAllocate": "Nie udało się przypisać kodu, spróbuj ponownie",
-    "errNotConfigured": "Firebase nieskonfigurowane"
+    "errNotConfigured": "Firebase nieskonfigurowane",
+    "continue": "Dalej",
+    "leaveRoom": "Opuść pokój",
+    "leaveConfirm": "Opuścić ten pokój? Możesz wrócić z kodem."
   },
   "categories": {
     "food": {
@@ -347,5 +345,15 @@
     "desc": "Otwiera się jak aplikacja i działa offline, gotowa na kolejny wieczór gier.",
     "button": "Zainstaluj",
     "iosHint": "W Safari stuknij Udostępnij, a potem „Do ekranu początkowego”."
+  },
+  "rules": {
+    "title": "Jak grać",
+    "s1": "Wszyscy dostają to samo tajne słowo. Szpieg dostaje zamiast niego podpowiedź albo nic.",
+    "s2": "Po kolei każdy podaje krótką wskazówkę o swoim słowie. Nie za oczywistą!",
+    "s3": "Porozmawiajcie i zagłosujcie: kto jest szpiegiem?",
+    "s4": "Złapany? Szpieg wciąż może wygrać, zgadując słowo.",
+    "win": "Cywile wygrywają, jeśli złapią szpiega. Szpieg wygrywa, jeśli nikt go nie zdemaskuje, albo zgadując słowo.",
+    "players": "Od 3 graczy. Jeden telefon krąży albo każdy ma swój.",
+    "play": "Gramy"
   }
 }

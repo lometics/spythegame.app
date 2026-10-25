@@ -40,7 +40,8 @@
     "ownDeviceDesc": "每位玩家用自己的手机加入房间。",
     "continueRound": "继续当前回合",
     "playAgain": "再玩一局",
-    "howToPlay": "玩法说明"
+    "howToPlay": "玩法说明",
+    "backToRoom": "返回房间 {{code}}"
   },
   "setup": {
     "players": "玩家",
@@ -197,35 +198,32 @@
     "invite": "邀请",
     "copied": "链接已复制",
     "scanQr": "扫描二维码",
-    "qrScanHint": "将相机对准房主二维码。",
+    "qrScanHint": "将相机对准其他玩家手机上的房间二维码。",
     "qrCameraError": "无法打开相机",
     "qrInvalid": "该二维码不是房间链接。",
     "you": "你",
-    "host": "房主",
     "kick": "移除 {{name}}",
     "roundSettings": "回合设置",
     "needPlayers_one": "还在等待 {{count}} 名玩家。",
     "needPlayers_other": "还在等待 {{count}} 名玩家。",
     "starting": "开始中…",
-    "waitStart": "等待房主开始回合…",
     "loadingWord": "加载你的词…",
     "cardReady": "你的卡片已就绪",
     "cardReadyHint": "确保没人在看，然后再打开。",
     "toDiscussion": "全员就绪：开始讨论",
-    "waitDiscussion": "所有人看完卡片后，房主会开始讨论。",
-    "waitReveal": "结束后房主会揭晓间谍。",
-    "waitNext": "等待房主…",
     "backToLobby": "返回房间",
     "loadingRoom": "正在加载房间 {{code}}…",
     "fbNotConfigured": "此版本未配置在线模式。",
     "errStartRound": "无法开始回合",
-    "defaultHostName": "房主",
     "defaultGuestName": "客人",
     "errRoomNotFound": "未找到房间",
     "errNoPairs": "没有词对 — 至少选一个有词对的类别。",
     "errMinPlayers": "至少需要3位玩家",
     "errCouldNotAllocate": "无法分配代码，请重试",
-    "errNotConfigured": "Firebase 未配置"
+    "errNotConfigured": "Firebase 未配置",
+    "continue": "继续",
+    "leaveRoom": "离开房间",
+    "leaveConfirm": "离开这个房间？之后可以用房间码重新加入。"
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "像应用一样打开，离线也能用，随时准备下一次游戏之夜。",
     "button": "安装",
     "iosHint": "在 Safari 中点按“分享”，然后选择“添加到主屏幕”。"
+  },
+  "rules": {
+    "title": "玩法",
+    "s1": "所有人拿到同一个秘密词。卧底拿到的是提示，或者什么都没有。",
+    "s2": "轮流用一句简短的话描述自己的词。别说得太明显！",
+    "s3": "讨论并投票：谁是卧底？",
+    "s4": "被抓了？卧底猜中词语仍然能赢。",
+    "win": "平民找出卧底就赢。卧底没被发现，或猜中词语就赢。",
+    "players": "3人以上。一部手机轮流传，或每人用自己的手机。",
+    "play": "开始玩"
   }
 }

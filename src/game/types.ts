@@ -71,4 +71,6 @@ export type GameState = {
   customLists: CustomList[]
   onlineName: string
   joinCode: string
+  /** Room this device is a member of; reopening the app goes back to it. */
+  activeRoom: string
 }

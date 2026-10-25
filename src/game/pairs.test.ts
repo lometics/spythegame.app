@@ -59,6 +59,18 @@ describe('samplePair: word bank categories', () => {
       expect(p.spy).toBe(bank.get(p.civilian)?.subName)
     }
   })
+  it('never deals a grade C word', async () => {
+    const { WORD_META } = await import('./words')
+    const graded = WORD_META.entries.filter((e) => e.category === 'tech')
+    const cWords = new Set(
+      wordEntries('en').filter((e) => e.grade === 'C' && e.category === 'tech').map((e) => e.word),
+    )
+    expect(graded.length).toBeGreaterThan(cWords.size)
+    expect(cWords.size).toBeGreaterThan(0)
+    for (let i = 0; i < 300; i++) {
+      expect(cWords.has(samplePair({ selectedCategoryIds: ['tech'] }, []).civilian)).toBe(false)
+    }
+  })
   it('replaces the old pairs of that category', () => {
     for (let i = 0; i < 50; i++) {
       expect(bank.has(samplePair(places, []).civilian)).toBe(true)
@@ -79,8 +91,8 @@ describe('samplePair', () => {
     }
   })
   it('old-pair categories use the category name as category hint', () => {
-    expect(samplePair({ selectedCategoryIds: ['animals'] }, [], 'category').spy).toBe(
-      'categories.animals.name',
+    expect(samplePair({ selectedCategoryIds: ['tricky'] }, [], 'category').spy).toBe(
+      'categories.tricky.name',
     )
   })
 })
@@ -91,7 +103,7 @@ describe('listCategories', () => {
     const counts = new Map(listCategories([], t).map((c) => [c.id, c.pairCount]))
     expect(counts.get('food')).toBe(40)
     expect(counts.get('places')).toBe(40)
-    expect(counts.get('animals')).toBeGreaterThan(0)
+    expect(counts.get('tricky')).toBeGreaterThan(0)
   })
 })
 

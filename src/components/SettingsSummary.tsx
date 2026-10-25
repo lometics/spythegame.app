@@ -13,6 +13,7 @@ import type { ReactNode } from 'react'
 import { useGame } from '../game/state'
 import { availableSpyCounts } from '../game/machine'
 import { BUILTIN_CATEGORY_IDS } from '../game/pairs'
+import { visibleRoomLists, type RoomSettings } from '../online/roomSettings'
 
 function Row({
   to,
@@ -42,22 +43,31 @@ function Row({
   )
 }
 
-/** Tappable overview of every round setting; each row opens its own page. */
+/**
+ * Tappable overview of every round setting; each row opens its own page.
+ * With `room` it shows that room's shared settings and the pages edit them.
+ */
 export default function SettingsSummary({
   playerCount,
   showPlayers,
+  room,
 }: {
   playerCount: number
   showPlayers?: boolean
+  room?: { code: string; settings: RoomSettings }
 }) {
   const { t } = useTranslation()
-  const settings = useGame((s) => s.settings)
+  const localSettings = useGame((s) => s.settings)
   const players = useGame((s) => s.players)
   const customLists = useGame((s) => s.customLists)
-  const q = `?players=${playerCount}`
+  const settings = room?.settings.settings ?? localSettings
+  const lists = room ? visibleRoomLists(room.settings, customLists) : customLists
+  const roomQ = room ? `room=${encodeURIComponent(room.code)}` : ''
+  const q = `?players=${playerCount}${roomQ && `&${roomQ}`}`
+  const rq = roomQ && `?${roomQ}`
 
   const selected = settings.pairSource.selectedCategoryIds
-  const totalSources = BUILTIN_CATEGORY_IDS.length + customLists.length
+  const totalSources = BUILTIN_CATEGORY_IDS.length + lists.length
   const wordsValue =
     selected.length === 0
       ? t('setup.none')
@@ -101,7 +111,7 @@ export default function SettingsSummary({
         />
       )}
       <Row
-        to="/setup/words"
+        to={`/setup/words${rq}`}
         icon={Library}
         label={t('setup.words')}
         value={wordsValue}
@@ -114,13 +124,13 @@ export default function SettingsSummary({
         sub={spiesSub || undefined}
       />
       <Row
-        to="/setup/hint"
+        to={`/setup/hint${rq}`}
         icon={Lightbulb}
         label={t('setup.hint')}
         value={t(`hint.${settings.difficulty}.label`)}
       />
       <Row
-        to="/setup/timer"
+        to={`/setup/timer${rq}`}
         icon={Timer}
         label={t('setup.timer')}
         value={

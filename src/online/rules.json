@@ -14,6 +14,10 @@
             ".write": "auth != null && ($uid === auth.uid || root.child('rooms').child($code).child('players').child(auth.uid).exists())"
           }
         },
+        "settings": {
+          ".read": "auth != null",
+          ".write": "auth != null && root.child('rooms').child($code).child('players').child(auth.uid).exists()"
+        },
         "round": {
           ".read": "auth != null",
           ".write": "auth != null && root.child('rooms').child($code).child('players').child(auth.uid).exists()",

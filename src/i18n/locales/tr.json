@@ -40,7 +40,8 @@
     "ownDeviceDesc": "Her oyuncu kendi telefonundan bir odaya katılır.",
     "continueRound": "Mevcut tura devam et",
     "playAgain": "Tekrar oyna",
-    "howToPlay": "Nasıl oynanır"
+    "howToPlay": "Nasıl oynanır",
+    "backToRoom": "{{code}} odasına dön"
   },
   "setup": {
     "players": "Oyuncular",
@@ -197,35 +198,32 @@
     "invite": "Davet et",
     "copied": "Bağlantı kopyalandı",
     "scanQr": "QR kodu tara",
-    "qrScanHint": "Kamerayı host'un QR'ına tut.",
+    "qrScanHint": "Kamerayı başka bir oyuncunun telefonundaki odanın QR koduna tut.",
     "qrCameraError": "Kamera açılamadı",
     "qrInvalid": "Bu QR bir oda bağlantısı değil.",
     "you": "Sen",
-    "host": "Host",
     "kick": "Çıkar: {{name}}",
     "roundSettings": "Tur ayarları",
     "needPlayers_one": "{{count}} oyuncu daha bekleniyor.",
     "needPlayers_other": "{{count}} oyuncu daha bekleniyor.",
     "starting": "Başlıyor…",
-    "waitStart": "Host'un turu başlatması bekleniyor…",
     "loadingWord": "Kelimen yükleniyor…",
     "cardReady": "Kartın hazır",
     "cardReadyHint": "Kimsenin bakmadığından emin ol, sonra göster.",
     "toDiscussion": "Herkes hazır: tartışmayı başlat",
-    "waitDiscussion": "Herkes kartını görünce host tartışmayı başlatır.",
-    "waitReveal": "Bitirdiğinizde host casusu açıklar.",
-    "waitNext": "Host bekleniyor…",
     "backToLobby": "Odaya dön",
     "loadingRoom": "Oda {{code}} yükleniyor…",
     "fbNotConfigured": "Bu sürümde çevrimiçi oyun ayarlanmamış.",
     "errStartRound": "Tur başlatılamadı",
-    "defaultHostName": "Host",
     "defaultGuestName": "Misafir",
     "errRoomNotFound": "Oda bulunamadı",
     "errNoPairs": "Çift yok — en az bir kategori seç.",
     "errMinPlayers": "En az 3 oyuncu gerek",
     "errCouldNotAllocate": "Kod atanamadı, tekrar dene",
-    "errNotConfigured": "Firebase yapılandırılmadı"
+    "errNotConfigured": "Firebase yapılandırılmadı",
+    "continue": "Devam",
+    "leaveRoom": "Odadan çık",
+    "leaveConfirm": "Bu odadan çıkılsın mı? Kodla tekrar katılabilirsin."
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "Uygulama gibi açılır ve çevrimdışı çalışır, bir sonraki oyun gecesine hazır.",
     "button": "Yükle",
     "iosHint": "Safari'de Paylaş'a, ardından \"Ana Ekrana Ekle\"ye dokun."
+  },
+  "rules": {
+    "title": "Nasıl oynanır",
+    "s1": "Herkes aynı gizli kelimeyi alır. Casus bunun yerine bir ipucu alır ya da hiçbir şey.",
+    "s2": "Sırayla herkes kelimesi hakkında kısa bir ipucu verir. Çok belli etme!",
+    "s3": "Konuşun ve oylayın: casus kim?",
+    "s4": "Yakalandı mı? Casus kelimeyi tahmin ederek yine de kazanabilir.",
+    "win": "Siviller casusu yakalarsa kazanır. Casus kimse onu bulamazsa ya da kelimeyi tahmin ederse kazanır.",
+    "players": "3 veya daha fazla oyuncu. Tek telefon elden ele ya da herkes kendi telefonuyla.",
+    "play": "Hadi oynayalım"
   }
 }

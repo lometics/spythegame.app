@@ -40,7 +40,8 @@
     "ownDeviceDesc": "Alle treten auf ihrem Handy einem Raum bei.",
     "continueRound": "Aktuelle Runde fortsetzen",
     "playAgain": "Nochmal spielen",
-    "howToPlay": "Spielanleitung"
+    "howToPlay": "Spielanleitung",
+    "backToRoom": "Zurück zu Raum {{code}}"
   },
   "setup": {
     "players": "Spieler",
@@ -197,35 +198,32 @@
     "invite": "Einladen",
     "copied": "Link kopiert",
     "scanQr": "QR-Code scannen",
-    "qrScanHint": "Richte die Kamera auf den QR-Code des Gastgebers.",
+    "qrScanHint": "Richte die Kamera auf den QR-Code des Raums auf dem Handy eines Mitspielers.",
     "qrCameraError": "Kamera konnte nicht geöffnet werden",
     "qrInvalid": "Dieser QR-Code ist kein Raum-Link.",
     "you": "Du",
-    "host": "Gastgeber",
     "kick": "{{name}} entfernen",
     "roundSettings": "Rundeneinstellungen",
     "needPlayers_one": "Warte auf {{count}} weiteren Spieler.",
     "needPlayers_other": "Warte auf {{count}} weitere Spieler.",
     "starting": "Starten…",
-    "waitStart": "Warte, bis der Gastgeber die Runde startet…",
     "loadingWord": "Lade dein Wort…",
     "cardReady": "Deine Karte ist bereit",
     "cardReadyHint": "Pass auf, dass niemand hinschaut, dann zeig sie.",
     "toDiscussion": "Alle bereit: Diskussion starten",
-    "waitDiscussion": "Der Gastgeber startet die Diskussion, wenn alle ihre Karte gesehen haben.",
-    "waitReveal": "Der Gastgeber deckt den Spion auf, wenn ihr fertig seid.",
-    "waitNext": "Warte auf den Gastgeber…",
     "backToLobby": "Zurück zum Raum",
     "loadingRoom": "Lade Raum {{code}}…",
     "fbNotConfigured": "Online-Spiel ist in dieser Version nicht eingerichtet.",
     "errStartRound": "Runde konnte nicht gestartet werden",
-    "defaultHostName": "Gastgeber",
     "defaultGuestName": "Gast",
     "errRoomNotFound": "Raum nicht gefunden",
     "errNoPairs": "Keine Paare verfügbar — wähle mindestens eine Kategorie mit Paaren.",
     "errMinPlayers": "Mindestens 3 Spieler nötig",
     "errCouldNotAllocate": "Raum-Code konnte nicht vergeben werden, bitte erneut versuchen",
-    "errNotConfigured": "Firebase nicht konfiguriert"
+    "errNotConfigured": "Firebase nicht konfiguriert",
+    "continue": "Weiter",
+    "leaveRoom": "Raum verlassen",
+    "leaveConfirm": "Diesen Raum verlassen? Mit dem Code kannst du wieder beitreten."
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "Öffnet sich wie eine App und funktioniert offline, bereit für den nächsten Spieleabend.",
     "button": "Installieren",
     "iosHint": "Tippe in Safari auf Teilen und dann auf „Zum Home-Bildschirm“."
+  },
+  "rules": {
+    "title": "So wird gespielt",
+    "s1": "Alle bekommen dasselbe geheime Wort. Der Spion bekommt stattdessen einen Hinweis oder gar nichts.",
+    "s2": "Reihum gibt jeder einen kurzen Hinweis zu seinem Wort. Nicht zu offensichtlich!",
+    "s3": "Diskutiert und stimmt ab: Wer ist der Spion?",
+    "s4": "Erwischt? Der Spion kann trotzdem gewinnen, wenn er das Wort errät.",
+    "win": "Die Zivilisten gewinnen, wenn sie den Spion finden. Der Spion gewinnt, wenn ihn niemand entlarvt oder wenn er das Wort errät.",
+    "players": "Ab 3 Spielern. Ein Handy herumreichen oder jeder am eigenen.",
+    "play": "Los geht’s"
   }
 }

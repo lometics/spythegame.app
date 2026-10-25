@@ -41,6 +41,7 @@ export default function Home() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const phase = useGame((s) => s.phase)
+  const activeRoom = useGame((s) => s.activeRoom)
   const players = useGame((s) => s.players)
   const startRound = useGame((s) => s.startRound)
   const roundInProgress = phase !== 'lobby' && players.length > 0
@@ -74,6 +75,18 @@ export default function Home() {
         </div>
 
         <div className="space-y-3">
+          {activeRoom && (
+            <Link
+              to={`/room/${activeRoom}`}
+              className="option gap-4 border-accent bg-accent/10 py-4"
+            >
+              <Users size={26} className="shrink-0 text-accent" />
+              <span className="flex-1 font-semibold">
+                {t('home.backToRoom', { code: activeRoom })}
+              </span>
+              <ChevronRight size={22} className="shrink-0 text-foreground/30 rtl:rotate-180" />
+            </Link>
+          )}
           {roundInProgress && (
             <Link
               to="/local/play"
@@ -125,10 +138,10 @@ export default function Home() {
       </div>
 
       <footer className="pb-[max(env(safe-area-inset-bottom),1.25rem)] text-center">
-        <a href="/how-to-play/" className="inline-flex min-h-11 items-center gap-1.5 px-3 text-sm muted">
+        <Link to="/rules" className="inline-flex min-h-11 items-center gap-1.5 px-3 text-sm muted">
           <BookOpen size={16} />
           {t('home.howToPlay')}
-        </a>
+        </Link>
       </footer>
     </div>
   )

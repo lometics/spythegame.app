@@ -5,50 +5,42 @@ import { ScanLine } from 'lucide-react'
 import Screen from '../components/Screen'
 import QrScanPanel from '../components/QrScanPanel'
 import { useGame } from '../game/state'
-import { createRoom, joinRoom } from '../online/room'
+import { createRoom } from '../online/room'
 import { isFirebaseConfigured } from '../online/firebase'
 import { extractRoomCode } from '../online/roster'
 
-/** Entry for "everyone on their own device": name, then create or join. */
+/**
+ * Entry for "everyone on their own device": create a room or enter a code.
+ * The name is asked afterwards, in the room (see OnlineRoom's NameStep).
+ */
 export default function Online() {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const onlineName = useGame((s) => s.onlineName)
-  const setOnlineName = useGame((s) => s.setOnlineName)
   const joinCode = useGame((s) => s.joinCode)
   const setJoinCode = useGame((s) => s.setJoinCode)
-  const [busy, setBusy] = useState<'create' | 'join' | null>(null)
+  const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [scannerOpen, setScannerOpen] = useState(false)
 
   const configured = isFirebaseConfigured()
-  const name = onlineName.trim()
   const code = joinCode.trim().toUpperCase()
 
   const create = async () => {
-    setBusy('create')
+    setBusy(true)
     setError(null)
     try {
-      navigate(`/room/${await createRoom(name)}`)
+      const room = await createRoom(onlineName)
+      navigate(`/room/${room}`, { state: { askName: true } })
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e))
-      setBusy(null)
+      setBusy(false)
     }
   }
 
-  const join = async (target: string) => {
-    setBusy('join')
-    setError(null)
-    try {
-      await joinRoom(target, name)
-      navigate(`/room/${target}`)
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e))
-      setBusy(null)
-    }
-  }
+  // The room page asks for the name, then joins.
+  const join = (target: string) => navigate(`/room/${target}`)
 
-  // A scanned code joins right away when we already have a name.
   const onScan = (text: string) => {
     setScannerOpen(false)
     const scanned = extractRoomCode(text)
@@ -57,8 +49,7 @@ export default function Online() {
       return
     }
     setJoinCode(scanned)
-    setError(null)
-    if (name) join(scanned)
+    join(scanned)
   }
 
   return (
@@ -67,28 +58,13 @@ export default function Online() {
         <p className="card text-sm text-spy">{t('online.fbNotConfigured')}</p>
       )}
 
-      <section>
-        <label className="section-label block" htmlFor="online-name">
-          {t('online.yourName')}
-        </label>
-        <input
-          id="online-name"
-          className="input"
-          value={onlineName}
-          maxLength={20}
-          autoFocus={!onlineName}
-          autoCapitalize="words"
-          onChange={(e) => setOnlineName(e.target.value)}
-        />
-      </section>
-
       <button
         type="button"
         className="btn-primary w-full"
-        disabled={!configured || !name || busy !== null}
+        disabled={!configured || busy}
         onClick={create}
       >
-        {busy === 'create' ? t('online.creating') : t('online.createRoom')}
+        {busy ? t('online.creating') : t('online.createRoom')}
       </button>
 
       <div className="flex items-center gap-3 text-sm muted">
@@ -113,7 +89,7 @@ export default function Online() {
                 autoComplete="off"
                 enterKeyHint="go"
                 onChange={(e) => setJoinCode(e.target.value.replace(/[^a-z0-9]/gi, ''))}
-                onKeyDown={(e) => e.key === 'Enter' && name && code.length === 4 && join(code)}
+                onKeyDown={(e) => e.key === 'Enter' && code.length === 4 && join(code)}
               />
               <button
                 type="button"
@@ -128,10 +104,10 @@ export default function Online() {
             <button
               type="button"
               className="btn-secondary w-full"
-              disabled={!configured || !name || code.length !== 4 || busy !== null}
+              disabled={!configured || code.length !== 4}
               onClick={() => join(code)}
             >
-              {busy === 'join' ? t('online.joining') : t('online.join')}
+              {t('online.join')}
             </button>
           </>
         )}

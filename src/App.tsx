@@ -1,5 +1,13 @@
 import { lazy, Suspense, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom'
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+} from 'react-router-dom'
 import Home from './routes/Home'
 import LocalSetup from './routes/LocalSetup'
 import LocalGame from './routes/LocalGame'
@@ -19,10 +27,27 @@ const Online = lazy(() => import('./routes/Online'))
 const OnlineRoom = lazy(() => import('./routes/OnlineRoom'))
 const EditList = lazy(() => import('./routes/EditList'))
 const Options = lazy(() => import('./routes/Options'))
+const Rules = lazy(() => import('./routes/Rules'))
 
 function JoinRedirect() {
   const { code } = useParams()
   return <Navigate to={`/room/${(code ?? '').toUpperCase()}`} replace />
+}
+
+/** Opening the app on the home page goes back to the room or round you were in. */
+function ResumeOnStart() {
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+  useEffect(() => {
+    if (pathname !== '/') return
+    const { activeRoom, phase, players } = useGame.getState()
+    if (activeRoom) navigate(`/room/${activeRoom}`, { replace: true })
+    else if ((phase === 'reveal' || phase === 'discussion') && players.length > 0) {
+      navigate('/local/play', { replace: true })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- only once, on app start
+  }, [])
+  return null
 }
 
 export default function App() {
@@ -33,6 +58,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <BackHandler />
+      <ResumeOnStart />
       <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-4">
         <Suspense fallback={null}>
             <Routes>
@@ -47,6 +73,7 @@ export default function App() {
             <Route path="/lists/new" element={<EditList />} />
             <Route path="/lists/:id" element={<EditList />} />
             <Route path="/options" element={<Options />} />
+            <Route path="/rules" element={<Rules />} />
             <Route path="/online" element={<Online />} />
             <Route path="/room/:code" element={<OnlineRoom />} />
             <Route path="/join/:code" element={<JoinRedirect />} />

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Check, Crown, Eye, EyeOff, Share2, X } from 'lucide-react'
+import { Check, Eye, EyeOff, LogOut, Share2, X } from 'lucide-react'
 import Screen from '../components/Screen'
 import ConfirmBar from '../components/ConfirmBar'
 import QrCode from '../components/QrCode'
@@ -15,6 +15,7 @@ import {
   leaveRoom,
   renamePlayerInRoom,
   revealOnline,
+  saveRoomSettings,
   setPhase,
   startOnlineRound,
   useMyPrivate,
@@ -22,7 +23,8 @@ import {
   useRoom,
 } from '../online/room'
 import { ensureSignedIn, isFirebaseConfigured } from '../online/firebase'
-import { resolveHost, sortedRoster, type RosterEntry } from '../online/roster'
+import { sortedRoster, type RosterEntry } from '../online/roster'
+import { seedRoomSettings } from '../online/roomSettings'
 import { useGame } from '../game/state'
 import { clueOrder } from '../game/machine'
 
@@ -30,12 +32,17 @@ export default function OnlineRoom() {
   const { t } = useTranslation()
   const { code = '' } = useParams()
   const navigate = useNavigate()
+  const location = useLocation()
+  // Set by "Create room": ask the creator's name once they're in.
+  const askName = (location.state as { askName?: boolean } | null)?.askName === true
   const [uid, setUid] = useState<string | null>(null)
   const room = useRoom(code)
   const myPrivate = useMyPrivate(code, uid ?? undefined)
   const pairReveal = usePairReveal(code, room.meta?.phase === 'result')
   const settings = useGame((s) => s.settings)
   const customLists = useGame((s) => s.customLists)
+  const activeRoom = useGame((s) => s.activeRoom)
+  const setActiveRoom = useGame((s) => s.setActiveRoom)
 
   const [error, setError] = useState<string | null>(null)
   const [busy, setBusy] = useState(false)
@@ -43,6 +50,7 @@ export default function OnlineRoom() {
   const [shownRound, setShownRound] = useState<number | null>(null)
   const [peekOpen, setPeekOpen] = useState(false)
   const [confirmReveal, setConfirmReveal] = useState(false)
+  const [confirmLeave, setConfirmLeave] = useState(false)
 
   useEffect(() => {
     if (!isFirebaseConfigured()) return
@@ -53,25 +61,38 @@ export default function OnlineRoom() {
 
   const roster = sortedRoster(room.players)
   const me = uid ? room.players[uid] : undefined
-  const hostId = resolveHost(room.meta, roster)
-  const isHost = !!uid && uid === hostId
   const phase = room.meta?.phase
   const cardShown = shownRound !== null && shownRound === room.meta?.round
   const toggleCard = () =>
     setShownRound(cardShown ? null : (room.meta?.round ?? null))
 
-  // Leave the room view once we were in it and then got removed (kicked / room deleted).
+  // Remember the room on this device, so reopening the app comes straight back.
+  useEffect(() => {
+    if (me && activeRoom !== code) setActiveRoom(code)
+  }, [me, activeRoom, code, setActiveRoom])
+
+  // Rooms from older builds have no shared settings yet: the first member here brings theirs.
+  const seededRef = useRef(false)
+  useEffect(() => {
+    if (!me || !room.settingsLoaded || room.settings || seededRef.current) return
+    seededRef.current = true
+    saveRoomSettings(code, seedRoomSettings(settings, customLists)).catch(() => {})
+  }, [me, room.settingsLoaded, room.settings, code, settings, customLists])
+
+  // Once we were in the room and then got removed (kicked / room deleted): forget it and go home.
   const wasInRoomRef = useRef(false)
   useEffect(() => {
     if (me) wasInRoomRef.current = true
   }, [me])
+  const gone = room.loaded && !room.meta
   useEffect(() => {
+    if (gone && activeRoom === code) setActiveRoom('')
     if (!wasInRoomRef.current) return
-    if ((room.playersLoaded && uid && !me) || (room.loaded && !room.meta)) {
+    if ((room.playersLoaded && uid && !me) || gone) {
+      if (activeRoom === code) setActiveRoom('')
       navigate('/', { replace: true })
     }
-  }, [room.playersLoaded, room.loaded, room.meta, uid, me, navigate])
-
+  }, [room.playersLoaded, gone, uid, me, navigate, activeRoom, code, setActiveRoom])
 
   if (!isFirebaseConfigured()) {
     return (
@@ -94,22 +115,24 @@ export default function OnlineRoom() {
       </Screen>
     )
   }
-  if (!me) return <JoinGate code={code} />
+  if (!me) return <NameStep code={code} />
+  if (askName) {
+    return (
+      <NameStep
+        code={code}
+        uid={uid}
+        onDone={() => navigate(location.pathname, { replace: true, state: null })}
+      />
+    )
+  }
 
+  // Everyone is equal: any player can move the game on, always with the room's settings.
   const startRound = async () => {
+    if (!room.settings) return
     setBusy(true)
     setError(null)
     try {
-      await startOnlineRound(
-        code,
-        settings.pairSource,
-        customLists,
-        room.players,
-        settings.difficulty,
-        settings.spyCount,
-        settings.spiesKnowEachOther,
-        settings.timerSeconds,
-      )
+      await startOnlineRound(code, room.settings, room.players)
     } catch (e) {
       setError(e instanceof Error ? e.message : t('online.errStartRound'))
     } finally {
@@ -117,14 +140,12 @@ export default function OnlineRoom() {
     }
   }
 
+  // Back only goes home: you stay in the room until you leave on purpose.
   const leave = async () => {
     await leaveRoom(code, uid).catch(() => {})
+    setActiveRoom('')
     navigate('/')
   }
-
-  const waiting = (text: string) => (
-    <p className="py-3 text-center text-sm muted">{text}</p>
-  )
 
   const card = (
     <RoleCard
@@ -140,29 +161,25 @@ export default function OnlineRoom() {
     return (
       <Screen
         title={t('reveal.title')}
-        back={leave}
+        back="/"
         footer={
           <>
             <button
               type="button"
-              className={isHost ? 'btn-secondary w-full' : 'btn-primary w-full'}
+              className="btn-secondary w-full"
               onClick={toggleCard}
               disabled={myPrivate.word === null}
             >
               {cardShown ? <EyeOff size={20} /> : <Eye size={20} />}
               {cardShown ? t('peek.hide') : t('reveal.show')}
             </button>
-            {isHost ? (
-              <button
-                type="button"
-                className="btn-primary w-full"
-                onClick={() => setPhase(code, 'discussion')}
-              >
-                {t('online.toDiscussion')}
-              </button>
-            ) : (
-              waiting(t('online.waitDiscussion'))
-            )}
+            <button
+              type="button"
+              className="btn-primary w-full"
+              onClick={() => setPhase(code, 'discussion')}
+            >
+              {t('online.toDiscussion')}
+            </button>
           </>
         }
       >
@@ -187,7 +204,7 @@ export default function OnlineRoom() {
     return (
       <Screen
         title={t('discuss.title')}
-        back={leave}
+        back="/"
         footer={
           <>
             <button
@@ -198,9 +215,7 @@ export default function OnlineRoom() {
               {peekOpen ? <EyeOff size={20} /> : <Eye size={20} />}
               {peekOpen ? t('peek.hide') : t('peek.button')}
             </button>
-            {!isHost ? (
-              waiting(t('online.waitReveal'))
-            ) : confirmReveal ? (
+            {confirmReveal ? (
               <ConfirmBar
                 question={t('discuss.confirmBody')}
                 confirmLabel={t('discuss.reveal')}
@@ -240,30 +255,26 @@ export default function OnlineRoom() {
     return (
       <Screen
         title={t('result.title')}
-        back={leave}
+        back="/"
         footer={
-          isHost ? (
-            <>
-              {error && <p className="text-center text-sm text-spy">{error}</p>}
-              <button
-                type="button"
-                className="btn-primary w-full"
-                disabled={busy || roster.length < 3}
-                onClick={startRound}
-              >
-                {t('result.nextRound')}
-              </button>
-              <button
-                type="button"
-                className="btn-secondary w-full"
-                onClick={() => backToLobby(code)}
-              >
-                {t('online.backToLobby')}
-              </button>
-            </>
-          ) : (
-            waiting(t('online.waitNext'))
-          )
+          <>
+            {error && <p className="text-center text-sm text-spy">{error}</p>}
+            <button
+              type="button"
+              className="btn-primary w-full"
+              disabled={busy || roster.length < 3 || !room.settings}
+              onClick={startRound}
+            >
+              {t('result.nextRound')}
+            </button>
+            <button
+              type="button"
+              className="btn-secondary w-full"
+              onClick={() => backToLobby(code)}
+            >
+              {t('online.backToLobby')}
+            </button>
+          </>
         }
       >
         <ResultView
@@ -278,48 +289,61 @@ export default function OnlineRoom() {
   const blocker =
     roster.length < 3
       ? t('online.needPlayers', { count: 3 - roster.length })
-      : settings.pairSource.selectedCategoryIds.length === 0
+      : room.settings && room.settings.settings.pairSource.selectedCategoryIds.length === 0
         ? t('words.pickOne')
         : null
 
   return (
     <Screen
       title={t('online.roomTitle', { code })}
-      back={leave}
+      back="/"
       footer={
-        isHost ? (
-          <>
-            {(blocker || error) && (
-              <p className="text-center text-sm muted">{blocker ?? error}</p>
-            )}
-            <button
-              type="button"
-              className="btn-primary w-full"
-              disabled={!!blocker || busy}
-              onClick={startRound}
-            >
-              {busy ? t('online.starting') : t('setup.start')}
-            </button>
-          </>
-        ) : (
-          waiting(t('online.waitStart'))
-        )
+        <>
+          {(blocker || error) && (
+            <p className="text-center text-sm muted">{blocker ?? error}</p>
+          )}
+          <button
+            type="button"
+            className="btn-primary w-full"
+            disabled={!!blocker || busy || !room.settings}
+            onClick={startRound}
+          >
+            {busy ? t('online.starting') : t('setup.start')}
+          </button>
+        </>
       }
     >
       <ShareCard code={code} />
-      <PlayerList
-        code={code}
-        uid={uid}
-        hostId={hostId}
-        isHost={isHost}
-        roster={roster}
-      />
-      {isHost && (
+      <PlayerList code={code} uid={uid} roster={roster} />
+      {room.settings && (
         <section>
           <div className="section-label">{t('online.roundSettings')}</div>
-          <SettingsSummary playerCount={roster.length} />
+          <SettingsSummary
+            playerCount={roster.length}
+            room={{ code, settings: room.settings }}
+          />
         </section>
       )}
+      <section className="mt-auto">
+        {confirmLeave ? (
+          <ConfirmBar
+            question={t('online.leaveConfirm')}
+            confirmLabel={t('online.leaveRoom')}
+            danger
+            onCancel={() => setConfirmLeave(false)}
+            onConfirm={leave}
+          />
+        ) : (
+          <button
+            type="button"
+            className="btn-secondary w-full"
+            onClick={() => setConfirmLeave(true)}
+          >
+            <LogOut size={18} />
+            {t('online.leaveRoom')}
+          </button>
+        )}
+      </section>
     </Screen>
   )
 }
@@ -359,14 +383,10 @@ function ShareCard({ code }: { code: string }) {
 function PlayerList({
   code,
   uid,
-  hostId,
-  isHost,
   roster,
 }: {
   code: string
   uid: string
-  hostId: string | null
-  isHost: boolean
   roster: RosterEntry[]
 }) {
   const { t } = useTranslation()
@@ -404,10 +424,7 @@ function PlayerList({
                 <span className="min-w-0 flex-1 truncate font-medium">{p.name}</span>
               )}
               {isMe && <span className="text-sm muted">{t('online.you')}</span>}
-              {p.id === hostId && (
-                <Crown size={18} className="text-accent" aria-label={t('online.host')} />
-              )}
-              {isHost && !isMe ? (
+              {!isMe ? (
                 <button
                   type="button"
                   className="btn-icon text-foreground/50"
@@ -427,34 +444,43 @@ function PlayerList({
   )
 }
 
-/** Someone opened a room link: join with the saved name, or ask for one first. */
-function JoinGate({ code }: { code: string }) {
+/**
+ * Asks for the player's name, prefilled with the last one used. Without `uid`
+ * it joins the room; with `uid` (just created the room) it renames and moves on.
+ */
+function NameStep({
+  code,
+  uid,
+  onDone,
+}: {
+  code: string
+  uid?: string
+  onDone?: () => void
+}) {
   const { t } = useTranslation()
   const onlineName = useGame((s) => s.onlineName)
   const setOnlineName = useGame((s) => s.setOnlineName)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const name = onlineName.trim()
+  const joined = uid !== undefined
 
-  const join = async () => {
+  const submit = async () => {
+    if (!name || busy) return
     setBusy(true)
     setError(null)
     try {
-      await joinRoom(code, name)
+      if (joined) {
+        await renamePlayerInRoom(code, uid, name)
+        onDone?.()
+      } else {
+        await joinRoom(code, name)
+      }
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e))
       setBusy(false)
     }
   }
-
-  // Name already known from last time: join straight away, no extra tap.
-  const autoJoinedRef = useRef(false)
-  useEffect(() => {
-    if (autoJoinedRef.current || !name) return
-    autoJoinedRef.current = true
-    join()
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- once, on open
-  }, [])
 
   return (
     <Screen
@@ -465,26 +491,27 @@ function JoinGate({ code }: { code: string }) {
           type="button"
           className="btn-primary w-full"
           disabled={!name || busy}
-          onClick={join}
+          onClick={submit}
         >
-          {busy ? t('online.joining') : t('online.join')}
+          {busy ? t('online.joining') : joined ? t('online.continue') : t('online.join')}
         </button>
       }
     >
       <section>
-        <label className="section-label block" htmlFor="gate-name">
+        <label className="section-label block" htmlFor="name-step">
           {t('online.yourName')}
         </label>
         <input
-          id="gate-name"
+          id="name-step"
           className="input"
           value={onlineName}
           maxLength={20}
           autoFocus
           autoCapitalize="words"
           enterKeyHint="go"
+          onFocus={(e) => e.currentTarget.select()}
           onChange={(e) => setOnlineName(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && name && join()}
+          onKeyDown={(e) => e.key === 'Enter' && submit()}
         />
       </section>
       {error && <p className="text-center text-sm text-spy">{error}</p>}

@@ -40,7 +40,8 @@
     "ownDeviceDesc": "Chaque joueur rejoint une partie sur son téléphone.",
     "continueRound": "Reprendre la manche en cours",
     "playAgain": "Rejouer",
-    "howToPlay": "Comment jouer"
+    "howToPlay": "Comment jouer",
+    "backToRoom": "Retour à la salle {{code}}"
   },
   "setup": {
     "players": "Joueurs",
@@ -197,35 +198,32 @@
     "invite": "Inviter",
     "copied": "Lien copié",
     "scanQr": "Scanner le QR code",
-    "qrScanHint": "Pointez votre caméra sur le QR code de l'hôte.",
+    "qrScanHint": "Pointez votre caméra sur le QR code du salon, sur le téléphone d'un autre joueur.",
     "qrCameraError": "Impossible d'ouvrir la caméra",
     "qrInvalid": "Ce QR code n'est pas un lien de partie.",
     "you": "Vous",
-    "host": "Hôte",
     "kick": "Retirer {{name}}",
     "roundSettings": "Réglages de la manche",
     "needPlayers_one": "En attente de {{count}} joueur de plus.",
     "needPlayers_other": "En attente de {{count}} joueurs de plus.",
     "starting": "Démarrage…",
-    "waitStart": "En attente du lancement de la manche par l'hôte…",
     "loadingWord": "Chargement de votre mot…",
     "cardReady": "Votre carte est prête",
     "cardReadyHint": "Vérifiez que personne ne regarde, puis affichez-la.",
     "toDiscussion": "Tout le monde est prêt : lancer la discussion",
-    "waitDiscussion": "L'hôte lance la discussion quand tout le monde a vu sa carte.",
-    "waitReveal": "L'hôte révèle l'espion quand vous avez fini.",
-    "waitNext": "En attente de l'hôte…",
     "backToLobby": "Retour à la partie",
     "loadingRoom": "Chargement de la partie {{code}}…",
     "fbNotConfigured": "Le jeu en ligne n'est pas configuré sur cette version.",
     "errStartRound": "Impossible de démarrer la manche",
-    "defaultHostName": "Hôte",
     "defaultGuestName": "Invité",
     "errRoomNotFound": "Partie introuvable",
     "errNoPairs": "Aucune paire disponible — sélectionnez au moins une catégorie avec des paires.",
     "errMinPlayers": "Il faut au moins 3 joueurs",
     "errCouldNotAllocate": "Impossible d'attribuer un code de partie, réessayez",
-    "errNotConfigured": "Firebase non configuré"
+    "errNotConfigured": "Firebase non configuré",
+    "continue": "Continuer",
+    "leaveRoom": "Quitter la salle",
+    "leaveConfirm": "Quitter cette salle ? Tu pourras revenir avec le code."
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "S'ouvre comme une appli et fonctionne hors ligne, prêt pour la prochaine soirée jeux.",
     "button": "Installer",
     "iosHint": "Dans Safari, touchez Partager puis « Sur l'écran d'accueil »."
+  },
+  "rules": {
+    "title": "Comment jouer",
+    "s1": "Tout le monde reçoit le même mot secret. L’espion reçoit un indice à la place, ou rien.",
+    "s2": "Chacun à son tour donne un court indice sur son mot. Pas trop évident !",
+    "s3": "Discutez et votez : qui est l’espion ?",
+    "s4": "Démasqué ? L’espion peut encore gagner en devinant le mot.",
+    "win": "Les civils gagnent s’ils démasquent l’espion. L’espion gagne si personne ne le trouve, ou en devinant le mot.",
+    "players": "3 joueurs ou plus. Un seul téléphone qui tourne, ou chacun le sien.",
+    "play": "C’est parti"
   }
 }

@@ -40,7 +40,8 @@
     "ownDeviceDesc": "Varje spelare går med i ett rum på sin telefon.",
     "continueRound": "Fortsätt pågående runda",
     "playAgain": "Spela igen",
-    "howToPlay": "Så spelar du"
+    "howToPlay": "Så spelar du",
+    "backToRoom": "Tillbaka till rum {{code}}"
   },
   "setup": {
     "players": "Spelare",
@@ -197,35 +198,32 @@
     "invite": "Bjud in",
     "copied": "Länk kopierad",
     "scanQr": "Skanna QR-kod",
-    "qrScanHint": "Rikta kameran mot värdens QR.",
+    "qrScanHint": "Rikta kameran mot rummets QR på en annan spelares telefon.",
     "qrCameraError": "Kunde inte öppna kamera",
     "qrInvalid": "Den QR-koden är inte en rumslänk.",
     "you": "Du",
-    "host": "Värd",
     "kick": "Ta bort {{name}}",
     "roundSettings": "Inställningar för rundan",
     "needPlayers_one": "Väntar på {{count}} spelare till.",
     "needPlayers_other": "Väntar på {{count}} spelare till.",
     "starting": "Startar…",
-    "waitStart": "Väntar på att värden startar rundan…",
     "loadingWord": "Laddar ditt ord…",
     "cardReady": "Ditt kort är klart",
     "cardReadyHint": "Se till att ingen tittar och visa det sedan.",
     "toDiscussion": "Alla är redo: starta diskussion",
-    "waitDiscussion": "Värden startar diskussionen när alla har sett sitt kort.",
-    "waitReveal": "Värden avslöjar spionen när ni är klara.",
-    "waitNext": "Väntar på värden…",
     "backToLobby": "Tillbaka till rummet",
     "loadingRoom": "Laddar rum {{code}}…",
     "fbNotConfigured": "Onlinespel är inte konfigurerat i den här versionen.",
     "errStartRound": "Kunde inte starta runda",
-    "defaultHostName": "Värd",
     "defaultGuestName": "Gäst",
     "errRoomNotFound": "Rum hittades inte",
     "errNoPairs": "Inga par — välj minst en kategori.",
     "errMinPlayers": "Minst 3 spelare krävs",
     "errCouldNotAllocate": "Kunde inte tilldela kod, försök igen",
-    "errNotConfigured": "Firebase ej konfigurerad"
+    "errNotConfigured": "Firebase ej konfigurerad",
+    "continue": "Fortsätt",
+    "leaveRoom": "Lämna rummet",
+    "leaveConfirm": "Lämna det här rummet? Du kan gå med igen med koden."
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "Öppnas som en app och fungerar offline, redo för nästa spelkväll.",
     "button": "Installera",
     "iosHint": "Tryck på Dela i Safari och sedan på ”Lägg till på hemskärmen”."
+  },
+  "rules": {
+    "title": "Så spelar du",
+    "s1": "Alla får samma hemliga ord. Spionen får en ledtråd i stället, eller ingenting.",
+    "s2": "Turas om att ge en kort ledtråd om ditt ord. Inte för uppenbar!",
+    "s3": "Prata och rösta: vem är spionen?",
+    "s4": "Avslöjad? Spionen kan ändå vinna genom att gissa ordet.",
+    "win": "Civilisterna vinner om de hittar spionen. Spionen vinner om ingen avslöjar hen, eller genom att gissa ordet.",
+    "players": "3 eller fler spelare. En telefon som går runt, eller allas egna.",
+    "play": "Nu kör vi"
   }
 }

@@ -2,7 +2,6 @@ import { initializeApp, getApps } from 'firebase/app'
 import {
   getAuth,
   signInAnonymously,
-  onAuthStateChanged,
   type User,
 } from 'firebase/auth'
 import { getDatabase } from 'firebase/database'
@@ -34,17 +33,16 @@ export function ensureSignedIn(): Promise<User> {
   }
   if (auth.currentUser) return Promise.resolve(auth.currentUser)
   if (signInPromise) return signInPromise
-  signInPromise = new Promise<User>((resolve, reject) => {
-    const unsub = onAuthStateChanged(auth!, (u) => {
-      if (u) {
-        unsub()
-        resolve(u)
-      }
-    })
-    signInAnonymously(auth!).catch((err) => {
-      unsub()
-      reject(err)
-    })
+  const a = auth
+  signInPromise = (async () => {
+    // Wait for the saved session to be restored first. Signing in before that
+    // would create a new anonymous user on every reload, who isn't in the room.
+    await a.authStateReady()
+    if (a.currentUser) return a.currentUser
+    return (await signInAnonymously(a)).user
+  })().catch((err) => {
+    signInPromise = null
+    throw err
   })
   return signInPromise
 }

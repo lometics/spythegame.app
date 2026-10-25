@@ -15,7 +15,17 @@ export type WordMeta = {
   sub: string
   /** How well known the word itself is: 1 = everyone, 3 = niche. */
   difficulty: 1 | 2 | 3
+  /**
+   * Suitability from the review (familiarity, blind hint test, decoys,
+   * appropriateness): A = great, B = fine, C = kept for reference, not played.
+   */
+  grade?: 'A' | 'B' | 'C'
+  /** Why the word got a B or C. */
+  review?: string
 }
+
+/** Whether the game may deal this word. */
+export const isPlayable = (m: WordMeta) => m.grade !== 'C'
 
 export type WordMetaFile = {
   subs: Record<string, string[]>
@@ -130,6 +140,7 @@ export function validateWordBank(meta: WordMetaFile, lang: string, file: WordLan
     seen.add(m.id)
     if (!meta.subs[m.category]?.includes(m.sub)) at(m.id, `sub "${m.sub}" not listed for ${m.category}`)
     if (![1, 2, 3].includes(m.difficulty)) at(m.id, `difficulty ${m.difficulty} not 1-3`)
+    if (m.grade !== undefined && !['A', 'B', 'C'].includes(m.grade)) at(m.id, `grade ${m.grade} not A-C`)
   }
 
   for (const sub of Object.values(meta.subs).flat()) {

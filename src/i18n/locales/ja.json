@@ -40,7 +40,8 @@
     "ownDeviceDesc": "各プレイヤーが自分のスマホで部屋に参加。",
     "continueRound": "現在のラウンドを続ける",
     "playAgain": "もう一度遊ぶ",
-    "howToPlay": "遊び方"
+    "howToPlay": "遊び方",
+    "backToRoom": "ルーム {{code}} に戻る"
   },
   "setup": {
     "players": "プレイヤー",
@@ -197,35 +198,32 @@
     "invite": "招待",
     "copied": "リンクをコピーしました",
     "scanQr": "QRコードを読み取る",
-    "qrScanHint": "ホストのQRにカメラを向ける。",
+    "qrScanHint": "他のプレイヤーのスマホに表示されたルームのQRにカメラを向ける。",
     "qrCameraError": "カメラを開けません",
     "qrInvalid": "そのQRは部屋リンクではありません。",
     "you": "あなた",
-    "host": "ホスト",
     "kick": "{{name}}を退出させる",
     "roundSettings": "ラウンド設定",
     "needPlayers_one": "あと{{count}}人を待っています。",
     "needPlayers_other": "あと{{count}}人を待っています。",
     "starting": "開始中…",
-    "waitStart": "ホストがラウンドを開始するのを待っています…",
     "loadingWord": "ワード読み込み中…",
     "cardReady": "カードの準備ができました",
     "cardReadyHint": "誰も見ていないのを確認してから表示しよう。",
     "toDiscussion": "全員準備OK：話し合い開始",
-    "waitDiscussion": "全員がカードを見たら、ホストが話し合いを開始します。",
-    "waitReveal": "終わったらホストがスパイを公開します。",
-    "waitNext": "ホストを待っています…",
     "backToLobby": "部屋に戻る",
     "loadingRoom": "部屋 {{code}} を読み込み中…",
     "fbNotConfigured": "このビルドではオンラインプレイが設定されていません。",
     "errStartRound": "ラウンドを開始できません",
-    "defaultHostName": "ホスト",
     "defaultGuestName": "ゲスト",
     "errRoomNotFound": "部屋が見つかりません",
     "errNoPairs": "ペアなし — 少なくとも1カテゴリを選んで。",
     "errMinPlayers": "最低3人必要",
     "errCouldNotAllocate": "コードを発行できません、再試行",
-    "errNotConfigured": "Firebase未設定"
+    "errNotConfigured": "Firebase未設定",
+    "continue": "続ける",
+    "leaveRoom": "ルームを出る",
+    "leaveConfirm": "このルームを出ますか？コードでまた参加できます。"
   },
   "categories": {
     "food": {
@@ -337,5 +335,15 @@
     "desc": "アプリのように開き、オフラインでも使えます。次のゲームの夜にすぐ遊べます。",
     "button": "インストール",
     "iosHint": "Safariで共有ボタンをタップし、「ホーム画面に追加」を選んでください。"
+  },
+  "rules": {
+    "title": "遊び方",
+    "s1": "全員が同じ秘密の単語をもらいます。スパイは代わりにヒントをもらうか、何ももらいません。",
+    "s2": "順番に、自分の単語について短いヒントを一つ言います。わかりやすすぎないように！",
+    "s3": "話し合って投票：スパイは誰？",
+    "s4": "見つかった？スパイは単語を当てればまだ勝てます。",
+    "win": "市民はスパイを見つければ勝ち。スパイは誰にも見破られないか、単語を当てれば勝ち。",
+    "players": "3人以上。1台のスマホを回すか、各自のスマホで。",
+    "play": "遊ぼう"
   }
 }
