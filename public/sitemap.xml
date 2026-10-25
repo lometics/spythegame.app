@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Only real landing pages: the app's other routes (setup, rooms) aren't useful search results. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://spythegame.app/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-25</lastmod>
   </url>
   <url>
     <loc>https://spythegame.app/how-to-play/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-25</lastmod>
   </url>
 </urlset>
