@@ -1,62 +1,22 @@
-# Spy — The Word Game
+# Spy, the party word game
 
-A web app for the party game where everyone gets a word and one secret **spy** gets a *similar* word. Players take turns dropping clues, then vote out who they think the spy is.
+Play it at **[spythegame.app](https://spythegame.app)**. It's free, needs no account and runs in any phone browser.
 
-Two play modes:
+## How it works
 
-- **Pass-and-play** — one device, friends in the same room. Zero setup, fully offline once loaded.
-- **Online rooms** — host creates a room with a code, friends join from their own phones. Powered entirely by Firebase (Realtime Database + Anonymous Auth).
+1. Everyone gets the same secret word. The spy gets a hint instead, or nothing.
+2. Take turns giving one short clue about your word. Not too obvious!
+3. Talk it over and vote: who is the spy?
+4. Caught? The spy can still win by guessing the word.
 
-## Run locally
+You need 3 or more players. Pass one phone around the table, or let everyone join a room on their own phone with a 4-letter code or QR code.
 
-```bash
-npm install
-npm run dev
-```
+## Good to know
 
-Pass-and-play works immediately, no config needed.
+- Over 700 words in more than 20 categories, from food and animals to myth and tech.
+- You choose how much help the spy gets: a similar word, a close hint, just the category, or nothing at all.
+- Make your own word lists for in-jokes and themed nights.
+- Available in 15 languages.
+- Add it to your home screen and it works like an app.
 
-## Enable online mode
-
-Online mode needs a Firebase project.
-
-1. Go to [Firebase Console](https://console.firebase.google.com/) → create a new project.
-2. Add a **Web app** to the project. Copy the config snippet.
-3. In the Firebase project, enable **Realtime Database** (any region; start in test mode if you want to play before deploying rules).
-4. In **Authentication → Sign-in method**, enable **Anonymous**.
-5. Copy `.env.example` to `.env.local` and fill in:
-   ```env
-   VITE_FIREBASE_API_KEY=...
-   VITE_FIREBASE_AUTH_DOMAIN=...
-   VITE_FIREBASE_DATABASE_URL=https://your-project-default-rtdb.firebaseio.com
-   VITE_FIREBASE_PROJECT_ID=...
-   VITE_FIREBASE_APP_ID=...
-   ```
-6. Restart `npm run dev`.
-
-## Deploy
-
-Build once: `npm run build`. The `dist/` folder is a plain static site — host it on Vercel, Netlify, GitHub Pages, or Firebase Hosting.
-
-For Firebase Hosting:
-
-```bash
-npm install -g firebase-tools
-firebase login
-firebase init   # pick Hosting (dist) + Realtime Database (use src/online/rules.json)
-firebase deploy
-```
-
-## Security rules
-
-The RTDB rules in [`src/online/rules.json`](src/online/rules.json) make sure each player can only read their own secret word, and the full word pair is hidden until the round ends. Deploy them with `firebase deploy --only database` or paste into the Firebase Console rules tab.
-
-## Word pairs
-
-Curated pairs live in [`src/data/pairs.json`](src/data/pairs.json). Add your own — each pair has `civilian`, `spy`, and `category`. Pairs do **not** need to live in the same conceptual category; the **Tricky / Mixed** category is specifically for ones that cross buckets.
-
-The host can also type a **custom** pair before any round, no JSON edit required.
-
-## Tech
-
-Vite + React + TypeScript + Tailwind + Zustand + Firebase.
+Building or changing the game? See [docs/development.md](docs/development.md).
