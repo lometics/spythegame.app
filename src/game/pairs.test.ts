@@ -97,6 +97,18 @@ describe('samplePair', () => {
   })
 })
 
+describe('defaultCategoryIds', () => {
+  it('leaves out sensitive categories and off-season packs', async () => {
+    const { SENSITIVE_CATEGORY_IDS, defaultCategoryIds } = await import('./pairs')
+    const ids = defaultCategoryIds('halloween')
+    for (const id of SENSITIVE_CATEGORY_IDS) expect(ids).not.toContain(id)
+    expect(ids).toContain('halloween')
+    expect(ids).not.toContain('christmas')
+    expect(ids).toContain('food')
+    expect(defaultCategoryIds(null)).not.toContain('halloween')
+  })
+})
+
 describe('listCategories', () => {
   it('counts word bank entries for the categories it covers', () => {
     const t = ((k: string) => k) as never

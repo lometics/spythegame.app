@@ -34,12 +34,26 @@ export const BUILTIN_CATEGORY_IDS = [
 
 const isSeasonal = (id: string) => (SEASONS as readonly string[]).includes(id)
 
+/** Real people, groups and tragedies: available, but only when picked on purpose. */
+export const SENSITIVE_CATEGORY_IDS: readonly string[] = [
+  'tyrants',
+  'darkhumor',
+  'prophets',
+  'stereotypes',
+  'races',
+  'terror',
+  'infamous',
+  'religions',
+]
+
 /**
- * Categories selected for new players: everything except seasonal packs that
- * are out of season (Christmas words in July would be odd).
+ * Categories selected for new players: everything except the sensitive ones
+ * and seasonal packs that are out of season (Christmas words in July would be odd).
  */
 export function defaultCategoryIds(season: Season | null = currentSeason()): string[] {
-  return BUILTIN_CATEGORY_IDS.filter((id) => !isSeasonal(id) || id === season)
+  return BUILTIN_CATEGORY_IDS.filter(
+    (id) => !SENSITIVE_CATEGORY_IDS.includes(id) && (!isSeasonal(id) || id === season),
+  )
 }
 
 /** One playable word with every kind of hint the spy can get for it. */
