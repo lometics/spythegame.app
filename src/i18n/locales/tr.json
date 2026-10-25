@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "Casus — Kelime Oyunu"
+    "title": "Spy — Parti Kelime Oyunu"
   },
   "app": {
-    "footer": "Casus — kelime oyunu. Arkadaşlarınla yüz yüze veya çevrimiçi oyna.",
     "exitConfirm": "Çıkmak için tekrar bas"
   },
   "languages": {
@@ -25,241 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "Ana sayfa",
     "back": "Geri",
     "cancel": "İptal",
     "save": "Kaydet",
     "delete": "Sil",
-    "yes": "Evet",
-    "no": "Hayır",
-    "dismiss": "Kapat"
-  },
-  "wizard": {
-    "modeTitle": "Nasıl oynamak istiyorsunuz?",
-    "modeSingle": "Tek cihaz",
-    "modeSingleDesc": "Telefonu masada elden ele dolaştırın.",
-    "modeOnline": "Herkes kendi cihazında",
-    "modeOnlineDesc": "Her oyuncu kendi telefonundan katılır.",
-    "roleTitle": "Oda aç ya da katıl?",
-    "roleHost": "Oda aç",
-    "roleHostDesc": "Oyun oluştur ve kodu paylaş.",
-    "roleJoin": "Kodla katıl",
-    "roleJoinDesc": "Kod ya da QR'ın var mı? Hadi gel.",
-    "back": "← Geri",
-    "next": "İleri →",
-    "playersTitle": "Oyuncu ekle",
-    "playersDesc": "Herkesi ekleyin. En az 3 kişi.",
-    "categoriesTitle": "Kelime kaynaklarını seç",
-    "categoriesDesc": "Hangi kategorilerden çekileceğini seçin.",
-    "optionsTitle": "Oyun seçenekleri",
-    "optionsDesc": "Zorluk ve tartışma süresini ayarla.",
-    "startBtn": "Tura başla →",
-    "hostNameTitle": "İsmin",
-    "hostNameDesc": "Diğer oyuncular lobide bunu görür.",
-    "hostCreateBtn": "Oda oluştur",
-    "creating": "Oluşturuluyor…",
-    "joinCodeTitle": "Oda kodunu gir",
-    "joinCodeDesc": "4 harfli kodu yaz ya da QR'ı tara.",
-    "joinNameTitle": "İsmin",
-    "joinBtn": "Katıl",
-    "joining": "Katılıyor…",
-    "stepLabel": "Adım {{current}} / {{total}}"
+    "close": "Kapat",
+    "done": "Tamam"
   },
   "home": {
     "title": "Casus",
-    "howTo": {
-      "title": "Nasıl oynanır",
-      "step1_title": "Kurulum",
-      "step1": "Herkes aynı kelimeyi alır. Casus benzer bir ipucu — ya da hiç bir şey almaz.",
-      "step2_title": "İpucu turları",
-      "step2": "Sırayla, sırrı bildiğinizi gösteren tek kelime söyleyin — ama casusun kilitleyemeyeceği kadar belirsiz.",
-      "step3_title": "Soru zamanı",
-      "step3": "Birbirinizi sorgulayın. Blöfleri dinleyin ve casusu bulun.",
-      "step4_title": "Oylama",
-      "step4": "Şüphelinizi oylayın. Suçlanan casus kelime için son bir tahmin hakkı kazanır.",
-      "winTitle": "Nasıl kazanılır",
-      "civWinLabel": "Siviller kazanır eğer",
-      "civWin": "Casusu oyla yakalarsanız VE casus son tahmini bilemezse.",
-      "spyWinLabel": "Casus kazanır eğer",
-      "spyWin": "Casus oylamadan kurtulursa, VEYA kelimeyi öğrendiğinde söylerse, VEYA yakalandıktan sonra doğru tahmin ederse."
-    }
+    "tagline": "Herkes bir kelime alır. Casus farklı bir kelime alır.",
+    "oneDevice": "Herkes tek cihazda",
+    "oneDeviceDesc": "Tek bir telefonu masada elden ele dolaştırın.",
+    "ownDevice": "Herkes kendi cihazında",
+    "ownDeviceDesc": "Her oyuncu kendi telefonundan bir odaya katılır.",
+    "continueRound": "Mevcut tura devam et",
+    "playAgain": "Tekrar oyna",
+    "howToPlay": "Nasıl oynanır"
   },
-  "localGame": {
-    "phase": "Aşama:",
-    "discuss": {
-      "title": "Tartışma",
-      "desc": "Her oyuncu kelimesi hakkında kısa bir ipucu verir, sonra tartışırsınız. Casusun kim olduğuna birlikte karar verin.",
-      "clueOrder": "İpucu sırası — başlayan",
-      "timerLabel": "Tartışma süresi",
-      "timerHint": "İstediğin zaman duraklat veya sıfırla.",
-      "revealBtn": "Casusu açıkla →",
-      "revealHint": "Karar verdiniz mi? Casusun kim olduğunu görmek için dokunun."
-    }
+  "setup": {
+    "players": "Oyuncular",
+    "playerCount_one": "{{count}} oyuncu",
+    "playerCount_other": "{{count}} oyuncu",
+    "words": "Kelimeler",
+    "allCategories": "Tümü",
+    "categoryCount_one": "{{count}} kategori",
+    "categoryCount_other": "{{count}} kategori",
+    "spies": "Casuslar",
+    "randomEachRound": "Her tur rastgele",
+    "spiesKnow": "Birbirini tanır",
+    "hint": "Casus ipucu",
+    "timer": "Zamanlayıcı",
+    "off": "Kapalı",
+    "minutes_one": "{{count}} dk",
+    "minutes_other": "{{count}} dk",
+    "none": "Yok",
+    "start": "Turu başlat"
   },
-  "lobby": {
-    "playersLabel": "Oyuncular ({{count}})",
-    "quickAdd": "+ Hızlı ekle",
-    "namePlaceholder": "İsim (ya da boş bırak)",
-    "addBtn": "Ekle",
-    "removeAria": "{{name}}'yi kaldır",
-    "empty": "Henüz oyuncu yok.",
+  "players": {
+    "namePlaceholder": "Oyuncu ekle",
+    "add": "Oyuncu ekle",
     "defaultName": "Oyuncu {{n}}",
-    "spyCountLabel": "Casus sayısı",
-    "spyCountHint": "Daha fazla casus = siviller için daha zor.",
-    "spyCountRandom": "Rastgele",
-    "spyCountRandomHint": "Her elde 1–{{max}} casus seçer.",
-    "spiesKnowLabel": "Casuslar birbirini tanır",
-    "spiesKnowHint": "Kartlarında diğer casusları görürler.",
-    "difficultyLabel": "Köylüler için zorluk",
-    "difficulty": {
-      "easy": {
-        "label": "Kolay",
-        "hint": "Casusun ipucu yok — saf blöf, yakalaması en kolay."
-      },
-      "medium": {
-        "label": "Orta",
-        "hint": "Casusun ipucu aynı kategoriden."
-      },
-      "hard": {
-        "label": "Zor",
-        "hint": "Casusun ipucu gerçek kelimeye çok yakın, aynı kategori — klasik."
-      }
-    },
-    "timerLabel": "Tartışma süresi",
-    "timerOff": "Süre yok",
-    "timerMin": "{{count}} dk",
-    "needPlayers": "Başlamak için en az 3 oyuncu ekleyin.",
-    "needSource": "En az bir kelime kaynağı seçin."
+    "changeAvatar": "Resmi değiştir",
+    "rename": "Yeniden adlandır: {{name}}",
+    "remove": "Çıkar: {{name}}",
+    "empty": "Henüz oyuncu yok.",
+    "needMore_one": "Başlamak için {{count}} oyuncu daha ekle.",
+    "needMore_other": "Başlamak için {{count}} oyuncu daha ekle.",
+    "tip": "Oturma sıranıza göre sürükleyin; kartlar bu sırayla dolaşır.",
+    "reorder": "Taşı: {{name}}"
   },
-  "timer": {
-    "pause": "Duraklat",
-    "resume": "Devam et",
-    "done": "Bitti",
-    "reset": "Sıfırla"
-  },
-  "revealDeck": {
-    "cardProgress_one": "Kart {{current}} / {{total}}",
-    "cardProgress_other": "Kart {{current}} / {{total}}",
-    "prev": "← Önceki",
-    "next": "Sonraki →",
-    "doneBtn": "Bitti →",
-    "tapHint": "çevirmek için karta dokun",
-    "swipeHint": "sonraki için ← kaydır"
-  },
-  "playerCard": {
-    "spyHeader": "Casus",
-    "passTo": "Şuna ver",
-    "passInstruction": "Güvenliyse, kelimeni görmek için karta dokun.",
-    "tapToFlip": "çevirmek için dokun",
-    "tapToHide": "gizlemek için dokun",
-    "spyRole": "🕵️ Casus",
-    "civRole": "✅ Sivil",
-    "spyBadge": "🕵️ Sen casussun",
-    "fellowSpiesLabel": "Diğer casuslar",
-    "aloneSpy": "Tek casus sensin.",
-    "spyHeadsUp_before": "Dikkat:",
-    "spyHeadsUp_mid": " bu kelime ",
-    "spyHeadsUp_not": "değil",
-    "spyHeadsUp_after": " diğerlerinin sahip olduğu. Bu benzer bir ",
-    "spyHeadsUp_hint": "ipucu",
-    "spyHeadsUp_tail": ". Sesli söyleme.",
-    "yourHint": "İpucun",
-    "spyBluff": "İpuçlarını blöfle — hem seninkine HEM onlarınkine uysun.",
-    "noHintTitle": "Bu turda ipucu yok.",
-    "noHintBody": " Kelimeyi bilmiyorsun. Dinle, karış, blöfle.",
-    "noHintPlaceholder": "(ipucu yok)",
-    "noHintBluff": "Diğerlerinin söylediğini yansıt. İlk taahhüt eden olma.",
-    "civBadge": "✅ Sivil",
-    "civBody": "Herkes (casus hariç) bu aynı kelimeye sahip. Casusu bul.",
-    "yourWord": "Kelimen"
-  },
-  "result": {
-    "title": "Açıklama",
-    "subtitle": "Doğru bildiniz mi?",
-    "spyWas": "Casus şuydu",
-    "spiesWere": "Casuslar şunlardı",
-    "wordsLabel": "Kelimeler",
-    "civilians": "Siviller",
-    "spy": "Casus",
-    "vs": "vs",
-    "noHint": "(ipucu yok)",
-    "category": "Kategori: {{name}}",
-    "playAgain": "Tekrar oyna — aynı oyuncular",
-    "backToLobby": "Lobiye dön",
-    "home": "Ana sayfa"
-  },
-  "pairPicker": {
-    "label": "Kelime kaynakları",
+  "words": {
     "selectAll": "Hepsini seç",
-    "clear": "Temizle",
+    "selectNone": "Seçimi kaldır",
     "pairCount_one": "{{count}} çift",
     "pairCount_other": "{{count}} çift",
     "newList": "Yeni liste",
     "newListDesc": "Kendi kelime çiftlerin",
-    "editAria": "Listeyi düzenle",
-    "pickAtLeastOne": "Başlamak için en az bir kaynak seç."
+    "editList": "Listeyi düzenle",
+    "pickOne": "En az bir kategori seç."
+  },
+  "spies": {
+    "count": "Casus sayısı",
+    "maxHint": "{{players}} oyuncuyla en fazla {{max}} casus olabilir.",
+    "fewPlayers": "Casuslar her zaman oyuncuların yarısından azdır.",
+    "knowLabel": "Casuslar birbirini tanır",
+    "knowHint": "Casuslar kartlarında diğer casusları görür.",
+    "knowNeedsTwo": "Sadece iki veya daha fazla casusla işe yarar.",
+    "pickHint": "Bir sayı seç ya da herkes tahmin etsin diye birkaç tane.",
+    "randomPick": "Her turda rastgele {{list}} casus olur. Kimse kaç tane olduğunu bilmez."
+  },
+  "hint": {
+    "intro": "Casusun gerçek kelime yerine gördüğü şey. Yardım ne kadar azsa casusu yakalamak o kadar kolay.",
+    "exampleWord": "Siviller görür",
+    "exampleHint": "Casus görür",
+    "hard": {
+      "label": "Yakın kelime",
+      "desc": "Neredeyse aynı bir kelime. Yakalaması en zor."
+    },
+    "medium": {
+      "label": "Aynı kategori",
+      "desc": "Aynı kategoriden başka bir kelime."
+    },
+    "easy": {
+      "label": "İpucu yok",
+      "desc": "Casus hiçbir şey almaz ve blöf yapmak zorundadır."
+    }
+  },
+  "timer": {
+    "intro": "Tartışma için geri sayım. İstediğin zaman duraklatabilir veya yeniden başlatabilirsin.",
+    "pause": "Duraklat",
+    "resume": "Devam et",
+    "reset": "Yeniden başlat",
+    "timesUp": "Süre doldu"
+  },
+  "card": {
+    "passTo": "Telefonu ver:",
+    "passHint": "Ekranı başka kimsenin görmediğinden emin ol.",
+    "civilian": "Sivil",
+    "spy": "Casus",
+    "yourWord": "Kelimen",
+    "yourHint": "İpucun",
+    "noHint": "İpucu yok",
+    "spyTip": "Diğerlerinin kelimesi farklı. Belli etme.",
+    "noHintTip": "Dikkatle dinle ve blöf yap.",
+    "otherSpies": "Diğer casuslar",
+    "onlySpy": "Tek casus sensin."
+  },
+  "reveal": {
+    "title": "Kartlar",
+    "show": "Kartımı göster",
+    "hideAndPass": "Gizle ve sıradakine ver",
+    "hideAndDiscuss": "Gizle ve tartışmayı başlat"
+  },
+  "peek": {
+    "button": "Kartıma bak",
+    "title": "Kartına bak",
+    "pick": "Sen kimsin?",
+    "hide": "Kartı gizle"
+  },
+  "discuss": {
+    "title": "Tartışma",
+    "starts": "İlk ipucu",
+    "howTo": "Sırayla herkes kısa bir ipucu versin. Sonra tartışın ve oylamayla casusu çıkarın.",
+    "order": "Sıra",
+    "reveal": "Casusu açıkla",
+    "confirmTitle": "Casus açıklansın mı?",
+    "confirmBody": "Herkes casusun kim olduğunu ve iki kelimeyi de görecek."
+  },
+  "result": {
+    "title": "Sonuç",
+    "spyWas": "Casus şuydu",
+    "spiesWere": "Casuslar şunlardı",
+    "civilians": "Siviller",
+    "spy": "Casus",
+    "category": "Kategori: {{name}}",
+    "nextRound": "Sonraki tur",
+    "changeSetup": "Ayarları değiştir"
   },
   "editList": {
     "notFound": "Liste bulunamadı",
     "notFoundDesc": "Bu kelime listesi artık yok.",
     "headerEdit": "Listeyi düzenle",
     "headerNew": "Yeni liste",
-    "titleEdit": "Kelime listesi düzenle",
-    "titleNew": "Yeni kelime listesi",
-    "intro_before": "Kendi sivil / casus çiftlerini ekle. Casusun ipucu ",
-    "intro_similar": "benzer",
-    "intro_after": " olmalı — aynı değil, tamamen alakasız da değil.",
     "name": "Liste adı",
     "namePlaceholder": "ör. Sohbetler, Ofis atıştırmalıkları…",
     "icon": "Simge",
     "pairs": "Çiftler",
-    "pairsHint": "Sivil kelime → Casus ipucu",
+    "pairsHint": "Sol: sivillerin kelimesi. Sağ: casusun ipucu.",
     "civilianPlaceholder": "Sivillerin kelimesi",
     "spyPlaceholder": "Casusun ipucu",
     "removePairAria": "Çifti kaldır",
-    "addPair": "+ Çift ekle",
+    "addPair": "Çift ekle",
     "create": "Liste oluştur",
     "deleteConfirmTitle": "Bu liste silinsin mi?",
     "deleteConfirmDesc": "Bu işlem geri alınamaz."
   },
   "online": {
     "yourName": "İsmin",
-    "hostNamePlaceholder": "ör. Alex",
-    "errCreateRoom": "Oda oluşturulamadı",
+    "or": "veya",
+    "createRoom": "Oda oluştur",
+    "creating": "Oluşturuluyor…",
+    "join": "Katıl",
+    "joining": "Katılınıyor…",
     "roomCode": "Oda kodu",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "ör. Sam",
-    "errNeedBoth": "Hem oda kodu hem isim gerekli.",
-    "errCouldNotJoin": "Odaya katılamadı",
-    "fbWarnTitleShort": "Firebase yapılandırılmadı",
-    "fbNotConfigured": "Firebase yapılandırılmadı.",
-    "loadingRoom": "Oda {{code}} yükleniyor…",
-    "roomLabel": "Oda",
-    "share": "Bu odayı paylaş",
-    "copyLink": "Bağlantıyı kopyala",
-    "qrShareHint": "Arkadaşlar tarayıp katılabilir.",
-    "scanQr": "📷 QR tara",
+    "roomTitle": "Oda {{code}}",
+    "invite": "Davet et",
+    "copied": "Bağlantı kopyalandı",
+    "scanQr": "QR kodu tara",
     "qrScanTitle": "Oda QR'ını tara",
     "qrScanHint": "Kamerayı host'un QR'ına tut.",
     "qrCameraError": "Kamera açılamadı",
     "qrInvalid": "Bu QR bir oda bağlantısı değil.",
-    "playersHeader": "Oyuncular ({{count}})",
+    "you": "Sen",
+    "host": "Host",
+    "kick": "Çıkar: {{name}}",
+    "roundSettings": "Tur ayarları",
+    "needPlayers_one": "{{count}} oyuncu daha bekleniyor.",
+    "needPlayers_other": "{{count}} oyuncu daha bekleniyor.",
     "starting": "Başlıyor…",
-    "startRound": "Tura başla →",
-    "needPlayers": "En az 3 oyuncu gerek. Bağlantıyı paylaş!",
-    "waitingHost": "Host'un başlatmasını bekliyor…",
+    "waitStart": "Host'un turu başlatması bekleniyor…",
     "loadingWord": "Kelimen yükleniyor…",
-    "hostAdvance": "Herkes kelimesini gördü mü? → Tartışma",
-    "guestAdvanceWait": "Herkes hazır olunca host devam edecek.",
-    "discussTitle": "Tartışma",
-    "discussDesc": "Her oyuncu kelimesi hakkında kısa bir ipucu verir, sonra yüz yüze tartışırsınız. Casusun kim olduğuna birlikte karar verin.",
-    "clueOrder": "İpucu sırası — başlayan",
-    "discussTimerLabel": "Tartışma süresi",
-    "discussTimerHint": "Varsayılan 3 dakika.",
-    "hostReveal": "Casusu açıkla →",
-    "guestRevealWait": "Herkes hazır olunca host açıklayacak.",
-    "hostBackLobby": "Lobiye dön",
-    "guestBackWait": "Host herkesi geri götürebilir.",
+    "cardReady": "Kartın hazır",
+    "cardReadyHint": "Kimsenin bakmadığından emin ol, sonra göster.",
+    "toDiscussion": "Herkes hazır: tartışmayı başlat",
+    "waitDiscussion": "Herkes kartını görünce host tartışmayı başlatır.",
+    "waitReveal": "Bitirdiğinizde host casusu açıklar.",
+    "waitNext": "Host bekleniyor…",
+    "backToLobby": "Odaya dön",
+    "loadingRoom": "Oda {{code}} yükleniyor…",
+    "fbNotConfigured": "Bu sürümde çevrimiçi oyun ayarlanmamış.",
     "errStartRound": "Tur başlatılamadı",
     "defaultHostName": "Host",
     "defaultGuestName": "Misafir",
@@ -272,123 +226,112 @@
   "categories": {
     "food": {
       "name": "Yiyecek ve İçecek",
-      "description": "Yenebilir şeyler. Çiftler lezzetli ve karıştıracak kadar yakın.",
-      "icon": "🍕"
+      "description": "Yenebilir şeyler. Çiftler lezzetli ve karıştıracak kadar yakın."
     },
     "animals": {
       "name": "Hayvanlar",
-      "description": "Büyük, küçük, pullu, tüylü.",
-      "icon": "🐾"
+      "description": "Büyük, küçük, pullu, tüylü."
     },
     "sports": {
       "name": "Sporlar",
-      "description": "Vücutla yapılan, tercihen açık havada.",
-      "icon": "⚽"
+      "description": "Vücutla yapılan, tercihen açık havada."
     },
     "places": {
       "name": "Yerler",
-      "description": "Odalar, binalar, şehirler, manzaralar.",
-      "icon": "🗺️"
+      "description": "Odalar, binalar, şehirler, manzaralar."
     },
     "tech": {
       "name": "Teknoloji",
-      "description": "Kablolar, ekranlar, pili olan her şey.",
-      "icon": "📱"
+      "description": "Kablolar, ekranlar, pili olan her şey."
     },
     "entertainment": {
       "name": "Eğlence",
-      "description": "Filmler, kitaplar, oyunlar, müzik.",
-      "icon": "🎬"
+      "description": "Filmler, kitaplar, oyunlar, müzik."
     },
     "household": {
       "name": "Ev",
-      "description": "Mutfak, banyo, garaj şeyleri.",
-      "icon": "🛋️"
+      "description": "Mutfak, banyo, garaj şeyleri."
     },
     "nature": {
       "name": "Doğa ve Hava",
-      "description": "Gökyüzü, deniz, mevsim, fırtına.",
-      "icon": "🌧️"
+      "description": "Gökyüzü, deniz, mevsim, fırtına."
     },
     "music": {
       "name": "Müzik",
-      "description": "Enstrümanlar, türler, sesler.",
-      "icon": "🎵"
+      "description": "Enstrümanlar, türler, sesler."
     },
     "jobs": {
       "name": "Meslekler",
-      "description": "İnsanların geçimi için yaptığı şeyler.",
-      "icon": "💼"
+      "description": "İnsanların geçimi için yaptığı şeyler."
     },
     "vehicles": {
       "name": "Araçlar",
-      "description": "Seni taşıyan şeyler.",
-      "icon": "🚗"
+      "description": "Seni taşıyan şeyler."
     },
     "clothing": {
       "name": "Giysiler",
-      "description": "Giydiğin şeyler.",
-      "icon": "👕"
+      "description": "Giydiğin şeyler."
     },
     "body": {
       "name": "Vücut ve Sağlık",
-      "description": "Anatomi, tıp, sağlık.",
-      "icon": "💪"
+      "description": "Anatomi, tıp, sağlık."
     },
     "myth": {
       "name": "Mitoloji ve Fantezi",
-      "description": "Hikayelerdeki yaratıklar ve güçler.",
-      "icon": "🐉"
+      "description": "Hikayelerdeki yaratıklar ve güçler."
     },
     "tricky": {
       "name": "Zor / Karışık",
-      "description": "Kategorileri aşan çiftler. Casus terleyecek.",
-      "icon": "🎲"
+      "description": "Kategorileri aşan çiftler. Casus terleyecek."
     },
     "tyrants": {
       "name": "Tiranlar ve Despotlar",
-      "description": "Tarihteki kötü şöhretli liderler ve diktatörler.",
-      "icon": "⚔️"
+      "description": "Tarihteki kötü şöhretli liderler ve diktatörler."
     },
     "darkhumor": {
       "name": "Kara Mizah",
-      "description": "Darağacı ve tabular — ağlamamak için gülünür.",
-      "icon": "💀"
+      "description": "Darağacı ve tabular — ağlamamak için gülünür."
     },
     "prophets": {
       "name": "Peygamberler",
-      "description": "Büyük dinlerin kutsal adamları ve elçileri.",
-      "icon": "📜"
+      "description": "Büyük dinlerin kutsal adamları ve elçileri."
     },
     "stereotypes": {
       "name": "Stereotipler",
-      "description": "Klişeler ve karikatürler, mizahla.",
-      "icon": "🎭"
+      "description": "Klişeler ve karikatürler, mizahla."
     },
     "races": {
       "name": "Halklar",
-      "description": "Halklar ve milletler — aynı bölge, farklı kökler.",
-      "icon": "🌍"
+      "description": "Halklar ve milletler — aynı bölge, farklı kökler."
     },
     "infamous": {
       "name": "Kritik Yerler",
-      "description": "Trajedi yerleri: katliamlar, savaşlar, felaketler.",
-      "icon": "🕯️"
-    },
-    "religions": {
-      "name": "Dinler",
-      "description": "İnançlar, kutsal kitaplar, kutsal günler ve ritüeller — mezhepler arası.",
-      "icon": "🛐"
+      "description": "Trajedi yerleri: katliamlar, savaşlar, felaketler."
     },
     "terror": {
       "name": "Terör Saldırıları",
-      "description": "Kötü şöhretli terör saldırıları ve vahşetler.",
-      "icon": "💥"
+      "description": "Kötü şöhretli terör saldırıları ve vahşetler."
+    },
+    "religions": {
+      "name": "Dinler",
+      "description": "İnançlar, kutsal kitaplar, kutsal günler ve ritüeller — mezhepler arası."
     }
   },
   "customList": {
     "description_one": "Özel listen ({{count}} çift)",
     "description_other": "Özel listen ({{count}} çift)",
     "fallback": "Özel"
+  },
+  "options": {
+    "title": "Ayarlar",
+    "languageLabel": "Dil",
+    "wordListsLabel": "Kelime listelerin",
+    "wordListsHint": "Kendi sivil / casus kelime çiftlerini oluştur ve düzenle."
+  },
+  "install": {
+    "title": "Spy'ı ana ekrana ekle",
+    "desc": "Uygulama gibi açılır ve çevrimdışı çalışır, bir sonraki oyun gecesine hazır.",
+    "button": "Yükle",
+    "iosHint": "Safari'de Paylaş'a, ardından \"Ana Ekrana Ekle\"ye dokun."
   }
 }

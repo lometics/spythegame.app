@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "Spion — Ordspelet"
+    "title": "Spy — Ordspelet för fester"
   },
   "app": {
-    "footer": "Spion — ordspelet. Spela på plats eller online med vänner.",
     "exitConfirm": "Tryck igen för att avsluta"
   },
   "languages": {
@@ -25,241 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "Hem",
     "back": "Tillbaka",
     "cancel": "Avbryt",
     "save": "Spara",
     "delete": "Ta bort",
-    "yes": "Ja",
-    "no": "Nej",
-    "dismiss": "Stäng"
-  },
-  "wizard": {
-    "modeTitle": "Hur vill ni spela?",
-    "modeSingle": "En enhet",
-    "modeSingleDesc": "Skicka runt telefonen vid bordet.",
-    "modeOnline": "Alla på sin enhet",
-    "modeOnlineDesc": "Varje spelare ansluter från sin telefon.",
-    "roleTitle": "Vara värd eller gå med?",
-    "roleHost": "Skapa rum",
-    "roleHostDesc": "Skapa ett spel och dela koden.",
-    "roleJoin": "Gå med via kod",
-    "roleJoinDesc": "Har du en kod eller QR? Hoppa in.",
-    "back": "← Tillbaka",
-    "next": "Nästa →",
-    "playersTitle": "Lägg till spelare",
-    "playersDesc": "Lägg till alla. Minst 3.",
-    "categoriesTitle": "Välj ordkällor",
-    "categoriesDesc": "Välj kategorier att dra från.",
-    "optionsTitle": "Spelinställningar",
-    "optionsDesc": "Justera svårighet och diskussionstid.",
-    "startBtn": "Starta runda →",
-    "hostNameTitle": "Ditt namn",
-    "hostNameDesc": "Andra spelare ser detta i lobbyn.",
-    "hostCreateBtn": "Skapa rum",
-    "creating": "Skapar…",
-    "joinCodeTitle": "Ange rumskod",
-    "joinCodeDesc": "Skriv 4-bokstavskoden eller skanna QR.",
-    "joinNameTitle": "Ditt namn",
-    "joinBtn": "Gå med",
-    "joining": "Ansluter…",
-    "stepLabel": "Steg {{current}} av {{total}}"
+    "close": "Stäng",
+    "done": "Klar"
   },
   "home": {
     "title": "Spion",
-    "howTo": {
-      "title": "Så spelar man",
-      "step1_title": "Förberedelse",
-      "step1": "Alla får samma ord. Spionen får en liknande ledtråd — eller inget alls.",
-      "step2_title": "Ledtrådsrundor",
-      "step2": "Säg i tur och ordning ett ord som visar att du kan hemligheten — men vagt nog så spionen inte kan låsa det.",
-      "step3_title": "Frågestund",
-      "step3": "Förhör varandra. Lyssna efter bluffar och hitta spionen.",
-      "step4_title": "Rösta",
-      "step4": "Rösta ut din misstänkta. Den anklagade spionen får en sista gissning på ordet.",
-      "winTitle": "Så vinner du",
-      "civWinLabel": "Civila vinner om",
-      "civWin": "Ni röstar ut spionen OCH spionen missar sista gissningen.",
-      "spyWinLabel": "Spionen vinner om",
-      "spyWin": "Spionen överlever omröstningen, ELLER säger det hemliga ordet när hon listat ut det, ELLER gissar rätt efter att ha åkt fast."
-    }
+    "tagline": "Alla får ett ord. Spionen får ett annat.",
+    "oneDevice": "Alla på en enhet",
+    "oneDeviceDesc": "Skicka en telefon runt bordet.",
+    "ownDevice": "Alla på egen enhet",
+    "ownDeviceDesc": "Varje spelare går med i ett rum på sin telefon.",
+    "continueRound": "Fortsätt pågående runda",
+    "playAgain": "Spela igen",
+    "howToPlay": "Så spelar du"
   },
-  "localGame": {
-    "phase": "Fas:",
-    "discuss": {
-      "title": "Diskutera",
-      "desc": "Varje spelare ger en kort ledtråd om sitt ord, sen debattera. Bestäm tillsammans vem spionen är.",
-      "clueOrder": "Ledtrådsordning — börjar med",
-      "timerLabel": "Diskussionstimer",
-      "timerHint": "Pausa eller återställ när som helst.",
-      "revealBtn": "Avslöja spionen →",
-      "revealHint": "Bestämt? Tryck för att se vem spionen var."
-    }
+  "setup": {
+    "players": "Spelare",
+    "playerCount_one": "{{count}} spelare",
+    "playerCount_other": "{{count}} spelare",
+    "words": "Ord",
+    "allCategories": "Alla",
+    "categoryCount_one": "{{count}} kategori",
+    "categoryCount_other": "{{count}} kategorier",
+    "spies": "Spioner",
+    "randomEachRound": "Slumpas varje runda",
+    "spiesKnow": "Känner varandra",
+    "hint": "Spionens ledtråd",
+    "timer": "Timer",
+    "off": "Av",
+    "minutes_one": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "none": "Inga",
+    "start": "Starta runda"
   },
-  "lobby": {
-    "playersLabel": "Spelare ({{count}})",
-    "quickAdd": "+ Lägg till snabbt",
-    "namePlaceholder": "Namn (eller lämna tomt)",
-    "addBtn": "Lägg till",
-    "removeAria": "Ta bort {{name}}",
-    "empty": "Inga spelare än.",
+  "players": {
+    "namePlaceholder": "Lägg till spelare",
+    "add": "Lägg till spelare",
     "defaultName": "Spelare {{n}}",
-    "spyCountLabel": "Antal spioner",
-    "spyCountHint": "Fler spioner = svårare för civila.",
-    "spyCountRandom": "Slumpa",
-    "spyCountRandomHint": "Väljer 1–{{max}} spioner per runda.",
-    "spiesKnowLabel": "Spioner vet om varandra",
-    "spiesKnowHint": "De ser andra spioner på kortet.",
-    "difficultyLabel": "Svårighet för byborna",
-    "difficulty": {
-      "easy": {
-        "label": "Lätt",
-        "hint": "Spionen får ingen ledtråd — ren bluff, lättast att fånga."
-      },
-      "medium": {
-        "label": "Medel",
-        "hint": "Spionens ledtråd är ett syskon från samma kategori."
-      },
-      "hard": {
-        "label": "Svår",
-        "hint": "Spionens ledtråd är väldigt nära riktiga ordet, samma kategori — klassiskt."
-      }
-    },
-    "timerLabel": "Diskussionstimer",
-    "timerOff": "Ingen timer",
-    "timerMin": "{{count}} min",
-    "needPlayers": "Lägg till minst 3 spelare.",
-    "needSource": "Välj minst en ordkälla."
+    "changeAvatar": "Byt bild",
+    "rename": "Byt namn på {{name}}",
+    "remove": "Ta bort {{name}}",
+    "empty": "Inga spelare än.",
+    "needMore_one": "Lägg till {{count}} spelare till för att starta.",
+    "needMore_other": "Lägg till {{count}} spelare till för att starta.",
+    "tip": "Dra för att matcha hur ni sitter; korten går runt i den här ordningen.",
+    "reorder": "Flytta {{name}}"
   },
-  "timer": {
-    "pause": "Pausa",
-    "resume": "Fortsätt",
-    "done": "Klar",
-    "reset": "Återställ"
-  },
-  "revealDeck": {
-    "cardProgress_one": "Kort {{current}} av {{total}}",
-    "cardProgress_other": "Kort {{current}} av {{total}}",
-    "prev": "← Föreg",
-    "next": "Nästa →",
-    "doneBtn": "Klar →",
-    "tapHint": "tryck på kortet för att vända",
-    "swipeHint": "svep ← för nästa"
-  },
-  "playerCard": {
-    "spyHeader": "Spion",
-    "passTo": "Lämna till",
-    "passInstruction": "När det är säkert, tryck på kortet för att se ditt ord.",
-    "tapToFlip": "tryck för att vända",
-    "tapToHide": "tryck för att dölja",
-    "spyRole": "🕵️ Spion",
-    "civRole": "✅ Civil",
-    "spyBadge": "🕵️ Du är spionen",
-    "fellowSpiesLabel": "Andra spioner",
-    "aloneSpy": "Du är enda spionen.",
-    "spyHeadsUp_before": "OBS:",
-    "spyHeadsUp_mid": " detta ord är ",
-    "spyHeadsUp_not": "inte",
-    "spyHeadsUp_after": " vad de andra har. Det är en liknande ",
-    "spyHeadsUp_hint": "ledtråd",
-    "spyHeadsUp_tail": ". Säg inte det högt.",
-    "yourHint": "Din ledtråd",
-    "spyBluff": "Bluffa — låt ledtrådarna passa både ditt ord OCH deras.",
-    "noHintTitle": "Ingen ledtråd denna runda.",
-    "noHintBody": " Du vet inte ordet. Lyssna, smält in, bluffa.",
-    "noHintPlaceholder": "(ingen ledtråd)",
-    "noHintBluff": "Eka det andra säger. Var inte först med att binda dig.",
-    "civBadge": "✅ Civil",
-    "civBody": "Alla (utom spionen) har detta ord. Hitta spionen.",
-    "yourWord": "Ditt ord"
-  },
-  "result": {
-    "title": "Avslöjandet",
-    "subtitle": "Gissade ni rätt?",
-    "spyWas": "Spionen var",
-    "spiesWere": "Spionerna var",
-    "wordsLabel": "Orden",
-    "civilians": "Civila",
-    "spy": "Spion",
-    "vs": "vs",
-    "noHint": "(ingen ledtråd)",
-    "category": "Kategori: {{name}}",
-    "playAgain": "Spela igen — samma spelare",
-    "backToLobby": "Tillbaka till lobbyn",
-    "home": "Hem"
-  },
-  "pairPicker": {
-    "label": "Ordkällor",
+  "words": {
     "selectAll": "Välj alla",
-    "clear": "Rensa",
+    "selectNone": "Avmarkera alla",
     "pairCount_one": "{{count}} par",
     "pairCount_other": "{{count}} par",
     "newList": "Ny lista",
     "newListDesc": "Dina egna ordpar",
-    "editAria": "Redigera lista",
-    "pickAtLeastOne": "Välj minst en källa för att starta."
+    "editList": "Redigera lista",
+    "pickOne": "Välj minst en kategori."
+  },
+  "spies": {
+    "count": "Antal spioner",
+    "maxHint": "Med {{players}} spelare kan ni ha upp till {{max}} spioner.",
+    "fewPlayers": "Spionerna är alltid färre än hälften av spelarna.",
+    "knowLabel": "Spioner vet om varandra",
+    "knowHint": "Spionerna ser de andra spionerna på sitt kort.",
+    "knowNeedsTwo": "Spelar bara roll med två eller fler spioner.",
+    "pickHint": "Tryck på ett tal, eller flera så att alla får gissa.",
+    "randomPick": "Varje runda har slumpmässigt {{list}} spioner. Ingen vet hur många."
+  },
+  "hint": {
+    "intro": "Det spionen ser i stället för det riktiga ordet. Mindre hjälp gör spionen lättare att avslöja.",
+    "exampleWord": "Civila ser",
+    "exampleHint": "Spionen ser",
+    "hard": {
+      "label": "Liknande ord",
+      "desc": "Ett nästan likadant ord. Svårast att avslöja."
+    },
+    "medium": {
+      "label": "Samma kategori",
+      "desc": "Ett annat ord från samma kategori."
+    },
+    "easy": {
+      "label": "Ingen ledtråd",
+      "desc": "Spionen får inget och måste bluffa."
+    }
+  },
+  "timer": {
+    "intro": "Nedräkning för diskussionen. Du kan pausa eller starta om den när som helst.",
+    "pause": "Pausa",
+    "resume": "Fortsätt",
+    "reset": "Starta om",
+    "timesUp": "Tiden är ute"
+  },
+  "card": {
+    "passTo": "Ge telefonen till",
+    "passHint": "Se till att ingen annan ser skärmen.",
+    "civilian": "Civil",
+    "spy": "Spion",
+    "yourWord": "Ditt ord",
+    "yourHint": "Din ledtråd",
+    "noHint": "Ingen ledtråd",
+    "spyTip": "De andra har ett annat ord. Smält in.",
+    "noHintTip": "Lyssna noga och bluffa.",
+    "otherSpies": "Andra spioner",
+    "onlySpy": "Du är den enda spionen."
+  },
+  "reveal": {
+    "title": "Kort",
+    "show": "Visa mitt kort",
+    "hideAndPass": "Dölj och skicka vidare",
+    "hideAndDiscuss": "Dölj och starta diskussion"
+  },
+  "peek": {
+    "button": "Kolla mitt kort",
+    "title": "Kolla ditt kort",
+    "pick": "Vem är du?",
+    "hide": "Dölj kort"
+  },
+  "discuss": {
+    "title": "Diskussion",
+    "starts": "Första ledtråd",
+    "howTo": "Gå laget runt, en kort ledtråd var. Diskutera sedan och rösta ut spionen.",
+    "order": "Ordning",
+    "reveal": "Avslöja spionen",
+    "confirmTitle": "Avslöja spionen?",
+    "confirmBody": "Alla får se vem spionen var och båda orden."
+  },
+  "result": {
+    "title": "Resultat",
+    "spyWas": "Spionen var",
+    "spiesWere": "Spionerna var",
+    "civilians": "Civila",
+    "spy": "Spion",
+    "category": "Kategori: {{name}}",
+    "nextRound": "Nästa runda",
+    "changeSetup": "Ändra inställningar"
   },
   "editList": {
     "notFound": "Lista hittades inte",
     "notFoundDesc": "Denna ordlista finns inte längre.",
     "headerEdit": "Redigera lista",
     "headerNew": "Ny lista",
-    "titleEdit": "Redigera ordlista",
-    "titleNew": "Ny ordlista",
-    "intro_before": "Lägg till egna civil / spion par. Spionens ledtråd ska vara ",
-    "intro_similar": "liknande",
-    "intro_after": " — inte identisk, inte helt orelaterad.",
     "name": "Listnamn",
     "namePlaceholder": "t.ex. Inneskämt, Kontorssnacks…",
     "icon": "Ikon",
     "pairs": "Par",
-    "pairsHint": "Civilord → Spionledtråd",
+    "pairsHint": "Vänster: civilas ord. Höger: spionens ledtråd.",
     "civilianPlaceholder": "Civilas ord",
     "spyPlaceholder": "Spionens ledtråd",
     "removePairAria": "Ta bort par",
-    "addPair": "+ Lägg till par",
+    "addPair": "Lägg till par",
     "create": "Skapa lista",
     "deleteConfirmTitle": "Ta bort den här listan?",
     "deleteConfirmDesc": "Detta kan inte ångras."
   },
   "online": {
     "yourName": "Ditt namn",
-    "hostNamePlaceholder": "t.ex. Alex",
-    "errCreateRoom": "Kunde inte skapa rum",
+    "or": "eller",
+    "createRoom": "Skapa rum",
+    "creating": "Skapar…",
+    "join": "Gå med",
+    "joining": "Går med…",
     "roomCode": "Rumskod",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "t.ex. Sam",
-    "errNeedBoth": "Både kod och namn krävs.",
-    "errCouldNotJoin": "Kunde inte gå med",
-    "fbWarnTitleShort": "Firebase ej konfigurerad",
-    "fbNotConfigured": "Firebase ej konfigurerad.",
-    "loadingRoom": "Laddar rum {{code}}…",
-    "roomLabel": "Rum",
-    "share": "Dela detta rum",
-    "copyLink": "Kopiera länk",
-    "qrShareHint": "Vänner kan skanna för att gå med.",
-    "scanQr": "📷 Skanna QR",
+    "roomTitle": "Rum {{code}}",
+    "invite": "Bjud in",
+    "copied": "Länk kopierad",
+    "scanQr": "Skanna QR-kod",
     "qrScanTitle": "Skanna rummets QR",
     "qrScanHint": "Rikta kameran mot värdens QR.",
     "qrCameraError": "Kunde inte öppna kamera",
     "qrInvalid": "Den QR-koden är inte en rumslänk.",
-    "playersHeader": "Spelare ({{count}})",
+    "you": "Du",
+    "host": "Värd",
+    "kick": "Ta bort {{name}}",
+    "roundSettings": "Inställningar för rundan",
+    "needPlayers_one": "Väntar på {{count}} spelare till.",
+    "needPlayers_other": "Väntar på {{count}} spelare till.",
     "starting": "Startar…",
-    "startRound": "Starta runda →",
-    "needPlayers": "Minst 3 spelare. Dela länken!",
-    "waitingHost": "Väntar på värden att starta…",
+    "waitStart": "Väntar på att värden startar rundan…",
     "loadingWord": "Laddar ditt ord…",
-    "hostAdvance": "Alla sett sitt ord? → Diskutera",
-    "guestAdvanceWait": "När alla är redo går värden vidare.",
-    "discussTitle": "Diskutera",
-    "discussDesc": "Varje spelare ger en kort ledtråd om sitt ord, sen debattera på plats. Bestäm tillsammans vem spionen är.",
-    "clueOrder": "Ledtrådsordning — börjar med",
-    "discussTimerLabel": "Diskussionstimer",
-    "discussTimerHint": "3 minuter som standard.",
-    "hostReveal": "Avslöja spionen →",
-    "guestRevealWait": "Värden avslöjar när alla är redo.",
-    "hostBackLobby": "Tillbaka till lobbyn",
-    "guestBackWait": "Värden kan ta tillbaka alla.",
+    "cardReady": "Ditt kort är klart",
+    "cardReadyHint": "Se till att ingen tittar och visa det sedan.",
+    "toDiscussion": "Alla är redo: starta diskussion",
+    "waitDiscussion": "Värden startar diskussionen när alla har sett sitt kort.",
+    "waitReveal": "Värden avslöjar spionen när ni är klara.",
+    "waitNext": "Väntar på värden…",
+    "backToLobby": "Tillbaka till rummet",
+    "loadingRoom": "Laddar rum {{code}}…",
+    "fbNotConfigured": "Onlinespel är inte konfigurerat i den här versionen.",
     "errStartRound": "Kunde inte starta runda",
     "defaultHostName": "Värd",
     "defaultGuestName": "Gäst",
@@ -272,123 +226,112 @@
   "categories": {
     "food": {
       "name": "Mat och Dryck",
-      "description": "Ätbara saker. Par är goda och tillräckligt lika för förvirring.",
-      "icon": "🍕"
+      "description": "Ätbara saker. Par är goda och tillräckligt lika för förvirring."
     },
     "animals": {
       "name": "Djur",
-      "description": "Stora, små, fjälliga, fluffiga.",
-      "icon": "🐾"
+      "description": "Stora, små, fjälliga, fluffiga."
     },
     "sports": {
       "name": "Sport",
-      "description": "Saker att göra med kroppen, helst utomhus.",
-      "icon": "⚽"
+      "description": "Saker att göra med kroppen, helst utomhus."
     },
     "places": {
       "name": "Platser",
-      "description": "Rum, byggnader, städer, landskap.",
-      "icon": "🗺️"
+      "description": "Rum, byggnader, städer, landskap."
     },
     "tech": {
       "name": "Teknik",
-      "description": "Kablar, skärmar, allt med batteri.",
-      "icon": "📱"
+      "description": "Kablar, skärmar, allt med batteri."
     },
     "entertainment": {
       "name": "Underhållning",
-      "description": "Filmer, böcker, spel, musik.",
-      "icon": "🎬"
+      "description": "Filmer, böcker, spel, musik."
     },
     "household": {
       "name": "Hushåll",
-      "description": "Saker i kök, badrum, garage.",
-      "icon": "🛋️"
+      "description": "Saker i kök, badrum, garage."
     },
     "nature": {
       "name": "Natur och Väder",
-      "description": "Himlar, hav, årstider, stormar.",
-      "icon": "🌧️"
+      "description": "Himlar, hav, årstider, stormar."
     },
     "music": {
       "name": "Musik",
-      "description": "Instrument, genrer, ljud.",
-      "icon": "🎵"
+      "description": "Instrument, genrer, ljud."
     },
     "jobs": {
       "name": "Yrken",
-      "description": "Vad folk gör för sitt levebröd.",
-      "icon": "💼"
+      "description": "Vad folk gör för sitt levebröd."
     },
     "vehicles": {
       "name": "Fordon",
-      "description": "Saker som förflyttar dig.",
-      "icon": "🚗"
+      "description": "Saker som förflyttar dig."
     },
     "clothing": {
       "name": "Kläder",
-      "description": "Det du bär.",
-      "icon": "👕"
+      "description": "Det du bär."
     },
     "body": {
       "name": "Kropp och Hälsa",
-      "description": "Anatomi, medicin, välmående.",
-      "icon": "💪"
+      "description": "Anatomi, medicin, välmående."
     },
     "myth": {
       "name": "Mytologi och Fantasy",
-      "description": "Varelser och krafter från berättelser.",
-      "icon": "🐉"
+      "description": "Varelser och krafter från berättelser."
     },
     "tricky": {
       "name": "Svåra / Blandade",
-      "description": "Par som korsar kategorier. Spionen kommer svettas.",
-      "icon": "🎲"
+      "description": "Par som korsar kategorier. Spionen kommer svettas."
     },
     "tyrants": {
       "name": "Tyranner & Despoter",
-      "description": "Ökända härskare och diktatorer från historien.",
-      "icon": "⚔️"
+      "description": "Ökända härskare och diktatorer från historien."
     },
     "darkhumor": {
       "name": "Svart Humor",
-      "description": "Galgar, tabun — skratta för att slippa gråta.",
-      "icon": "💀"
+      "description": "Galgar, tabun — skratta för att slippa gråta."
     },
     "prophets": {
       "name": "Profeter",
-      "description": "Heliga män och budbärare i de stora religionerna.",
-      "icon": "📜"
+      "description": "Heliga män och budbärare i de stora religionerna."
     },
     "stereotypes": {
       "name": "Stereotyper",
-      "description": "Klichéer och karikatyrer, med glimten i ögat.",
-      "icon": "🎭"
+      "description": "Klichéer och karikatyrer, med glimten i ögat."
     },
     "races": {
       "name": "Folk",
-      "description": "Folk och nationaliteter — samma region, olika rötter.",
-      "icon": "🌍"
+      "description": "Folk och nationaliteter — samma region, olika rötter."
     },
     "infamous": {
       "name": "Kritiska Platser",
-      "description": "Platser för tragedi: massakrer, krig, katastrofer.",
-      "icon": "🕯️"
-    },
-    "religions": {
-      "name": "Religioner",
-      "description": "Tro, heliga skrifter, högtider och riter — över trosriktningar.",
-      "icon": "🛐"
+      "description": "Platser för tragedi: massakrer, krig, katastrofer."
     },
     "terror": {
       "name": "Terrorattacker",
-      "description": "Ökända terrordåd och illdåd.",
-      "icon": "💥"
+      "description": "Ökända terrordåd och illdåd."
+    },
+    "religions": {
+      "name": "Religioner",
+      "description": "Tro, heliga skrifter, högtider och riter — över trosriktningar."
     }
   },
   "customList": {
     "description_one": "Din egna lista ({{count}} par)",
     "description_other": "Din egna lista ({{count}} par)",
     "fallback": "Egen"
+  },
+  "options": {
+    "title": "Inställningar",
+    "languageLabel": "Språk",
+    "wordListsLabel": "Dina ordlistor",
+    "wordListsHint": "Skapa och redigera egna ordpar för civila / spion."
+  },
+  "install": {
+    "title": "Lägg till Spy på hemskärmen",
+    "desc": "Öppnas som en app och fungerar offline, redo för nästa spelkväll.",
+    "button": "Installera",
+    "iosHint": "Tryck på Dela i Safari och sedan på ”Lägg till på hemskärmen”."
   }
 }

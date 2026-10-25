@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,33 +5,21 @@
 
 :root {
   color-scheme: dark;
-  /* shadcn-ui canonical dark theme tokens (zinc, hue 0%). */
-  --background: 0 0% 3.9%;
+  --background: 240 6% 4%;
   --foreground: 0 0% 98%;
-  --card: 0 0% 3.9%;
-  --card-foreground: 0 0% 98%;
-  --popover: 0 0% 3.9%;
-  --popover-foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
-  --primary-foreground: 0 0% 9%;
-  --secondary: 0 0% 14.9%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 14.9%;
-  --muted-foreground: 0 0% 63.9%;
-  --accent: 0 0% 14.9%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 62.8% 30.6%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 14.9%;
-  --input: 0 0% 14.9%;
-  --ring: 0 0% 83.1%;
-  --radius: 0.5rem;
+  --surface: 240 5% 9%;
+  --surface-2: 240 4% 13%;
+  --border: 240 4% 16%;
+  --muted: 240 5% 64%;
+  --accent: 38 92% 50%;
+  --spy: 350 89% 60%;
+  --radius: 1rem;
 }
 
 html,
 body,
 #root {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -48,194 +35,199 @@ body {
   * {
     border-color: hsl(var(--border));
   }
-  ::selection {
-    background-color: hsl(var(--primary) / 0.2);
-  }
-  /* shadcn-style heading defaults: Inter, semibold, tracking-tight. */
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     @apply tracking-tight;
-    font-weight: 600;
+    font-weight: 700;
+  }
+  button {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
 
 @layer components {
-  /* Button base — shadcn primitive: 44px min-height for thumb-friendly taps. */
+  /* Buttons: 52px tall, thumb-friendly; press feedback via scale. */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md min-h-11 px-4 py-2.5 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-1;
-    --tw-ring-color: hsl(var(--ring));
-  }
-
-  /* 44x44 icon-only chrome affordance (close, settings, edit, back). */
-  .btn-icon {
-    @apply inline-flex items-center justify-center w-11 h-11 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-50;
-    color: hsl(var(--foreground) / 0.7);
-    --tw-ring-color: hsl(var(--ring));
-  }
-  .btn-icon:hover:not(:disabled) {
-    background-color: hsl(var(--foreground) / 0.06);
-    color: hsl(var(--foreground));
-  }
-
-  /* Chip / pill toggle (spy count, difficulty, timer, etc.). */
-  .pill {
-    @apply inline-flex items-center justify-center gap-1 min-h-9 px-3 py-1.5 rounded-full text-sm border transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:pointer-events-none disabled:opacity-40;
-    background-color: hsl(var(--foreground) / 0.05);
-    border-color: hsl(var(--foreground) / 0.1);
-    color: hsl(var(--foreground) / 0.9);
-    --tw-ring-color: hsl(var(--ring));
-  }
-  .pill:hover:not(:disabled) {
-    background-color: hsl(var(--foreground) / 0.1);
-  }
-  .pill-selected {
-    background-color: #f59e0b;
-    border-color: #f59e0b;
-    color: #0a0a0a;
-  }
-  .pill-selected:hover:not(:disabled) {
-    background-color: #f59e0b;
-  }
-
-  /* Shared neutral surface used inside cards (rows, tags). */
-  .surface-muted {
-    background-color: hsl(var(--foreground) / 0.05);
-    border: 1px solid hsl(var(--foreground) / 0.08);
-  }
-
-  /* Small uppercase label used in headers and meta rows. */
-  .label-tiny {
-    @apply text-[0.6875rem] uppercase tracking-wider font-medium;
-    color: hsl(var(--foreground) / 0.5);
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-2xl min-h-[3.25rem] px-5 text-base font-semibold transition active:scale-[0.98] disabled:pointer-events-none disabled:opacity-40 focus-visible:outline-none focus-visible:ring-2;
+    --tw-ring-color: hsl(var(--accent) / 0.6);
   }
   .btn-primary {
     @apply btn;
-    background-color: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
+    background-color: hsl(var(--foreground));
+    color: hsl(var(--background));
   }
-  .btn-primary:hover:not(:disabled) {
-    background-color: hsl(var(--primary) / 0.9);
-  }
-  .btn-ghost {
+  .btn-secondary {
     @apply btn;
-    background-color: hsl(var(--secondary));
-    color: hsl(var(--secondary-foreground));
-  }
-  .btn-ghost:hover:not(:disabled) {
-    background-color: hsl(var(--secondary) / 0.8);
+    background-color: hsl(var(--surface-2));
+    color: hsl(var(--foreground));
   }
   .btn-danger {
     @apply btn;
-    background-color: hsl(var(--destructive));
-    color: hsl(var(--destructive-foreground));
-  }
-  .btn-danger:hover:not(:disabled) {
-    background-color: hsl(var(--destructive) / 0.9);
+    background-color: hsl(var(--spy));
+    color: white;
   }
 
-  /* Card — shadcn pattern: same bg as page, separation comes from the border. */
+  /* 44x44 icon-only chrome (back, close, settings). */
+  .btn-icon {
+    @apply inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-full transition active:scale-95 focus-visible:outline-none focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-40;
+    color: hsl(var(--foreground) / 0.8);
+    --tw-ring-color: hsl(var(--accent) / 0.6);
+  }
+  .btn-icon:active {
+    background-color: hsl(var(--foreground) / 0.08);
+  }
+
   .card {
-    background-color: hsl(var(--card));
+    background-color: hsl(var(--surface));
     border: 1px solid hsl(var(--border));
-    border-radius: calc(var(--radius) + 4px); /* shadcn card = rounded-xl */
+    border-radius: var(--radius);
     padding: 1rem;
-    color: hsl(var(--card-foreground));
   }
 
-  /* Input — flat with border, ring on focus. */
+  /* Grouped list (iOS-settings style). */
+  .group-list {
+    background-color: hsl(var(--surface));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .group-list > * + * {
+    border-top: 1px solid hsl(var(--border));
+  }
+  .row {
+    @apply flex w-full items-center gap-3 px-4 min-h-[3.75rem] text-left transition;
+  }
+  button.row:active,
+  a.row:active {
+    background-color: hsl(var(--foreground) / 0.05);
+  }
+  .row-icon {
+    @apply inline-flex items-center justify-center w-9 h-9 rounded-xl shrink-0;
+    background-color: hsl(var(--surface-2));
+    color: hsl(var(--accent));
+  }
+
+  /* Selectable option tile (radio-style). */
+  .option {
+    @apply flex w-full items-center gap-3 rounded-2xl border px-4 py-3.5 text-left transition active:scale-[0.99];
+    background-color: hsl(var(--surface));
+    border-color: hsl(var(--border));
+  }
+  .option[aria-checked='true'],
+  .option[aria-pressed='true'] {
+    border-color: hsl(var(--accent));
+    background-color: hsl(var(--accent) / 0.08);
+  }
+
+  .chip {
+    @apply inline-flex items-center justify-center min-w-[3.25rem] min-h-[3.25rem] px-4 rounded-2xl border text-base font-semibold transition active:scale-95 disabled:pointer-events-none disabled:opacity-30;
+    background-color: hsl(var(--surface));
+    border-color: hsl(var(--border));
+  }
+  .chip[aria-pressed='true'],
+  .chip[aria-checked='true'] {
+    background-color: hsl(var(--accent));
+    border-color: hsl(var(--accent));
+    color: hsl(var(--background));
+  }
+
   .input {
-    @apply flex w-full rounded-md px-3 py-2 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50;
-    background-color: transparent;
+    @apply flex w-full rounded-2xl px-4 min-h-[3.25rem] text-base transition focus-visible:outline-none focus-visible:ring-2 disabled:opacity-50;
+    background-color: hsl(var(--surface));
     color: hsl(var(--foreground));
-    border: 1px solid hsl(var(--input));
-    --tw-ring-color: hsl(var(--ring));
+    border: 1px solid hsl(var(--border));
+    --tw-ring-color: hsl(var(--accent) / 0.6);
   }
   .input::placeholder {
-    color: hsl(var(--muted-foreground));
+    color: hsl(var(--muted));
   }
 
-  /* Label — shadcn small + medium-weight, no uppercase. */
-  .label {
-    @apply text-sm font-medium leading-none;
-    color: hsl(var(--foreground));
-    letter-spacing: 0;
-    text-transform: none;
+  .section-label {
+    @apply px-1 pb-2 text-xs font-semibold uppercase tracking-wider;
+    color: hsl(var(--muted));
   }
 
-  /* Card reveal — 3D Y-axis flip (preserved). */
-  .flip-card {
-    perspective: 2400px;
-    -webkit-tap-highlight-color: transparent;
+  .muted {
+    color: hsl(var(--muted));
   }
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.55s cubic-bezier(0.34, 1.18, 0.64, 1);
-    will-change: transform;
+  .text-spy {
+    color: hsl(var(--spy));
   }
-  .flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  .flip-card-face {
-    position: absolute;
-    inset: 0;
-    border-radius: calc(var(--radius) + 8px);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-  .flip-card-face.flip-card-back {
-    transform: rotateY(180deg);
+  .text-accent {
+    color: hsl(var(--accent));
   }
 
-  /* Swipe deck */
-  .swipe-stage {
-    touch-action: pan-y;
-    user-select: none;
-    -webkit-user-select: none;
+  /* iOS-style switch. */
+  .switch {
+    @apply relative inline-flex h-8 w-[3.25rem] shrink-0 rounded-full transition-colors;
+    background-color: hsl(var(--surface-2));
+  }
+  .switch[aria-checked='true'] {
+    background-color: hsl(var(--accent));
+  }
+  .switch::after {
+    content: '';
+    @apply absolute top-1 left-1 h-6 w-6 rounded-full bg-white transition-transform;
+  }
+  .switch[aria-checked='true']::after {
+    transform: translateX(1.25rem);
+  }
+  .switch:disabled {
+    opacity: 0.4;
   }
 }
 
-/* iOS safe-area padding so the bottom buttons aren't clipped by the home indicator */
-.safe-bottom {
-  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
-}
-
-/* Sticky CTA bar — fade-out lets content scroll cleanly underneath. */
+/* Bottom action area: sticks to the viewport bottom, respects the home indicator. */
 .action-bar {
   position: sticky;
   bottom: 0;
   z-index: 10;
-  margin-top: auto !important;
-  padding-top: 0.75rem;
-  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+  margin-top: auto;
+  padding-top: 1.5rem;
+  padding-bottom: max(env(safe-area-inset-bottom), 1rem);
   background: linear-gradient(
     to top,
-    hsl(var(--background) / 0.96) 55%,
+    hsl(var(--background)) 70%,
     hsl(var(--background) / 0)
   );
 }
 
-@media (max-width: 639px) {
-  .action-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    margin-top: 0 !important;
-  }
-  main {
-    padding-bottom: calc(var(--action-bar-h, 4.5rem) + max(env(safe-area-inset-bottom), 0.5rem)) !important;
-  }
+.safe-top {
+  padding-top: max(env(safe-area-inset-top), 0.5rem);
 }
 
-@media (min-width: 640px) {
-  .card {
-    padding: 1.5rem;
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-in {
+  animation: fade-up 0.22s ease-out both;
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+.animate-sheet {
+  animation: sheet-up 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-in,
+  .animate-sheet {
+    animation: none;
   }
 }

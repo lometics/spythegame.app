@@ -1,66 +1,81 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Pause, Play, RotateCcw } from 'lucide-react'
 
-type Props = {
-  seconds: number
-  autoStart?: boolean
-}
-
-export default function DiscussionTimer({ seconds, autoStart = true }: Props) {
+/** Countdown for the discussion. Ticks against a deadline so a backgrounded tab stays accurate. */
+export default function DiscussionTimer({ seconds }: { seconds: number }) {
   const { t } = useTranslation()
-  const [remaining, setRemaining] = useState(seconds)
-  const [running, setRunning] = useState(autoStart)
-  const tickRef = useRef<number | null>(null)
+  const [deadline, setDeadline] = useState<number | null>(
+    () => Date.now() + seconds * 1000,
+  )
+  const [pausedAt, setPausedAt] = useState(seconds)
+  const [now, setNow] = useState(() => Date.now())
 
   useEffect(() => {
-    setRemaining(seconds)
-  }, [seconds])
+    if (deadline === null) return
+    const id = window.setInterval(() => {
+      const t = Date.now()
+      if (t >= deadline) {
+        navigator.vibrate?.([200, 100, 200])
+        setDeadline(null)
+        setPausedAt(0)
+      }
+      setNow(t)
+    }, 250)
+    return () => window.clearInterval(id)
+  }, [deadline])
 
-  useEffect(() => {
-    if (!running) return
-    tickRef.current = window.setInterval(() => {
-      setRemaining((r) => {
-        if (r <= 1) {
-          setRunning(false)
-          return 0
-        }
-        return r - 1
-      })
-    }, 1000)
-    return () => {
-      if (tickRef.current !== null) window.clearInterval(tickRef.current)
+  const remaining =
+    deadline === null
+      ? pausedAt
+      : Math.max(0, Math.ceil((deadline - now) / 1000))
+  const expired = remaining === 0
+
+  const toggle = () => {
+    if (deadline === null) {
+      if (expired) return
+      setDeadline(Date.now() + pausedAt * 1000)
+      setNow(Date.now())
+    } else {
+      setPausedAt(remaining)
+      setDeadline(null)
     }
-  }, [running])
-
-  if (seconds === 0) return null
+  }
+  const reset = () => {
+    setPausedAt(seconds)
+    setDeadline(Date.now() + seconds * 1000)
+    setNow(Date.now())
+  }
 
   const min = Math.floor(remaining / 60)
   const sec = remaining % 60
-  const expired = remaining === 0
+  const running = deadline !== null
 
   return (
-    <div className="flex items-center gap-3">
+    <div className="card flex items-center gap-3">
       <div
-        className={`font-display text-2xl font-bold tabular-nums ${
-          expired ? 'text-rose-400' : 'text-slate-100'
-        }`}
+        className={`flex-1 text-4xl font-bold tabular-nums ${expired ? 'text-spy' : ''}`}
+        aria-live="polite"
       >
-        {min}:{sec.toString().padStart(2, '0')}
+        {expired ? t('timer.timesUp') : `${min}:${sec.toString().padStart(2, '0')}`}
       </div>
+      {!expired && (
+        <button
+          type="button"
+          onClick={toggle}
+          className="btn-icon h-12 w-12 bg-surface-2"
+          aria-label={running ? t('timer.pause') : t('timer.resume')}
+        >
+          {running ? <Pause size={22} /> : <Play size={22} />}
+        </button>
+      )}
       <button
-        className="btn-ghost px-3 py-1.5 text-sm"
-        onClick={() => setRunning((r) => !r)}
+        type="button"
+        onClick={reset}
+        className="btn-icon h-12 w-12 bg-surface-2"
+        aria-label={t('timer.reset')}
       >
-        {running ? t('timer.pause') : remaining > 0 ? t('timer.resume') : t('timer.done')}
-      </button>
-      <button
-        className="btn-ghost px-3 py-1.5 text-sm"
-        onClick={() => {
-          setRemaining(seconds)
-          setRunning(true)
-        }}
-      >
-        {t('timer.reset')}
+        <RotateCcw size={22} />
       </button>
     </div>
   )

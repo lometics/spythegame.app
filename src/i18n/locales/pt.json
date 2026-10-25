@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "Espião — O Jogo das Palavras"
+    "title": "Spy — O jogo de palavras para festas"
   },
   "app": {
-    "footer": "Espião — o jogo das palavras. Jogue presencialmente ou online com amigos.",
     "exitConfirm": "Pressione novamente para sair"
   },
   "languages": {
@@ -25,241 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "Início",
     "back": "Voltar",
     "cancel": "Cancelar",
     "save": "Salvar",
     "delete": "Excluir",
-    "yes": "Sim",
-    "no": "Não",
-    "dismiss": "Descartar"
-  },
-  "wizard": {
-    "modeTitle": "Como quer jogar?",
-    "modeSingle": "Um único aparelho",
-    "modeSingleDesc": "Passem o celular na mesa.",
-    "modeOnline": "Cada um no seu aparelho",
-    "modeOnlineDesc": "Cada jogador entra do próprio celular.",
-    "roleTitle": "Criar ou entrar?",
-    "roleHost": "Criar sala",
-    "roleHostDesc": "Crie uma partida e compartilhe o código.",
-    "roleJoin": "Entrar com código",
-    "roleJoinDesc": "Tem um código ou QR do anfitrião? Entre já.",
-    "back": "← Voltar",
-    "next": "Próximo →",
-    "playersTitle": "Adicionar jogadores",
-    "playersDesc": "Adicione todos. Pelo menos 3.",
-    "categoriesTitle": "Escolher fontes de palavras",
-    "categoriesDesc": "Escolha as categorias usadas.",
-    "optionsTitle": "Opções do jogo",
-    "optionsDesc": "Ajuste dificuldade e tempo de discussão.",
-    "startBtn": "Iniciar rodada →",
-    "hostNameTitle": "Seu nome",
-    "hostNameDesc": "Outros jogadores vão ver isso na sala.",
-    "hostCreateBtn": "Criar sala",
-    "creating": "Criando…",
-    "joinCodeTitle": "Digite o código da sala",
-    "joinCodeDesc": "Digite o código de 4 letras ou escaneie o QR.",
-    "joinNameTitle": "Seu nome",
-    "joinBtn": "Entrar",
-    "joining": "Entrando…",
-    "stepLabel": "Passo {{current}} de {{total}}"
+    "close": "Fechar",
+    "done": "Pronto"
   },
   "home": {
     "title": "Espião",
-    "howTo": {
-      "title": "Como jogar",
-      "step1_title": "Preparação",
-      "step1": "Todos recebem a mesma palavra. O espião recebe uma dica parecida — ou nada.",
-      "step2_title": "Rodadas de pistas",
-      "step2": "Em rodízio, cada um diz uma palavra que mostre que conhece o segredo — mas vaga o suficiente para o espião não descobrir.",
-      "step3_title": "Hora das perguntas",
-      "step3": "Interroguem-se. Ouçam quem está blefando e tentem achar o espião.",
-      "step4_title": "Votação",
-      "step4": "Votem no suspeito. Se for o espião, ele tem um chute final para acertar a palavra.",
-      "winTitle": "Como vencer",
-      "civWinLabel": "Civis vencem se",
-      "civWin": "Vocês votarem no espião E ele errar o chute final da palavra.",
-      "spyWinLabel": "Espião vence se",
-      "spyWin": "Sobreviver à votação, OU disser a palavra secreta depois de descobri-la, OU acertar o chute após ser pego."
-    }
+    "tagline": "Todo mundo recebe uma palavra. O espião recebe uma diferente.",
+    "oneDevice": "Todos em um aparelho",
+    "oneDeviceDesc": "Passem um celular pela mesa.",
+    "ownDevice": "Cada um no seu aparelho",
+    "ownDeviceDesc": "Cada jogador entra em uma sala pelo celular.",
+    "continueRound": "Continuar rodada atual",
+    "playAgain": "Jogar de novo",
+    "howToPlay": "Como jogar"
   },
-  "localGame": {
-    "phase": "Fase:",
-    "discuss": {
-      "title": "Discussão",
-      "desc": "Cada jogador dá uma dica curta sobre sua palavra, depois debatam. Decidam juntos quem é o espião.",
-      "clueOrder": "Ordem das dicas — começa com",
-      "timerLabel": "Tempo de discussão",
-      "timerHint": "Pause ou reinicie a qualquer momento.",
-      "revealBtn": "Revelar o espião →",
-      "revealHint": "Já decidiram? Toque para ver quem era o espião."
-    }
+  "setup": {
+    "players": "Jogadores",
+    "playerCount_one": "{{count}} jogador",
+    "playerCount_other": "{{count}} jogadores",
+    "words": "Palavras",
+    "allCategories": "Todas",
+    "categoryCount_one": "{{count}} categoria",
+    "categoryCount_other": "{{count}} categorias",
+    "spies": "Espiões",
+    "randomEachRound": "Aleatório a cada rodada",
+    "spiesKnow": "Se conhecem",
+    "hint": "Dica do espião",
+    "timer": "Cronômetro",
+    "off": "Desligado",
+    "minutes_one": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "none": "Nenhum",
+    "start": "Começar rodada"
   },
-  "lobby": {
-    "playersLabel": "Jogadores ({{count}})",
-    "quickAdd": "+ Adicionar rápido",
-    "namePlaceholder": "Nome (ou deixe em branco)",
-    "addBtn": "Adicionar",
-    "removeAria": "Remover {{name}}",
-    "empty": "Sem jogadores ainda.",
+  "players": {
+    "namePlaceholder": "Adicionar jogador",
+    "add": "Adicionar jogador",
     "defaultName": "Jogador {{n}}",
-    "spyCountLabel": "Número de espiões",
-    "spyCountHint": "Mais espiões = mais difícil para os civis.",
-    "spyCountRandom": "Aleatório",
-    "spyCountRandomHint": "Escolhe 1–{{max}} espiões por rodada.",
-    "spiesKnowLabel": "Espiões se conhecem",
-    "spiesKnowHint": "Eles veem os outros espiões no cartão.",
-    "difficultyLabel": "Dificuldade para civis",
-    "difficulty": {
-      "easy": {
-        "label": "Fácil",
-        "hint": "Espião sem dica — puro blefe, mais fácil de pegar."
-      },
-      "medium": {
-        "label": "Médio",
-        "hint": "A dica do espião é da mesma categoria."
-      },
-      "hard": {
-        "label": "Difícil",
-        "hint": "A dica do espião é muito próxima da palavra real, mesma categoria — clássico."
-      }
-    },
-    "timerLabel": "Tempo de discussão",
-    "timerOff": "Sem tempo",
-    "timerMin": "{{count}} min",
-    "needPlayers": "Adicione pelo menos 3 jogadores.",
-    "needSource": "Escolha ao menos uma fonte de palavras."
+    "changeAvatar": "Trocar imagem",
+    "rename": "Renomear {{name}}",
+    "remove": "Remover {{name}}",
+    "empty": "Nenhum jogador ainda.",
+    "needMore_one": "Adicione mais {{count}} jogador para começar.",
+    "needMore_other": "Adicione mais {{count}} jogadores para começar.",
+    "tip": "Arraste para seguir a ordem em que vocês estão sentados; as cartas passam nessa ordem.",
+    "reorder": "Mover {{name}}"
   },
-  "timer": {
-    "pause": "Pausar",
-    "resume": "Retomar",
-    "done": "Pronto",
-    "reset": "Reiniciar"
-  },
-  "revealDeck": {
-    "cardProgress_one": "Cartão {{current}} de {{total}}",
-    "cardProgress_other": "Cartão {{current}} de {{total}}",
-    "prev": "← Anterior",
-    "next": "Próximo →",
-    "doneBtn": "Pronto →",
-    "tapHint": "toque no cartão para virar",
-    "swipeHint": "deslize ← para o próximo"
-  },
-  "playerCard": {
-    "spyHeader": "Espião",
-    "passTo": "Passe para",
-    "passInstruction": "Quando estiver seguro, toque no cartão para ver sua palavra.",
-    "tapToFlip": "toque para virar",
-    "tapToHide": "toque para esconder",
-    "spyRole": "🕵️ Espião",
-    "civRole": "✅ Civil",
-    "spyBadge": "🕵️ Você é o espião",
-    "fellowSpiesLabel": "Outros espiões",
-    "aloneSpy": "Você é o único espião.",
-    "spyHeadsUp_before": "Atenção:",
-    "spyHeadsUp_mid": " esta palavra ",
-    "spyHeadsUp_not": "não é",
-    "spyHeadsUp_after": " a dos outros. É uma ",
-    "spyHeadsUp_hint": "dica parecida",
-    "spyHeadsUp_tail": ". Não diga em voz alta.",
-    "yourHint": "Sua dica",
-    "spyBluff": "Blefe nas pistas — encaixe na sua palavra E na deles.",
-    "noHintTitle": "Sem dica nesta rodada.",
-    "noHintBody": " Você não sabe a palavra. Ouça, misture-se e blefe.",
-    "noHintPlaceholder": "(sem dica)",
-    "noHintBluff": "Repita o que os outros disserem. Não seja o primeiro a se comprometer.",
-    "civBadge": "✅ Civil",
-    "civBody": "Todos (menos o espião) têm essa mesma palavra. Encontre o espião.",
-    "yourWord": "Sua palavra"
-  },
-  "result": {
-    "title": "A revelação",
-    "subtitle": "Acertaram?",
-    "spyWas": "O espião era",
-    "spiesWere": "Os espiões eram",
-    "wordsLabel": "As palavras",
-    "civilians": "Civis",
-    "spy": "Espião",
-    "vs": "vs",
-    "noHint": "(sem dica)",
-    "category": "Categoria: {{name}}",
-    "playAgain": "Jogar de novo — mesmos jogadores",
-    "backToLobby": "Voltar à sala",
-    "home": "Início"
-  },
-  "pairPicker": {
-    "label": "Fontes de palavras",
+  "words": {
     "selectAll": "Selecionar tudo",
-    "clear": "Limpar",
+    "selectNone": "Desmarcar todas",
     "pairCount_one": "{{count}} par",
     "pairCount_other": "{{count}} pares",
     "newList": "Nova lista",
     "newListDesc": "Seus próprios pares de palavras",
-    "editAria": "Editar lista",
-    "pickAtLeastOne": "Escolha pelo menos uma fonte para iniciar."
+    "editList": "Editar lista",
+    "pickOne": "Escolha pelo menos uma categoria."
+  },
+  "spies": {
+    "count": "Número de espiões",
+    "maxHint": "Com {{players}} jogadores, você pode ter até {{max}} espiões.",
+    "fewPlayers": "Os espiões são sempre menos da metade dos jogadores.",
+    "knowLabel": "Espiões se conhecem",
+    "knowHint": "Os espiões veem os outros espiões na carta.",
+    "knowNeedsTwo": "Só faz diferença com dois ou mais espiões.",
+    "pickHint": "Toque em um número, ou em vários para deixar todos na dúvida.",
+    "randomPick": "Cada rodada tem, ao acaso, {{list}} espiões. Ninguém sabe quantos."
+  },
+  "hint": {
+    "intro": "O que o espião vê no lugar da palavra real. Quanto menos ajuda, mais fácil pegar o espião.",
+    "exampleWord": "Os civis veem",
+    "exampleHint": "O espião vê",
+    "hard": {
+      "label": "Palavra parecida",
+      "desc": "Uma palavra quase igual. A mais difícil de descobrir."
+    },
+    "medium": {
+      "label": "Mesma categoria",
+      "desc": "Outra palavra da mesma categoria."
+    },
+    "easy": {
+      "label": "Sem dica",
+      "desc": "O espião não recebe nada e tem que blefar."
+    }
+  },
+  "timer": {
+    "intro": "Contagem regressiva para a discussão. Você pode pausar ou reiniciar a qualquer momento.",
+    "pause": "Pausar",
+    "resume": "Retomar",
+    "reset": "Reiniciar",
+    "timesUp": "Acabou o tempo"
+  },
+  "card": {
+    "passTo": "Passe o celular para",
+    "passHint": "Garanta que ninguém mais veja a tela.",
+    "civilian": "Civil",
+    "spy": "Espião",
+    "yourWord": "Sua palavra",
+    "yourHint": "Sua dica",
+    "noHint": "Sem dica",
+    "spyTip": "Os outros têm uma palavra diferente. Disfarce.",
+    "noHintTip": "Preste atenção e blefe.",
+    "otherSpies": "Outros espiões",
+    "onlySpy": "Você é o único espião."
+  },
+  "reveal": {
+    "title": "Cartas",
+    "show": "Ver minha carta",
+    "hideAndPass": "Esconder e passar",
+    "hideAndDiscuss": "Esconder e começar a discussão"
+  },
+  "peek": {
+    "button": "Rever minha carta",
+    "title": "Rever sua carta",
+    "pick": "Quem é você?",
+    "hide": "Esconder carta"
+  },
+  "discuss": {
+    "title": "Discussão",
+    "starts": "Primeira dica",
+    "howTo": "Na roda, cada um dá uma dica curta. Depois discutam e votem para eliminar o espião.",
+    "order": "Ordem",
+    "reveal": "Revelar o espião",
+    "confirmTitle": "Revelar o espião?",
+    "confirmBody": "Todos vão ver quem era o espião e as duas palavras."
+  },
+  "result": {
+    "title": "Resultado",
+    "spyWas": "O espião era",
+    "spiesWere": "Os espiões eram",
+    "civilians": "Civis",
+    "spy": "Espião",
+    "category": "Categoria: {{name}}",
+    "nextRound": "Próxima rodada",
+    "changeSetup": "Mudar configurações"
   },
   "editList": {
     "notFound": "Lista não encontrada",
     "notFoundDesc": "Esta lista de palavras não existe mais.",
     "headerEdit": "Editar lista",
     "headerNew": "Nova lista",
-    "titleEdit": "Editar lista de palavras",
-    "titleNew": "Nova lista de palavras",
-    "intro_before": "Adicione seus próprios pares civil / espião. A dica do espião deve ser ",
-    "intro_similar": "parecida",
-    "intro_after": " — nem idêntica, nem totalmente diferente.",
     "name": "Nome da lista",
     "namePlaceholder": "ex. Piadas internas, Lanches do escritório…",
     "icon": "Ícone",
     "pairs": "Pares",
-    "pairsHint": "Palavra civil → Dica do espião",
+    "pairsHint": "Esquerda: a palavra dos civis. Direita: a dica do espião.",
     "civilianPlaceholder": "Palavra dos civis",
     "spyPlaceholder": "Dica do espião",
     "removePairAria": "Remover par",
-    "addPair": "+ Adicionar par",
+    "addPair": "Adicionar par",
     "create": "Criar lista",
     "deleteConfirmTitle": "Excluir esta lista?",
     "deleteConfirmDesc": "Esta ação não pode ser desfeita."
   },
   "online": {
     "yourName": "Seu nome",
-    "hostNamePlaceholder": "ex. Alex",
-    "errCreateRoom": "Não foi possível criar a sala",
+    "or": "ou",
+    "createRoom": "Criar sala",
+    "creating": "Criando…",
+    "join": "Entrar",
+    "joining": "Entrando…",
     "roomCode": "Código da sala",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "ex. Sam",
-    "errNeedBoth": "Precisa do código e do nome.",
-    "errCouldNotJoin": "Não foi possível entrar na sala",
-    "fbWarnTitleShort": "Firebase não configurado",
-    "fbNotConfigured": "Firebase não configurado.",
-    "loadingRoom": "Carregando sala {{code}}…",
-    "roomLabel": "Sala",
-    "share": "Compartilhar sala",
-    "copyLink": "Copiar link",
-    "qrShareHint": "Amigos podem escanear para entrar.",
-    "scanQr": "📷 Escanear QR",
+    "roomTitle": "Sala {{code}}",
+    "invite": "Convidar",
+    "copied": "Link copiado",
+    "scanQr": "Escanear QR code",
     "qrScanTitle": "Escanear QR da sala",
     "qrScanHint": "Aponte a câmera para o QR do anfitrião.",
     "qrCameraError": "Não foi possível abrir a câmera",
     "qrInvalid": "Este QR não é um link de sala.",
-    "playersHeader": "Jogadores ({{count}})",
+    "you": "Você",
+    "host": "Anfitrião",
+    "kick": "Remover {{name}}",
+    "roundSettings": "Configurações da rodada",
+    "needPlayers_one": "Aguardando mais {{count}} jogador.",
+    "needPlayers_other": "Aguardando mais {{count}} jogadores.",
     "starting": "Iniciando…",
-    "startRound": "Iniciar rodada →",
-    "needPlayers": "Precisa de pelo menos 3 jogadores. Compartilhe o link!",
-    "waitingHost": "Esperando o anfitrião iniciar…",
+    "waitStart": "Aguardando o anfitrião começar a rodada…",
     "loadingWord": "Carregando sua palavra…",
-    "hostAdvance": "Todos viram sua palavra? → Discussão",
-    "guestAdvanceWait": "Quando todos estiverem prontos, o anfitrião avança.",
-    "discussTitle": "Discussão",
-    "discussDesc": "Cada jogador dá uma dica curta sobre sua palavra, depois debatam pessoalmente. Decidam juntos quem é o espião.",
-    "clueOrder": "Ordem das dicas — começa com",
-    "discussTimerLabel": "Tempo de discussão",
-    "discussTimerHint": "3 minutos por padrão.",
-    "hostReveal": "Revelar o espião →",
-    "guestRevealWait": "O anfitrião revela quando todos estiverem prontos.",
-    "hostBackLobby": "Voltar à sala",
-    "guestBackWait": "O anfitrião pode trazer todos de volta.",
+    "cardReady": "Sua carta está pronta",
+    "cardReadyHint": "Garanta que ninguém esteja olhando e depois mostre.",
+    "toDiscussion": "Todos prontos: começar discussão",
+    "waitDiscussion": "O anfitrião começa a discussão quando todos tiverem visto a carta.",
+    "waitReveal": "O anfitrião revela o espião quando vocês terminarem.",
+    "waitNext": "Aguardando o anfitrião…",
+    "backToLobby": "Voltar à sala",
+    "loadingRoom": "Carregando sala {{code}}…",
+    "fbNotConfigured": "O modo online não está configurado nesta versão.",
     "errStartRound": "Não foi possível iniciar a rodada",
     "defaultHostName": "Anfitrião",
     "defaultGuestName": "Convidado",
@@ -272,123 +226,112 @@
   "categories": {
     "food": {
       "name": "Comida e Bebida",
-      "description": "Coisas comestíveis. Pares saborosos e próximos para confundir.",
-      "icon": "🍕"
+      "description": "Coisas comestíveis. Pares saborosos e próximos para confundir."
     },
     "animals": {
       "name": "Animais",
-      "description": "Bichos grandes, pequenos, escamosos, peludos.",
-      "icon": "🐾"
+      "description": "Bichos grandes, pequenos, escamosos, peludos."
     },
     "sports": {
       "name": "Esportes",
-      "description": "Coisas para fazer com o corpo, de preferência ao ar livre.",
-      "icon": "⚽"
+      "description": "Coisas para fazer com o corpo, de preferência ao ar livre."
     },
     "places": {
       "name": "Lugares",
-      "description": "Cômodos, prédios, cidades, paisagens.",
-      "icon": "🗺️"
+      "description": "Cômodos, prédios, cidades, paisagens."
     },
     "tech": {
       "name": "Tecnologia",
-      "description": "Cabos, telas, qualquer coisa com bateria.",
-      "icon": "📱"
+      "description": "Cabos, telas, qualquer coisa com bateria."
     },
     "entertainment": {
       "name": "Entretenimento",
-      "description": "Filmes, livros, jogos, música.",
-      "icon": "🎬"
+      "description": "Filmes, livros, jogos, música."
     },
     "household": {
       "name": "Doméstico",
-      "description": "Coisas da cozinha, banheiro, garagem.",
-      "icon": "🛋️"
+      "description": "Coisas da cozinha, banheiro, garagem."
     },
     "nature": {
       "name": "Natureza e Clima",
-      "description": "Céus, mares, estações e tempestades.",
-      "icon": "🌧️"
+      "description": "Céus, mares, estações e tempestades."
     },
     "music": {
       "name": "Música",
-      "description": "Instrumentos, gêneros, sons.",
-      "icon": "🎵"
+      "description": "Instrumentos, gêneros, sons."
     },
     "jobs": {
       "name": "Profissões",
-      "description": "O que as pessoas fazem para viver.",
-      "icon": "💼"
+      "description": "O que as pessoas fazem para viver."
     },
     "vehicles": {
       "name": "Veículos",
-      "description": "Coisas que levam você por aí.",
-      "icon": "🚗"
+      "description": "Coisas que levam você por aí."
     },
     "clothing": {
       "name": "Roupas",
-      "description": "O que você veste.",
-      "icon": "👕"
+      "description": "O que você veste."
     },
     "body": {
       "name": "Corpo e Saúde",
-      "description": "Anatomia, medicina, bem-estar.",
-      "icon": "💪"
+      "description": "Anatomia, medicina, bem-estar."
     },
     "myth": {
       "name": "Mitologia e Fantasia",
-      "description": "Criaturas e poderes das histórias.",
-      "icon": "🐉"
+      "description": "Criaturas e poderes das histórias."
     },
     "tricky": {
       "name": "Difíceis / Mistos",
-      "description": "Pares que cruzam categorias. O espião vai suar.",
-      "icon": "🎲"
+      "description": "Pares que cruzam categorias. O espião vai suar."
     },
     "tyrants": {
       "name": "Tiranos & Déspotas",
-      "description": "Governantes e ditadores infames da história.",
-      "icon": "⚔️"
+      "description": "Governantes e ditadores infames da história."
     },
     "darkhumor": {
       "name": "Humor Negro",
-      "description": "Forca, tabus — rir para não chorar.",
-      "icon": "💀"
+      "description": "Forca, tabus — rir para não chorar."
     },
     "prophets": {
       "name": "Profetas",
-      "description": "Homens santos e mensageiros das grandes religiões.",
-      "icon": "📜"
+      "description": "Homens santos e mensageiros das grandes religiões."
     },
     "stereotypes": {
       "name": "Estereótipos",
-      "description": "Clichês e caricaturas, com humor.",
-      "icon": "🎭"
+      "description": "Clichês e caricaturas, com humor."
     },
     "races": {
       "name": "Povos",
-      "description": "Povos e nacionalidades — mesma região, raízes diferentes.",
-      "icon": "🌍"
-    },
-    "religions": {
-      "name": "Religiões",
-      "description": "Credos, livros sagrados, dias santos e ritos — entre confissões.",
-      "icon": "🛐"
-    },
-    "terror": {
-      "name": "Ataques terroristas",
-      "description": "Atentados e atrocidades infames.",
-      "icon": "💥"
+      "description": "Povos e nacionalidades — mesma região, raízes diferentes."
     },
     "infamous": {
       "name": "Lugares Críticos",
-      "description": "Locais de tragédia: massacres, guerras, desastres.",
-      "icon": "🕯️"
+      "description": "Locais de tragédia: massacres, guerras, desastres."
+    },
+    "terror": {
+      "name": "Ataques terroristas",
+      "description": "Atentados e atrocidades infames."
+    },
+    "religions": {
+      "name": "Religiões",
+      "description": "Credos, livros sagrados, dias santos e ritos — entre confissões."
     }
   },
   "customList": {
     "description_one": "Sua lista personalizada ({{count}} par)",
     "description_other": "Sua lista personalizada ({{count}} pares)",
     "fallback": "Personalizada"
+  },
+  "options": {
+    "title": "Configurações",
+    "languageLabel": "Idioma",
+    "wordListsLabel": "Suas listas de palavras",
+    "wordListsHint": "Crie e edite seus próprios pares de palavras civil / espião."
+  },
+  "install": {
+    "title": "Adicione o Spy à tela inicial",
+    "desc": "Abre como um app e funciona offline, pronto para a próxima noite de jogos.",
+    "button": "Instalar",
+    "iosHint": "No Safari, toque em Compartilhar e depois em \"Adicionar à Tela de Início\"."
   }
 }

@@ -9,7 +9,8 @@ export type Category = {
   id: string
   name: string
   description: string
-  icon: string
+  /** Icon key for custom lists (see LIST_ICONS); built-ins resolve by id. */
+  icon?: string
   isCustom: boolean
   /** Number of pairs currently in this category (computed). */
   pairCount: number
@@ -18,6 +19,7 @@ export type Category = {
 export type CustomList = {
   id: string
   name: string
+  /** Key into LIST_ICONS. */
   icon: string
   pairs: Array<{ civilian: string; spy: string }>
   createdAt: number
@@ -48,7 +50,8 @@ export type GameSettings = {
   timerSeconds: number
   pairSource: PairSource
   difficulty: Difficulty
-  spyCount: number | { min: number; max: number }
+  /** Allowed spy counts; each round picks one at random. */
+  spyCount: number[]
   spiesKnowEachOther: boolean
 }
 

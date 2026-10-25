@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "스파이 — 단어 게임"
+    "title": "Spy — 파티 단어 게임"
   },
   "app": {
-    "footer": "스파이 — 단어 게임. 친구들과 대면 또는 온라인으로 플레이.",
     "exitConfirm": "한 번 더 누르면 종료됩니다"
   },
   "languages": {
@@ -25,241 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "홈",
     "back": "뒤로",
     "cancel": "취소",
     "save": "저장",
     "delete": "삭제",
-    "yes": "예",
-    "no": "아니오",
-    "dismiss": "닫기"
-  },
-  "wizard": {
-    "modeTitle": "어떻게 플레이?",
-    "modeSingle": "기기 하나",
-    "modeSingleDesc": "테이블에서 폰을 돌려가며.",
-    "modeOnline": "각자 자기 기기로",
-    "modeOnlineDesc": "각 플레이어가 자기 폰으로 참가.",
-    "roleTitle": "호스트 또는 참가?",
-    "roleHost": "방 만들기",
-    "roleHostDesc": "게임을 만들고 코드를 공유.",
-    "roleJoin": "코드로 참가",
-    "roleJoinDesc": "코드나 QR이 있나요? 들어와요.",
-    "back": "← 뒤로",
-    "next": "다음 →",
-    "playersTitle": "플레이어 추가",
-    "playersDesc": "모두 추가. 최소 3명.",
-    "categoriesTitle": "단어 출처 선택",
-    "categoriesDesc": "사용할 카테고리 선택.",
-    "optionsTitle": "게임 옵션",
-    "optionsDesc": "난이도와 토론 타이머 조정.",
-    "startBtn": "라운드 시작 →",
-    "hostNameTitle": "이름",
-    "hostNameDesc": "다른 플레이어가 로비에서 봄.",
-    "hostCreateBtn": "방 만들기",
-    "creating": "생성 중…",
-    "joinCodeTitle": "방 코드 입력",
-    "joinCodeDesc": "4글자 코드 입력 또는 QR 스캔.",
-    "joinNameTitle": "이름",
-    "joinBtn": "참가",
-    "joining": "참가 중…",
-    "stepLabel": "{{total}} 중 {{current}} 단계"
+    "close": "닫기",
+    "done": "완료"
   },
   "home": {
     "title": "스파이",
-    "howTo": {
-      "title": "플레이 방법",
-      "step1_title": "준비",
-      "step1": "모두 같은 단어를 받음. 스파이는 비슷한 힌트 — 또는 아무것도 안 받음.",
-      "step2_title": "단서 라운드",
-      "step2": "돌아가며 비밀을 안다는 걸 증명하는 단어 하나를 말해요 — 하지만 스파이가 못 알아채게 모호하게.",
-      "step3_title": "질문 시간",
-      "step3": "서로 캐물어요. 누가 허세 부리는지 듣고 스파이를 찾으세요.",
-      "step4_title": "투표",
-      "step4": "용의자에 투표. 지목된 스파이는 단어를 한 번 추측할 기회.",
-      "winTitle": "승리 조건",
-      "civWinLabel": "시민 승리",
-      "civWin": "스파이를 투표로 추방하고 스파이가 최종 추측에 실패.",
-      "spyWinLabel": "스파이 승리",
-      "spyWin": "투표를 살아남거나, 단어를 알아냈을 때 말하거나, 잡힌 후 맞히면."
-    }
+    "tagline": "모두가 단어를 받아요. 스파이만 다른 단어를 받아요.",
+    "oneDevice": "한 기기로 플레이",
+    "oneDeviceDesc": "휴대폰 하나를 돌려가며 플레이해요.",
+    "ownDevice": "각자 기기로 플레이",
+    "ownDeviceDesc": "각자 휴대폰으로 방에 참가해요.",
+    "continueRound": "진행 중인 라운드 계속하기",
+    "playAgain": "다시 하기",
+    "howToPlay": "게임 방법"
   },
-  "localGame": {
-    "phase": "단계:",
-    "discuss": {
-      "title": "토론",
-      "desc": "각 플레이어가 자기 단어에 대한 짧은 단서를 말한 뒤 토론. 누가 스파이인지 함께 결정.",
-      "clueOrder": "단서 순서 — 시작",
-      "timerLabel": "토론 타이머",
-      "timerHint": "언제든 일시정지/리셋.",
-      "revealBtn": "스파이 공개 →",
-      "revealHint": "결정했나요? 탭하여 스파이 확인."
-    }
+  "setup": {
+    "players": "플레이어",
+    "playerCount_one": "{{count}}명",
+    "playerCount_other": "{{count}}명",
+    "words": "단어",
+    "allCategories": "전체",
+    "categoryCount_one": "카테고리 {{count}}개",
+    "categoryCount_other": "카테고리 {{count}}개",
+    "spies": "스파이",
+    "randomEachRound": "라운드마다 랜덤",
+    "spiesKnow": "서로 앎",
+    "hint": "스파이 힌트",
+    "timer": "타이머",
+    "off": "끔",
+    "minutes_one": "{{count}}분",
+    "minutes_other": "{{count}}분",
+    "none": "없음",
+    "start": "라운드 시작"
   },
-  "lobby": {
-    "playersLabel": "플레이어 ({{count}})",
-    "quickAdd": "+ 빠른 추가",
-    "namePlaceholder": "이름 (빈칸 가능)",
-    "addBtn": "추가",
-    "removeAria": "{{name}} 제거",
-    "empty": "아직 플레이어 없음.",
+  "players": {
+    "namePlaceholder": "플레이어 추가",
+    "add": "플레이어 추가",
     "defaultName": "플레이어 {{n}}",
-    "spyCountLabel": "스파이 수",
-    "spyCountHint": "스파이가 많을수록 시민에게 어려움.",
-    "spyCountRandom": "랜덤",
-    "spyCountRandomHint": "라운드마다 1–{{max}}명의 스파이를 뽑음.",
-    "spiesKnowLabel": "스파이끼리 안다",
-    "spiesKnowHint": "카드에서 다른 스파이를 봄.",
-    "difficultyLabel": "마을 사람 난이도",
-    "difficulty": {
-      "easy": {
-        "label": "쉬움",
-        "hint": "스파이에게 힌트 없음 — 순수 블러핑, 가장 잡기 쉬움."
-      },
-      "medium": {
-        "label": "보통",
-        "hint": "스파이 힌트는 같은 카테고리의 비슷한 단어."
-      },
-      "hard": {
-        "label": "어려움",
-        "hint": "스파이 힌트가 실제 단어와 매우 가까움, 같은 카테고리 — 클래식."
-      }
-    },
-    "timerLabel": "토론 타이머",
-    "timerOff": "타이머 없음",
-    "timerMin": "{{count}}분",
-    "needPlayers": "최소 3명 추가하세요.",
-    "needSource": "최소 한 개의 단어 출처 선택."
+    "changeAvatar": "사진 변경",
+    "rename": "{{name}} 이름 변경",
+    "remove": "{{name}} 삭제",
+    "empty": "아직 플레이어가 없어요.",
+    "needMore_one": "시작하려면 {{count}}명을 더 추가하세요.",
+    "needMore_other": "시작하려면 {{count}}명을 더 추가하세요.",
+    "tip": "앉은 순서대로 끌어서 정렬하세요. 카드는 이 순서로 돌아갑니다.",
+    "reorder": "{{name}} 이동"
   },
-  "timer": {
-    "pause": "일시정지",
-    "resume": "재개",
-    "done": "완료",
-    "reset": "리셋"
-  },
-  "revealDeck": {
-    "cardProgress_one": "{{total}} 중 카드 {{current}}",
-    "cardProgress_other": "{{total}} 중 카드 {{current}}",
-    "prev": "← 이전",
-    "next": "다음 →",
-    "doneBtn": "완료 →",
-    "tapHint": "카드를 탭해 뒤집기",
-    "swipeHint": "다음은 ← 스와이프"
-  },
-  "playerCard": {
-    "spyHeader": "스파이",
-    "passTo": "전달",
-    "passInstruction": "안전할 때 카드를 탭해 단어 확인.",
-    "tapToFlip": "탭해서 뒤집기",
-    "tapToHide": "탭해서 숨기기",
-    "spyRole": "🕵️ 스파이",
-    "civRole": "✅ 시민",
-    "spyBadge": "🕵️ 당신은 스파이",
-    "fellowSpiesLabel": "동료 스파이",
-    "aloneSpy": "당신이 유일한 스파이.",
-    "spyHeadsUp_before": "주의:",
-    "spyHeadsUp_mid": " 이 단어는 ",
-    "spyHeadsUp_not": "아닙니다",
-    "spyHeadsUp_after": " 다른 사람들 것이. 이건 비슷한 ",
-    "spyHeadsUp_hint": "힌트",
-    "spyHeadsUp_tail": "입니다. 큰 소리로 말하지 마세요.",
-    "yourHint": "당신의 힌트",
-    "spyBluff": "허세 부리세요 — 단서가 당신 단어에도 그들 단어에도 맞게.",
-    "noHintTitle": "이번 라운드 힌트 없음.",
-    "noHintBody": " 단어를 모릅니다. 듣고, 섞이고, 허세 부리세요.",
-    "noHintPlaceholder": "(힌트 없음)",
-    "noHintBluff": "다른 사람들이 한 말을 따라 하세요. 먼저 말하지 마세요.",
-    "civBadge": "✅ 시민",
-    "civBody": "스파이 외 모두가 같은 단어. 스파이를 찾으세요.",
-    "yourWord": "당신의 단어"
-  },
-  "result": {
-    "title": "공개",
-    "subtitle": "맞췄나요?",
-    "spyWas": "스파이는",
-    "spiesWere": "스파이들은",
-    "wordsLabel": "단어",
-    "civilians": "시민",
-    "spy": "스파이",
-    "vs": "대",
-    "noHint": "(힌트 없음)",
-    "category": "카테고리: {{name}}",
-    "playAgain": "다시 — 같은 플레이어",
-    "backToLobby": "로비로",
-    "home": "홈"
-  },
-  "pairPicker": {
-    "label": "단어 출처",
+  "words": {
     "selectAll": "전체 선택",
-    "clear": "지우기",
+    "selectNone": "전체 해제",
     "pairCount_one": "{{count}} 쌍",
     "pairCount_other": "{{count}} 쌍",
     "newList": "새 리스트",
     "newListDesc": "나만의 단어 쌍",
-    "editAria": "리스트 편집",
-    "pickAtLeastOne": "시작하려면 최소 한 개 선택."
+    "editList": "리스트 편집",
+    "pickOne": "카테고리를 하나 이상 선택하세요."
+  },
+  "spies": {
+    "count": "스파이 수",
+    "maxHint": "플레이어가 {{players}}명이면 스파이를 최대 {{max}}명까지 둘 수 있어요.",
+    "fewPlayers": "스파이는 항상 플레이어의 절반보다 적어요.",
+    "knowLabel": "스파이끼리 안다",
+    "knowHint": "스파이는 카드에서 다른 스파이를 볼 수 있어요.",
+    "knowNeedsTwo": "스파이가 2명 이상일 때만 적용돼요.",
+    "pickHint": "숫자를 하나, 또는 여러 개 골라 모두가 추측하게 하세요.",
+    "randomPick": "라운드마다 스파이 수가 {{list}} 중에서 무작위로 정해져요. 몇 명인지 아무도 몰라요."
+  },
+  "hint": {
+    "intro": "스파이가 진짜 단어 대신 보는 것. 힌트가 적을수록 스파이를 잡기 쉬워요.",
+    "exampleWord": "시민이 보는 단어",
+    "exampleHint": "스파이가 보는 단어",
+    "hard": {
+      "label": "비슷한 단어",
+      "desc": "거의 같은 단어. 잡기 가장 어려워요."
+    },
+    "medium": {
+      "label": "같은 카테고리",
+      "desc": "같은 카테고리의 다른 단어."
+    },
+    "easy": {
+      "label": "힌트 없음",
+      "desc": "스파이는 아무것도 받지 않고 연기해야 해요."
+    }
+  },
+  "timer": {
+    "intro": "토론 카운트다운. 언제든 일시정지하거나 다시 시작할 수 있어요.",
+    "pause": "일시정지",
+    "resume": "재개",
+    "reset": "다시 시작",
+    "timesUp": "시간 종료"
+  },
+  "card": {
+    "passTo": "휴대폰을 건네줄 사람",
+    "passHint": "다른 사람이 화면을 보지 않게 하세요.",
+    "civilian": "시민",
+    "spy": "스파이",
+    "yourWord": "당신의 단어",
+    "yourHint": "당신의 힌트",
+    "noHint": "힌트 없음",
+    "spyTip": "다른 사람들은 다른 단어를 받았어요. 티 내지 마세요.",
+    "noHintTip": "잘 듣고 연기하세요.",
+    "otherSpies": "다른 스파이",
+    "onlySpy": "스파이는 당신뿐이에요."
+  },
+  "reveal": {
+    "title": "카드",
+    "show": "내 카드 보기",
+    "hideAndPass": "숨기고 넘기기",
+    "hideAndDiscuss": "숨기고 토론 시작"
+  },
+  "peek": {
+    "button": "내 카드 확인",
+    "title": "카드 확인",
+    "pick": "누구세요?",
+    "hide": "카드 숨기기"
+  },
+  "discuss": {
+    "title": "토론",
+    "starts": "첫 힌트",
+    "howTo": "돌아가며 한 명씩 짧은 힌트를 말해요. 그다음 토론하고 투표로 스파이를 찾아내요.",
+    "order": "순서",
+    "reveal": "스파이 공개",
+    "confirmTitle": "스파이를 공개할까요?",
+    "confirmBody": "스파이가 누구였는지와 두 단어가 모두에게 공개돼요."
+  },
+  "result": {
+    "title": "결과",
+    "spyWas": "스파이는",
+    "spiesWere": "스파이들은",
+    "civilians": "시민",
+    "spy": "스파이",
+    "category": "카테고리: {{name}}",
+    "nextRound": "다음 라운드",
+    "changeSetup": "설정 변경"
   },
   "editList": {
     "notFound": "리스트를 찾을 수 없음",
     "notFoundDesc": "이 단어 리스트는 더 이상 없습니다.",
     "headerEdit": "리스트 편집",
     "headerNew": "새 리스트",
-    "titleEdit": "단어 리스트 편집",
-    "titleNew": "새 단어 리스트",
-    "intro_before": "나만의 시민 / 스파이 쌍을 추가. 스파이 힌트는 ",
-    "intro_similar": "비슷",
-    "intro_after": "해야 — 동일하지도, 완전히 다른 것도 아닌.",
     "name": "리스트 이름",
     "namePlaceholder": "예: 내부 농담, 사무실 간식…",
     "icon": "아이콘",
     "pairs": "쌍",
-    "pairsHint": "시민 단어 → 스파이 힌트",
+    "pairsHint": "왼쪽: 시민의 단어. 오른쪽: 스파이의 힌트.",
     "civilianPlaceholder": "시민의 단어",
     "spyPlaceholder": "스파이의 힌트",
     "removePairAria": "쌍 제거",
-    "addPair": "+ 쌍 추가",
+    "addPair": "쌍 추가",
     "create": "리스트 만들기",
     "deleteConfirmTitle": "이 목록을 삭제할까요?",
     "deleteConfirmDesc": "이 작업은 되돌릴 수 없습니다."
   },
   "online": {
     "yourName": "이름",
-    "hostNamePlaceholder": "예: Alex",
-    "errCreateRoom": "방을 만들 수 없음",
+    "or": "또는",
+    "createRoom": "방 만들기",
+    "creating": "생성 중…",
+    "join": "참가",
+    "joining": "참가 중…",
     "roomCode": "방 코드",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "예: Sam",
-    "errNeedBoth": "방 코드와 이름 모두 필요.",
-    "errCouldNotJoin": "방에 참가할 수 없음",
-    "fbWarnTitleShort": "Firebase 미설정",
-    "fbNotConfigured": "Firebase 미설정.",
-    "loadingRoom": "방 {{code}} 로딩 중…",
-    "roomLabel": "방",
-    "share": "이 방 공유",
-    "copyLink": "링크 복사",
-    "qrShareHint": "친구들이 스캔해 참가 가능.",
-    "scanQr": "📷 QR 스캔",
+    "roomTitle": "방 {{code}}",
+    "invite": "초대",
+    "copied": "링크 복사됨",
+    "scanQr": "QR 코드 스캔",
     "qrScanTitle": "방 QR 스캔",
     "qrScanHint": "호스트 QR에 카메라를 향하세요.",
     "qrCameraError": "카메라를 열 수 없음",
     "qrInvalid": "이 QR은 방 링크가 아닙니다.",
-    "playersHeader": "플레이어 ({{count}})",
+    "you": "나",
+    "host": "호스트",
+    "kick": "{{name}} 내보내기",
+    "roundSettings": "라운드 설정",
+    "needPlayers_one": "{{count}}명을 더 기다리는 중이에요.",
+    "needPlayers_other": "{{count}}명을 더 기다리는 중이에요.",
     "starting": "시작 중…",
-    "startRound": "라운드 시작 →",
-    "needPlayers": "최소 3명. 링크 공유!",
-    "waitingHost": "호스트 시작을 기다리는 중…",
+    "waitStart": "호스트가 라운드를 시작하길 기다리는 중…",
     "loadingWord": "단어 로딩 중…",
-    "hostAdvance": "모두 자기 단어 봤나요? → 토론",
-    "guestAdvanceWait": "모두 준비되면 호스트가 진행합니다.",
-    "discussTitle": "토론",
-    "discussDesc": "각 플레이어가 자기 단어에 대한 짧은 단서를 말한 뒤 대면 토론. 누가 스파이인지 함께 결정.",
-    "clueOrder": "단서 순서 — 시작",
-    "discussTimerLabel": "토론 타이머",
-    "discussTimerHint": "기본 3분.",
-    "hostReveal": "스파이 공개 →",
-    "guestRevealWait": "모두 준비되면 호스트가 공개.",
-    "hostBackLobby": "로비로",
-    "guestBackWait": "호스트가 모두를 로비로 되돌릴 수 있음.",
+    "cardReady": "카드가 준비됐어요",
+    "cardReadyHint": "아무도 보지 않는지 확인하고 열어보세요.",
+    "toDiscussion": "모두 준비 완료: 토론 시작",
+    "waitDiscussion": "모두 카드를 확인하면 호스트가 토론을 시작해요.",
+    "waitReveal": "끝나면 호스트가 스파이를 공개해요.",
+    "waitNext": "호스트를 기다리는 중…",
+    "backToLobby": "방으로 돌아가기",
+    "loadingRoom": "방 {{code}} 로딩 중…",
+    "fbNotConfigured": "이 빌드에서는 온라인 플레이가 설정되지 않았어요.",
     "errStartRound": "라운드 시작 불가",
     "defaultHostName": "호스트",
     "defaultGuestName": "게스트",
@@ -272,123 +226,112 @@
   "categories": {
     "food": {
       "name": "음식과 음료",
-      "description": "먹을 수 있는 것. 쌍은 맛있고 헷갈리게 비슷.",
-      "icon": "🍕"
+      "description": "먹을 수 있는 것. 쌍은 맛있고 헷갈리게 비슷."
     },
     "animals": {
       "name": "동물",
-      "description": "크고 작고, 비늘 있고, 복슬복슬한.",
-      "icon": "🐾"
+      "description": "크고 작고, 비늘 있고, 복슬복슬한."
     },
     "sports": {
       "name": "스포츠",
-      "description": "몸으로 하는 것, 가급적 야외.",
-      "icon": "⚽"
+      "description": "몸으로 하는 것, 가급적 야외."
     },
     "places": {
       "name": "장소",
-      "description": "방, 건물, 도시, 풍경.",
-      "icon": "🗺️"
+      "description": "방, 건물, 도시, 풍경."
     },
     "tech": {
       "name": "기술",
-      "description": "케이블, 화면, 배터리 있는 모든 것.",
-      "icon": "📱"
+      "description": "케이블, 화면, 배터리 있는 모든 것."
     },
     "entertainment": {
       "name": "엔터테인먼트",
-      "description": "영화, 책, 게임, 음악.",
-      "icon": "🎬"
+      "description": "영화, 책, 게임, 음악."
     },
     "household": {
       "name": "가정용품",
-      "description": "주방, 욕실, 차고에 있는 것.",
-      "icon": "🛋️"
+      "description": "주방, 욕실, 차고에 있는 것."
     },
     "nature": {
       "name": "자연과 날씨",
-      "description": "하늘, 바다, 계절, 폭풍.",
-      "icon": "🌧️"
+      "description": "하늘, 바다, 계절, 폭풍."
     },
     "music": {
       "name": "음악",
-      "description": "악기, 장르, 소리.",
-      "icon": "🎵"
+      "description": "악기, 장르, 소리."
     },
     "jobs": {
       "name": "직업",
-      "description": "사람들이 생계를 위해 하는 일.",
-      "icon": "💼"
+      "description": "사람들이 생계를 위해 하는 일."
     },
     "vehicles": {
       "name": "탈것",
-      "description": "당신을 이동시키는 것.",
-      "icon": "🚗"
+      "description": "당신을 이동시키는 것."
     },
     "clothing": {
       "name": "의류",
-      "description": "당신이 입는 것.",
-      "icon": "👕"
+      "description": "당신이 입는 것."
     },
     "body": {
       "name": "몸과 건강",
-      "description": "해부, 의학, 웰빙.",
-      "icon": "💪"
+      "description": "해부, 의학, 웰빙."
     },
     "myth": {
       "name": "신화와 판타지",
-      "description": "이야기 속 생물과 힘.",
-      "icon": "🐉"
+      "description": "이야기 속 생물과 힘."
     },
     "tricky": {
       "name": "어려움 / 혼합",
-      "description": "카테고리를 넘나드는 쌍. 스파이가 땀 흘릴 것.",
-      "icon": "🎲"
+      "description": "카테고리를 넘나드는 쌍. 스파이가 땀 흘릴 것."
     },
     "tyrants": {
       "name": "폭군과 독재자",
-      "description": "역사 속 악명 높은 통치자와 독재자.",
-      "icon": "⚔️"
+      "description": "역사 속 악명 높은 통치자와 독재자."
     },
     "darkhumor": {
       "name": "블랙 유머",
-      "description": "죽음과 금기 — 울지 않으려 웃는다.",
-      "icon": "💀"
+      "description": "죽음과 금기 — 울지 않으려 웃는다."
     },
     "prophets": {
       "name": "예언자",
-      "description": "위대한 종교 속의 성인과 사자들.",
-      "icon": "📜"
+      "description": "위대한 종교 속의 성인과 사자들."
     },
     "stereotypes": {
       "name": "고정관념",
-      "description": "클리셰와 캐리커처, 유머러스하게.",
-      "icon": "🎭"
+      "description": "클리셰와 캐리커처, 유머러스하게."
     },
     "races": {
       "name": "민족",
-      "description": "민족과 국적 — 같은 지역, 다른 뿌리.",
-      "icon": "🌍"
-    },
-    "religions": {
-      "name": "종교",
-      "description": "신앙, 경전, 축일, 의식 — 여러 교파를 가로질러.",
-      "icon": "🛐"
-    },
-    "terror": {
-      "name": "테러 공격",
-      "description": "악명 높은 테러 사건과 참사.",
-      "icon": "💥"
+      "description": "민족과 국적 — 같은 지역, 다른 뿌리."
     },
     "infamous": {
       "name": "비극의 장소",
-      "description": "참사의 현장: 학살, 전쟁, 재난.",
-      "icon": "🕯️"
+      "description": "참사의 현장: 학살, 전쟁, 재난."
+    },
+    "terror": {
+      "name": "테러 공격",
+      "description": "악명 높은 테러 사건과 참사."
+    },
+    "religions": {
+      "name": "종교",
+      "description": "신앙, 경전, 축일, 의식 — 여러 교파를 가로질러."
     }
   },
   "customList": {
     "description_one": "당신의 커스텀 리스트 ({{count}} 쌍)",
     "description_other": "당신의 커스텀 리스트 ({{count}} 쌍)",
     "fallback": "커스텀"
+  },
+  "options": {
+    "title": "설정",
+    "languageLabel": "언어",
+    "wordListsLabel": "내 단어 목록",
+    "wordListsHint": "시민 / 스파이 단어 쌍을 직접 만들고 편집하세요."
+  },
+  "install": {
+    "title": "Spy를 홈 화면에 추가",
+    "desc": "앱처럼 열리고 오프라인에서도 작동해 다음 게임 모임에 바로 쓸 수 있어요.",
+    "button": "설치",
+    "iosHint": "Safari에서 공유를 누른 다음 '홈 화면에 추가'를 선택하세요."
   }
 }

@@ -5,8 +5,7 @@ import { useTranslation } from 'react-i18next'
 const GUARD = '__spyBackGuard'
 
 function isAtHome() {
-  const h = window.location.hash
-  return h === '' || h === '#' || h === '#/'
+  return window.location.pathname === '/'
 }
 
 function hasGuard() {
@@ -46,7 +45,7 @@ export default function BackHandler() {
 
   if (!showToast) return null
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-ink-800/95 border border-white/10 text-foreground text-xs shadow-soft pointer-events-none backdrop-blur-sm">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-4 py-2 rounded-full bg-surface-2 border border-border text-foreground text-sm pointer-events-none backdrop-blur-sm">
       {t('app.exitConfirm')}
     </div>
   )

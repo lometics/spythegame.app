@@ -3,43 +3,20 @@ export default {
   content: ['./index.html', './src/**/*.{ts,tsx}'],
   theme: {
     extend: {
-      screens: {
-        xs: '380px',
-      },
       fontFamily: {
-        // Single typeface — shadcn ships with Inter. `display` kept as an
-        // alias so existing `font-display` classes still resolve.
-        display: ['Inter', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
+        body: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
-        // True zinc (hue 0%) — shadcn neutral dark theme.
-        ink: {
-          900: '#0a0a0a', // background (zinc-950-ish)
-          800: '#171717', // card (zinc-900)
-          700: '#262626', // muted surface (zinc-800)
-          600: '#404040', // hover surface (zinc-700)
-        },
-        // Amber retained as a secondary accent for selected pills / chips.
-        accent: {
-          400: '#fbbf24',
-          500: '#f59e0b',
-        },
-        // shadcn token bridge — enables `text-foreground/60`, `bg-card`, etc.
+        // Theme tokens live in index.css so CSS and Tailwind stay in sync.
         background: 'hsl(var(--background) / <alpha-value>)',
         foreground: 'hsl(var(--foreground) / <alpha-value>)',
-        card: 'hsl(var(--card) / <alpha-value>)',
+        surface: 'hsl(var(--surface) / <alpha-value>)',
+        'surface-2': 'hsl(var(--surface-2) / <alpha-value>)',
         border: 'hsl(var(--border) / <alpha-value>)',
-      },
-      borderRadius: {
-        // shadcn default scale: --radius 0.5rem; lg = radius, md = radius - 2px.
-        lg: '0.5rem',
-        xl: '0.75rem',
-        '2xl': '1rem',
-      },
-      boxShadow: {
-        // Lower, flatter shadow than before — shadcn cards lean on borders, not glow.
-        soft: '0 1px 2px 0 rgb(0 0 0 / 0.5), 0 8px 24px -12px rgb(0 0 0 / 0.6)',
+        muted: 'hsl(var(--muted) / <alpha-value>)',
+        accent: 'hsl(var(--accent) / <alpha-value>)',
+        spy: 'hsl(var(--spy) / <alpha-value>)',
       },
     },
   },

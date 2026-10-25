@@ -10,16 +10,18 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Spy — The Word Game',
+        id: '/',
+        name: 'Spy — The Party Word Game',
         short_name: 'Spy',
         description:
-          'Party word game: everyone gets a word, the spy gets a similar one. Play pass-and-play or in an online room.',
-        theme_color: '#0b1020',
-        background_color: '#0b1020',
+          'Party word game: everyone gets a word, the spy gets a different one. Play on one phone or in an online room.',
+        theme_color: '#0a0a0c',
+        background_color: '#0a0a0c',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '.',
-        scope: '.',
+        start_url: '/',
+        scope: '/',
+        categories: ['games', 'entertainment'],
         icons: [
           {
             src: 'icon-192.png',
@@ -41,26 +43,8 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
-        // Cache Google Fonts CSS + font files for offline reads
-        runtimeCaching: [
-          {
-            urlPattern:
-              /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-stylesheets',
-              expiration: { maxEntries: 8, maxAgeSeconds: 60 * 60 * 24 * 30 },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-webfonts',
-              expiration: { maxEntries: 16, maxAgeSeconds: 60 * 60 * 24 * 365 },
-            },
-          },
-        ],
+        // The static how-to-play page must not be swallowed by the SPA fallback.
+        navigateFallbackDenylist: [/^\/how-to-play/, /^\/robots\.txt/, /^\/sitemap\.xml/],
       },
       devOptions: {
         enabled: true,

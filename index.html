@@ -2,19 +2,73 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Spy — The Party Word Game | Play Free Online or on One Phone</title>
+    <meta
+      name="description"
+      content="Spy is a free party word game. Everyone gets the same secret word except the spy. Give clues, find the spy. Play pass-and-play on one phone or online on everyone's device. No sign-up."
+    />
+    <link rel="canonical" href="https://spythegame.app/" />
+    <meta name="robots" content="index, follow" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#0a0a0c" />
+    <meta name="color-scheme" content="dark" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="Spy" />
     <meta name="mobile-web-app-capable" content="yes" />
-    <title>Spy</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Spy" />
+    <meta property="og:url" content="https://spythegame.app/" />
+    <meta property="og:title" content="Spy — The Party Word Game" />
+    <meta
+      property="og:description"
+      content="Everyone gets a word. The spy gets a different one. Free, no sign-up, play on one phone or many."
+    />
+    <meta property="og:image" content="https://spythegame.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Spy — The Party Word Game" />
+    <meta
+      name="twitter:description"
+      content="Everyone gets a word. The spy gets a different one. Free, no sign-up."
+    />
+    <meta name="twitter:image" content="https://spythegame.app/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Spy — The Party Word Game",
+        "url": "https://spythegame.app/",
+        "applicationCategory": "GameApplication",
+        "genre": "Party game",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern web browser",
+        "inLanguage": ["en", "de", "fr", "it", "es", "pt", "nl", "pl", "sv", "tr", "ru", "ja", "zh", "ko", "ar"],
+        "description": "Free party word game for 3 or more players. Everyone gets the same secret word except the spy, who gets a similar one. Give clues and vote out the spy.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "image": "https://spythegame.app/og-image.png"
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static first paint (replaced by the app once it loads); also what crawlers read first. -->
+      <main class="mx-auto flex min-h-dvh w-full max-w-md flex-col items-center justify-center gap-4 px-4 text-center">
+        <img src="/favicon.svg" alt="" width="80" height="80" class="rounded-[1.75rem]" />
+        <h1 class="text-4xl font-extrabold">Spy</h1>
+        <p class="muted">The party word game. Everyone gets a word. The spy gets a different one.</p>
+        <p class="text-sm muted">
+          Free, no sign-up. <a href="/how-to-play/" class="text-accent">How to play</a>
+        </p>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

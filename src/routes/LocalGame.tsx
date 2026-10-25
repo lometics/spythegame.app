@@ -1,111 +1,301 @@
-import { Link, Navigate } from 'react-router-dom'
+import { useState } from 'react'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ArrowLeft } from 'lucide-react'
+import { ChevronRight, Eye, EyeOff } from 'lucide-react'
+import Screen from '../components/Screen'
+import Sheet from '../components/Sheet'
+import { PassCard, RoleCard } from '../components/RoleCard'
+import { DiscussionView, ResultView } from '../components/RoundViews'
+import InstallPrompt from '../components/InstallPrompt'
 import { useGame } from '../game/state'
-import RevealDeck from '../components/RevealDeck'
-import DiscussionTimer from '../components/DiscussionTimer'
-import ResultScreen from '../components/ResultScreen'
+import { clueOrder } from '../game/machine'
+import type { Pair, Player } from '../game/types'
+
+function fellowSpies(players: Player[], me: Player): string[] {
+  return players.filter((p) => p.isSpy && p.id !== me.id).map((p) => p.name)
+}
+
+/** One player's turn with the phone: covered until they choose to look. */
+function SecretCard({
+  player,
+  players,
+  pair,
+  shown,
+  spiesKnowEachOther,
+}: {
+  player: Player
+  players: Player[]
+  pair: Pair
+  shown: boolean
+  spiesKnowEachOther: boolean
+}) {
+  if (!shown) return <PassCard name={player.name} avatar={player.avatar} />
+  return (
+    <RoleCard
+      name={player.name}
+      isSpy={player.isSpy}
+      word={player.isSpy ? pair.spy : pair.civilian}
+      fellowSpyNames={
+        player.isSpy && spiesKnowEachOther ? fellowSpies(players, player) : undefined
+      }
+    />
+  )
+}
 
 export default function LocalGame() {
   const { t } = useTranslation()
+  const navigate = useNavigate()
   const phase = useGame((s) => s.phase)
   const players = useGame((s) => s.players)
   const pair = useGame((s) => s.pair)
+  const revealIndex = useGame((s) => s.revealIndex)
   const firstClueGiverId = useGame((s) => s.firstClueGiverId)
   const settings = useGame((s) => s.settings)
+  const setRevealIndex = useGame((s) => s.setRevealIndex)
   const goToDiscussion = useGame((s) => s.goToDiscussion)
   const revealAnswer = useGame((s) => s.revealAnswer)
+  const playAgain = useGame((s) => s.playAgainSamePlayers)
+  const startRound = useGame((s) => s.startRound)
 
-  return (
-    <div className="space-y-3 flex flex-col flex-1">
-      <nav className="flex items-center justify-between text-sm">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-1.5 text-foreground/60 hover:text-foreground min-h-11 -ml-2 px-2 rounded-md"
-        >
-          <ArrowLeft size={16} />
-          {t('common.home')}
-        </Link>
-        {phase !== 'lobby' && (
-          <span className="text-foreground/50">
-            {t('localGame.phase')}{' '}
-            <span className="text-foreground/80">{phase}</span>
+  const [shown, setShown] = useState(false)
+  const [peekOpen, setPeekOpen] = useState(false)
+  const [confirmReveal, setConfirmReveal] = useState(false)
+
+  if (phase === 'lobby' || !pair || players.length === 0) {
+    return <Navigate to="/local" replace />
+  }
+
+  if (phase === 'reveal') {
+    const player = players[revealIndex] ?? players[0]
+    const isLast = revealIndex >= players.length - 1
+    const back = () => {
+      if (shown) setShown(false)
+      else if (revealIndex > 0) setRevealIndex(revealIndex - 1)
+      else navigate('/local')
+    }
+    const next = () => {
+      setShown(false)
+      if (isLast) goToDiscussion()
+      else setRevealIndex(revealIndex + 1)
+    }
+    return (
+      <Screen
+        title={t('reveal.title')}
+        back={back}
+        right={
+          <span className="pr-2 text-sm tabular-nums muted">
+            {revealIndex + 1}/{players.length}
           </span>
-        )}
-      </nav>
+        }
+        footer={
+          shown ? (
+            <button type="button" className="btn-primary w-full" onClick={next}>
+              <EyeOff size={20} />
+              {isLast ? t('reveal.hideAndDiscuss') : t('reveal.hideAndPass')}
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn-primary w-full"
+              onClick={() => setShown(true)}
+            >
+              <Eye size={20} />
+              {t('reveal.show')}
+            </button>
+          )
+        }
+      >
+        <div className="flex flex-1 flex-col justify-center">
+          <SecretCard
+            key={`${player.id}-${shown}`}
+            player={player}
+            players={players}
+            pair={pair}
+            shown={shown}
+            spiesKnowEachOther={settings.spiesKnowEachOther}
+          />
+        </div>
+      </Screen>
+    )
+  }
 
-      {phase === 'lobby' && <Navigate to="/" replace />}
-
-      {phase === 'reveal' && pair && players.length > 0 && (
-        <RevealDeck
+  if (phase === 'discussion') {
+    return (
+      <Screen
+        title={t('discuss.title')}
+        back="/"
+        footer={
+          <>
+            <button
+              type="button"
+              className="btn-secondary w-full"
+              onClick={() => setPeekOpen(true)}
+            >
+              <Eye size={20} />
+              {t('peek.button')}
+            </button>
+            <button
+              type="button"
+              className="btn-primary w-full"
+              onClick={() => setConfirmReveal(true)}
+            >
+              {t('discuss.reveal')}
+            </button>
+          </>
+        }
+      >
+        <DiscussionView
+          order={clueOrder(players, firstClueGiverId)}
+          timerSeconds={settings.timerSeconds}
+        />
+        <PeekSheet
+          open={peekOpen}
+          onClose={() => setPeekOpen(false)}
           players={players}
           pair={pair}
-          onFinish={goToDiscussion}
           spiesKnowEachOther={settings.spiesKnowEachOther}
         />
-      )}
-
-      {phase === 'discussion' && (
-        <div className="space-y-4 flex flex-col flex-1">
-          <header className="text-center">
-            <h2 className="font-display text-xl font-bold">
-              {t('localGame.discuss.title')}
-            </h2>
-            <p className="text-foreground/60 text-sm">
-              {t('localGame.discuss.desc')}
-            </p>
-          </header>
-
-          <section className="card">
-            <div className="label mb-2">{t('localGame.discuss.clueOrder')}</div>
-            <div className="font-display text-xl font-bold text-accent-400 mb-3">
-              {players.find((p) => p.id === firstClueGiverId)?.name}
-            </div>
-            <ol className="text-sm space-y-1 text-foreground/80">
-              {(() => {
-                const startIdx = players.findIndex(
-                  (p) => p.id === firstClueGiverId,
-                )
-                return players.map((_, i) => {
-                  const p = players[(startIdx + i) % players.length]
-                  return (
-                    <li key={p.id} className="flex gap-2">
-                      <span className="text-foreground/50 w-5">{i + 1}.</span>
-                      <span>{p.name}</span>
-                    </li>
-                  )
-                })
-              })()}
-            </ol>
-          </section>
-
-          {settings.timerSeconds > 0 && (
-            <section className="card flex items-center justify-between gap-2">
-              <div className="min-w-0">
-                <div className="label">{t('localGame.discuss.timerLabel')}</div>
-                <div className="text-xs text-foreground/50">
-                  {t('localGame.discuss.timerHint')}
-                </div>
-              </div>
-              <DiscussionTimer seconds={settings.timerSeconds} />
-            </section>
-          )}
-
-          <div className="action-bar">
+        <Sheet
+          open={confirmReveal}
+          onClose={() => setConfirmReveal(false)}
+          title={t('discuss.confirmTitle')}
+        >
+          <p className="pb-4 muted">{t('discuss.confirmBody')}</p>
+          <div className="flex flex-col gap-2">
             <button
-              onClick={revealAnswer}
-              className="btn-primary w-full py-3.5"
+              type="button"
+              className="btn-primary w-full"
+              onClick={() => {
+                setConfirmReveal(false)
+                revealAnswer()
+              }}
             >
-              {t('localGame.discuss.revealBtn')}
+              {t('discuss.reveal')}
             </button>
-            <p className="text-center text-xs text-foreground/50 mt-2">
-              {t('localGame.discuss.revealHint')}
-            </p>
+            <button
+              type="button"
+              className="btn-secondary w-full"
+              onClick={() => setConfirmReveal(false)}
+            >
+              {t('common.cancel')}
+            </button>
           </div>
+        </Sheet>
+      </Screen>
+    )
+  }
+
+  return (
+    <Screen
+      title={t('result.title')}
+      back="/"
+      footer={
+        <>
+          <button
+            type="button"
+            className="btn-primary w-full"
+            onClick={() => {
+              playAgain()
+              if (startRound()) navigate('/local')
+            }}
+          >
+            {t('result.nextRound')}
+          </button>
+          <button
+            type="button"
+            className="btn-secondary w-full"
+            onClick={() => {
+              playAgain()
+              navigate('/local')
+            }}
+          >
+            {t('result.changeSetup')}
+          </button>
+        </>
+      }
+    >
+      <ResultView spies={players.filter((p) => p.isSpy)} pair={pair} />
+      <InstallPrompt />
+    </Screen>
+  )
+}
+
+/** Lets a player who forgot their word look again, mid-round. */
+function PeekSheet({
+  open,
+  onClose,
+  players,
+  pair,
+  spiesKnowEachOther,
+}: {
+  open: boolean
+  onClose: () => void
+  players: Player[]
+  pair: Pair
+  spiesKnowEachOther: boolean
+}) {
+  const { t } = useTranslation()
+  const [pickedId, setPickedId] = useState<string | null>(null)
+  const [shown, setShown] = useState(false)
+  const picked = players.find((p) => p.id === pickedId) ?? null
+
+  const close = () => {
+    setPickedId(null)
+    setShown(false)
+    onClose()
+  }
+
+  return (
+    <Sheet open={open} onClose={close} title={t('peek.title')}>
+      {!picked ? (
+        <>
+          <p className="pb-3 text-sm muted">{t('peek.pick')}</p>
+          <div className="group-list">
+            {players.map((p) => (
+              <button
+                key={p.id}
+                type="button"
+                className="row"
+                onClick={() => setPickedId(p.id)}
+              >
+                <img
+                  src={p.avatar}
+                  alt=""
+                  className="h-9 w-9 rounded-full border border-border bg-surface-2"
+                />
+                <span className="flex-1 font-medium">{p.name}</span>
+                <ChevronRight size={20} className="text-foreground/30 rtl:rotate-180" />
+              </button>
+            ))}
+          </div>
+        </>
+      ) : (
+        <div className="space-y-3">
+          <SecretCard
+            key={`${picked.id}-${shown}`}
+            player={picked}
+            players={players}
+            pair={pair}
+            shown={shown}
+            spiesKnowEachOther={spiesKnowEachOther}
+          />
+          {shown ? (
+            <button type="button" className="btn-primary w-full" onClick={close}>
+              <EyeOff size={20} />
+              {t('peek.hide')}
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="btn-primary w-full"
+              onClick={() => setShown(true)}
+            >
+              <Eye size={20} />
+              {t('reveal.show')}
+            </button>
+          )}
         </div>
       )}
-
-      {phase === 'result' && <ResultScreen />}
-    </div>
+    </Sheet>
   )
 }

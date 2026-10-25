@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "Spion — Het Woordspel"
+    "title": "Spy — Het woordspel voor feestjes"
   },
   "app": {
-    "footer": "Spion — het woordspel. Speel live of online met vrienden.",
     "exitConfirm": "Druk nogmaals om af te sluiten"
   },
   "languages": {
@@ -25,241 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "Begin",
     "back": "Terug",
     "cancel": "Annuleren",
     "save": "Opslaan",
     "delete": "Verwijderen",
-    "yes": "Ja",
-    "no": "Nee",
-    "dismiss": "Sluiten"
-  },
-  "wizard": {
-    "modeTitle": "Hoe wil je spelen?",
-    "modeSingle": "Eén apparaat",
-    "modeSingleDesc": "Geef de telefoon door rond de tafel.",
-    "modeOnline": "Iedereen op eigen apparaat",
-    "modeOnlineDesc": "Elke speler doet mee vanaf eigen telefoon.",
-    "roleTitle": "Hosten of meedoen?",
-    "roleHost": "Kamer hosten",
-    "roleHostDesc": "Maak een spel en deel de code.",
-    "roleJoin": "Meedoen met code",
-    "roleJoinDesc": "Heb je een code of QR? Stap in.",
-    "back": "← Terug",
-    "next": "Volgende →",
-    "playersTitle": "Spelers toevoegen",
-    "playersDesc": "Voeg iedereen toe. Minimaal 3.",
-    "categoriesTitle": "Kies woordbronnen",
-    "categoriesDesc": "Kies categorieën om uit te kiezen.",
-    "optionsTitle": "Spelopties",
-    "optionsDesc": "Pas moeilijkheid en discussietijd aan.",
-    "startBtn": "Ronde starten →",
-    "hostNameTitle": "Jouw naam",
-    "hostNameDesc": "Andere spelers zien dit in de lobby.",
-    "hostCreateBtn": "Kamer maken",
-    "creating": "Bezig met maken…",
-    "joinCodeTitle": "Kamercode invoeren",
-    "joinCodeDesc": "Typ de 4-lettercode of scan de QR.",
-    "joinNameTitle": "Jouw naam",
-    "joinBtn": "Meedoen",
-    "joining": "Bezig…",
-    "stepLabel": "Stap {{current}} van {{total}}"
+    "close": "Sluiten",
+    "done": "Klaar"
   },
   "home": {
     "title": "Spion",
-    "howTo": {
-      "title": "Hoe te spelen",
-      "step1_title": "Opzet",
-      "step1": "Iedereen krijgt hetzelfde woord. De spion krijgt een gelijkende hint — of niets.",
-      "step2_title": "Aanwijzingsrondes",
-      "step2": "Om de beurt zeg je één woord dat aantoont dat je het geheim kent — maar vaag genoeg zodat de spion het niet kan raden.",
-      "step3_title": "Vraagronde",
-      "step3": "Ondervraag elkaar. Luister wie bluft en zoek de spion.",
-      "step4_title": "Stemmen",
-      "step4": "Stem op de verdachte. De beschuldigde spion krijgt één laatste gok op het woord.",
-      "winTitle": "Hoe te winnen",
-      "civWinLabel": "Burgers winnen als",
-      "civWin": "Je de spion eruit stemt EN de spion het woord niet raadt.",
-      "spyWinLabel": "Spion wint als",
-      "spyWin": "De spion de stemming overleeft, OF het geheime woord zegt zodra hij het weet, OF correct raadt nadat hij gepakt is."
-    }
+    "tagline": "Iedereen krijgt een woord. De spion krijgt een ander.",
+    "oneDevice": "Allemaal op één apparaat",
+    "oneDeviceDesc": "Geef één telefoon door aan tafel.",
+    "ownDevice": "Iedereen op een eigen apparaat",
+    "ownDeviceDesc": "Elke speler gaat met de eigen telefoon een kamer in.",
+    "continueRound": "Doorgaan met huidige ronde",
+    "playAgain": "Opnieuw spelen",
+    "howToPlay": "Speluitleg"
   },
-  "localGame": {
-    "phase": "Fase:",
-    "discuss": {
-      "title": "Discussie",
-      "desc": "Iedere speler geeft één korte aanwijzing over zijn woord, dan debatteren. Beslis samen wie de spion is.",
-      "clueOrder": "Volgorde — begint met",
-      "timerLabel": "Discussietijd",
-      "timerHint": "Pauzeer of reset wanneer je wilt.",
-      "revealBtn": "Spion onthullen →",
-      "revealHint": "Beslist? Tik om te zien wie het was."
-    }
+  "setup": {
+    "players": "Spelers",
+    "playerCount_one": "{{count}} speler",
+    "playerCount_other": "{{count}} spelers",
+    "words": "Woorden",
+    "allCategories": "Alle",
+    "categoryCount_one": "{{count}} categorie",
+    "categoryCount_other": "{{count}} categorieën",
+    "spies": "Spionnen",
+    "randomEachRound": "Elke ronde willekeurig",
+    "spiesKnow": "Kennen elkaar",
+    "hint": "Hint voor spion",
+    "timer": "Timer",
+    "off": "Uit",
+    "minutes_one": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "none": "Geen",
+    "start": "Ronde starten"
   },
-  "lobby": {
-    "playersLabel": "Spelers ({{count}})",
-    "quickAdd": "+ Snel toevoegen",
-    "namePlaceholder": "Naam (of laat leeg)",
-    "addBtn": "Toevoegen",
-    "removeAria": "{{name}} verwijderen",
-    "empty": "Nog geen spelers.",
+  "players": {
+    "namePlaceholder": "Speler toevoegen",
+    "add": "Speler toevoegen",
     "defaultName": "Speler {{n}}",
-    "spyCountLabel": "Aantal spionnen",
-    "spyCountHint": "Meer spionnen = moeilijker voor burgers.",
-    "spyCountRandom": "Willekeurig",
-    "spyCountRandomHint": "Kiest 1–{{max}} spionnen per ronde.",
-    "spiesKnowLabel": "Spionnen kennen elkaar",
-    "spiesKnowHint": "Ze zien medespionnen op hun kaart.",
-    "difficultyLabel": "Moeilijkheid voor burgers",
-    "difficulty": {
-      "easy": {
-        "label": "Makkelijk",
-        "hint": "Spion krijgt geen hint — pure bluf, makkelijkst te pakken."
-      },
-      "medium": {
-        "label": "Gemiddeld",
-        "hint": "Hint van spion is een buur uit dezelfde categorie."
-      },
-      "hard": {
-        "label": "Moeilijk",
-        "hint": "Hint van spion ligt heel dicht bij het echte woord, zelfde categorie — klassiek."
-      }
-    },
-    "timerLabel": "Discussietijd",
-    "timerOff": "Geen timer",
-    "timerMin": "{{count}} min",
-    "needPlayers": "Voeg minstens 3 spelers toe.",
-    "needSource": "Kies minstens één woordbron."
+    "changeAvatar": "Afbeelding wijzigen",
+    "rename": "{{name}} hernoemen",
+    "remove": "{{name}} verwijderen",
+    "empty": "Nog geen spelers.",
+    "needMore_one": "Voeg nog {{count}} speler toe om te starten.",
+    "needMore_other": "Voeg nog {{count}} spelers toe om te starten.",
+    "tip": "Sleep in de volgorde waarin jullie zitten; de kaarten gaan in deze volgorde rond.",
+    "reorder": "{{name}} verplaatsen"
   },
-  "timer": {
-    "pause": "Pauze",
-    "resume": "Hervatten",
-    "done": "Klaar",
-    "reset": "Reset"
-  },
-  "revealDeck": {
-    "cardProgress_one": "Kaart {{current}} van {{total}}",
-    "cardProgress_other": "Kaart {{current}} van {{total}}",
-    "prev": "← Vorige",
-    "next": "Volgende →",
-    "doneBtn": "Klaar →",
-    "tapHint": "tik op kaart om om te draaien",
-    "swipeHint": "veeg ← voor volgende"
-  },
-  "playerCard": {
-    "spyHeader": "Spion",
-    "passTo": "Geef aan",
-    "passInstruction": "Wanneer het veilig is, tik op de kaart om je woord te zien.",
-    "tapToFlip": "tik om om te draaien",
-    "tapToHide": "tik om te verbergen",
-    "spyRole": "🕵️ Spion",
-    "civRole": "✅ Burger",
-    "spyBadge": "🕵️ Jij bent de spion",
-    "fellowSpiesLabel": "Medespionnen",
-    "aloneSpy": "Jij bent de enige spion.",
-    "spyHeadsUp_before": "Let op:",
-    "spyHeadsUp_mid": " dit woord is ",
-    "spyHeadsUp_not": "niet",
-    "spyHeadsUp_after": " wat de anderen hebben. Het is een gelijkende ",
-    "spyHeadsUp_hint": "hint",
-    "spyHeadsUp_tail": ". Zeg het niet hardop.",
-    "yourHint": "Jouw hint",
-    "spyBluff": "Bluf — laat je clues passen bij jouw woord ÉN dat van hen.",
-    "noHintTitle": "Geen hint deze ronde.",
-    "noHintBody": " Je kent het woord niet. Luister, ga op in de groep, bluf.",
-    "noHintPlaceholder": "(geen hint)",
-    "noHintBluff": "Echo wat anderen zeggen. Wees niet de eerste die zich vastlegt.",
-    "civBadge": "✅ Burger",
-    "civBody": "Iedereen (behalve de spion) heeft dit woord. Vind de spion.",
-    "yourWord": "Jouw woord"
-  },
-  "result": {
-    "title": "De onthulling",
-    "subtitle": "Had je gelijk?",
-    "spyWas": "De spion was",
-    "spiesWere": "De spionnen waren",
-    "wordsLabel": "De woorden",
-    "civilians": "Burgers",
-    "spy": "Spion",
-    "vs": "vs",
-    "noHint": "(geen hint)",
-    "category": "Categorie: {{name}}",
-    "playAgain": "Opnieuw — zelfde spelers",
-    "backToLobby": "Terug naar lobby",
-    "home": "Begin"
-  },
-  "pairPicker": {
-    "label": "Woordbronnen",
+  "words": {
     "selectAll": "Alles selecteren",
-    "clear": "Wissen",
+    "selectNone": "Alles deselecteren",
     "pairCount_one": "{{count}} paar",
     "pairCount_other": "{{count}} paren",
     "newList": "Nieuwe lijst",
     "newListDesc": "Je eigen woordparen",
-    "editAria": "Lijst bewerken",
-    "pickAtLeastOne": "Kies minstens één bron om te starten."
+    "editList": "Lijst bewerken",
+    "pickOne": "Kies minstens één categorie."
+  },
+  "spies": {
+    "count": "Aantal spionnen",
+    "maxHint": "Met {{players}} spelers kun je tot {{max}} spionnen hebben.",
+    "fewPlayers": "Er zijn altijd minder spionnen dan de helft van de spelers.",
+    "knowLabel": "Spionnen kennen elkaar",
+    "knowHint": "Spionnen zien de andere spionnen op hun kaart.",
+    "knowNeedsTwo": "Alleen van belang bij twee of meer spionnen.",
+    "pickHint": "Tik één getal aan, of meerdere om iedereen te laten gissen.",
+    "randomPick": "Elke ronde heeft willekeurig {{list}} spionnen. Niemand weet hoeveel."
+  },
+  "hint": {
+    "intro": "Wat de spion ziet in plaats van het echte woord. Hoe minder hulp, hoe makkelijker de spion te ontmaskeren is.",
+    "exampleWord": "Burgers zien",
+    "exampleHint": "Spion ziet",
+    "hard": {
+      "label": "Vergelijkbaar woord",
+      "desc": "Een woord dat bijna hetzelfde is. Het moeilijkst te ontmaskeren."
+    },
+    "medium": {
+      "label": "Zelfde categorie",
+      "desc": "Een ander woord uit dezelfde categorie."
+    },
+    "easy": {
+      "label": "Geen hint",
+      "desc": "De spion krijgt niets en moet bluffen."
+    }
+  },
+  "timer": {
+    "intro": "Aftellen voor de discussie. Je kunt hem altijd pauzeren of herstarten.",
+    "pause": "Pauze",
+    "resume": "Hervatten",
+    "reset": "Herstarten",
+    "timesUp": "Tijd is om"
+  },
+  "card": {
+    "passTo": "Geef de telefoon aan",
+    "passHint": "Zorg dat niemand anders het scherm kan zien.",
+    "civilian": "Burger",
+    "spy": "Spion",
+    "yourWord": "Jouw woord",
+    "yourHint": "Jouw hint",
+    "noHint": "Geen hint",
+    "spyTip": "De anderen hebben een ander woord. Val niet op.",
+    "noHintTip": "Luister goed en bluf.",
+    "otherSpies": "Andere spionnen",
+    "onlySpy": "Jij bent de enige spion."
+  },
+  "reveal": {
+    "title": "Kaarten",
+    "show": "Mijn kaart tonen",
+    "hideAndPass": "Verbergen en doorgeven",
+    "hideAndDiscuss": "Verbergen en discussie starten"
+  },
+  "peek": {
+    "button": "Mijn kaart bekijken",
+    "title": "Bekijk je kaart",
+    "pick": "Wie ben jij?",
+    "hide": "Kaart verbergen"
+  },
+  "discuss": {
+    "title": "Discussie",
+    "starts": "Eerste hint",
+    "howTo": "Ga de kring rond, ieder één korte hint. Overleg daarna en stem de spion weg.",
+    "order": "Volgorde",
+    "reveal": "Spion onthullen",
+    "confirmTitle": "Spion onthullen?",
+    "confirmBody": "Iedereen ziet wie de spion was en beide woorden."
+  },
+  "result": {
+    "title": "Uitslag",
+    "spyWas": "De spion was",
+    "spiesWere": "De spionnen waren",
+    "civilians": "Burgers",
+    "spy": "Spion",
+    "category": "Categorie: {{name}}",
+    "nextRound": "Volgende ronde",
+    "changeSetup": "Instellingen wijzigen"
   },
   "editList": {
     "notFound": "Lijst niet gevonden",
     "notFoundDesc": "Deze woordenlijst bestaat niet meer.",
     "headerEdit": "Lijst bewerken",
     "headerNew": "Nieuwe lijst",
-    "titleEdit": "Woordenlijst bewerken",
-    "titleNew": "Nieuwe woordenlijst",
-    "intro_before": "Voeg eigen burger / spion paren toe. De hint van de spion moet ",
-    "intro_similar": "gelijkend",
-    "intro_after": " zijn — niet identiek, niet totaal anders.",
     "name": "Lijstnaam",
     "namePlaceholder": "bv. Inside jokes, Kantoorhapjes…",
     "icon": "Icoon",
     "pairs": "Paren",
-    "pairsHint": "Burgerwoord → Spion-hint",
+    "pairsHint": "Links: het woord van de burgers. Rechts: de hint van de spion.",
     "civilianPlaceholder": "Woord van burgers",
     "spyPlaceholder": "Hint van spion",
     "removePairAria": "Paar verwijderen",
-    "addPair": "+ Paar toevoegen",
+    "addPair": "Paar toevoegen",
     "create": "Lijst maken",
     "deleteConfirmTitle": "Deze lijst verwijderen?",
     "deleteConfirmDesc": "Dit kan niet ongedaan worden gemaakt."
   },
   "online": {
     "yourName": "Jouw naam",
-    "hostNamePlaceholder": "bv. Alex",
-    "errCreateRoom": "Kan kamer niet maken",
+    "or": "of",
+    "createRoom": "Kamer maken",
+    "creating": "Bezig met maken…",
+    "join": "Meedoen",
+    "joining": "Meedoen…",
     "roomCode": "Kamercode",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "bv. Sam",
-    "errNeedBoth": "Code én naam nodig.",
-    "errCouldNotJoin": "Kan niet meedoen",
-    "fbWarnTitleShort": "Firebase niet ingesteld",
-    "fbNotConfigured": "Firebase niet ingesteld.",
-    "loadingRoom": "Kamer {{code}} laden…",
-    "roomLabel": "Kamer",
-    "share": "Deel deze kamer",
-    "copyLink": "Link kopiëren",
-    "qrShareHint": "Vrienden kunnen scannen om mee te doen.",
-    "scanQr": "📷 QR scannen",
+    "roomTitle": "Kamer {{code}}",
+    "invite": "Uitnodigen",
+    "copied": "Link gekopieerd",
+    "scanQr": "QR-code scannen",
     "qrScanTitle": "Kamer QR scannen",
     "qrScanHint": "Richt je camera op de QR van de host.",
     "qrCameraError": "Kan camera niet openen",
     "qrInvalid": "Die QR is geen kamerlink.",
-    "playersHeader": "Spelers ({{count}})",
+    "you": "Jij",
+    "host": "Host",
+    "kick": "{{name}} verwijderen",
+    "roundSettings": "Ronde-instellingen",
+    "needPlayers_one": "Wachten op nog {{count}} speler.",
+    "needPlayers_other": "Wachten op nog {{count}} spelers.",
     "starting": "Bezig…",
-    "startRound": "Ronde starten →",
-    "needPlayers": "Minstens 3 spelers. Deel de link!",
-    "waitingHost": "Wachten op host om te starten…",
+    "waitStart": "Wachten tot de host de ronde start…",
     "loadingWord": "Je woord laden…",
-    "hostAdvance": "Iedereen heeft zijn woord gezien? → Discussie",
-    "guestAdvanceWait": "Als iedereen klaar is, schakelt de host door.",
-    "discussTitle": "Discussie",
-    "discussDesc": "Iedere speler geeft één korte hint over zijn woord, dan debatteren jullie samen in persoon. Beslis wie de spion is.",
-    "clueOrder": "Volgorde — begint met",
-    "discussTimerLabel": "Discussietijd",
-    "discussTimerHint": "Standaard 3 minuten.",
-    "hostReveal": "Spion onthullen →",
-    "guestRevealWait": "Host onthult als iedereen klaar is.",
-    "hostBackLobby": "Terug naar lobby",
-    "guestBackWait": "Host kan iedereen terugbrengen.",
+    "cardReady": "Je kaart is klaar",
+    "cardReadyHint": "Zorg dat niemand meekijkt en toon hem dan.",
+    "toDiscussion": "Iedereen klaar: discussie starten",
+    "waitDiscussion": "De host start de discussie als iedereen zijn kaart heeft gezien.",
+    "waitReveal": "De host onthult de spion als jullie klaar zijn.",
+    "waitNext": "Wachten op de host…",
+    "backToLobby": "Terug naar kamer",
+    "loadingRoom": "Kamer {{code}} laden…",
+    "fbNotConfigured": "Online spelen is niet ingesteld in deze versie.",
     "errStartRound": "Kan ronde niet starten",
     "defaultHostName": "Host",
     "defaultGuestName": "Gast",
@@ -272,123 +226,112 @@
   "categories": {
     "food": {
       "name": "Eten en Drinken",
-      "description": "Eetbare dingen. Paren zijn smakelijk en lijken op elkaar.",
-      "icon": "🍕"
+      "description": "Eetbare dingen. Paren zijn smakelijk en lijken op elkaar."
     },
     "animals": {
       "name": "Dieren",
-      "description": "Groot, klein, schubbig, pluizig.",
-      "icon": "🐾"
+      "description": "Groot, klein, schubbig, pluizig."
     },
     "sports": {
       "name": "Sport",
-      "description": "Dingen om met je lichaam te doen, liefst buiten.",
-      "icon": "⚽"
+      "description": "Dingen om met je lichaam te doen, liefst buiten."
     },
     "places": {
       "name": "Plekken",
-      "description": "Kamers, gebouwen, steden, landschappen.",
-      "icon": "🗺️"
+      "description": "Kamers, gebouwen, steden, landschappen."
     },
     "tech": {
       "name": "Tech",
-      "description": "Kabels, schermen, alles met een batterij.",
-      "icon": "📱"
+      "description": "Kabels, schermen, alles met een batterij."
     },
     "entertainment": {
       "name": "Entertainment",
-      "description": "Films, boeken, games, muziek.",
-      "icon": "🎬"
+      "description": "Films, boeken, games, muziek."
     },
     "household": {
       "name": "Huishouden",
-      "description": "Dingen in keuken, badkamer, garage.",
-      "icon": "🛋️"
+      "description": "Dingen in keuken, badkamer, garage."
     },
     "nature": {
       "name": "Natuur en Weer",
-      "description": "Luchten, zeeën, seizoenen, stormen.",
-      "icon": "🌧️"
+      "description": "Luchten, zeeën, seizoenen, stormen."
     },
     "music": {
       "name": "Muziek",
-      "description": "Instrumenten, genres, klanken.",
-      "icon": "🎵"
+      "description": "Instrumenten, genres, klanken."
     },
     "jobs": {
       "name": "Beroepen",
-      "description": "Wat mensen doen voor de kost.",
-      "icon": "💼"
+      "description": "Wat mensen doen voor de kost."
     },
     "vehicles": {
       "name": "Voertuigen",
-      "description": "Dingen die je vervoeren.",
-      "icon": "🚗"
+      "description": "Dingen die je vervoeren."
     },
     "clothing": {
       "name": "Kleding",
-      "description": "Wat je draagt.",
-      "icon": "👕"
+      "description": "Wat je draagt."
     },
     "body": {
       "name": "Lichaam en Gezondheid",
-      "description": "Anatomie, geneeskunde, welzijn.",
-      "icon": "💪"
+      "description": "Anatomie, geneeskunde, welzijn."
     },
     "myth": {
       "name": "Mythen en Fantasie",
-      "description": "Wezens en krachten uit verhalen.",
-      "icon": "🐉"
+      "description": "Wezens en krachten uit verhalen."
     },
     "tricky": {
       "name": "Lastig / Gemengd",
-      "description": "Paren door categorieën heen. De spion gaat zweten.",
-      "icon": "🎲"
+      "description": "Paren door categorieën heen. De spion gaat zweten."
     },
     "tyrants": {
       "name": "Tirannen & Despoten",
-      "description": "Beruchte heersers en dictators uit de geschiedenis.",
-      "icon": "⚔️"
+      "description": "Beruchte heersers en dictators uit de geschiedenis."
     },
     "darkhumor": {
       "name": "Zwarte Humor",
-      "description": "Galgen, taboes — lachen om niet te huilen.",
-      "icon": "💀"
+      "description": "Galgen, taboes — lachen om niet te huilen."
     },
     "prophets": {
       "name": "Profeten",
-      "description": "Heilige mannen en boodschappers van de grote religies.",
-      "icon": "📜"
+      "description": "Heilige mannen en boodschappers van de grote religies."
     },
     "stereotypes": {
       "name": "Stereotypen",
-      "description": "Clichés en karikaturen, met humor.",
-      "icon": "🎭"
+      "description": "Clichés en karikaturen, met humor."
     },
     "races": {
       "name": "Volken",
-      "description": "Volken en nationaliteiten — zelfde regio, andere wortels.",
-      "icon": "🌍"
-    },
-    "religions": {
-      "name": "Religies",
-      "description": "Geloven, heilige boeken, feestdagen en riten — door alle gezindten heen.",
-      "icon": "🛐"
-    },
-    "terror": {
-      "name": "Terreuraanslagen",
-      "description": "Beruchte aanslagen en gruweldaden.",
-      "icon": "💥"
+      "description": "Volken en nationaliteiten — zelfde regio, andere wortels."
     },
     "infamous": {
       "name": "Kritieke Plaatsen",
-      "description": "Plekken van tragedie: bloedbaden, oorlogen, rampen.",
-      "icon": "🕯️"
+      "description": "Plekken van tragedie: bloedbaden, oorlogen, rampen."
+    },
+    "terror": {
+      "name": "Terreuraanslagen",
+      "description": "Beruchte aanslagen en gruweldaden."
+    },
+    "religions": {
+      "name": "Religies",
+      "description": "Geloven, heilige boeken, feestdagen en riten — door alle gezindten heen."
     }
   },
   "customList": {
     "description_one": "Jouw lijst ({{count}} paar)",
     "description_other": "Jouw lijst ({{count}} paren)",
     "fallback": "Eigen"
+  },
+  "options": {
+    "title": "Instellingen",
+    "languageLabel": "Taal",
+    "wordListsLabel": "Jouw woordlijsten",
+    "wordListsHint": "Maak en bewerk eigen woordparen voor burgers / spion."
+  },
+  "install": {
+    "title": "Zet Spy op je beginscherm",
+    "desc": "Opent als een app en werkt offline, klaar voor de volgende spelletjesavond.",
+    "button": "Installeren",
+    "iosHint": "Tik in Safari op Deel en dan op 'Zet op beginscherm'."
   }
 }

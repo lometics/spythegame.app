@@ -1,41 +1,63 @@
 import type { GameState, Pair, Player } from './types'
 
-export type SpyCountRange = { min: number; max: number }
-export type SpyCountSetting = number | SpyCountRange | 'random'
+/** Spy counts the group allows; each round uses one of them at random. */
+export type SpyCountSetting = number[]
 
 export function maxSpiesFor(playerCount: number): number {
   // Spies must be strictly fewer than half the players (civilians always majority).
   return Math.max(1, Math.floor((playerCount - 1) / 2))
 }
 
-export function isSpyCountRange(s: SpyCountSetting): s is SpyCountRange {
-  return typeof s === 'object' && s !== null && 'min' in s && 'max' in s
-}
-
-export function clampSpyCount(spyCount: number, playerCount: number): number {
-  if (!Number.isFinite(spyCount) || spyCount < 1) return 1
-  return Math.min(Math.floor(spyCount), maxSpiesFor(playerCount))
+/**
+ * The selected counts that fit this many players, ascending. If none fit
+ * (say "3 spies" with only 5 players), the round uses the most it can.
+ */
+export function availableSpyCounts(
+  selected: SpyCountSetting,
+  playerCount: number,
+): number[] {
+  const max = maxSpiesFor(playerCount)
+  const valid = [...new Set(selected.map(Math.floor))]
+    .filter((n) => n >= 1 && n <= max)
+    .sort((a, b) => a - b)
+  if (valid.length > 0) return valid
+  return [Math.min(Math.max(1, ...selected), max)]
 }
 
 export function resolveSpyCount(
-  spyCount: SpyCountSetting,
+  selected: SpyCountSetting,
   playerCount: number,
 ): number {
-  const max = maxSpiesFor(playerCount)
-  if (spyCount === 'random') {
-    return 1 + Math.floor(Math.random() * max)
+  const options = availableSpyCounts(selected, playerCount)
+  return options[Math.floor(Math.random() * options.length)]
+}
+
+/** Add or remove one count; the last remaining count can't be removed. */
+export function toggleSpyCount(selected: SpyCountSetting, n: number): number[] {
+  if (!selected.includes(n)) return [...selected, n].sort((a, b) => a - b)
+  const next = selected.filter((x) => x !== n)
+  return next.length > 0 ? next : selected
+}
+
+/** Reads any saved shape (old number or {min,max} range) as a list of counts. */
+export function normalizeSpyCount(saved: unknown): number[] {
+  if (Array.isArray(saved)) {
+    const ok = saved.filter((n): n is number => Number.isInteger(n) && n >= 1)
+    return ok.length > 0 ? ok : [1]
   }
-  if (isSpyCountRange(spyCount)) {
-    const lo = Math.max(1, Math.min(Math.floor(spyCount.min), max))
-    const hi = Math.max(lo, Math.min(Math.floor(spyCount.max), max))
-    return lo + Math.floor(Math.random() * (hi - lo + 1))
+  if (typeof saved === 'number' && saved >= 1) return [Math.floor(saved)]
+  if (saved && typeof saved === 'object' && 'min' in saved && 'max' in saved) {
+    const { min, max } = saved as { min: number; max: number }
+    const lo = Math.max(1, Math.floor(min))
+    const hi = Math.max(lo, Math.floor(max))
+    return Array.from({ length: hi - lo + 1 }, (_, i) => lo + i)
   }
-  return clampSpyCount(spyCount, playerCount)
+  return [1]
 }
 
 export function assignRoles(
   players: Player[],
-  spyCount: SpyCountSetting = 1,
+  spyCount: SpyCountSetting = [1],
 ): Player[] {
   if (players.length < 3) {
     throw new Error('Need at least 3 players')
@@ -51,6 +73,16 @@ export function assignRoles(
   return players.map((p, i) => ({ ...p, isSpy: spySet.has(i) }))
 }
 
+/** Players rotated so the first clue giver comes first; original order if id is unknown. */
+export function clueOrder<T extends { id: string }>(
+  players: T[],
+  firstId: string | null,
+): T[] {
+  const start = players.findIndex((p) => p.id === firstId)
+  if (start <= 0) return players
+  return [...players.slice(start), ...players.slice(0, start)]
+}
+
 export function pickFirstClueGiver(players: Player[]): string {
   return players[Math.floor(Math.random() * players.length)].id
 }
@@ -59,7 +91,7 @@ export function startRoundState(
   players: Player[],
   pair: Pair,
   prevRound: number,
-  spyCount: SpyCountSetting = 1,
+  spyCount: SpyCountSetting = [1],
 ): Partial<GameState> {
   const assigned = assignRoles(players, spyCount)
   return {

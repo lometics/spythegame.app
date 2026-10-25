@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "间谍 — 单词游戏"
+    "title": "Spy — 派对文字游戏"
   },
   "app": {
-    "footer": "间谍 — 单词游戏。和朋友面对面或线上玩。",
     "exitConfirm": "再次按下退出"
   },
   "languages": {
@@ -25,241 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "首页",
     "back": "返回",
     "cancel": "取消",
     "save": "保存",
     "delete": "删除",
-    "yes": "是",
-    "no": "否",
-    "dismiss": "关闭"
-  },
-  "wizard": {
-    "modeTitle": "怎么玩？",
-    "modeSingle": "单设备",
-    "modeSingleDesc": "桌上传手机。",
-    "modeOnline": "各自用自己的设备",
-    "modeOnlineDesc": "每位玩家从自己手机加入。",
-    "roleTitle": "开房还是加入？",
-    "roleHost": "开房间",
-    "roleHostDesc": "创建游戏并分享代码。",
-    "roleJoin": "用代码加入",
-    "roleJoinDesc": "有代码或二维码？加入吧。",
-    "back": "← 返回",
-    "next": "下一步 →",
-    "playersTitle": "添加玩家",
-    "playersDesc": "添加所有人。至少3人。",
-    "categoriesTitle": "选词库",
-    "categoriesDesc": "选择使用的类别。",
-    "optionsTitle": "游戏选项",
-    "optionsDesc": "调整难度和讨论时间。",
-    "startBtn": "开始回合 →",
-    "hostNameTitle": "你的名字",
-    "hostNameDesc": "其他玩家会在大厅看到。",
-    "hostCreateBtn": "创建房间",
-    "creating": "创建中…",
-    "joinCodeTitle": "输入房间代码",
-    "joinCodeDesc": "输入4位字母代码或扫码。",
-    "joinNameTitle": "你的名字",
-    "joinBtn": "加入",
-    "joining": "加入中…",
-    "stepLabel": "第 {{current}} / {{total}} 步"
+    "close": "关闭",
+    "done": "完成"
   },
   "home": {
     "title": "间谍",
-    "howTo": {
-      "title": "怎么玩",
-      "step1_title": "设置",
-      "step1": "所有人拿到同一个词。间谍拿到相似提示 — 或什么都没有。",
-      "step2_title": "线索轮",
-      "step2": "轮流说一个词，证明你知道秘密 — 但要模糊到间谍猜不出来。",
-      "step3_title": "提问时间",
-      "step3": "互相盘问。听谁在虚张声势，找出间谍。",
-      "step4_title": "投票",
-      "step4": "投出嫌疑人。被指控的间谍可以最后猜一次词。",
-      "winTitle": "如何获胜",
-      "civWinLabel": "平民获胜如果",
-      "civWin": "投出间谍 并且 间谍最终猜词失败。",
-      "spyWinLabel": "间谍获胜如果",
-      "spyWin": "间谍熬过投票，或 在猜到后说出秘密词，或 被抓后猜对了。"
-    }
+    "tagline": "每人拿到一个词，间谍拿到的却不一样。",
+    "oneDevice": "同一台设备",
+    "oneDeviceDesc": "一部手机在桌边轮流传。",
+    "ownDevice": "各用各的设备",
+    "ownDeviceDesc": "每位玩家用自己的手机加入房间。",
+    "continueRound": "继续当前回合",
+    "playAgain": "再玩一局",
+    "howToPlay": "玩法说明"
   },
-  "localGame": {
-    "phase": "阶段：",
-    "discuss": {
-      "title": "讨论",
-      "desc": "每位玩家说一个关于自己词的短线索，然后辩论。一起决定谁是间谍。",
-      "clueOrder": "线索顺序 — 由谁开始",
-      "timerLabel": "讨论计时",
-      "timerHint": "随时暂停或重置。",
-      "revealBtn": "揭晓间谍 →",
-      "revealHint": "决定了？点一下看间谍是谁。"
-    }
+  "setup": {
+    "players": "玩家",
+    "playerCount_one": "{{count}} 名玩家",
+    "playerCount_other": "{{count}} 名玩家",
+    "words": "词语",
+    "allCategories": "全部",
+    "categoryCount_one": "{{count}} 个类别",
+    "categoryCount_other": "{{count}} 个类别",
+    "spies": "间谍",
+    "randomEachRound": "每回合随机",
+    "spiesKnow": "互相认识",
+    "hint": "间谍提示",
+    "timer": "计时器",
+    "off": "关闭",
+    "minutes_one": "{{count}} 分钟",
+    "minutes_other": "{{count}} 分钟",
+    "none": "无",
+    "start": "开始回合"
   },
-  "lobby": {
-    "playersLabel": "玩家 ({{count}})",
-    "quickAdd": "+ 快速添加",
-    "namePlaceholder": "名字（可留空）",
-    "addBtn": "添加",
-    "removeAria": "移除 {{name}}",
-    "empty": "还没有玩家。",
+  "players": {
+    "namePlaceholder": "添加玩家",
+    "add": "添加玩家",
     "defaultName": "玩家 {{n}}",
-    "spyCountLabel": "间谍人数",
-    "spyCountHint": "间谍越多 = 对平民越难。",
-    "spyCountRandom": "随机",
-    "spyCountRandomHint": "每轮随机选 1–{{max}} 名间谍。",
-    "spiesKnowLabel": "间谍互相认识",
-    "spiesKnowHint": "他们在卡上看到同伴间谍。",
-    "difficultyLabel": "村民难度",
-    "difficulty": {
-      "easy": {
-        "label": "简单",
-        "hint": "间谍无提示 — 纯靠虚张声势,最易被抓。"
-      },
-      "medium": {
-        "label": "中等",
-        "hint": "间谍提示是同类别的相邻词。"
-      },
-      "hard": {
-        "label": "困难",
-        "hint": "间谍提示非常接近真实词,同类别 — 经典。"
-      }
-    },
-    "timerLabel": "讨论计时",
-    "timerOff": "无计时",
-    "timerMin": "{{count}} 分钟",
-    "needPlayers": "至少添加3位玩家。",
-    "needSource": "至少选一个词源。"
+    "changeAvatar": "更换头像",
+    "rename": "重命名 {{name}}",
+    "remove": "移除 {{name}}",
+    "empty": "还没有玩家。",
+    "needMore_one": "再添加 {{count}} 名玩家即可开始。",
+    "needMore_other": "再添加 {{count}} 名玩家即可开始。",
+    "tip": "拖动排成你们的座位顺序；卡牌按此顺序传递。",
+    "reorder": "移动 {{name}}"
   },
-  "timer": {
-    "pause": "暂停",
-    "resume": "继续",
-    "done": "完成",
-    "reset": "重置"
-  },
-  "revealDeck": {
-    "cardProgress_one": "卡牌 {{current}} / {{total}}",
-    "cardProgress_other": "卡牌 {{current}} / {{total}}",
-    "prev": "← 上一张",
-    "next": "下一张 →",
-    "doneBtn": "完成 →",
-    "tapHint": "点击卡牌翻转",
-    "swipeHint": "← 滑动到下一张"
-  },
-  "playerCard": {
-    "spyHeader": "间谍",
-    "passTo": "传给",
-    "passInstruction": "安全时点击卡牌查看你的词。",
-    "tapToFlip": "点击翻转",
-    "tapToHide": "点击隐藏",
-    "spyRole": "🕵️ 间谍",
-    "civRole": "✅ 平民",
-    "spyBadge": "🕵️ 你是间谍",
-    "fellowSpiesLabel": "同伴间谍",
-    "aloneSpy": "你是唯一的间谍。",
-    "spyHeadsUp_before": "注意：",
-    "spyHeadsUp_mid": " 这个词",
-    "spyHeadsUp_not": "不是",
-    "spyHeadsUp_after": " 其他人的。这是一个相似的",
-    "spyHeadsUp_hint": "提示",
-    "spyHeadsUp_tail": "。不要大声说出来。",
-    "yourHint": "你的提示",
-    "spyBluff": "虚张声势 — 让线索同时符合你的词和他们的。",
-    "noHintTitle": "本轮无提示。",
-    "noHintBody": " 你不知道这个词。听、混入、虚张声势。",
-    "noHintPlaceholder": "（无提示）",
-    "noHintBluff": "重复别人说的。不要第一个表态。",
-    "civBadge": "✅ 平民",
-    "civBody": "除间谍外，所有人都有这个词。找出间谍。",
-    "yourWord": "你的词"
-  },
-  "result": {
-    "title": "揭晓",
-    "subtitle": "猜对了吗？",
-    "spyWas": "间谍是",
-    "spiesWere": "间谍是",
-    "wordsLabel": "词",
-    "civilians": "平民",
-    "spy": "间谍",
-    "vs": "对",
-    "noHint": "（无提示）",
-    "category": "类别：{{name}}",
-    "playAgain": "再玩一次 — 同样的玩家",
-    "backToLobby": "回到大厅",
-    "home": "首页"
-  },
-  "pairPicker": {
-    "label": "词源",
+  "words": {
     "selectAll": "全选",
-    "clear": "清除",
+    "selectNone": "全不选",
     "pairCount_one": "{{count}} 对",
     "pairCount_other": "{{count}} 对",
     "newList": "新列表",
     "newListDesc": "你自己的词对",
-    "editAria": "编辑列表",
-    "pickAtLeastOne": "至少选一个词源才能开始。"
+    "editList": "编辑列表",
+    "pickOne": "请至少选择一个类别。"
+  },
+  "spies": {
+    "count": "间谍人数",
+    "maxHint": "{{players}} 名玩家最多可以有 {{max}} 名间谍。",
+    "fewPlayers": "间谍人数始终少于玩家的一半。",
+    "knowLabel": "间谍互相认识",
+    "knowHint": "间谍能在自己的卡片上看到其他间谍。",
+    "knowNeedsTwo": "仅在有两名及以上间谍时生效。",
+    "pickHint": "选一个数字，或选多个让大家猜不到。",
+    "randomPick": "每局随机有 {{list}} 名间谍。没人知道有几个。"
+  },
+  "hint": {
+    "intro": "间谍看到的内容，用来代替真正的词。提示越少，间谍越容易被识破。",
+    "exampleWord": "平民看到",
+    "exampleHint": "间谍看到",
+    "hard": {
+      "label": "相近词",
+      "desc": "几乎一样的词，最难识破。"
+    },
+    "medium": {
+      "label": "同一类别",
+      "desc": "同类别中的另一个词。"
+    },
+    "easy": {
+      "label": "无提示",
+      "desc": "间谍什么都拿不到，只能靠蒙混。"
+    }
+  },
+  "timer": {
+    "intro": "讨论倒计时，可随时暂停或重新开始。",
+    "pause": "暂停",
+    "resume": "继续",
+    "reset": "重新开始",
+    "timesUp": "时间到"
+  },
+  "card": {
+    "passTo": "把手机交给",
+    "passHint": "确保别人看不到屏幕。",
+    "civilian": "平民",
+    "spy": "间谍",
+    "yourWord": "你的词",
+    "yourHint": "你的提示",
+    "noHint": "无提示",
+    "spyTip": "其他人的词和你不同。混在人群里别露馅。",
+    "noHintTip": "仔细听，靠蒙混过关。",
+    "otherSpies": "其他间谍",
+    "onlySpy": "你是唯一的间谍。"
+  },
+  "reveal": {
+    "title": "卡片",
+    "show": "查看我的卡片",
+    "hideAndPass": "隐藏并传给下一位",
+    "hideAndDiscuss": "隐藏并开始讨论"
+  },
+  "peek": {
+    "button": "查看我的卡片",
+    "title": "查看你的卡片",
+    "pick": "你是谁？",
+    "hide": "隐藏卡片"
+  },
+  "discuss": {
+    "title": "讨论",
+    "starts": "第一个提示",
+    "howTo": "依次每人说一个简短提示，然后讨论并投票找出间谍。",
+    "order": "顺序",
+    "reveal": "揭晓间谍",
+    "confirmTitle": "揭晓间谍？",
+    "confirmBody": "所有人都会看到谁是间谍以及两个词。"
+  },
+  "result": {
+    "title": "结果",
+    "spyWas": "间谍是",
+    "spiesWere": "间谍是",
+    "civilians": "平民",
+    "spy": "间谍",
+    "category": "类别：{{name}}",
+    "nextRound": "下一回合",
+    "changeSetup": "修改设置"
   },
   "editList": {
     "notFound": "未找到列表",
     "notFoundDesc": "这个词列表已不存在。",
     "headerEdit": "编辑列表",
     "headerNew": "新列表",
-    "titleEdit": "编辑词列表",
-    "titleNew": "新词列表",
-    "intro_before": "添加你自己的平民 / 间谍词对。间谍提示应",
-    "intro_similar": "相似",
-    "intro_after": " — 不完全相同，也不完全无关。",
     "name": "列表名",
     "namePlaceholder": "例如：内部笑话、办公室零食…",
     "icon": "图标",
     "pairs": "词对",
-    "pairsHint": "平民词 → 间谍提示",
+    "pairsHint": "左：平民的词。右：间谍的提示。",
     "civilianPlaceholder": "平民的词",
     "spyPlaceholder": "间谍的提示",
     "removePairAria": "移除词对",
-    "addPair": "+ 添加词对",
+    "addPair": "添加词对",
     "create": "创建列表",
     "deleteConfirmTitle": "删除此列表？",
     "deleteConfirmDesc": "此操作无法撤销。"
   },
   "online": {
     "yourName": "你的名字",
-    "hostNamePlaceholder": "例如 Alex",
-    "errCreateRoom": "无法创建房间",
+    "or": "或",
+    "createRoom": "创建房间",
+    "creating": "创建中…",
+    "join": "加入",
+    "joining": "正在加入…",
     "roomCode": "房间代码",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "例如 Sam",
-    "errNeedBoth": "需要房间代码和名字。",
-    "errCouldNotJoin": "无法加入房间",
-    "fbWarnTitleShort": "Firebase 未配置",
-    "fbNotConfigured": "Firebase 未配置。",
-    "loadingRoom": "正在加载房间 {{code}}…",
-    "roomLabel": "房间",
-    "share": "分享此房间",
-    "copyLink": "复制链接",
-    "qrShareHint": "朋友扫码即可加入。",
-    "scanQr": "📷 扫描二维码",
+    "roomTitle": "房间 {{code}}",
+    "invite": "邀请",
+    "copied": "链接已复制",
+    "scanQr": "扫描二维码",
     "qrScanTitle": "扫描房间二维码",
     "qrScanHint": "将相机对准房主二维码。",
     "qrCameraError": "无法打开相机",
     "qrInvalid": "该二维码不是房间链接。",
-    "playersHeader": "玩家 ({{count}})",
+    "you": "你",
+    "host": "房主",
+    "kick": "移除 {{name}}",
+    "roundSettings": "回合设置",
+    "needPlayers_one": "还在等待 {{count}} 名玩家。",
+    "needPlayers_other": "还在等待 {{count}} 名玩家。",
     "starting": "开始中…",
-    "startRound": "开始回合 →",
-    "needPlayers": "至少3人。分享链接！",
-    "waitingHost": "等待房主开始…",
+    "waitStart": "等待房主开始回合…",
     "loadingWord": "加载你的词…",
-    "hostAdvance": "所有人都看了自己的词？→ 讨论",
-    "guestAdvanceWait": "所有人就绪后房主会推进。",
-    "discussTitle": "讨论",
-    "discussDesc": "每位玩家说一个关于自己词的短线索，然后当面辩论。一起决定谁是间谍。",
-    "clueOrder": "线索顺序 — 由谁开始",
-    "discussTimerLabel": "讨论计时",
-    "discussTimerHint": "默认3分钟。",
-    "hostReveal": "揭晓间谍 →",
-    "guestRevealWait": "所有人就绪后房主揭晓。",
-    "hostBackLobby": "回到大厅",
-    "guestBackWait": "房主可以把所有人带回大厅。",
+    "cardReady": "你的卡片已就绪",
+    "cardReadyHint": "确保没人在看，然后再打开。",
+    "toDiscussion": "全员就绪：开始讨论",
+    "waitDiscussion": "所有人看完卡片后，房主会开始讨论。",
+    "waitReveal": "结束后房主会揭晓间谍。",
+    "waitNext": "等待房主…",
+    "backToLobby": "返回房间",
+    "loadingRoom": "正在加载房间 {{code}}…",
+    "fbNotConfigured": "此版本未配置在线模式。",
     "errStartRound": "无法开始回合",
     "defaultHostName": "房主",
     "defaultGuestName": "客人",
@@ -272,123 +226,112 @@
   "categories": {
     "food": {
       "name": "食物与饮料",
-      "description": "能吃的东西。词对美味且足够接近以混淆。",
-      "icon": "🍕"
+      "description": "能吃的东西。词对美味且足够接近以混淆。"
     },
     "animals": {
       "name": "动物",
-      "description": "大的、小的、有鳞的、毛茸茸的。",
-      "icon": "🐾"
+      "description": "大的、小的、有鳞的、毛茸茸的。"
     },
     "sports": {
       "name": "运动",
-      "description": "用身体做的事，最好在户外。",
-      "icon": "⚽"
+      "description": "用身体做的事，最好在户外。"
     },
     "places": {
       "name": "地点",
-      "description": "房间、建筑、城市、风景。",
-      "icon": "🗺️"
+      "description": "房间、建筑、城市、风景。"
     },
     "tech": {
       "name": "科技",
-      "description": "线缆、屏幕、带电池的一切。",
-      "icon": "📱"
+      "description": "线缆、屏幕、带电池的一切。"
     },
     "entertainment": {
       "name": "娱乐",
-      "description": "电影、书、游戏、音乐。",
-      "icon": "🎬"
+      "description": "电影、书、游戏、音乐。"
     },
     "household": {
       "name": "家居",
-      "description": "厨房、浴室、车库的东西。",
-      "icon": "🛋️"
+      "description": "厨房、浴室、车库的东西。"
     },
     "nature": {
       "name": "自然与天气",
-      "description": "天空、海洋、季节、风暴。",
-      "icon": "🌧️"
+      "description": "天空、海洋、季节、风暴。"
     },
     "music": {
       "name": "音乐",
-      "description": "乐器、流派、声音。",
-      "icon": "🎵"
+      "description": "乐器、流派、声音。"
     },
     "jobs": {
       "name": "职业",
-      "description": "人们以此为生。",
-      "icon": "💼"
+      "description": "人们以此为生。"
     },
     "vehicles": {
       "name": "交通工具",
-      "description": "带你四处走的东西。",
-      "icon": "🚗"
+      "description": "带你四处走的东西。"
     },
     "clothing": {
       "name": "服装",
-      "description": "你穿的东西。",
-      "icon": "👕"
+      "description": "你穿的东西。"
     },
     "body": {
       "name": "身体与健康",
-      "description": "解剖、医学、健康。",
-      "icon": "💪"
+      "description": "解剖、医学、健康。"
     },
     "myth": {
       "name": "神话与奇幻",
-      "description": "故事里的生物和力量。",
-      "icon": "🐉"
+      "description": "故事里的生物和力量。"
     },
     "tricky": {
       "name": "棘手 / 混合",
-      "description": "跨类别的词对。间谍要冒汗了。",
-      "icon": "🎲"
+      "description": "跨类别的词对。间谍要冒汗了。"
     },
     "tyrants": {
       "name": "暴君与独裁者",
-      "description": "历史上臭名昭著的统治者和独裁者。",
-      "icon": "⚔️"
+      "description": "历史上臭名昭著的统治者和独裁者。"
     },
     "darkhumor": {
       "name": "黑色幽默",
-      "description": "绞架、禁忌——苦中作乐。",
-      "icon": "💀"
+      "description": "绞架、禁忌——苦中作乐。"
     },
     "prophets": {
       "name": "先知",
-      "description": "各大宗教中的圣人与使者。",
-      "icon": "📜"
+      "description": "各大宗教中的圣人与使者。"
     },
     "stereotypes": {
       "name": "刻板印象",
-      "description": "陈词滥调与漫画式形象，博君一笑。",
-      "icon": "🎭"
+      "description": "陈词滥调与漫画式形象，博君一笑。"
     },
     "races": {
       "name": "民族",
-      "description": "民族与国籍——同地区，不同根源。",
-      "icon": "🌍"
+      "description": "民族与国籍——同地区，不同根源。"
     },
     "infamous": {
       "name": "重大事件之地",
-      "description": "悲剧现场：屠杀、战争、灾难。",
-      "icon": "🕯️"
-    },
-    "religions": {
-      "name": "宗教",
-      "description": "信仰、经典、节日与仪式——跨越教派。",
-      "icon": "🛐"
+      "description": "悲剧现场：屠杀、战争、灾难。"
     },
     "terror": {
       "name": "恐怖袭击",
-      "description": "臭名昭著的恐怖袭击与暴行。",
-      "icon": "💥"
+      "description": "臭名昭著的恐怖袭击与暴行。"
+    },
+    "religions": {
+      "name": "宗教",
+      "description": "信仰、经典、节日与仪式——跨越教派。"
     }
   },
   "customList": {
     "description_one": "你的自定义列表（{{count}} 对）",
     "description_other": "你的自定义列表（{{count}} 对）",
     "fallback": "自定义"
+  },
+  "options": {
+    "title": "设置",
+    "languageLabel": "语言",
+    "wordListsLabel": "我的词库",
+    "wordListsHint": "创建和编辑自定义的平民 / 间谍词对。"
+  },
+  "install": {
+    "title": "将 Spy 添加到主屏幕",
+    "desc": "像应用一样打开，离线也能用，随时准备下一次游戏之夜。",
+    "button": "安装",
+    "iosHint": "在 Safari 中点按“分享”，然后选择“添加到主屏幕”。"
   }
 }

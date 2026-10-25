@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "Spy — Das Wortspiel"
+    "title": "Spy — Das Party-Wortspiel"
   },
   "app": {
-    "footer": "Spy — das Wortspiel. Spiel es vor Ort oder online mit Freunden.",
     "exitConfirm": "Erneut zurück drücken zum Beenden"
   },
   "languages": {
@@ -25,246 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "Startseite",
     "back": "Zurück",
     "cancel": "Abbrechen",
     "save": "Speichern",
     "delete": "Löschen",
-    "yes": "Ja",
-    "no": "Nein",
-    "dismiss": "Schließen"
-  },
-  "wizard": {
-    "modeTitle": "Wie wollt ihr spielen?",
-    "modeSingle": "Ein Gerät",
-    "modeSingleDesc": "Reicht das Handy am Tisch herum.",
-    "modeOnline": "Jeder auf eigenem Gerät",
-    "modeOnlineDesc": "Alle treten vom eigenen Handy aus bei.",
-    "roleTitle": "Gastgeber oder beitreten?",
-    "roleHost": "Raum erstellen",
-    "roleHostDesc": "Erstelle ein Spiel und teile den Code.",
-    "roleJoin": "Mit Code beitreten",
-    "roleJoinDesc": "Code oder QR vom Gastgeber? Spring rein.",
-    "back": "← Zurück",
-    "next": "Weiter →",
-    "playersTitle": "Spieler hinzufügen",
-    "playersDesc": "Trag alle Mitspielenden ein. Mindestens 3.",
-    "categoriesTitle": "Wortquellen wählen",
-    "categoriesDesc": "Welche Kategorien sollen verwendet werden?",
-    "optionsTitle": "Spieloptionen",
-    "optionsDesc": "Schwierigkeit und Diskussions-Timer anpassen.",
-    "startBtn": "Runde starten →",
-    "hostNameTitle": "Dein Name",
-    "hostNameDesc": "Die anderen sehen ihn in der Lobby.",
-    "hostCreateBtn": "Raum erstellen",
-    "creating": "Erstellen…",
-    "joinCodeTitle": "Raum-Code eingeben",
-    "joinCodeDesc": "Tippe den 4-Buchstaben-Code oder scanne den QR.",
-    "joinNameTitle": "Dein Name",
-    "joinBtn": "Beitreten",
-    "joining": "Beitreten…",
-    "stepLabel": "Schritt {{current}} von {{total}}"
+    "close": "Schließen",
+    "done": "Fertig"
   },
   "home": {
     "title": "Spy",
-    "howTo": {
-      "title": "So wird gespielt",
-      "step1_title": "Vorbereitung",
-      "step1": "Alle bekommen dasselbe Wort. Der Spion bekommt einen ähnlichen Hinweis — oder gar nichts.",
-      "step2_title": "Hinweisrunden",
-      "step2": "Reihum sagt jeder ein einziges Wort, das beweist, dass er das Geheimwort kennt — aber vage genug, damit der Spion es nicht erraten kann.",
-      "step3_title": "Fragerunde",
-      "step3": "Stellt euch gegenseitig Fragen. Hört genau hin, wer bluffen muss, und versucht den Spion zu enttarnen.",
-      "step4_title": "Abstimmung",
-      "step4": "Stimmt über den Verdächtigen ab. Der enttarnte Spion bekommt dann einen letzten Versuch, das Wort zu erraten.",
-      "winTitle": "Wer gewinnt",
-      "civWinLabel": "Zivilisten gewinnen, wenn",
-      "civWin": "ihr den Spion enttarnt UND der Spion das Wort am Ende falsch errät.",
-      "spyWinLabel": "Spion gewinnt, wenn",
-      "spyWin": "er die Abstimmung übersteht, ODER das Geheimwort selbst ausspricht, sobald er es kennt, ODER es nach der Enttarnung richtig errät."
-    }
+    "tagline": "Alle bekommen ein Wort. Der Spion bekommt ein anderes.",
+    "oneDevice": "Alle an einem Gerät",
+    "oneDeviceDesc": "Reicht ein Handy in der Runde herum.",
+    "ownDevice": "Jeder am eigenen Gerät",
+    "ownDeviceDesc": "Alle treten auf ihrem Handy einem Raum bei.",
+    "continueRound": "Aktuelle Runde fortsetzen",
+    "playAgain": "Nochmal spielen",
+    "howToPlay": "Spielanleitung"
   },
-  "localGame": {
-    "phase": "Phase:",
-    "discuss": {
-      "title": "Diskussion",
-      "desc": "Alle sagen einen kurzen Hinweis zu ihrem Wort, dann wird diskutiert. Entscheidet zusammen, wer der Spion ist.",
-      "clueOrder": "Reihenfolge — beginnt mit",
-      "timerLabel": "Diskussions-Timer",
-      "timerHint": "Jederzeit pausieren oder zurücksetzen.",
-      "revealBtn": "Spion aufdecken →",
-      "revealHint": "Entschieden? Tippe, um zu sehen, wer der Spion war."
-    }
+  "setup": {
+    "players": "Spieler",
+    "playerCount_one": "{{count}} Spieler",
+    "playerCount_other": "{{count}} Spieler",
+    "words": "Wörter",
+    "allCategories": "Alle",
+    "categoryCount_one": "{{count}} Kategorie",
+    "categoryCount_other": "{{count}} Kategorien",
+    "spies": "Spione",
+    "randomEachRound": "Jede Runde zufällig",
+    "spiesKnow": "Kennen sich",
+    "hint": "Spion-Hinweis",
+    "timer": "Timer",
+    "off": "Aus",
+    "minutes_one": "{{count}} Min.",
+    "minutes_other": "{{count}} Min.",
+    "none": "Keine",
+    "start": "Runde starten"
   },
-  "lobby": {
-    "playersLabel": "Spieler ({{count}})",
-    "quickAdd": "+ Schnell hinzufügen",
-    "namePlaceholder": "Name (oder leer lassen)",
-    "addBtn": "Hinzufügen",
-    "removeAria": "{{name}} entfernen",
-    "empty": "Noch keine Spieler.",
+  "players": {
+    "namePlaceholder": "Spieler hinzufügen",
+    "add": "Spieler hinzufügen",
     "defaultName": "Spieler {{n}}",
-    "spyCountLabel": "Anzahl Spione",
-    "spyCountHint": "Mehr Spione = schwerer für die Zivilisten.",
-    "spyCountRandom": "Zufällig",
-    "spyCountRandomHint": "Wählt 1–{{max}} Spione pro Runde.",
-    "spyCountRandomRangeHint": "Wählt {{min}}–{{max}} Spione pro Runde.",
-    "spyCountRandomFixedHint": "Immer {{n}} Spione.",
-    "spyCountFromLabel": "Von",
-    "spyCountToLabel": "Bis",
-    "spiesKnowLabel": "Spione kennen sich",
-    "spiesKnowHint": "Sie sehen ihre Mit-Spione auf der Karte.",
-    "difficultyLabel": "Schwierigkeit für die Dorfbewohner",
-    "difficulty": {
-      "easy": {
-        "label": "Einfach",
-        "hint": "Der Spion bekommt keinen Hinweis — reines Bluffen, am leichtesten zu enttarnen."
-      },
-      "medium": {
-        "label": "Mittel",
-        "hint": "Der Hinweis des Spions ist ein Verwandter aus derselben Kategorie."
-      },
-      "hard": {
-        "label": "Schwer",
-        "hint": "Der Hinweis des Spions liegt sehr nah am echten Wort, gleiche Kategorie — Klassiker."
-      }
-    },
-    "timerLabel": "Diskussions-Timer",
-    "timerOff": "Kein Timer",
-    "timerMin": "{{count}} Min.",
-    "needPlayers": "Mindestens 3 Spieler nötig, um zu starten.",
-    "needSource": "Wähle mindestens eine Wortquelle."
+    "changeAvatar": "Bild ändern",
+    "rename": "{{name}} umbenennen",
+    "remove": "{{name}} entfernen",
+    "empty": "Noch keine Spieler.",
+    "needMore_one": "Füge noch {{count}} Spieler hinzu, um zu starten.",
+    "needMore_other": "Füge noch {{count}} Spieler hinzu, um zu starten.",
+    "tip": "Zieh die Spieler in eure Sitzreihenfolge; die Karten gehen in dieser Reihenfolge herum.",
+    "reorder": "{{name}} verschieben"
   },
-  "timer": {
-    "pause": "Pause",
-    "resume": "Weiter",
-    "done": "Fertig",
-    "reset": "Reset"
-  },
-  "revealDeck": {
-    "cardProgress_one": "Karte {{current}} von {{total}}",
-    "cardProgress_other": "Karte {{current}} von {{total}}",
-    "prev": "← Zurück",
-    "next": "Weiter →",
-    "doneBtn": "Fertig →",
-    "tapHint": "tippen zum Umdrehen",
-    "swipeHint": "wischen für die nächste"
-  },
-  "playerCard": {
-    "spyHeader": "Spy",
-    "passTo": "Weitergeben an",
-    "cardOwner": "Karte von {{name}}",
-    "passInstruction": "Sobald es sicher ist, tippe die Karte an, um dein Wort zu sehen.",
-    "tapToFlip": "tippen zum Umdrehen",
-    "tapToHide": "tippen zum Verbergen",
-    "spyRole": "🕵️ Spion",
-    "civRole": "✅ Zivilist",
-    "spyBadge": "🕵️ Du bist der Spion",
-    "fellowSpiesLabel": "Mit-Spione",
-    "aloneSpy": "Du bist der einzige Spion.",
-    "spyHeadsUp_before": "Achtung:",
-    "spyHeadsUp_mid": " dieses Wort ist ",
-    "spyHeadsUp_not": "nicht",
-    "spyHeadsUp_after": " das, was die anderen haben. Es ist ein ähnlicher ",
-    "spyHeadsUp_hint": "Hinweis",
-    "spyHeadsUp_tail": ". Sag es nicht laut.",
-    "yourHint": "Dein Hinweis",
-    "spyBluff": "Bluffe deine Hinweise — sie müssen zu deinem UND ihrem Wort passen.",
-    "noHintTitle": "Diese Runde kein Hinweis.",
-    "noHintBody": " Du kennst das Wort nicht. Zuhören, mitziehen, bluffen.",
-    "noHintPlaceholder": "(kein Hinweis)",
-    "noHintBluff": "Wiederhole, was andere sagen. Lege dich nicht zuerst fest.",
-    "civBadge": "✅ Zivilist",
-    "civBody": "Alle anderen (außer dem Spion) haben dasselbe Wort. Findet den Spion.",
-    "yourWord": "Dein Wort"
-  },
-  "result": {
-    "title": "Die Auflösung",
-    "subtitle": "Habt ihr richtig getippt?",
-    "spyWas": "Der Spion war",
-    "spiesWere": "Die Spione waren",
-    "wordsLabel": "Die Wörter",
-    "civilians": "Zivilisten",
-    "spy": "Spion",
-    "vs": "vs",
-    "noHint": "(kein Hinweis)",
-    "category": "Kategorie: {{name}}",
-    "playAgain": "Nochmal — gleiche Spieler",
-    "backToLobby": "Zurück zur Lobby",
-    "home": "Startseite"
-  },
-  "pairPicker": {
-    "label": "Wortquellen",
+  "words": {
     "selectAll": "Alle auswählen",
-    "clear": "Leeren",
+    "selectNone": "Keine auswählen",
     "pairCount_one": "{{count}} Paar",
     "pairCount_other": "{{count}} Paare",
     "newList": "Neue Liste",
     "newListDesc": "Deine eigenen Wortpaare",
-    "editAria": "Liste bearbeiten",
-    "pickAtLeastOne": "Wähle mindestens eine Quelle, um eine Runde zu starten."
+    "editList": "Liste bearbeiten",
+    "pickOne": "Wähle mindestens eine Kategorie."
+  },
+  "spies": {
+    "count": "Anzahl Spione",
+    "maxHint": "Mit {{players}} Spielern sind bis zu {{max}} Spione möglich.",
+    "fewPlayers": "Es gibt immer weniger Spione als die Hälfte der Spieler.",
+    "knowLabel": "Spione kennen sich",
+    "knowHint": "Spione sehen die anderen Spione auf ihrer Karte.",
+    "knowNeedsTwo": "Nur relevant ab zwei Spionen.",
+    "pickHint": "Tippe eine Zahl an, oder mehrere, damit alle rätseln.",
+    "randomPick": "Jede Runde hat zufällig {{list}} Spione. Niemand weiß, wie viele."
+  },
+  "hint": {
+    "intro": "Was der Spion statt des echten Worts sieht. Je weniger Hilfe, desto leichter ist der Spion zu entlarven.",
+    "exampleWord": "Zivilisten sehen",
+    "exampleHint": "Spion sieht",
+    "hard": {
+      "label": "Ähnliches Wort",
+      "desc": "Ein fast gleiches Wort. Am schwersten zu entlarven."
+    },
+    "medium": {
+      "label": "Gleiche Kategorie",
+      "desc": "Ein anderes Wort aus derselben Kategorie."
+    },
+    "easy": {
+      "label": "Kein Hinweis",
+      "desc": "Der Spion bekommt nichts und muss bluffen."
+    }
+  },
+  "timer": {
+    "intro": "Countdown für die Diskussion. Du kannst ihn jederzeit pausieren oder neu starten.",
+    "pause": "Pause",
+    "resume": "Weiter",
+    "reset": "Neu starten",
+    "timesUp": "Zeit ist um"
+  },
+  "card": {
+    "passTo": "Gib das Handy an",
+    "passHint": "Achte darauf, dass niemand sonst den Bildschirm sieht.",
+    "civilian": "Zivilist",
+    "spy": "Spion",
+    "yourWord": "Dein Wort",
+    "yourHint": "Dein Hinweis",
+    "noHint": "Kein Hinweis",
+    "spyTip": "Die anderen haben ein anderes Wort. Fall nicht auf.",
+    "noHintTip": "Hör genau zu und bluffe.",
+    "otherSpies": "Andere Spione",
+    "onlySpy": "Du bist der einzige Spion."
+  },
+  "reveal": {
+    "title": "Karten",
+    "show": "Meine Karte zeigen",
+    "hideAndPass": "Verdecken und weitergeben",
+    "hideAndDiscuss": "Verdecken und Diskussion starten"
+  },
+  "peek": {
+    "button": "Meine Karte ansehen",
+    "title": "Karte ansehen",
+    "pick": "Wer bist du?",
+    "hide": "Karte verdecken"
+  },
+  "discuss": {
+    "title": "Diskussion",
+    "starts": "Erster Hinweis",
+    "howTo": "Reihum gibt jeder einen kurzen Hinweis. Dann diskutiert ihr und wählt den Spion raus.",
+    "order": "Reihenfolge",
+    "reveal": "Spion aufdecken",
+    "confirmTitle": "Spion aufdecken?",
+    "confirmBody": "Alle sehen, wer der Spion war, und beide Wörter."
+  },
+  "result": {
+    "title": "Ergebnis",
+    "spyWas": "Der Spion war",
+    "spiesWere": "Die Spione waren",
+    "civilians": "Zivilisten",
+    "spy": "Spion",
+    "category": "Kategorie: {{name}}",
+    "nextRound": "Nächste Runde",
+    "changeSetup": "Einstellungen ändern"
   },
   "editList": {
     "notFound": "Liste nicht gefunden",
     "notFoundDesc": "Diese Wortliste existiert nicht mehr.",
     "headerEdit": "Liste bearbeiten",
     "headerNew": "Neue Liste",
-    "titleEdit": "Wortliste bearbeiten",
-    "titleNew": "Neue Wortliste",
-    "intro_before": "Trage eigene Zivilist-/Spion-Paare ein. Der Hinweis des Spions sollte ",
-    "intro_similar": "ähnlich",
-    "intro_after": " sein — nicht identisch, nicht völlig fremd.",
     "name": "Listenname",
     "namePlaceholder": "z. B. Insider-Witze, Büro-Snacks…",
     "icon": "Symbol",
     "pairs": "Paare",
-    "pairsHint": "Zivilist-Wort → Spion-Hinweis",
+    "pairsHint": "Links: das Wort der Zivilisten. Rechts: der Hinweis des Spions.",
     "civilianPlaceholder": "Wort der Zivilisten",
     "spyPlaceholder": "Hinweis des Spions",
     "removePairAria": "Paar entfernen",
-    "addPair": "+ Paar hinzufügen",
+    "addPair": "Paar hinzufügen",
     "create": "Liste erstellen",
     "deleteConfirmTitle": "Diese Liste löschen?",
     "deleteConfirmDesc": "Dies kann nicht rückgängig gemacht werden."
   },
   "online": {
     "yourName": "Dein Name",
-    "hostNamePlaceholder": "z. B. Alex",
-    "errCreateRoom": "Raum konnte nicht erstellt werden",
+    "or": "oder",
+    "createRoom": "Raum erstellen",
+    "creating": "Erstellen…",
+    "join": "Beitreten",
+    "joining": "Trete bei…",
     "roomCode": "Raum-Code",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "z. B. Sam",
-    "errNeedBoth": "Raum-Code und Name nötig.",
-    "errCouldNotJoin": "Beitritt fehlgeschlagen",
-    "fbWarnTitleShort": "Firebase ist nicht konfiguriert",
-    "fbNotConfigured": "Firebase ist nicht konfiguriert.",
-    "loadingRoom": "Lade Raum {{code}}…",
-    "roomLabel": "Raum",
-    "share": "Diesen Raum teilen",
-    "copyLink": "Link kopieren",
-    "qrShareHint": "Freunde können scannen, um beizutreten.",
-    "scanQr": "📷 QR scannen",
+    "roomTitle": "Raum {{code}}",
+    "invite": "Einladen",
+    "copied": "Link kopiert",
+    "scanQr": "QR-Code scannen",
     "qrScanTitle": "Raum-QR-Code scannen",
     "qrScanHint": "Richte die Kamera auf den QR-Code des Gastgebers.",
     "qrCameraError": "Kamera konnte nicht geöffnet werden",
     "qrInvalid": "Dieser QR-Code ist kein Raum-Link.",
-    "playersHeader": "Spieler ({{count}})",
+    "you": "Du",
+    "host": "Gastgeber",
+    "kick": "{{name}} entfernen",
+    "roundSettings": "Rundeneinstellungen",
+    "needPlayers_one": "Warte auf {{count}} weiteren Spieler.",
+    "needPlayers_other": "Warte auf {{count}} weitere Spieler.",
     "starting": "Starten…",
-    "startRound": "Runde starten →",
-    "needPlayers": "Mindestens 3 Spieler nötig. Teile den Link!",
-    "waitingHost": "Warten, bis der Gastgeber die Runde startet…",
+    "waitStart": "Warte, bis der Gastgeber die Runde startet…",
     "loadingWord": "Lade dein Wort…",
-    "hostAdvance": "Alle haben ihr Wort gesehen? → Diskussion",
-    "guestAdvanceWait": "Wenn alle bereit sind, schaltet dein Gastgeber zur Diskussion weiter.",
-    "discussTitle": "Diskussion",
-    "discussDesc": "Alle sagen einen kurzen Hinweis zu ihrem Wort, dann wird vor Ort diskutiert. Entscheidet zusammen, wer der Spion ist.",
-    "clueOrder": "Reihenfolge — beginnt mit",
-    "discussTimerLabel": "Diskussions-Timer",
-    "discussTimerHint": "Standardmäßig 3 Minuten.",
-    "hostReveal": "Spion aufdecken →",
-    "guestRevealWait": "Der Gastgeber deckt den Spion auf, sobald alle bereit sind.",
-    "hostBackLobby": "Zurück zur Lobby",
-    "guestBackWait": "Der Gastgeber kann alle zurück zur Lobby bringen.",
+    "cardReady": "Deine Karte ist bereit",
+    "cardReadyHint": "Pass auf, dass niemand hinschaut, dann zeig sie.",
+    "toDiscussion": "Alle bereit: Diskussion starten",
+    "waitDiscussion": "Der Gastgeber startet die Diskussion, wenn alle ihre Karte gesehen haben.",
+    "waitReveal": "Der Gastgeber deckt den Spion auf, wenn ihr fertig seid.",
+    "waitNext": "Warte auf den Gastgeber…",
+    "backToLobby": "Zurück zum Raum",
+    "loadingRoom": "Lade Raum {{code}}…",
+    "fbNotConfigured": "Online-Spiel ist in dieser Version nicht eingerichtet.",
     "errStartRound": "Runde konnte nicht gestartet werden",
     "defaultHostName": "Gastgeber",
     "defaultGuestName": "Gast",
@@ -277,123 +226,112 @@
   "categories": {
     "food": {
       "name": "Essen & Trinken",
-      "description": "Essbares. Paare sind lecker und nah genug, um zu verwirren.",
-      "icon": "🍕"
+      "description": "Essbares. Paare sind lecker und nah genug, um zu verwirren."
     },
     "animals": {
       "name": "Tiere",
-      "description": "Tiere — groß, klein, schuppig, flauschig.",
-      "icon": "🐾"
+      "description": "Tiere — groß, klein, schuppig, flauschig."
     },
     "sports": {
       "name": "Sport",
-      "description": "Was man mit dem Körper macht, am liebsten draußen.",
-      "icon": "⚽"
+      "description": "Was man mit dem Körper macht, am liebsten draußen."
     },
     "places": {
       "name": "Orte",
-      "description": "Räume, Gebäude, Städte, Landschaften.",
-      "icon": "🗺️"
+      "description": "Räume, Gebäude, Städte, Landschaften."
     },
     "tech": {
       "name": "Technik",
-      "description": "Kabel, Bildschirme, alles mit Akku.",
-      "icon": "📱"
+      "description": "Kabel, Bildschirme, alles mit Akku."
     },
     "entertainment": {
       "name": "Unterhaltung",
-      "description": "Filme, Bücher, Spiele, Musik.",
-      "icon": "🎬"
+      "description": "Filme, Bücher, Spiele, Musik."
     },
     "household": {
       "name": "Haushalt",
-      "description": "Dinge aus Küche, Bad und Garage.",
-      "icon": "🛋️"
+      "description": "Dinge aus Küche, Bad und Garage."
     },
     "nature": {
       "name": "Natur & Wetter",
-      "description": "Himmel, Meere, Jahreszeiten und Stürme.",
-      "icon": "🌧️"
+      "description": "Himmel, Meere, Jahreszeiten und Stürme."
     },
     "music": {
       "name": "Musik",
-      "description": "Instrumente, Genres, Klänge.",
-      "icon": "🎵"
+      "description": "Instrumente, Genres, Klänge."
     },
     "jobs": {
       "name": "Berufe & Rollen",
-      "description": "Was Leute beruflich machen.",
-      "icon": "💼"
+      "description": "Was Leute beruflich machen."
     },
     "vehicles": {
       "name": "Fahrzeuge",
-      "description": "Dinge, die dich von A nach B bringen.",
-      "icon": "🚗"
+      "description": "Dinge, die dich von A nach B bringen."
     },
     "clothing": {
       "name": "Kleidung",
-      "description": "Was man trägt.",
-      "icon": "👕"
+      "description": "Was man trägt."
     },
     "body": {
       "name": "Körper & Gesundheit",
-      "description": "Anatomie, Medizin, Wohlbefinden.",
-      "icon": "💪"
+      "description": "Anatomie, Medizin, Wohlbefinden."
     },
     "myth": {
       "name": "Mythen & Fantasie",
-      "description": "Wesen und Kräfte aus Geschichten.",
-      "icon": "🐉"
+      "description": "Wesen und Kräfte aus Geschichten."
     },
     "tricky": {
       "name": "Knifflig / Gemischt",
-      "description": "Paare quer durch alles. Der Spion wird schwitzen.",
-      "icon": "🎲"
+      "description": "Paare quer durch alles. Der Spion wird schwitzen."
     },
     "tyrants": {
       "name": "Tyrannen & Despoten",
-      "description": "Berüchtigte Herrscher und Diktatoren der Geschichte.",
-      "icon": "⚔️"
+      "description": "Berüchtigte Herrscher und Diktatoren der Geschichte."
     },
     "darkhumor": {
       "name": "Schwarzer Humor",
-      "description": "Galgen, Tabus — Lachen, um nicht zu weinen.",
-      "icon": "💀"
+      "description": "Galgen, Tabus — Lachen, um nicht zu weinen."
     },
     "prophets": {
       "name": "Propheten",
-      "description": "Heilige Männer und Boten der Weltreligionen.",
-      "icon": "📜"
+      "description": "Heilige Männer und Boten der Weltreligionen."
     },
     "stereotypes": {
       "name": "Stereotypen",
-      "description": "Klischees und Karikaturen, mit Augenzwinkern.",
-      "icon": "🎭"
+      "description": "Klischees und Karikaturen, mit Augenzwinkern."
     },
     "races": {
       "name": "Völker",
-      "description": "Völker und Nationalitäten — gleiche Gegend, andere Wurzeln.",
-      "icon": "🌍"
+      "description": "Völker und Nationalitäten — gleiche Gegend, andere Wurzeln."
     },
     "infamous": {
       "name": "Kritische Orte",
-      "description": "Orte der Tragödie: Massaker, Kriege, Katastrophen.",
-      "icon": "🕯️"
+      "description": "Orte der Tragödie: Massaker, Kriege, Katastrophen."
     },
     "terror": {
       "name": "Terroranschläge",
-      "description": "Berüchtigte terroristische Anschläge.",
-      "icon": "💥"
+      "description": "Berüchtigte terroristische Anschläge."
     },
     "religions": {
       "name": "Religionen",
-      "description": "Glauben, heilige Schriften, Festtage und Riten — quer durch die Bekenntnisse.",
-      "icon": "🛐"
+      "description": "Glauben, heilige Schriften, Festtage und Riten — quer durch die Bekenntnisse."
     }
   },
   "customList": {
     "description_one": "Deine eigene Liste ({{count}} Paar)",
     "description_other": "Deine eigene Liste ({{count}} Paare)",
     "fallback": "Eigene"
+  },
+  "options": {
+    "title": "Einstellungen",
+    "languageLabel": "Sprache",
+    "wordListsLabel": "Deine Wortlisten",
+    "wordListsHint": "Eigene Wortpaare für Zivilisten / Spion erstellen und bearbeiten."
+  },
+  "install": {
+    "title": "Spy zum Home-Bildschirm hinzufügen",
+    "desc": "Öffnet sich wie eine App und funktioniert offline, bereit für den nächsten Spieleabend.",
+    "button": "Installieren",
+    "iosHint": "Tippe in Safari auf Teilen und dann auf „Zum Home-Bildschirm“."
   }
 }

@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "スパイ — ワードゲーム"
+    "title": "Spy — パーティー向けワードゲーム"
   },
   "app": {
-    "footer": "スパイ — ワードゲーム。対面でもオンラインでも友達と遊ぼう。",
     "exitConfirm": "もう一度押すと終了します"
   },
   "languages": {
@@ -25,241 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "ホーム",
     "back": "戻る",
     "cancel": "キャンセル",
     "save": "保存",
     "delete": "削除",
-    "yes": "はい",
-    "no": "いいえ",
-    "dismiss": "閉じる"
-  },
-  "wizard": {
-    "modeTitle": "どう遊ぶ？",
-    "modeSingle": "1台のデバイス",
-    "modeSingleDesc": "テーブルで端末を回す。",
-    "modeOnline": "各自の端末で",
-    "modeOnlineDesc": "各プレイヤーが自分の端末から参加。",
-    "roleTitle": "ホスト？参加？",
-    "roleHost": "部屋を作る",
-    "roleHostDesc": "ゲームを作ってコードを共有。",
-    "roleJoin": "コードで参加",
-    "roleJoinDesc": "コードかQRがある？飛び込もう。",
-    "back": "← 戻る",
-    "next": "次へ →",
-    "playersTitle": "プレイヤー追加",
-    "playersDesc": "全員追加。最低3人。",
-    "categoriesTitle": "ワードソースを選ぶ",
-    "categoriesDesc": "使うカテゴリを選択。",
-    "optionsTitle": "ゲーム設定",
-    "optionsDesc": "難易度と議論タイマーを調整。",
-    "startBtn": "ラウンド開始 →",
-    "hostNameTitle": "あなたの名前",
-    "hostNameDesc": "ロビーで他のプレイヤーに表示。",
-    "hostCreateBtn": "部屋を作る",
-    "creating": "作成中…",
-    "joinCodeTitle": "部屋コードを入力",
-    "joinCodeDesc": "4文字コードを入力かQRをスキャン。",
-    "joinNameTitle": "あなたの名前",
-    "joinBtn": "参加",
-    "joining": "参加中…",
-    "stepLabel": "ステップ {{current}} / {{total}}"
+    "close": "閉じる",
+    "done": "完了"
   },
   "home": {
     "title": "スパイ",
-    "howTo": {
-      "title": "遊び方",
-      "step1_title": "準備",
-      "step1": "全員同じワードを受け取る。スパイは似たヒントを受け取る — または何も無し。",
-      "step2_title": "ヒントラウンド",
-      "step2": "順番に、秘密を知っている証拠となる単語を1つ言う — でもスパイに特定されない程度に曖昧に。",
-      "step3_title": "質問タイム",
-      "step3": "互いに問い詰める。誰がブラフしているか聞いてスパイを探す。",
-      "step4_title": "投票",
-      "step4": "容疑者に投票。告発されたスパイは最後にワードを1回当てるチャンス。",
-      "winTitle": "勝利条件",
-      "civWinLabel": "市民の勝利",
-      "civWin": "スパイを投票で追放し、かつスパイが最後の推測を外す。",
-      "spyWinLabel": "スパイの勝利",
-      "spyWin": "投票を生き残る、OR ワードを見抜いて口にする、OR 捕まった後に当てる。"
-    }
+    "tagline": "みんなにワードが配られる。スパイだけは別のワード。",
+    "oneDevice": "1台でプレイ",
+    "oneDeviceDesc": "1台のスマホを順番に回そう。",
+    "ownDevice": "各自のスマホでプレイ",
+    "ownDeviceDesc": "各プレイヤーが自分のスマホで部屋に参加。",
+    "continueRound": "現在のラウンドを続ける",
+    "playAgain": "もう一度遊ぶ",
+    "howToPlay": "遊び方"
   },
-  "localGame": {
-    "phase": "フェーズ：",
-    "discuss": {
-      "title": "議論",
-      "desc": "各プレイヤーがワードについて短いヒントを1つ言い、その後議論。誰がスパイか一緒に決める。",
-      "clueOrder": "ヒントの順番 — 開始",
-      "timerLabel": "議論タイマー",
-      "timerHint": "いつでも一時停止・リセット可。",
-      "revealBtn": "スパイを公開 →",
-      "revealHint": "決まった？タップしてスパイを確認。"
-    }
+  "setup": {
+    "players": "プレイヤー",
+    "playerCount_one": "{{count}}人",
+    "playerCount_other": "{{count}}人",
+    "words": "ワード",
+    "allCategories": "すべて",
+    "categoryCount_one": "{{count}}カテゴリ",
+    "categoryCount_other": "{{count}}カテゴリ",
+    "spies": "スパイ",
+    "randomEachRound": "毎ラウンドランダム",
+    "spiesKnow": "お互いを知る",
+    "hint": "スパイのヒント",
+    "timer": "タイマー",
+    "off": "オフ",
+    "minutes_one": "{{count}}分",
+    "minutes_other": "{{count}}分",
+    "none": "なし",
+    "start": "ラウンド開始"
   },
-  "lobby": {
-    "playersLabel": "プレイヤー ({{count}})",
-    "quickAdd": "+ クイック追加",
-    "namePlaceholder": "名前（空欄でも可）",
-    "addBtn": "追加",
-    "removeAria": "{{name}}を削除",
-    "empty": "プレイヤーがまだいません。",
+  "players": {
+    "namePlaceholder": "プレイヤーを追加",
+    "add": "プレイヤーを追加",
     "defaultName": "プレイヤー {{n}}",
-    "spyCountLabel": "スパイの人数",
-    "spyCountHint": "スパイが多い = 市民にとって難しい。",
-    "spyCountRandom": "ランダム",
-    "spyCountRandomHint": "各ラウンドで1〜{{max}}人のスパイを選ぶ。",
-    "spiesKnowLabel": "スパイ同士を知る",
-    "spiesKnowHint": "カードに仲間のスパイが表示される。",
-    "difficultyLabel": "村人の難易度",
-    "difficulty": {
-      "easy": {
-        "label": "簡単",
-        "hint": "スパイはヒントなし — 純粋なブラフ、最も捕まえやすい。"
-      },
-      "medium": {
-        "label": "普通",
-        "hint": "スパイのヒントは同じカテゴリ。"
-      },
-      "hard": {
-        "label": "難しい",
-        "hint": "スパイのヒントは本物にとても近い、同じカテゴリ — 古典。"
-      }
-    },
-    "timerLabel": "議論タイマー",
-    "timerOff": "タイマーなし",
-    "timerMin": "{{count}}分",
-    "needPlayers": "最低3人のプレイヤーが必要。",
-    "needSource": "少なくとも1つのワードソースを選んで。"
+    "changeAvatar": "画像を変更",
+    "rename": "{{name}}の名前を変更",
+    "remove": "{{name}}を削除",
+    "empty": "まだプレイヤーがいません。",
+    "needMore_one": "あと{{count}}人追加すると開始できます。",
+    "needMore_other": "あと{{count}}人追加すると開始できます。",
+    "tip": "座っている順にドラッグで並べ替えてください。カードはこの順番で回ります。",
+    "reorder": "{{name}}を移動"
   },
-  "timer": {
-    "pause": "一時停止",
-    "resume": "再開",
-    "done": "完了",
-    "reset": "リセット"
-  },
-  "revealDeck": {
-    "cardProgress_one": "カード {{current}} / {{total}}",
-    "cardProgress_other": "カード {{current}} / {{total}}",
-    "prev": "← 前",
-    "next": "次 →",
-    "doneBtn": "完了 →",
-    "tapHint": "カードをタップしてめくる",
-    "swipeHint": "次へは ← スワイプ"
-  },
-  "playerCard": {
-    "spyHeader": "スパイ",
-    "passTo": "渡す相手",
-    "passInstruction": "安全になったらカードをタップしてワードを確認。",
-    "tapToFlip": "タップしてめくる",
-    "tapToHide": "タップして隠す",
-    "spyRole": "🕵️ スパイ",
-    "civRole": "✅ 市民",
-    "spyBadge": "🕵️ あなたはスパイ",
-    "fellowSpiesLabel": "仲間のスパイ",
-    "aloneSpy": "あなたが唯一のスパイ。",
-    "spyHeadsUp_before": "注意：",
-    "spyHeadsUp_mid": " このワードは",
-    "spyHeadsUp_not": "違います",
-    "spyHeadsUp_after": " 他のプレイヤーのとは。これは似た",
-    "spyHeadsUp_hint": "ヒント",
-    "spyHeadsUp_tail": "です。声に出さないで。",
-    "yourHint": "あなたのヒント",
-    "spyBluff": "ブラフして — 自分のワードにも相手のワードにも合わせる。",
-    "noHintTitle": "このラウンドはヒントなし。",
-    "noHintBody": " ワードを知らない。聞いて、紛れて、ブラフして。",
-    "noHintPlaceholder": "（ヒントなし）",
-    "noHintBluff": "他の人の言葉を真似する。最初にコミットしないで。",
-    "civBadge": "✅ 市民",
-    "civBody": "（スパイ以外）全員が同じワード。スパイを見つけて。",
-    "yourWord": "あなたのワード"
-  },
-  "result": {
-    "title": "正体公開",
-    "subtitle": "当たった？",
-    "spyWas": "スパイは",
-    "spiesWere": "スパイたちは",
-    "wordsLabel": "ワード",
-    "civilians": "市民",
-    "spy": "スパイ",
-    "vs": "対",
-    "noHint": "（ヒントなし）",
-    "category": "カテゴリ：{{name}}",
-    "playAgain": "もう一度 — 同じプレイヤー",
-    "backToLobby": "ロビーへ戻る",
-    "home": "ホーム"
-  },
-  "pairPicker": {
-    "label": "ワードソース",
+  "words": {
     "selectAll": "全選択",
-    "clear": "クリア",
+    "selectNone": "すべて解除",
     "pairCount_one": "{{count}}ペア",
     "pairCount_other": "{{count}}ペア",
     "newList": "新規リスト",
     "newListDesc": "自分のワードペア",
-    "editAria": "リスト編集",
-    "pickAtLeastOne": "開始するには少なくとも1つ選んで。"
+    "editList": "リスト編集",
+    "pickOne": "カテゴリを1つ以上選んでください。"
+  },
+  "spies": {
+    "count": "スパイの人数",
+    "maxHint": "{{players}}人なら最大{{max}}人のスパイを設定できます。",
+    "fewPlayers": "スパイは常にプレイヤーの半数未満です。",
+    "knowLabel": "スパイ同士を知る",
+    "knowHint": "スパイのカードに他のスパイが表示されます。",
+    "knowNeedsTwo": "スパイが2人以上のときのみ有効。",
+    "pickHint": "数字を1つ、または複数選ぶと人数がわからなくなります。",
+    "randomPick": "各ラウンドのスパイの人数は{{list}}からランダム。誰にも人数はわかりません。"
+  },
+  "hint": {
+    "intro": "スパイが本物のワードの代わりに見るもの。ヒントが少ないほどスパイを見破りやすくなります。",
+    "exampleWord": "市民に表示",
+    "exampleHint": "スパイに表示",
+    "hard": {
+      "label": "似たワード",
+      "desc": "ほぼ同じワード。見破るのが最も難しい。"
+    },
+    "medium": {
+      "label": "同じカテゴリ",
+      "desc": "同じカテゴリの別のワード。"
+    },
+    "easy": {
+      "label": "ヒントなし",
+      "desc": "スパイには何も表示されず、はったりで乗り切る。"
+    }
+  },
+  "timer": {
+    "intro": "話し合いのカウントダウン。いつでも一時停止やリスタートができます。",
+    "pause": "一時停止",
+    "resume": "再開",
+    "reset": "リスタート",
+    "timesUp": "時間切れ"
+  },
+  "card": {
+    "passTo": "スマホを渡す相手",
+    "passHint": "他の人に画面を見られないようにしよう。",
+    "civilian": "市民",
+    "spy": "スパイ",
+    "yourWord": "あなたのワード",
+    "yourHint": "あなたのヒント",
+    "noHint": "ヒントなし",
+    "spyTip": "他のみんなは別のワード。うまく紛れ込もう。",
+    "noHintTip": "よく聞いて、はったりで乗り切ろう。",
+    "otherSpies": "他のスパイ",
+    "onlySpy": "スパイはあなただけです。"
+  },
+  "reveal": {
+    "title": "カード",
+    "show": "カードを見る",
+    "hideAndPass": "隠して次へ渡す",
+    "hideAndDiscuss": "隠して話し合い開始"
+  },
+  "peek": {
+    "button": "カードを確認",
+    "title": "カードを確認",
+    "pick": "あなたは誰？",
+    "hide": "カードを隠す"
+  },
+  "discuss": {
+    "title": "話し合い",
+    "starts": "最初のヒント",
+    "howTo": "順番に1人ずつ短いヒントを言おう。そのあと話し合って、投票でスパイを当てよう。",
+    "order": "順番",
+    "reveal": "スパイを公開",
+    "confirmTitle": "スパイを公開する？",
+    "confirmBody": "スパイが誰だったかと両方のワードが全員に表示されます。"
+  },
+  "result": {
+    "title": "結果",
+    "spyWas": "スパイは",
+    "spiesWere": "スパイたちは",
+    "civilians": "市民",
+    "spy": "スパイ",
+    "category": "カテゴリ：{{name}}",
+    "nextRound": "次のラウンド",
+    "changeSetup": "設定を変更"
   },
   "editList": {
     "notFound": "リストが見つかりません",
     "notFoundDesc": "このワードリストはもう存在しません。",
     "headerEdit": "リスト編集",
     "headerNew": "新規リスト",
-    "titleEdit": "ワードリスト編集",
-    "titleNew": "新規ワードリスト",
-    "intro_before": "自分の市民 / スパイのペアを追加。スパイのヒントは",
-    "intro_similar": "似ている",
-    "intro_after": "べき — 同じでも全然違うでもなく。",
     "name": "リスト名",
     "namePlaceholder": "例：内輪ネタ、オフィスおやつ…",
     "icon": "アイコン",
     "pairs": "ペア",
-    "pairsHint": "市民のワード → スパイのヒント",
+    "pairsHint": "左：市民のワード。右：スパイのヒント。",
     "civilianPlaceholder": "市民のワード",
     "spyPlaceholder": "スパイのヒント",
     "removePairAria": "ペアを削除",
-    "addPair": "+ ペア追加",
+    "addPair": "ペア追加",
     "create": "リスト作成",
     "deleteConfirmTitle": "このリストを削除しますか？",
     "deleteConfirmDesc": "この操作は取り消せません。"
   },
   "online": {
     "yourName": "あなたの名前",
-    "hostNamePlaceholder": "例：Alex",
-    "errCreateRoom": "部屋を作れません",
+    "or": "または",
+    "createRoom": "部屋を作成",
+    "creating": "作成中…",
+    "join": "参加",
+    "joining": "参加中…",
     "roomCode": "部屋コード",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "例：Sam",
-    "errNeedBoth": "部屋コードと名前の両方が必要。",
-    "errCouldNotJoin": "部屋に参加できません",
-    "fbWarnTitleShort": "Firebase未設定",
-    "fbNotConfigured": "Firebase未設定。",
-    "loadingRoom": "部屋 {{code}} を読み込み中…",
-    "roomLabel": "部屋",
-    "share": "この部屋を共有",
-    "copyLink": "リンクをコピー",
-    "qrShareHint": "友達はスキャンして参加可。",
-    "scanQr": "📷 QRをスキャン",
+    "roomTitle": "部屋 {{code}}",
+    "invite": "招待",
+    "copied": "リンクをコピーしました",
+    "scanQr": "QRコードを読み取る",
     "qrScanTitle": "部屋のQRをスキャン",
     "qrScanHint": "ホストのQRにカメラを向ける。",
     "qrCameraError": "カメラを開けません",
     "qrInvalid": "そのQRは部屋リンクではありません。",
-    "playersHeader": "プレイヤー ({{count}})",
+    "you": "あなた",
+    "host": "ホスト",
+    "kick": "{{name}}を退出させる",
+    "roundSettings": "ラウンド設定",
+    "needPlayers_one": "あと{{count}}人を待っています。",
+    "needPlayers_other": "あと{{count}}人を待っています。",
     "starting": "開始中…",
-    "startRound": "ラウンド開始 →",
-    "needPlayers": "最低3人必要。リンクを共有！",
-    "waitingHost": "ホストの開始を待っています…",
+    "waitStart": "ホストがラウンドを開始するのを待っています…",
     "loadingWord": "ワード読み込み中…",
-    "hostAdvance": "全員ワードを見た？ → 議論",
-    "guestAdvanceWait": "全員準備できたらホストが進めます。",
-    "discussTitle": "議論",
-    "discussDesc": "各プレイヤーがワードについて短いヒントを1つ言い、対面で議論。誰がスパイか一緒に決める。",
-    "clueOrder": "ヒントの順番 — 開始",
-    "discussTimerLabel": "議論タイマー",
-    "discussTimerHint": "デフォルト3分。",
-    "hostReveal": "スパイを公開 →",
-    "guestRevealWait": "全員準備できたらホストが公開。",
-    "hostBackLobby": "ロビーへ戻る",
-    "guestBackWait": "ホストが全員をロビーへ戻せる。",
+    "cardReady": "カードの準備ができました",
+    "cardReadyHint": "誰も見ていないのを確認してから表示しよう。",
+    "toDiscussion": "全員準備OK：話し合い開始",
+    "waitDiscussion": "全員がカードを見たら、ホストが話し合いを開始します。",
+    "waitReveal": "終わったらホストがスパイを公開します。",
+    "waitNext": "ホストを待っています…",
+    "backToLobby": "部屋に戻る",
+    "loadingRoom": "部屋 {{code}} を読み込み中…",
+    "fbNotConfigured": "このビルドではオンラインプレイが設定されていません。",
     "errStartRound": "ラウンドを開始できません",
     "defaultHostName": "ホスト",
     "defaultGuestName": "ゲスト",
@@ -272,123 +226,112 @@
   "categories": {
     "food": {
       "name": "食べ物・飲み物",
-      "description": "食べられるもの。ペアは美味しく紛らわしい。",
-      "icon": "🍕"
+      "description": "食べられるもの。ペアは美味しく紛らわしい。"
     },
     "animals": {
       "name": "動物",
-      "description": "大小、うろこ、もふもふ。",
-      "icon": "🐾"
+      "description": "大小、うろこ、もふもふ。"
     },
     "sports": {
       "name": "スポーツ",
-      "description": "体を動かすもの、できれば屋外。",
-      "icon": "⚽"
+      "description": "体を動かすもの、できれば屋外。"
     },
     "places": {
       "name": "場所",
-      "description": "部屋、建物、都市、風景。",
-      "icon": "🗺️"
+      "description": "部屋、建物、都市、風景。"
     },
     "tech": {
       "name": "テクノロジー",
-      "description": "ケーブル、画面、電池があるもの全部。",
-      "icon": "📱"
+      "description": "ケーブル、画面、電池があるもの全部。"
     },
     "entertainment": {
       "name": "エンタメ",
-      "description": "映画、本、ゲーム、音楽。",
-      "icon": "🎬"
+      "description": "映画、本、ゲーム、音楽。"
     },
     "household": {
       "name": "家庭用品",
-      "description": "台所、浴室、車庫のもの。",
-      "icon": "🛋️"
+      "description": "台所、浴室、車庫のもの。"
     },
     "nature": {
       "name": "自然と天気",
-      "description": "空、海、季節、嵐。",
-      "icon": "🌧️"
+      "description": "空、海、季節、嵐。"
     },
     "music": {
       "name": "音楽",
-      "description": "楽器、ジャンル、音。",
-      "icon": "🎵"
+      "description": "楽器、ジャンル、音。"
     },
     "jobs": {
       "name": "職業",
-      "description": "人々の生計。",
-      "icon": "💼"
+      "description": "人々の生計。"
     },
     "vehicles": {
       "name": "乗り物",
-      "description": "あなたを運ぶもの。",
-      "icon": "🚗"
+      "description": "あなたを運ぶもの。"
     },
     "clothing": {
       "name": "服",
-      "description": "着るもの。",
-      "icon": "👕"
+      "description": "着るもの。"
     },
     "body": {
       "name": "体と健康",
-      "description": "解剖、医学、健康。",
-      "icon": "💪"
+      "description": "解剖、医学、健康。"
     },
     "myth": {
       "name": "神話とファンタジー",
-      "description": "物語の生き物と力。",
-      "icon": "🐉"
+      "description": "物語の生き物と力。"
     },
     "tricky": {
       "name": "難問・ミックス",
-      "description": "カテゴリを跨ぐペア。スパイは汗をかく。",
-      "icon": "🎲"
+      "description": "カテゴリを跨ぐペア。スパイは汗をかく。"
     },
     "tyrants": {
       "name": "暴君と独裁者",
-      "description": "歴史上の悪名高き支配者と独裁者。",
-      "icon": "⚔️"
+      "description": "歴史上の悪名高き支配者と独裁者。"
     },
     "darkhumor": {
       "name": "ブラックユーモア",
-      "description": "死、タブー、笑うしかないネタ。",
-      "icon": "💀"
+      "description": "死、タブー、笑うしかないネタ。"
     },
     "prophets": {
       "name": "預言者",
-      "description": "諸宗教における聖者と使徒たち。",
-      "icon": "📜"
+      "description": "諸宗教における聖者と使徒たち。"
     },
     "stereotypes": {
       "name": "ステレオタイプ",
-      "description": "クリシェとカリカチュア、ユーモラスに。",
-      "icon": "🎭"
+      "description": "クリシェとカリカチュア、ユーモラスに。"
     },
     "races": {
       "name": "民族",
-      "description": "民族と国籍——同じ地域、異なるルーツ。",
-      "icon": "🌍"
-    },
-    "religions": {
-      "name": "宗教",
-      "description": "信仰、聖典、祝祭日、儀式——宗派を超えて。",
-      "icon": "🛐"
-    },
-    "terror": {
-      "name": "テロ攻撃",
-      "description": "悪名高いテロ事件と惨事。",
-      "icon": "💥"
+      "description": "民族と国籍——同じ地域、異なるルーツ。"
     },
     "infamous": {
       "name": "重大事件の地",
-      "description": "悲劇の現場：虐殺、戦争、災害。",
-      "icon": "🕯️"
+      "description": "悲劇の現場：虐殺、戦争、災害。"
+    },
+    "terror": {
+      "name": "テロ攻撃",
+      "description": "悪名高いテロ事件と惨事。"
+    },
+    "religions": {
+      "name": "宗教",
+      "description": "信仰、聖典、祝祭日、儀式——宗派を超えて。"
     }
   },
   "customList": {
     "description_one": "あなたのカスタムリスト（{{count}}ペア）",
     "description_other": "あなたのカスタムリスト（{{count}}ペア）",
     "fallback": "カスタム"
+  },
+  "options": {
+    "title": "設定",
+    "languageLabel": "言語",
+    "wordListsLabel": "マイワードリスト",
+    "wordListsHint": "市民／スパイのワードペアを作成・編集。"
+  },
+  "install": {
+    "title": "Spyをホーム画面に追加",
+    "desc": "アプリのように開き、オフラインでも使えます。次のゲームの夜にすぐ遊べます。",
+    "button": "インストール",
+    "iosHint": "Safariで共有ボタンをタップし、「ホーム画面に追加」を選んでください。"
   }
 }

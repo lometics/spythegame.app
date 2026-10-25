@@ -1,22 +1,7 @@
 import type { TFunction } from 'i18next'
 import i18n from '../i18n'
-import enPairs from '../data/pairs.en.json'
-import dePairs from '../data/pairs.de.json'
-import frPairs from '../data/pairs.fr.json'
-import itPairs from '../data/pairs.it.json'
-import esPairs from '../data/pairs.es.json'
+import { getPairs, type RawPair } from '../data/pairStore'
 import type { Category, CustomList, Difficulty, Pair, PairSource } from './types'
-
-type RawPair = { civilian: string; spy: string; categoryId: string }
-type PairFile = { pairs: RawPair[] }
-
-const PAIR_REGISTRY: Record<string, PairFile> = {
-  en: enPairs as PairFile,
-  de: dePairs as PairFile,
-  fr: frPairs as PairFile,
-  it: itPairs as PairFile,
-  es: esPairs as PairFile,
-}
 
 export const BUILTIN_CATEGORY_IDS = [
   'food',
@@ -45,8 +30,7 @@ export const BUILTIN_CATEGORY_IDS = [
 ]
 
 function activePairs(): RawPair[] {
-  const lng = i18n.language?.split('-')[0] ?? 'en'
-  return (PAIR_REGISTRY[lng] ?? PAIR_REGISTRY.en).pairs
+  return getPairs(i18n.language?.split('-')[0] ?? 'en')
 }
 
 export function customCategoryId(listId: string): string {
@@ -63,7 +47,6 @@ export function listCategories(
     id,
     name: t(`categories.${id}.name`),
     description: t(`categories.${id}.description`),
-    icon: t(`categories.${id}.icon`),
     isCustom: false,
     pairCount: pairs.filter((p) => p.categoryId === id).length,
   }))
@@ -71,7 +54,7 @@ export function listCategories(
     id: customCategoryId(l.id),
     name: l.name,
     description: t('customList.description', { count: l.pairs.length }),
-    icon: l.icon || '🎴',
+    icon: l.icon,
     isCustom: true,
     pairCount: l.pairs.length,
   }))
@@ -146,6 +129,18 @@ export function categoryName(
   const customId = id.startsWith('custom:') ? id.slice('custom:'.length) : id
   const list = customLists.find((l) => l.id === customId)
   return list?.name ?? t('customList.fallback')
+}
+
+/**
+ * Example words for explaining hint levels, drawn from the active language's
+ * food pairs so they're always localized: the civilians' word, the curated
+ * close word (hard) and an unrelated sibling from the same category (medium).
+ */
+export function hintExample(): { word: string; hard: string; medium: string } {
+  const food = activePairs().filter((p) => p.categoryId === 'food')
+  const first = food[0] ?? { civilian: 'Coffee', spy: 'Espresso' }
+  const sibling = food[7] ?? food[1] ?? { civilian: 'Lemonade' }
+  return { word: first.civilian, hard: first.spy, medium: sibling.civilian }
 }
 
 export function totalBuiltInPairs(): number {

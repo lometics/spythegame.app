@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "Spy — The Word Game"
+    "title": "Spy — The Party Word Game"
   },
   "app": {
-    "footer": "Spy — the word game. Play in person or online with friends.",
     "exitConfirm": "Press back again to exit"
   },
   "languages": {
@@ -25,253 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "Home",
     "back": "Back",
     "cancel": "Cancel",
     "save": "Save",
     "delete": "Delete",
-    "yes": "Yes",
-    "no": "No",
-    "dismiss": "Dismiss"
-  },
-  "wizard": {
-    "modeTitle": "How do you want to play?",
-    "modeSingle": "Single device",
-    "modeSingleDesc": "Pass the phone around the table.",
-    "modeOnline": "Everyone on their own device",
-    "modeOnlineDesc": "Each player joins from their own phone.",
-    "roleTitle": "Host or join?",
-    "roleHost": "Host a room",
-    "roleHostDesc": "Create a game and share the code.",
-    "roleJoin": "Join with a code",
-    "roleJoinDesc": "Got a code or QR from your host? Jump in.",
-    "back": "← Back",
-    "next": "Next →",
-    "playersTitle": "Add players",
-    "playersDesc": "Add everyone playing. Need at least 3.",
-    "categoriesTitle": "Pick word sources",
-    "categoriesDesc": "Choose which categories to draw from.",
-    "optionsTitle": "Game options",
-    "optionsDesc": "Adjust difficulty and discussion timer.",
-    "startBtn": "Start round →",
-    "hostNameTitle": "Your name",
-    "hostNameDesc": "Other players will see this in the lobby.",
-    "hostCreateBtn": "Create room",
-    "creating": "Creating…",
-    "joinCodeTitle": "Enter room code",
-    "joinCodeDesc": "Type the 4-letter code or scan your host's QR.",
-    "joinNameTitle": "Your name",
-    "joinBtn": "Join",
-    "joining": "Joining…",
-    "stepLabel": "Step {{current}} of {{total}}"
+    "close": "Close",
+    "done": "Done"
   },
   "home": {
     "title": "Spy",
-    "joinExisting": "Join a room with a code",
-    "createRoom": "Create a room",
-    "createRoomDesc": "Start a new game and share the code.",
-    "joinRoom": "Join a room",
-    "joinRoomDesc": "Got a code or QR from a host? Jump in.",
-    "changeName": "Change",
-    "setNameFirst": "Set your name first.",
-    "howTo": {
-      "title": "How to play",
-      "step1_title": "Setup",
-      "step1": "Everyone gets the same word. The spy gets a similar hint — or nothing at all.",
-      "step2_title": "Clue rounds",
-      "step2": "Take turns saying one word that proves you know the secret — but stay vague enough that the spy can't lock it in.",
-      "step3_title": "Question time",
-      "step3": "Grill each other. Listen for who's bluffing and try to spot the spy.",
-      "step4_title": "Vote",
-      "step4": "Vote out your suspect. The accused spy then gets one final guess at the word.",
-      "winTitle": "How to win",
-      "civWinLabel": "Civilians win if",
-      "civWin": "You vote out the spy AND the spy fails the final guess at the word.",
-      "spyWinLabel": "Spy wins if",
-      "spyWin": "The spy survives the vote, OR says the secret word once they've figured it out, OR guesses it correctly after being caught."
-    }
+    "tagline": "Everyone gets a word. The spy gets a different one.",
+    "oneDevice": "All on one device",
+    "oneDeviceDesc": "Pass one phone around the table.",
+    "ownDevice": "Everyone on their own device",
+    "ownDeviceDesc": "Each player joins a room on their phone.",
+    "continueRound": "Continue current round",
+    "playAgain": "Play again",
+    "howToPlay": "How to play"
   },
-  "localGame": {
-    "phase": "Phase:",
-    "discuss": {
-      "title": "Discuss",
-      "desc": "Each player says one short clue about their word, then debate it out. Decide together who you think is the spy.",
-      "clueOrder": "Clue order — starts with",
-      "timerLabel": "Discussion timer",
-      "timerHint": "Pause or reset anytime.",
-      "revealBtn": "Reveal the spy →",
-      "revealHint": "Made up your minds? Tap to see who the spy actually was."
-    }
+  "setup": {
+    "players": "Players",
+    "playerCount_one": "{{count}} player",
+    "playerCount_other": "{{count}} players",
+    "words": "Words",
+    "allCategories": "All",
+    "categoryCount_one": "{{count}} category",
+    "categoryCount_other": "{{count}} categories",
+    "spies": "Spies",
+    "randomEachRound": "Random each round",
+    "spiesKnow": "Know each other",
+    "hint": "Spy hint",
+    "timer": "Timer",
+    "off": "Off",
+    "minutes_one": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "none": "None",
+    "start": "Start round"
   },
-  "lobby": {
-    "playersLabel": "Players ({{count}})",
-    "quickAdd": "+ Quick add",
-    "namePlaceholder": "Name (or leave blank)",
-    "addBtn": "Add",
-    "removeAria": "Remove {{name}}",
-    "empty": "No players yet.",
+  "players": {
+    "namePlaceholder": "Add a player",
+    "add": "Add player",
     "defaultName": "Player {{n}}",
-    "spyCountLabel": "Number of spies",
-    "spyCountHint": "More spies = harder for civilians.",
-    "spyCountRandom": "Random",
-    "spyCountRandomHint": "Picks 1–{{max}} spies each round.",
-    "spyCountRandomRangeHint": "Picks {{min}}–{{max}} spies each round.",
-    "spyCountRandomFixedHint": "Always {{n}} spies.",
-    "spyCountFromLabel": "From",
-    "spyCountToLabel": "To",
-    "spiesKnowLabel": "Spies know each other",
-    "spiesKnowHint": "They see fellow spies on their card.",
-    "difficultyLabel": "Difficulty for villagers",
-    "difficulty": {
-      "easy": {
-        "label": "Easy",
-        "hint": "Spy gets no hint — pure bluffing, easiest to catch."
-      },
-      "medium": {
-        "label": "Medium",
-        "hint": "Spy's hint is a sibling from the same category."
-      },
-      "hard": {
-        "label": "Hard",
-        "hint": "Spy's hint is very close to the real word, same category — classic."
-      }
-    },
-    "timerLabel": "Discussion timer",
-    "timerOff": "No timer",
-    "timerMin": "{{count}} min",
-    "needPlayers": "Add at least 3 players to start.",
-    "needSource": "Pick at least one word source."
+    "changeAvatar": "Change picture",
+    "rename": "Rename {{name}}",
+    "remove": "Remove {{name}}",
+    "empty": "No players yet.",
+    "needMore_one": "Add {{count}} more player to start.",
+    "needMore_other": "Add {{count}} more players to start.",
+    "tip": "Drag to match your seating order; cards go round in this order.",
+    "reorder": "Move {{name}}"
   },
-  "timer": {
-    "pause": "Pause",
-    "resume": "Resume",
-    "done": "Done",
-    "reset": "Reset"
-  },
-  "revealDeck": {
-    "cardProgress_one": "Card {{current}} of {{total}}",
-    "cardProgress_other": "Card {{current}} of {{total}}",
-    "prev": "← Prev",
-    "next": "Next →",
-    "doneBtn": "Done →",
-    "tapHint": "tap card to flip",
-    "swipeHint": "swipe to go to next"
-  },
-  "playerCard": {
-    "spyHeader": "Spy",
-    "passTo": "Pass to",
-    "cardOwner": "{{name}}'s card",
-    "passInstruction": "When it's safe, tap the card to reveal your word.",
-    "tapToFlip": "tap to flip",
-    "tapToHide": "tap to hide",
-    "spyRole": "🕵️ Spy",
-    "civRole": "✅ Civilian",
-    "spyBadge": "🕵️ You are the spy",
-    "fellowSpiesLabel": "Fellow spies",
-    "aloneSpy": "You're the only spy.",
-    "spyHeadsUp_before": "Heads up:",
-    "spyHeadsUp_mid": " this word is ",
-    "spyHeadsUp_not": "not",
-    "spyHeadsUp_after": " what the others have. It's a similar ",
-    "spyHeadsUp_hint": "hint",
-    "spyHeadsUp_tail": ". Don't say it out loud.",
-    "yourHint": "Your hint",
-    "spyBluff": "Bluff your clues — make them fit your word AND theirs.",
-    "noHintTitle": "No hint this round.",
-    "noHintBody": " You don't know the word. Listen, blend in, and bluff.",
-    "noHintPlaceholder": "(no hint)",
-    "noHintBluff": "Echo what others say. Don't be the first to commit.",
-    "civBadge": "✅ Civilian",
-    "civBody": "Everyone else (except the spy) has this same word. Find the spy.",
-    "yourWord": "Your word"
-  },
-  "result": {
-    "title": "The reveal",
-    "subtitle": "Did you guess right?",
-    "spyWas": "The spy was",
-    "spiesWere": "The spies were",
-    "wordsLabel": "The words",
-    "civilians": "Civilians",
-    "spy": "Spy",
-    "vs": "vs",
-    "noHint": "(no hint)",
-    "category": "Category: {{name}}",
-    "playAgain": "Play again — same players",
-    "backToLobby": "Back to lobby",
-    "home": "Home"
-  },
-  "pairPicker": {
-    "label": "Word sources",
+  "words": {
     "selectAll": "Select all",
-    "clear": "Clear",
+    "selectNone": "Select none",
     "pairCount_one": "{{count}} pair",
     "pairCount_other": "{{count}} pairs",
     "newList": "New list",
     "newListDesc": "Your own word pairs",
-    "editAria": "Edit list",
-    "pickAtLeastOne": "Pick at least one source to be able to start a round."
+    "editList": "Edit list",
+    "pickOne": "Pick at least one category."
+  },
+  "spies": {
+    "count": "Number of spies",
+    "maxHint": "With {{players}} players you can have up to {{max}} spies.",
+    "fewPlayers": "Spies are always fewer than half the players.",
+    "knowLabel": "Spies know each other",
+    "knowHint": "Spies see the other spies on their card.",
+    "knowNeedsTwo": "Only matters with two or more spies.",
+    "pickHint": "Tap one number, or several to keep everyone guessing.",
+    "randomPick": "Each round randomly has {{list}} spies. Nobody knows how many."
+  },
+  "hint": {
+    "intro": "What the spy sees instead of the real word. Less help makes the spy easier to catch.",
+    "exampleWord": "Civilians see",
+    "exampleHint": "Spy sees",
+    "hard": {
+      "label": "Close word",
+      "desc": "A word that's almost the same. Hardest to catch."
+    },
+    "medium": {
+      "label": "Same category",
+      "desc": "Another word from the same category."
+    },
+    "easy": {
+      "label": "No hint",
+      "desc": "The spy gets nothing and has to bluff."
+    }
+  },
+  "timer": {
+    "intro": "Countdown for the discussion. You can pause or restart it anytime.",
+    "pause": "Pause",
+    "resume": "Resume",
+    "reset": "Restart",
+    "timesUp": "Time's up"
+  },
+  "card": {
+    "passTo": "Pass the phone to",
+    "passHint": "Make sure nobody else can see the screen.",
+    "civilian": "Civilian",
+    "spy": "Spy",
+    "yourWord": "Your word",
+    "yourHint": "Your hint",
+    "noHint": "No hint",
+    "spyTip": "The others have a different word. Blend in.",
+    "noHintTip": "Listen closely and bluff.",
+    "otherSpies": "Other spies",
+    "onlySpy": "You are the only spy."
+  },
+  "reveal": {
+    "title": "Cards",
+    "show": "Show my card",
+    "hideAndPass": "Hide and pass on",
+    "hideAndDiscuss": "Hide and start discussion"
+  },
+  "peek": {
+    "button": "Check my card",
+    "title": "Check your card",
+    "pick": "Who are you?",
+    "hide": "Hide card"
+  },
+  "discuss": {
+    "title": "Discussion",
+    "starts": "First clue",
+    "howTo": "Go around the circle, one short clue each. Then discuss and vote out the spy.",
+    "order": "Order",
+    "reveal": "Reveal the spy",
+    "confirmTitle": "Reveal the spy?",
+    "confirmBody": "Everyone will see who the spy was and both words."
+  },
+  "result": {
+    "title": "Result",
+    "spyWas": "The spy was",
+    "spiesWere": "The spies were",
+    "civilians": "Civilians",
+    "spy": "Spy",
+    "category": "Category: {{name}}",
+    "nextRound": "Next round",
+    "changeSetup": "Change setup"
   },
   "editList": {
     "notFound": "List not found",
     "notFoundDesc": "This word list no longer exists.",
     "headerEdit": "Edit list",
     "headerNew": "New list",
-    "titleEdit": "Edit word list",
-    "titleNew": "New word list",
-    "intro_before": "Add your own civilian / spy pairs. The spy's hint should be ",
-    "intro_similar": "similar",
-    "intro_after": " — not identical, not totally unrelated.",
     "name": "List name",
     "namePlaceholder": "e.g. Inside jokes, Office snacks…",
     "icon": "Icon",
     "pairs": "Pairs",
-    "pairsHint": "Civilian word → Spy hint",
+    "pairsHint": "Left: the civilians' word. Right: the spy's hint.",
     "civilianPlaceholder": "Civilians' word",
     "spyPlaceholder": "Spy's hint",
     "removePairAria": "Remove pair",
-    "addPair": "+ Add pair",
+    "addPair": "Add pair",
     "create": "Create list",
     "deleteConfirmTitle": "Delete this list?",
     "deleteConfirmDesc": "This can't be undone."
   },
   "online": {
     "yourName": "Your name",
-    "hostNamePlaceholder": "e.g. Alex",
-    "errCreateRoom": "Could not create room",
+    "or": "or",
+    "createRoom": "Create room",
+    "creating": "Creating…",
+    "join": "Join",
+    "joining": "Joining…",
     "roomCode": "Room code",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "e.g. Sam",
-    "errNeedBoth": "Need both a room code and a name.",
-    "errCouldNotJoin": "Could not join room",
-    "fbWarnTitleShort": "Firebase isn't configured",
-    "fbNotConfigured": "Firebase isn't configured.",
-    "loadingRoom": "Loading room {{code}}…",
-    "roomLabel": "Room",
-    "share": "Share this room",
-    "copyLink": "Copy link",
-    "qrShareHint": "Friends can scan to join.",
-    "scanQr": "📷 Scan QR",
+    "roomTitle": "Room {{code}}",
+    "invite": "Invite",
+    "copied": "Link copied",
+    "scanQr": "Scan QR code",
     "qrScanTitle": "Scan room QR code",
     "qrScanHint": "Point your camera at the host's QR code.",
     "qrCameraError": "Couldn't open camera",
     "qrInvalid": "That QR code isn't a room link.",
-    "playersHeader": "Players ({{count}})",
+    "you": "You",
+    "host": "Host",
+    "kick": "Remove {{name}}",
+    "roundSettings": "Round settings",
+    "needPlayers_one": "Waiting for {{count}} more player.",
+    "needPlayers_other": "Waiting for {{count}} more players.",
     "starting": "Starting…",
-    "startRound": "Start round →",
-    "needPlayers": "Need at least 3 players. Share the link!",
-    "waitingHost": "Waiting for the host to start the round…",
+    "waitStart": "Waiting for the host to start the round…",
     "loadingWord": "Loading your word…",
-    "hostAdvance": "Everyone seen their word? → Discuss",
-    "guestAdvanceWait": "When everyone's ready, your host will advance to discussion.",
-    "discussTitle": "Discuss",
-    "discussDesc": "Each player says one short clue about their word, then debate it out in person. Decide together who you think is the spy.",
-    "clueOrder": "Clue order — starts with",
-    "discussTimerLabel": "Discussion timer",
-    "discussTimerHint": "3 minutes by default.",
-    "hostReveal": "Reveal the spy →",
-    "guestRevealWait": "Host will reveal the spy when everyone's ready.",
-    "hostBackLobby": "Back to lobby",
-    "guestBackWait": "Host can take everyone back to the lobby.",
+    "cardReady": "Your card is ready",
+    "cardReadyHint": "Make sure nobody is looking, then show it.",
+    "toDiscussion": "Everyone's ready: start discussion",
+    "waitDiscussion": "The host starts the discussion when everyone has seen their card.",
+    "waitReveal": "The host reveals the spy when you're done.",
+    "waitNext": "Waiting for the host…",
+    "backToLobby": "Back to room",
+    "loadingRoom": "Loading room {{code}}…",
+    "fbNotConfigured": "Online play isn't set up on this build.",
     "errStartRound": "Could not start round",
     "defaultHostName": "Host",
     "defaultGuestName": "Guest",
@@ -279,127 +221,100 @@
     "errNoPairs": "No pairs available — select at least one category with pairs.",
     "errMinPlayers": "Need at least 3 players",
     "errCouldNotAllocate": "Could not allocate a room code, try again",
-    "errNotConfigured": "Firebase not configured",
-    "joinAnother": "Join another room",
-    "youTag": "(you)",
-    "renameSelf": "Rename",
-    "leaveRoom": "Leave room"
+    "errNotConfigured": "Firebase not configured"
   },
   "categories": {
     "food": {
       "name": "Food & Drink",
-      "description": "Edible stuff. Pairs lean tasty and close enough to confuse.",
-      "icon": "🍕"
+      "description": "Edible stuff. Pairs lean tasty and close enough to confuse."
     },
     "animals": {
       "name": "Animals",
-      "description": "Creatures big, small, scaly, fluffy.",
-      "icon": "🐾"
+      "description": "Creatures big, small, scaly, fluffy."
     },
     "sports": {
       "name": "Sports",
-      "description": "Things you do with your body, ideally outdoors.",
-      "icon": "⚽"
+      "description": "Things you do with your body, ideally outdoors."
     },
     "places": {
       "name": "Places",
-      "description": "Rooms, buildings, cities, landscapes.",
-      "icon": "🗺️"
+      "description": "Rooms, buildings, cities, landscapes."
     },
     "tech": {
       "name": "Tech",
-      "description": "Cables, screens, anything with a battery.",
-      "icon": "📱"
+      "description": "Cables, screens, anything with a battery."
     },
     "entertainment": {
       "name": "Entertainment",
-      "description": "Movies, books, games, music.",
-      "icon": "🎬"
+      "description": "Movies, books, games, music."
     },
     "household": {
       "name": "Household",
-      "description": "Things in your kitchen, bathroom, garage.",
-      "icon": "🛋️"
+      "description": "Things in your kitchen, bathroom, garage."
     },
     "nature": {
       "name": "Nature & Weather",
-      "description": "Skies, seas, seasons, and storms.",
-      "icon": "🌧️"
+      "description": "Skies, seas, seasons, and storms."
     },
     "music": {
       "name": "Music",
-      "description": "Instruments, genres, sounds.",
-      "icon": "🎵"
+      "description": "Instruments, genres, sounds."
     },
     "jobs": {
       "name": "Jobs & Roles",
-      "description": "What people do for a living.",
-      "icon": "💼"
+      "description": "What people do for a living."
     },
     "vehicles": {
       "name": "Vehicles",
-      "description": "Things that move you around.",
-      "icon": "🚗"
+      "description": "Things that move you around."
     },
     "clothing": {
       "name": "Clothing",
-      "description": "What you wear.",
-      "icon": "👕"
+      "description": "What you wear."
     },
     "body": {
       "name": "Body & Health",
-      "description": "Anatomy, medicine, wellness.",
-      "icon": "💪"
+      "description": "Anatomy, medicine, wellness."
     },
     "myth": {
       "name": "Mythology & Fantasy",
-      "description": "Creatures and powers from stories.",
-      "icon": "🐉"
+      "description": "Creatures and powers from stories."
     },
     "tricky": {
       "name": "Tricky / Mixed",
-      "description": "Pairs that cross categories. The spy will sweat.",
-      "icon": "🎲"
+      "description": "Pairs that cross categories. The spy will sweat."
     },
     "tyrants": {
       "name": "Tyrants & Despots",
-      "description": "Infamous rulers and dictators from history.",
-      "icon": "⚔️"
+      "description": "Infamous rulers and dictators from history."
     },
     "darkhumor": {
       "name": "Dark Humor",
-      "description": "Gallows, taboo, things you laugh at to cope.",
-      "icon": "💀"
+      "description": "Gallows, taboo, things you laugh at to cope."
     },
     "prophets": {
       "name": "Prophets",
-      "description": "Holy men and messengers across the great faiths.",
-      "icon": "📜"
+      "description": "Holy men and messengers across the great faiths."
     },
     "stereotypes": {
       "name": "Stereotypes",
-      "description": "Clichés and caricatures, played for laughs.",
-      "icon": "🎭"
+      "description": "Clichés and caricatures, played for laughs."
     },
     "races": {
       "name": "Peoples",
-      "description": "Peoples and nationalities — same region, different roots.",
-      "icon": "🌍"
+      "description": "Peoples and nationalities — same region, different roots."
     },
     "infamous": {
       "name": "Critical Places",
-      "description": "Sites of tragedy: massacres, wars, disasters.",
-      "icon": "🕯️"
+      "description": "Sites of tragedy: massacres, wars, disasters."
     },
     "terror": {
       "name": "Terror Attacks",
-      "description": "Notorious terrorist incidents and atrocities.",
-      "icon": "💥"
+      "description": "Notorious terrorist incidents and atrocities."
     },
     "religions": {
       "name": "Religions",
-      "description": "Faiths, sacred books, holy days and rites — across creeds.",
-      "icon": "🛐"
+      "description": "Faiths, sacred books, holy days and rites — across creeds."
     }
   },
   "customList": {
@@ -408,14 +323,15 @@
     "fallback": "Custom"
   },
   "options": {
-    "title": "Options",
-    "header": "Settings",
-    "usernameLabel": "Your name",
-    "usernameHint": "Shown to others when you host or join an online room.",
+    "title": "Settings",
     "languageLabel": "Language",
     "wordListsLabel": "Your word lists",
-    "wordListsHint": "Create and edit custom civilian / spy word pairs.",
-    "newList": "+ New list",
-    "noCustomLists": "No custom lists yet."
+    "wordListsHint": "Create and edit custom civilian / spy word pairs."
+  },
+  "install": {
+    "title": "Add Spy to your home screen",
+    "desc": "Opens like an app and works offline, ready for the next game night.",
+    "button": "Install",
+    "iosHint": "In Safari, tap Share, then \"Add to Home Screen\"."
   }
 }

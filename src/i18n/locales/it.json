@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "Spy — Il gioco di parole"
+    "title": "Spy — Il gioco di parole per le feste"
   },
   "app": {
-    "footer": "Spy — il gioco di parole. Gioca dal vivo o online con gli amici.",
     "exitConfirm": "Premi di nuovo per uscire"
   },
   "languages": {
@@ -25,241 +24,196 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "Home",
     "back": "Indietro",
     "cancel": "Annulla",
     "save": "Salva",
     "delete": "Elimina",
-    "yes": "Sì",
-    "no": "No",
-    "dismiss": "Chiudi"
-  },
-  "wizard": {
-    "modeTitle": "Come volete giocare?",
-    "modeSingle": "Un solo dispositivo",
-    "modeSingleDesc": "Passate il telefono attorno al tavolo.",
-    "modeOnline": "Ognuno sul proprio dispositivo",
-    "modeOnlineDesc": "Ogni giocatore entra dal proprio telefono.",
-    "roleTitle": "Crea o entra?",
-    "roleHost": "Crea una stanza",
-    "roleHostDesc": "Crea una partita e condividi il codice.",
-    "roleJoin": "Entra con un codice",
-    "roleJoinDesc": "Hai un codice o un QR? Salta dentro.",
-    "back": "← Indietro",
-    "next": "Avanti →",
-    "playersTitle": "Aggiungi giocatori",
-    "playersDesc": "Aggiungi tutti i partecipanti. Servono almeno 3.",
-    "categoriesTitle": "Fonti delle parole",
-    "categoriesDesc": "Scegli le categorie da usare.",
-    "optionsTitle": "Opzioni di gioco",
-    "optionsDesc": "Difficoltà e timer di discussione.",
-    "startBtn": "Inizia round →",
-    "hostNameTitle": "Il tuo nome",
-    "hostNameDesc": "Gli altri lo vedranno nella lobby.",
-    "hostCreateBtn": "Crea stanza",
-    "creating": "Creazione…",
-    "joinCodeTitle": "Inserisci il codice",
-    "joinCodeDesc": "Digita il codice a 4 lettere o scansiona il QR.",
-    "joinNameTitle": "Il tuo nome",
-    "joinBtn": "Entra",
-    "joining": "Entrando…",
-    "stepLabel": "Passo {{current}} di {{total}}"
+    "close": "Chiudi",
+    "done": "Fatto"
   },
   "home": {
     "title": "Spy",
-    "howTo": {
-      "title": "Come si gioca",
-      "step1_title": "Preparazione",
-      "step1": "Tutti ricevono la stessa parola. La spia riceve un indizio simile — o niente del tutto.",
-      "step2_title": "Round di indizi",
-      "step2": "A turno, ognuno dice una sola parola che dimostri di conoscere il segreto — ma abbastanza vaga da non farla intuire alla spia.",
-      "step3_title": "Fase di domande",
-      "step3": "Interrogatevi a vicenda. Ascoltate chi sta bluffando e cercate di smascherare la spia.",
-      "step4_title": "Votazione",
-      "step4": "Votate il sospettato. La spia smascherata ha poi un ultimo tentativo per indovinare la parola.",
-      "winTitle": "Come si vince",
-      "civWinLabel": "I civili vincono se",
-      "civWin": "smascherate la spia E la spia sbaglia l'ultimo tentativo di indovinare la parola.",
-      "spyWinLabel": "La spia vince se",
-      "spyWin": "sopravvive alla votazione, OPPURE pronuncia la parola segreta una volta scoperta, OPPURE la indovina correttamente dopo essere stata smascherata."
-    }
+    "tagline": "Tutti ricevono una parola. La spia ne riceve una diversa.",
+    "oneDevice": "Tutti su un dispositivo",
+    "oneDeviceDesc": "Passatevi un telefono intorno al tavolo.",
+    "ownDevice": "Ognuno sul proprio dispositivo",
+    "ownDeviceDesc": "Ogni giocatore entra in una stanza dal proprio telefono.",
+    "continueRound": "Continua il round in corso",
+    "playAgain": "Gioca ancora",
+    "howToPlay": "Come si gioca"
   },
-  "localGame": {
-    "phase": "Fase:",
-    "discuss": {
-      "title": "Discussione",
-      "desc": "Ogni giocatore dice un breve indizio sulla propria parola, poi se ne discute. Decidete insieme chi è la spia.",
-      "clueOrder": "Ordine indizi — inizia con",
-      "timerLabel": "Timer discussione",
-      "timerHint": "Metti in pausa o azzera in qualsiasi momento.",
-      "revealBtn": "Smaschera la spia →",
-      "revealHint": "Avete deciso? Tocca per scoprire chi era la spia."
-    }
+  "setup": {
+    "players": "Giocatori",
+    "playerCount_one": "{{count}} giocatore",
+    "playerCount_other": "{{count}} giocatori",
+    "words": "Parole",
+    "allCategories": "Tutte",
+    "categoryCount_one": "{{count}} categoria",
+    "categoryCount_other": "{{count}} categorie",
+    "spies": "Spie",
+    "randomEachRound": "Casuale a ogni round",
+    "spiesKnow": "Si conoscono",
+    "hint": "Indizio della spia",
+    "timer": "Timer",
+    "off": "Disattivato",
+    "minutes_one": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "none": "Nessuno",
+    "start": "Inizia il round"
   },
-  "lobby": {
-    "playersLabel": "Giocatori ({{count}})",
-    "quickAdd": "+ Aggiunta rapida",
-    "namePlaceholder": "Nome (o lascia vuoto)",
-    "addBtn": "Aggiungi",
-    "removeAria": "Rimuovi {{name}}",
-    "empty": "Nessun giocatore ancora.",
+  "players": {
+    "namePlaceholder": "Aggiungi un giocatore",
+    "add": "Aggiungi giocatore",
     "defaultName": "Giocatore {{n}}",
-    "spyCountLabel": "Numero di spie",
-    "spyCountHint": "Più spie = più difficile per i civili.",
-    "spyCountRandom": "Casuale",
-    "spyCountRandomHint": "Sceglie 1–{{max}} spie per round.",
-    "spiesKnowLabel": "Le spie si conoscono",
-    "spiesKnowHint": "Vedono le altre spie sulla carta.",
-    "difficultyLabel": "Difficoltà per i villici",
-    "difficulty": {
-      "easy": {
-        "label": "Facile",
-        "hint": "La spia non riceve alcun indizio — puro bluff, la più facile da scoprire."
-      },
-      "medium": {
-        "label": "Media",
-        "hint": "L'indizio della spia è un parente della stessa categoria."
-      },
-      "hard": {
-        "label": "Difficile",
-        "hint": "L'indizio della spia è molto vicino alla parola vera, stessa categoria — classico."
-      }
-    },
-    "timerLabel": "Timer discussione",
-    "timerOff": "Nessun timer",
-    "timerMin": "{{count}} min",
-    "needPlayers": "Servono almeno 3 giocatori per iniziare.",
-    "needSource": "Scegli almeno una fonte di parole."
+    "changeAvatar": "Cambia immagine",
+    "rename": "Rinomina {{name}}",
+    "remove": "Rimuovi {{name}}",
+    "empty": "Ancora nessun giocatore.",
+    "needMore_one": "Aggiungi ancora {{count}} giocatore per iniziare.",
+    "needMore_other": "Aggiungi ancora {{count}} giocatori per iniziare.",
+    "tip": "Trascina per seguire l'ordine in cui siete seduti; le carte girano in quest'ordine.",
+    "reorder": "Sposta {{name}}"
   },
-  "timer": {
-    "pause": "Pausa",
-    "resume": "Riprendi",
-    "done": "Fatto",
-    "reset": "Reset"
-  },
-  "revealDeck": {
-    "cardProgress_one": "Carta {{current}} di {{total}}",
-    "cardProgress_other": "Carta {{current}} di {{total}}",
-    "prev": "← Prec.",
-    "next": "Avanti →",
-    "doneBtn": "Fatto →",
-    "tapHint": "tocca la carta per girarla",
-    "swipeHint": "scorri ← per la prossima"
-  },
-  "playerCard": {
-    "spyHeader": "Spy",
-    "passTo": "Passa a",
-    "passInstruction": "Quando è sicuro, tocca la carta per scoprire la tua parola.",
-    "tapToFlip": "tocca per girare",
-    "tapToHide": "tocca per nascondere",
-    "spyRole": "🕵️ Spia",
-    "civRole": "✅ Civile",
-    "spyBadge": "🕵️ Sei la spia",
-    "fellowSpiesLabel": "Altre spie",
-    "aloneSpy": "Sei l'unica spia.",
-    "spyHeadsUp_before": "Attenzione:",
-    "spyHeadsUp_mid": " questa parola ",
-    "spyHeadsUp_not": "non",
-    "spyHeadsUp_after": " è quella degli altri. È un ",
-    "spyHeadsUp_hint": "indizio",
-    "spyHeadsUp_tail": " simile. Non dirlo ad alta voce.",
-    "yourHint": "Il tuo indizio",
-    "spyBluff": "Bluffa i tuoi indizi — devono andare bene per la TUA parola E per la loro.",
-    "noHintTitle": "Nessun indizio in questo round.",
-    "noHintBody": " Non conosci la parola. Ascolta, mimetizzati, bluffa.",
-    "noHintPlaceholder": "(nessun indizio)",
-    "noHintBluff": "Ripeti ciò che dicono gli altri. Non sbilanciarti per primo.",
-    "civBadge": "✅ Civile",
-    "civBody": "Tutti gli altri (tranne la spia) hanno la stessa parola. Trova la spia.",
-    "yourWord": "La tua parola"
-  },
-  "result": {
-    "title": "La rivelazione",
-    "subtitle": "Avete indovinato?",
-    "spyWas": "La spia era",
-    "spiesWere": "Le spie erano",
-    "wordsLabel": "Le parole",
-    "civilians": "Civili",
-    "spy": "Spia",
-    "vs": "vs",
-    "noHint": "(nessun indizio)",
-    "category": "Categoria: {{name}}",
-    "playAgain": "Ancora — stessi giocatori",
-    "backToLobby": "Torna alla lobby",
-    "home": "Home"
-  },
-  "pairPicker": {
-    "label": "Fonti di parole",
+  "words": {
     "selectAll": "Seleziona tutto",
-    "clear": "Pulisci",
+    "selectNone": "Deseleziona tutto",
     "pairCount_one": "{{count}} coppia",
     "pairCount_other": "{{count}} coppie",
     "newList": "Nuova lista",
     "newListDesc": "Le tue coppie di parole",
-    "editAria": "Modifica lista",
-    "pickAtLeastOne": "Scegli almeno una fonte per iniziare un round."
+    "editList": "Modifica lista",
+    "pickOne": "Scegli almeno una categoria."
+  },
+  "spies": {
+    "count": "Numero di spie",
+    "maxHint": "Con {{players}} giocatori puoi avere fino a {{max}} spie.",
+    "fewPlayers": "Le spie sono sempre meno della metà dei giocatori.",
+    "knowLabel": "Le spie si conoscono",
+    "knowHint": "Le spie vedono le altre spie sulla propria carta.",
+    "knowNeedsTwo": "Conta solo con due o più spie.",
+    "pickHint": "Tocca un numero, o più numeri per lasciare tutti nel dubbio.",
+    "randomPick": "Ogni round ha a caso {{list}} spie. Nessuno sa quante."
+  },
+  "hint": {
+    "intro": "Cosa vede la spia al posto della parola vera. Meno aiuto rende la spia più facile da smascherare.",
+    "exampleWord": "I civili vedono",
+    "exampleHint": "La spia vede",
+    "hard": {
+      "label": "Parola simile",
+      "desc": "Una parola quasi uguale. La più difficile da smascherare."
+    },
+    "medium": {
+      "label": "Stessa categoria",
+      "desc": "Un'altra parola della stessa categoria."
+    },
+    "easy": {
+      "label": "Nessun indizio",
+      "desc": "La spia non riceve niente e deve bluffare."
+    }
+  },
+  "timer": {
+    "intro": "Conto alla rovescia per la discussione. Puoi metterlo in pausa o farlo ripartire quando vuoi.",
+    "pause": "Pausa",
+    "resume": "Riprendi",
+    "reset": "Ricomincia",
+    "timesUp": "Tempo scaduto"
+  },
+  "card": {
+    "passTo": "Passa il telefono a",
+    "passHint": "Assicurati che nessun altro veda lo schermo.",
+    "civilian": "Civile",
+    "spy": "Spia",
+    "yourWord": "La tua parola",
+    "yourHint": "Il tuo indizio",
+    "noHint": "Nessun indizio",
+    "spyTip": "Gli altri hanno una parola diversa. Mimetizzati.",
+    "noHintTip": "Ascolta bene e bluffa.",
+    "otherSpies": "Altre spie",
+    "onlySpy": "Sei l'unica spia."
+  },
+  "reveal": {
+    "title": "Carte",
+    "show": "Mostra la mia carta",
+    "hideAndPass": "Nascondi e passa",
+    "hideAndDiscuss": "Nascondi e inizia la discussione"
+  },
+  "peek": {
+    "button": "Rivedi la mia carta",
+    "title": "Rivedi la tua carta",
+    "pick": "Chi sei?",
+    "hide": "Nascondi carta"
+  },
+  "discuss": {
+    "title": "Discussione",
+    "starts": "Primo indizio",
+    "howTo": "Fate il giro, un breve indizio a testa. Poi discutete e votate per eliminare la spia.",
+    "order": "Ordine",
+    "reveal": "Smaschera la spia",
+    "confirmTitle": "Smascherare la spia?",
+    "confirmBody": "Tutti vedranno chi era la spia ed entrambe le parole."
+  },
+  "result": {
+    "title": "Risultato",
+    "spyWas": "La spia era",
+    "spiesWere": "Le spie erano",
+    "civilians": "Civili",
+    "spy": "Spia",
+    "category": "Categoria: {{name}}",
+    "nextRound": "Prossimo round",
+    "changeSetup": "Cambia impostazioni"
   },
   "editList": {
     "notFound": "Lista non trovata",
     "notFoundDesc": "Questa lista di parole non esiste più.",
     "headerEdit": "Modifica lista",
     "headerNew": "Nuova lista",
-    "titleEdit": "Modifica lista di parole",
-    "titleNew": "Nuova lista di parole",
-    "intro_before": "Aggiungi le tue coppie civile / spia. L'indizio della spia deve essere ",
-    "intro_similar": "simile",
-    "intro_after": " — non identico, non del tutto estraneo.",
     "name": "Nome della lista",
     "namePlaceholder": "es. Battute interne, Snack d'ufficio…",
     "icon": "Icona",
     "pairs": "Coppie",
-    "pairsHint": "Parola dei civili → Indizio della spia",
+    "pairsHint": "A sinistra: la parola dei civili. A destra: l'indizio della spia.",
     "civilianPlaceholder": "Parola dei civili",
     "spyPlaceholder": "Indizio della spia",
     "removePairAria": "Rimuovi coppia",
-    "addPair": "+ Aggiungi coppia",
+    "addPair": "Aggiungi coppia",
     "create": "Crea lista",
     "deleteConfirmTitle": "Eliminare questa lista?",
     "deleteConfirmDesc": "Questa azione è irreversibile."
   },
   "online": {
     "yourName": "Il tuo nome",
-    "hostNamePlaceholder": "es. Alex",
-    "errCreateRoom": "Impossibile creare la stanza",
+    "or": "o",
+    "createRoom": "Crea stanza",
+    "creating": "Creazione…",
+    "join": "Entra",
+    "joining": "Accesso in corso…",
     "roomCode": "Codice stanza",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "es. Sam",
-    "errNeedBoth": "Servono sia codice che nome.",
-    "errCouldNotJoin": "Impossibile entrare nella stanza",
-    "fbWarnTitleShort": "Firebase non è configurato",
-    "fbNotConfigured": "Firebase non è configurato.",
-    "loadingRoom": "Caricamento stanza {{code}}…",
-    "roomLabel": "Stanza",
-    "share": "Condividi questa stanza",
-    "copyLink": "Copia link",
-    "qrShareHint": "Gli amici possono scansionare per entrare.",
-    "scanQr": "📷 Scansiona QR",
+    "roomTitle": "Stanza {{code}}",
+    "invite": "Invita",
+    "copied": "Link copiato",
+    "scanQr": "Scansiona QR",
     "qrScanTitle": "Scansiona il QR della stanza",
     "qrScanHint": "Punta la fotocamera sul QR code dell'host.",
     "qrCameraError": "Impossibile aprire la fotocamera",
     "qrInvalid": "Questo QR code non è un link a una stanza.",
-    "playersHeader": "Giocatori ({{count}})",
+    "you": "Tu",
+    "host": "Host",
+    "kick": "Rimuovi {{name}}",
+    "roundSettings": "Impostazioni del round",
+    "needPlayers_one": "In attesa di {{count}} altro giocatore.",
+    "needPlayers_other": "In attesa di altri {{count}} giocatori.",
     "starting": "Avvio…",
-    "startRound": "Inizia round →",
-    "needPlayers": "Servono almeno 3 giocatori. Condividi il link!",
-    "waitingHost": "In attesa che l'host avvii il round…",
+    "waitStart": "In attesa che l'host avvii il round…",
     "loadingWord": "Caricamento della tua parola…",
-    "hostAdvance": "Tutti hanno visto la parola? → Discussione",
-    "guestAdvanceWait": "Quando tutti sono pronti, l'host passerà alla discussione.",
-    "discussTitle": "Discussione",
-    "discussDesc": "Ogni giocatore dice un breve indizio sulla propria parola, poi se ne discute di persona. Decidete insieme chi è la spia.",
-    "clueOrder": "Ordine indizi — inizia con",
-    "discussTimerLabel": "Timer discussione",
-    "discussTimerHint": "3 minuti di default.",
-    "hostReveal": "Smaschera la spia →",
-    "guestRevealWait": "L'host smaschererà la spia quando tutti sono pronti.",
-    "hostBackLobby": "Torna alla lobby",
-    "guestBackWait": "L'host può riportare tutti in lobby.",
+    "cardReady": "La tua carta è pronta",
+    "cardReadyHint": "Assicurati che nessuno guardi, poi mostrala.",
+    "toDiscussion": "Tutti pronti: inizia la discussione",
+    "waitDiscussion": "L'host avvia la discussione quando tutti hanno visto la propria carta.",
+    "waitReveal": "L'host smaschera la spia quando avete finito.",
+    "waitNext": "In attesa dell'host…",
+    "backToLobby": "Torna alla stanza",
+    "loadingRoom": "Caricamento stanza {{code}}…",
+    "fbNotConfigured": "Il gioco online non è configurato in questa versione.",
     "errStartRound": "Impossibile avviare il round",
     "defaultHostName": "Host",
     "defaultGuestName": "Ospite",
@@ -272,123 +226,112 @@
   "categories": {
     "food": {
       "name": "Cibo & Bevande",
-      "description": "Roba commestibile. Coppie gustose e abbastanza simili da confondere.",
-      "icon": "🍕"
+      "description": "Roba commestibile. Coppie gustose e abbastanza simili da confondere."
     },
     "animals": {
       "name": "Animali",
-      "description": "Creature grandi, piccole, squamose, pelose.",
-      "icon": "🐾"
+      "description": "Creature grandi, piccole, squamose, pelose."
     },
     "sports": {
       "name": "Sport",
-      "description": "Cose che fai col corpo, meglio se all'aria aperta.",
-      "icon": "⚽"
+      "description": "Cose che fai col corpo, meglio se all'aria aperta."
     },
     "places": {
       "name": "Luoghi",
-      "description": "Stanze, edifici, città, paesaggi.",
-      "icon": "🗺️"
+      "description": "Stanze, edifici, città, paesaggi."
     },
     "tech": {
       "name": "Tecnologia",
-      "description": "Cavi, schermi, tutto ciò che ha una batteria.",
-      "icon": "📱"
+      "description": "Cavi, schermi, tutto ciò che ha una batteria."
     },
     "entertainment": {
       "name": "Intrattenimento",
-      "description": "Film, libri, giochi, musica.",
-      "icon": "🎬"
+      "description": "Film, libri, giochi, musica."
     },
     "household": {
       "name": "Casa",
-      "description": "Cose di cucina, bagno, garage.",
-      "icon": "🛋️"
+      "description": "Cose di cucina, bagno, garage."
     },
     "nature": {
       "name": "Natura & Meteo",
-      "description": "Cieli, mari, stagioni e tempeste.",
-      "icon": "🌧️"
+      "description": "Cieli, mari, stagioni e tempeste."
     },
     "music": {
       "name": "Musica",
-      "description": "Strumenti, generi, suoni.",
-      "icon": "🎵"
+      "description": "Strumenti, generi, suoni."
     },
     "jobs": {
       "name": "Mestieri & Ruoli",
-      "description": "Cosa fanno le persone per vivere.",
-      "icon": "💼"
+      "description": "Cosa fanno le persone per vivere."
     },
     "vehicles": {
       "name": "Veicoli",
-      "description": "Cose che ti spostano in giro.",
-      "icon": "🚗"
+      "description": "Cose che ti spostano in giro."
     },
     "clothing": {
       "name": "Abbigliamento",
-      "description": "Ciò che indossi.",
-      "icon": "👕"
+      "description": "Ciò che indossi."
     },
     "body": {
       "name": "Corpo & Salute",
-      "description": "Anatomia, medicina, benessere.",
-      "icon": "💪"
+      "description": "Anatomia, medicina, benessere."
     },
     "myth": {
       "name": "Mitologia & Fantasy",
-      "description": "Creature e poteri tratti dalle storie.",
-      "icon": "🐉"
+      "description": "Creature e poteri tratti dalle storie."
     },
     "tricky": {
       "name": "Furbo / Misto",
-      "description": "Coppie che attraversano le categorie. La spia suderà.",
-      "icon": "🎲"
+      "description": "Coppie che attraversano le categorie. La spia suderà."
     },
     "tyrants": {
       "name": "Tiranni & Despoti",
-      "description": "Sovrani e dittatori famigerati della storia.",
-      "icon": "⚔️"
+      "description": "Sovrani e dittatori famigerati della storia."
     },
     "darkhumor": {
       "name": "Umorismo Nero",
-      "description": "Forca, tabù — si ride per non piangere.",
-      "icon": "💀"
+      "description": "Forca, tabù — si ride per non piangere."
     },
     "prophets": {
       "name": "Profeti",
-      "description": "Uomini santi e messaggeri delle grandi fedi.",
-      "icon": "📜"
+      "description": "Uomini santi e messaggeri delle grandi fedi."
     },
     "stereotypes": {
       "name": "Stereotipi",
-      "description": "Cliché e caricature, presi con ironia.",
-      "icon": "🎭"
+      "description": "Cliché e caricature, presi con ironia."
     },
     "races": {
       "name": "Popoli",
-      "description": "Popoli e nazionalità — stessa regione, radici diverse.",
-      "icon": "🌍"
+      "description": "Popoli e nazionalità — stessa regione, radici diverse."
     },
     "infamous": {
       "name": "Luoghi Critici",
-      "description": "Luoghi di tragedia: massacri, guerre, disastri.",
-      "icon": "🕯️"
-    },
-    "religions": {
-      "name": "Religioni",
-      "description": "Fedi, libri sacri, giorni santi e riti — tra confessioni diverse.",
-      "icon": "🛐"
+      "description": "Luoghi di tragedia: massacri, guerre, disastri."
     },
     "terror": {
       "name": "Attentati terroristici",
-      "description": "Attentati e atrocità tristemente note.",
-      "icon": "💥"
+      "description": "Attentati e atrocità tristemente note."
+    },
+    "religions": {
+      "name": "Religioni",
+      "description": "Fedi, libri sacri, giorni santi e riti — tra confessioni diverse."
     }
   },
   "customList": {
     "description_one": "La tua lista personale ({{count}} coppia)",
     "description_other": "La tua lista personale ({{count}} coppie)",
     "fallback": "Personale"
+  },
+  "options": {
+    "title": "Impostazioni",
+    "languageLabel": "Lingua",
+    "wordListsLabel": "Le tue liste di parole",
+    "wordListsHint": "Crea e modifica coppie di parole civile / spia personalizzate."
+  },
+  "install": {
+    "title": "Aggiungi Spy alla schermata Home",
+    "desc": "Si apre come un'app e funziona offline, pronto per la prossima serata giochi.",
+    "button": "Installa",
+    "iosHint": "In Safari tocca Condividi, poi «Aggiungi alla schermata Home»."
   }
 }

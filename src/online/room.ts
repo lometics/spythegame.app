@@ -28,12 +28,16 @@ export type OnlineMeta = {
   createdAt: number
   phase: GamePhase
   round: number
+  /** Creator of the room. Missing on rooms made by older builds. */
+  hostUid?: string
 }
 
 export type OnlineRound = {
   pairPublic: { categoryId: string } | null
   firstClueGiverId: string | null
   startedAt: number
+  /** Host's discussion timer setting; 0 = off. Missing on older rounds. */
+  timerSeconds?: number
 }
 
 export type PairReveal = {
@@ -47,6 +51,7 @@ export type RoomState = {
   players: Record<string, OnlinePlayer>
   round: OnlineRound | null
   loaded: boolean
+  playersLoaded: boolean
 }
 
 const ROOM_CODE_CHARS = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
@@ -71,6 +76,7 @@ export async function createRoom(hostName: string): Promise<string> {
         createdAt: serverTimestamp(),
         phase: 'lobby',
         round: 0,
+        hostUid: user.uid,
       },
       players: {
         [user.uid]: {
@@ -98,43 +104,44 @@ export async function joinRoom(code: string, name: string) {
   return user.uid
 }
 
-export async function rejoinIfMissing(
-  code: string,
-  uid: string,
-  name: string,
-) {
-  if (!db) return
-  const playerSnap = await get(ref(db, `rooms/${code}/players/${uid}`))
-  if (playerSnap.exists()) return
-  const metaSnap = await get(ref(db, `rooms/${code}/meta`))
-  if (!metaSnap.exists()) return
-  await set(ref(db, `rooms/${code}/players/${uid}`), {
-    name: name.trim() || i18n.t('online.defaultGuestName'),
-    joinedAt: serverTimestamp(),
-  })
+const EMPTY_ROOM: RoomState = {
+  meta: null,
+  players: {},
+  round: null,
+  loaded: false,
+  playersLoaded: false,
 }
 
 export function useRoom(code: string | undefined): RoomState {
-  const [state, setState] = useState<RoomState>({
-    meta: null,
-    players: {},
-    round: null,
-    loaded: false,
-  })
+  // Tagged with the code it belongs to, so switching rooms never shows stale data.
+  const [state, setState] = useState<RoomState & { code?: string }>(EMPTY_ROOM)
   useEffect(() => {
     if (!db || !code) return
-    setState({ meta: null, players: {}, round: null, loaded: false })
     const metaRef = ref(db, `rooms/${code}/meta`)
     const playersRef = ref(db, `rooms/${code}/players`)
     const roundRef = ref(db, `rooms/${code}/round`)
     const unsubMeta = onValue(metaRef, (s) =>
-      setState((prev) => ({ ...prev, meta: s.val() ?? null, loaded: true })),
+      setState((prev) => ({
+        ...(prev.code === code ? prev : EMPTY_ROOM),
+        code,
+        meta: s.val() ?? null,
+        loaded: true,
+      })),
     )
     const unsubPlayers = onValue(playersRef, (s) =>
-      setState((prev) => ({ ...prev, players: s.val() ?? {} })),
+      setState((prev) => ({
+        ...(prev.code === code ? prev : EMPTY_ROOM),
+        code,
+        players: s.val() ?? {},
+        playersLoaded: true,
+      })),
     )
     const unsubRound = onValue(roundRef, (s) =>
-      setState((prev) => ({ ...prev, round: s.val() ?? null })),
+      setState((prev) => ({
+        ...(prev.code === code ? prev : EMPTY_ROOM),
+        code,
+        round: s.val() ?? null,
+      })),
     )
     return () => {
       unsubMeta()
@@ -142,7 +149,7 @@ export function useRoom(code: string | undefined): RoomState {
       unsubRound()
     }
   }, [code])
-  return state
+  return state.code === code ? state : EMPTY_ROOM
 }
 
 export function useMyPrivate(
@@ -185,10 +192,7 @@ export function usePairReveal(
 ): PairReveal | null {
   const [v, setV] = useState<PairReveal | null>(null)
   useEffect(() => {
-    if (!db || !code || !enabled) {
-      setV(null)
-      return
-    }
+    if (!db || !code || !enabled) return
     const r = ref(db, `pairReveals/${code}`)
     const unsub = onValue(
       r,
@@ -197,7 +201,8 @@ export function usePairReveal(
     )
     return () => unsub()
   }, [code, enabled])
-  return v
+  // Hidden outside the result phase so an old round's answer never flashes up.
+  return enabled ? v : null
 }
 
 export async function startOnlineRound(
@@ -206,8 +211,9 @@ export async function startOnlineRound(
   customLists: CustomList[],
   players: Record<string, OnlinePlayer>,
   difficulty: Difficulty = 'hard',
-  spyCount: SpyCountSetting = 1,
+  spyCount: SpyCountSetting = [1],
   spiesKnowEachOther = false,
+  timerSeconds = 0,
 ) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   const pair: Pair = samplePair(pairSource, customLists, difficulty)
@@ -252,6 +258,7 @@ export async function startOnlineRound(
       pairPublic: { categoryId: pair.categoryId },
       firstClueGiverId,
       startedAt: serverTimestamp(),
+      timerSeconds,
     },
     [`privateWords/${code}`]: privateUpdates,
     [`pairReveals/${code}`]: { pair, spyUid: spyUids[0], spyUids },

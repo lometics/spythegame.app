@@ -1,9 +1,8 @@
 {
   "meta": {
-    "title": "Szpieg — Gra Słowna"
+    "title": "Spy — Imprezowa gra słowna"
   },
   "app": {
-    "footer": "Szpieg — gra słowna. Graj na żywo lub online ze znajomymi.",
     "exitConfirm": "Naciśnij ponownie, aby wyjść"
   },
   "languages": {
@@ -25,245 +24,206 @@
     "ar": "العربية"
   },
   "common": {
-    "home": "Start",
     "back": "Wstecz",
     "cancel": "Anuluj",
     "save": "Zapisz",
     "delete": "Usuń",
-    "yes": "Tak",
-    "no": "Nie",
-    "dismiss": "Odrzuć"
-  },
-  "wizard": {
-    "modeTitle": "Jak chcecie grać?",
-    "modeSingle": "Jedno urządzenie",
-    "modeSingleDesc": "Przekazujcie telefon przy stole.",
-    "modeOnline": "Każdy na swoim urządzeniu",
-    "modeOnlineDesc": "Każdy gracz dołącza z własnego telefonu.",
-    "roleTitle": "Hostować czy dołączyć?",
-    "roleHost": "Załóż pokój",
-    "roleHostDesc": "Stwórz grę i udostępnij kod.",
-    "roleJoin": "Dołącz z kodem",
-    "roleJoinDesc": "Masz kod lub QR? Wskakuj.",
-    "back": "← Wstecz",
-    "next": "Dalej →",
-    "playersTitle": "Dodaj graczy",
-    "playersDesc": "Dodaj wszystkich. Minimum 3.",
-    "categoriesTitle": "Wybierz źródła słów",
-    "categoriesDesc": "Wybierz kategorie do losowania.",
-    "optionsTitle": "Opcje gry",
-    "optionsDesc": "Dostosuj trudność i czas dyskusji.",
-    "startBtn": "Zacznij rundę →",
-    "hostNameTitle": "Twoje imię",
-    "hostNameDesc": "Inni gracze zobaczą to w lobby.",
-    "hostCreateBtn": "Stwórz pokój",
-    "creating": "Tworzenie…",
-    "joinCodeTitle": "Wpisz kod pokoju",
-    "joinCodeDesc": "Wpisz 4-literowy kod lub zeskanuj QR.",
-    "joinNameTitle": "Twoje imię",
-    "joinBtn": "Dołącz",
-    "joining": "Dołączanie…",
-    "stepLabel": "Krok {{current}} z {{total}}"
+    "close": "Zamknij",
+    "done": "Gotowe"
   },
   "home": {
     "title": "Szpieg",
-    "howTo": {
-      "title": "Jak grać",
-      "step1_title": "Przygotowanie",
-      "step1": "Wszyscy dostają to samo słowo. Szpieg dostaje podobną wskazówkę — albo nic.",
-      "step2_title": "Rundy wskazówek",
-      "step2": "Na zmianę powiedz jedno słowo udowadniające, że znasz sekret — ale na tyle ogólne, by szpieg nie zgadł.",
-      "step3_title": "Czas pytań",
-      "step3": "Przesłuchujcie się. Wsłuchajcie się kto blefuje i znajdźcie szpiega.",
-      "step4_title": "Głosowanie",
-      "step4": "Wskażcie podejrzanego. Oskarżony szpieg ma jedną szansę zgadnąć słowo.",
-      "winTitle": "Jak wygrać",
-      "civWinLabel": "Cywile wygrywają, jeśli",
-      "civWin": "Wyrzucicie szpiega ORAZ nie zgadnie słowa.",
-      "spyWinLabel": "Szpieg wygrywa, jeśli",
-      "spyWin": "Przetrwa głosowanie, LUB wypowie sekretne słowo gdy je odkryje, LUB zgadnie poprawnie po złapaniu."
-    }
+    "tagline": "Każdy dostaje słowo. Szpieg dostaje inne.",
+    "oneDevice": "Wszyscy na jednym urządzeniu",
+    "oneDeviceDesc": "Podawajcie jeden telefon wokół stołu.",
+    "ownDevice": "Każdy na swoim urządzeniu",
+    "ownDeviceDesc": "Każdy gracz dołącza do pokoju na swoim telefonie.",
+    "continueRound": "Kontynuuj bieżącą rundę",
+    "playAgain": "Zagraj jeszcze raz",
+    "howToPlay": "Jak grać"
   },
-  "localGame": {
-    "phase": "Faza:",
-    "discuss": {
-      "title": "Dyskusja",
-      "desc": "Każdy gracz daje krótką wskazówkę o swoim słowie, potem dyskutujcie. Zdecydujcie razem kto jest szpiegiem.",
-      "clueOrder": "Kolejność — zaczyna",
-      "timerLabel": "Czas dyskusji",
-      "timerHint": "Pauzuj lub zresetuj w każdej chwili.",
-      "revealBtn": "Pokaż szpiega →",
-      "revealHint": "Zdecydowane? Dotknij, by zobaczyć kto był szpiegiem."
-    }
+  "setup": {
+    "players": "Gracze",
+    "playerCount_one": "{{count}} gracz",
+    "playerCount_few": "{{count}} graczy",
+    "playerCount_many": "{{count}} graczy",
+    "playerCount_other": "{{count}} gracza",
+    "words": "Słowa",
+    "allCategories": "Wszystkie",
+    "categoryCount_one": "{{count}} kategoria",
+    "categoryCount_few": "{{count}} kategorie",
+    "categoryCount_many": "{{count}} kategorii",
+    "categoryCount_other": "{{count}} kategorii",
+    "spies": "Szpiedzy",
+    "randomEachRound": "Losowo w każdej rundzie",
+    "spiesKnow": "Znają się",
+    "hint": "Wskazówka szpiega",
+    "timer": "Minutnik",
+    "off": "Wył.",
+    "minutes_one": "{{count}} min",
+    "minutes_few": "{{count}} min",
+    "minutes_many": "{{count}} min",
+    "minutes_other": "{{count}} min",
+    "none": "Brak",
+    "start": "Zacznij rundę"
   },
-  "lobby": {
-    "playersLabel": "Gracze ({{count}})",
-    "quickAdd": "+ Szybko dodaj",
-    "namePlaceholder": "Imię (lub puste)",
-    "addBtn": "Dodaj",
-    "removeAria": "Usuń {{name}}",
-    "empty": "Brak graczy.",
+  "players": {
+    "namePlaceholder": "Dodaj gracza",
+    "add": "Dodaj gracza",
     "defaultName": "Gracz {{n}}",
-    "spyCountLabel": "Liczba szpiegów",
-    "spyCountHint": "Więcej szpiegów = trudniej dla cywili.",
-    "spyCountRandom": "Losowo",
-    "spyCountRandomHint": "Wybiera 1–{{max}} szpiegów na rundę.",
-    "spiesKnowLabel": "Szpiedzy się znają",
-    "spiesKnowHint": "Widzą się na karcie.",
-    "difficultyLabel": "Trudność dla cywili",
-    "difficulty": {
-      "easy": {
-        "label": "Łatwy",
-        "hint": "Szpieg bez wskazówki — czysty blef, najłatwiej go złapać."
-      },
-      "medium": {
-        "label": "Średni",
-        "hint": "Wskazówka z tej samej kategorii."
-      },
-      "hard": {
-        "label": "Trudny",
-        "hint": "Wskazówka bardzo blisko prawdziwego słowa, ta sama kategoria — klasyk."
-      }
-    },
-    "timerLabel": "Czas dyskusji",
-    "timerOff": "Bez czasu",
-    "timerMin": "{{count}} min",
-    "needPlayers": "Dodaj co najmniej 3 graczy.",
-    "needSource": "Wybierz co najmniej jedno źródło słów."
+    "changeAvatar": "Zmień obrazek",
+    "rename": "Zmień nazwę: {{name}}",
+    "remove": "Usuń: {{name}}",
+    "empty": "Brak graczy.",
+    "needMore_one": "Dodaj jeszcze {{count}} gracza, aby zacząć.",
+    "needMore_few": "Dodaj jeszcze {{count}} graczy, aby zacząć.",
+    "needMore_many": "Dodaj jeszcze {{count}} graczy, aby zacząć.",
+    "needMore_other": "Dodaj jeszcze {{count}} gracza, aby zacząć.",
+    "tip": "Przeciągnij, aby ustawić kolejność siedzenia; karty krążą w tej kolejności.",
+    "reorder": "Przesuń: {{name}}"
   },
-  "timer": {
-    "pause": "Pauza",
-    "resume": "Wznów",
-    "done": "Gotowe",
-    "reset": "Reset"
-  },
-  "revealDeck": {
-    "cardProgress_one": "Karta {{current}} z {{total}}",
-    "cardProgress_few": "Karta {{current}} z {{total}}",
-    "cardProgress_many": "Karta {{current}} z {{total}}",
-    "cardProgress_other": "Karta {{current}} z {{total}}",
-    "prev": "← Poprzednia",
-    "next": "Następna →",
-    "doneBtn": "Gotowe →",
-    "tapHint": "dotknij karty by odwrócić",
-    "swipeHint": "przesuń ← by przejść dalej"
-  },
-  "playerCard": {
-    "spyHeader": "Szpieg",
-    "passTo": "Podaj",
-    "passInstruction": "Gdy jest bezpiecznie, dotknij karty by zobaczyć słowo.",
-    "tapToFlip": "dotknij by odwrócić",
-    "tapToHide": "dotknij by ukryć",
-    "spyRole": "🕵️ Szpieg",
-    "civRole": "✅ Cywil",
-    "spyBadge": "🕵️ Jesteś szpiegiem",
-    "fellowSpiesLabel": "Inni szpiedzy",
-    "aloneSpy": "Jesteś jedynym szpiegiem.",
-    "spyHeadsUp_before": "Uwaga:",
-    "spyHeadsUp_mid": " to słowo ",
-    "spyHeadsUp_not": "nie jest",
-    "spyHeadsUp_after": " tym, co mają inni. To podobna ",
-    "spyHeadsUp_hint": "wskazówka",
-    "spyHeadsUp_tail": ". Nie wypowiadaj na głos.",
-    "yourHint": "Twoja wskazówka",
-    "spyBluff": "Blefuj — niech wskazówki pasują do twojego słowa I ich.",
-    "noHintTitle": "Brak wskazówki w tej rundzie.",
-    "noHintBody": " Nie znasz słowa. Słuchaj, wtop się i blefuj.",
-    "noHintPlaceholder": "(brak wskazówki)",
-    "noHintBluff": "Powtarzaj za innymi. Nie bądź pierwszy.",
-    "civBadge": "✅ Cywil",
-    "civBody": "Wszyscy (oprócz szpiega) mają to samo słowo. Znajdź szpiega.",
-    "yourWord": "Twoje słowo"
-  },
-  "result": {
-    "title": "Odkrycie",
-    "subtitle": "Zgadliście?",
-    "spyWas": "Szpiegiem był",
-    "spiesWere": "Szpiegami byli",
-    "wordsLabel": "Słowa",
-    "civilians": "Cywile",
-    "spy": "Szpieg",
-    "vs": "vs",
-    "noHint": "(brak wskazówki)",
-    "category": "Kategoria: {{name}}",
-    "playAgain": "Zagraj znowu — ci sami gracze",
-    "backToLobby": "Wróć do lobby",
-    "home": "Start"
-  },
-  "pairPicker": {
-    "label": "Źródła słów",
+  "words": {
     "selectAll": "Zaznacz wszystko",
-    "clear": "Wyczyść",
+    "selectNone": "Odznacz wszystkie",
     "pairCount_one": "{{count}} para",
-    "pairCount_few": "{{count}} pary",
-    "pairCount_many": "{{count}} par",
     "pairCount_other": "{{count}} par",
     "newList": "Nowa lista",
     "newListDesc": "Twoje własne pary słów",
-    "editAria": "Edytuj listę",
-    "pickAtLeastOne": "Wybierz co najmniej jedno źródło, by zacząć."
+    "editList": "Edytuj listę",
+    "pickOne": "Wybierz co najmniej jedną kategorię."
+  },
+  "spies": {
+    "count": "Liczba szpiegów",
+    "maxHint": "Przy {{players}} graczach może być maksymalnie {{max}} szpiegów.",
+    "fewPlayers": "Szpiegów jest zawsze mniej niż połowa graczy.",
+    "knowLabel": "Szpiedzy się znają",
+    "knowHint": "Szpiedzy widzą pozostałych szpiegów na swojej karcie.",
+    "knowNeedsTwo": "Ma znaczenie tylko przy dwóch lub więcej szpiegach.",
+    "pickHint": "Wybierz jedną liczbę albo kilka, żeby wszyscy zgadywali.",
+    "randomPick": "Każda runda losuje liczbę szpiegów: {{list}}. Nikt nie wie ilu."
+  },
+  "hint": {
+    "intro": "Co widzi szpieg zamiast prawdziwego słowa. Im mniej pomocy, tym łatwiej złapać szpiega.",
+    "exampleWord": "Cywile widzą",
+    "exampleHint": "Szpieg widzi",
+    "hard": {
+      "label": "Bliskie słowo",
+      "desc": "Prawie takie samo słowo. Najtrudniej złapać szpiega."
+    },
+    "medium": {
+      "label": "Ta sama kategoria",
+      "desc": "Inne słowo z tej samej kategorii."
+    },
+    "easy": {
+      "label": "Bez wskazówki",
+      "desc": "Szpieg nie dostaje nic i musi blefować."
+    }
+  },
+  "timer": {
+    "intro": "Odliczanie na dyskusję. Możesz je w każdej chwili zatrzymać lub zacząć od nowa.",
+    "pause": "Pauza",
+    "resume": "Wznów",
+    "reset": "Od nowa",
+    "timesUp": "Czas minął"
+  },
+  "card": {
+    "passTo": "Podaj telefon graczowi",
+    "passHint": "Upewnij się, że nikt inny nie widzi ekranu.",
+    "civilian": "Cywil",
+    "spy": "Szpieg",
+    "yourWord": "Twoje słowo",
+    "yourHint": "Twoja wskazówka",
+    "noHint": "Bez wskazówki",
+    "spyTip": "Pozostali mają inne słowo. Wtop się w tłum.",
+    "noHintTip": "Słuchaj uważnie i blefuj.",
+    "otherSpies": "Pozostali szpiedzy",
+    "onlySpy": "Jesteś jedynym szpiegiem."
+  },
+  "reveal": {
+    "title": "Karty",
+    "show": "Pokaż moją kartę",
+    "hideAndPass": "Ukryj i podaj dalej",
+    "hideAndDiscuss": "Ukryj i zacznij dyskusję"
+  },
+  "peek": {
+    "button": "Sprawdź kartę",
+    "title": "Sprawdź swoją kartę",
+    "pick": "Kim jesteś?",
+    "hide": "Ukryj kartę"
+  },
+  "discuss": {
+    "title": "Dyskusja",
+    "starts": "Pierwsza wskazówka",
+    "howTo": "Po kolei każdy daje jedną krótką wskazówkę. Potem dyskutujcie i wybierzcie szpiega w głosowaniu.",
+    "order": "Kolejność",
+    "reveal": "Pokaż szpiega",
+    "confirmTitle": "Pokazać szpiega?",
+    "confirmBody": "Wszyscy zobaczą, kto był szpiegiem, i oba słowa."
+  },
+  "result": {
+    "title": "Wynik",
+    "spyWas": "Szpiegiem był",
+    "spiesWere": "Szpiegami byli",
+    "civilians": "Cywile",
+    "spy": "Szpieg",
+    "category": "Kategoria: {{name}}",
+    "nextRound": "Następna runda",
+    "changeSetup": "Zmień ustawienia"
   },
   "editList": {
     "notFound": "Nie znaleziono listy",
     "notFoundDesc": "Ta lista już nie istnieje.",
     "headerEdit": "Edytuj listę",
     "headerNew": "Nowa lista",
-    "titleEdit": "Edytuj listę słów",
-    "titleNew": "Nowa lista słów",
-    "intro_before": "Dodaj własne pary cywil / szpieg. Wskazówka szpiega musi być ",
-    "intro_similar": "podobna",
-    "intro_after": " — nie identyczna, nie totalnie różna.",
     "name": "Nazwa listy",
     "namePlaceholder": "np. Wewnętrzne żarty, Biurowe przekąski…",
     "icon": "Ikona",
     "pairs": "Pary",
-    "pairsHint": "Słowo cywila → Wskazówka szpiega",
+    "pairsHint": "Po lewej: słowo cywili. Po prawej: wskazówka szpiega.",
     "civilianPlaceholder": "Słowo cywili",
     "spyPlaceholder": "Wskazówka szpiega",
     "removePairAria": "Usuń parę",
-    "addPair": "+ Dodaj parę",
+    "addPair": "Dodaj parę",
     "create": "Stwórz listę",
     "deleteConfirmTitle": "Usunąć tę listę?",
     "deleteConfirmDesc": "Tej operacji nie można cofnąć."
   },
   "online": {
     "yourName": "Twoje imię",
-    "hostNamePlaceholder": "np. Alex",
-    "errCreateRoom": "Nie udało się stworzyć pokoju",
+    "or": "lub",
+    "createRoom": "Utwórz pokój",
+    "creating": "Tworzenie…",
+    "join": "Dołącz",
+    "joining": "Dołączanie…",
     "roomCode": "Kod pokoju",
-    "codePlaceholder": "ABCD",
-    "joinNamePlaceholder": "np. Sam",
-    "errNeedBoth": "Potrzebujesz kodu i imienia.",
-    "errCouldNotJoin": "Nie udało się dołączyć",
-    "fbWarnTitleShort": "Firebase nieskonfigurowane",
-    "fbNotConfigured": "Firebase nieskonfigurowane.",
-    "loadingRoom": "Ładowanie pokoju {{code}}…",
-    "roomLabel": "Pokój",
-    "share": "Udostępnij pokój",
-    "copyLink": "Kopiuj link",
-    "qrShareHint": "Znajomi mogą zeskanować, by dołączyć.",
-    "scanQr": "📷 Skanuj QR",
+    "roomTitle": "Pokój {{code}}",
+    "invite": "Zaproś",
+    "copied": "Link skopiowany",
+    "scanQr": "Skanuj kod QR",
     "qrScanTitle": "Skanuj QR pokoju",
     "qrScanHint": "Skieruj aparat na QR hosta.",
     "qrCameraError": "Nie można otworzyć aparatu",
     "qrInvalid": "Ten QR nie jest linkiem do pokoju.",
-    "playersHeader": "Gracze ({{count}})",
+    "you": "Ty",
+    "host": "Host",
+    "kick": "Usuń: {{name}}",
+    "roundSettings": "Ustawienia rundy",
+    "needPlayers_one": "Czekamy na jeszcze {{count}} gracza.",
+    "needPlayers_few": "Czekamy na jeszcze {{count}} graczy.",
+    "needPlayers_many": "Czekamy na jeszcze {{count}} graczy.",
+    "needPlayers_other": "Czekamy na jeszcze {{count}} gracza.",
     "starting": "Start…",
-    "startRound": "Zacznij rundę →",
-    "needPlayers": "Min. 3 graczy. Udostępnij link!",
-    "waitingHost": "Czekam na hosta…",
+    "waitStart": "Czekamy, aż host zacznie rundę…",
     "loadingWord": "Ładuję twoje słowo…",
-    "hostAdvance": "Wszyscy widzieli słowo? → Dyskusja",
-    "guestAdvanceWait": "Gdy wszyscy będą gotowi, host przejdzie dalej.",
-    "discussTitle": "Dyskusja",
-    "discussDesc": "Każdy daje krótką wskazówkę o swoim słowie, potem dyskutujcie na żywo. Razem zdecydujcie kto jest szpiegiem.",
-    "clueOrder": "Kolejność — zaczyna",
-    "discussTimerLabel": "Czas dyskusji",
-    "discussTimerHint": "Domyślnie 3 minuty.",
-    "hostReveal": "Pokaż szpiega →",
-    "guestRevealWait": "Host pokaże szpiega gdy wszyscy będą gotowi.",
-    "hostBackLobby": "Wróć do lobby",
-    "guestBackWait": "Host może zabrać wszystkich z powrotem.",
+    "cardReady": "Twoja karta jest gotowa",
+    "cardReadyHint": "Upewnij się, że nikt nie patrzy, i ją pokaż.",
+    "toDiscussion": "Wszyscy gotowi: zacznij dyskusję",
+    "waitDiscussion": "Host zacznie dyskusję, gdy wszyscy zobaczą swoje karty.",
+    "waitReveal": "Host pokaże szpiega, gdy skończycie.",
+    "waitNext": "Czekamy na hosta…",
+    "backToLobby": "Wróć do pokoju",
+    "loadingRoom": "Ładowanie pokoju {{code}}…",
+    "fbNotConfigured": "Gra online nie jest skonfigurowana w tej wersji.",
     "errStartRound": "Nie udało się zacząć rundy",
     "defaultHostName": "Host",
     "defaultGuestName": "Gość",
@@ -276,125 +236,112 @@
   "categories": {
     "food": {
       "name": "Jedzenie i Napoje",
-      "description": "Coś do jedzenia. Pary smaczne i podobne, by zmylić.",
-      "icon": "🍕"
+      "description": "Coś do jedzenia. Pary smaczne i podobne, by zmylić."
     },
     "animals": {
       "name": "Zwierzęta",
-      "description": "Duże, małe, łuskate, puchate.",
-      "icon": "🐾"
+      "description": "Duże, małe, łuskate, puchate."
     },
     "sports": {
       "name": "Sporty",
-      "description": "Coś dla ciała, najlepiej na świeżym powietrzu.",
-      "icon": "⚽"
+      "description": "Coś dla ciała, najlepiej na świeżym powietrzu."
     },
     "places": {
       "name": "Miejsca",
-      "description": "Pokoje, budynki, miasta, krajobrazy.",
-      "icon": "🗺️"
+      "description": "Pokoje, budynki, miasta, krajobrazy."
     },
     "tech": {
       "name": "Technologia",
-      "description": "Kable, ekrany, wszystko z baterią.",
-      "icon": "📱"
+      "description": "Kable, ekrany, wszystko z baterią."
     },
     "entertainment": {
       "name": "Rozrywka",
-      "description": "Filmy, książki, gry, muzyka.",
-      "icon": "🎬"
+      "description": "Filmy, książki, gry, muzyka."
     },
     "household": {
       "name": "Dom",
-      "description": "Kuchnia, łazienka, garaż.",
-      "icon": "🛋️"
+      "description": "Kuchnia, łazienka, garaż."
     },
     "nature": {
       "name": "Natura i Pogoda",
-      "description": "Niebo, morza, pory roku, burze.",
-      "icon": "🌧️"
+      "description": "Niebo, morza, pory roku, burze."
     },
     "music": {
       "name": "Muzyka",
-      "description": "Instrumenty, gatunki, dźwięki.",
-      "icon": "🎵"
+      "description": "Instrumenty, gatunki, dźwięki."
     },
     "jobs": {
       "name": "Zawody",
-      "description": "Co ludzie robią zawodowo.",
-      "icon": "💼"
+      "description": "Co ludzie robią zawodowo."
     },
     "vehicles": {
       "name": "Pojazdy",
-      "description": "Coś, co cię przemieszcza.",
-      "icon": "🚗"
+      "description": "Coś, co cię przemieszcza."
     },
     "clothing": {
       "name": "Ubrania",
-      "description": "Co nosisz.",
-      "icon": "👕"
+      "description": "Co nosisz."
     },
     "body": {
       "name": "Ciało i Zdrowie",
-      "description": "Anatomia, medycyna, dobrostan.",
-      "icon": "💪"
+      "description": "Anatomia, medycyna, dobrostan."
     },
     "myth": {
       "name": "Mitologia i Fantasy",
-      "description": "Stworzenia i moce z opowieści.",
-      "icon": "🐉"
+      "description": "Stworzenia i moce z opowieści."
     },
     "tricky": {
       "name": "Trudne / Mieszane",
-      "description": "Pary przekraczające kategorie. Szpieg się spoci.",
-      "icon": "🎲"
+      "description": "Pary przekraczające kategorie. Szpieg się spoci."
     },
     "tyrants": {
       "name": "Tyrani i despoci",
-      "description": "Niesławni władcy i dyktatorzy z historii.",
-      "icon": "⚔️"
+      "description": "Niesławni władcy i dyktatorzy z historii."
     },
     "darkhumor": {
       "name": "Czarny humor",
-      "description": "Szubienice i tabu — śmiech, by nie płakać.",
-      "icon": "💀"
+      "description": "Szubienice i tabu — śmiech, by nie płakać."
     },
     "prophets": {
       "name": "Prorocy",
-      "description": "Święci mężowie i posłańcy wielkich religii.",
-      "icon": "📜"
+      "description": "Święci mężowie i posłańcy wielkich religii."
     },
     "stereotypes": {
       "name": "Stereotypy",
-      "description": "Klisze i karykatury, z przymrużeniem oka.",
-      "icon": "🎭"
+      "description": "Klisze i karykatury, z przymrużeniem oka."
     },
     "races": {
       "name": "Ludy",
-      "description": "Ludy i narodowości — ten sam region, różne korzenie.",
-      "icon": "🌍"
-    },
-    "religions": {
-      "name": "Religie",
-      "description": "Wyznania, święte księgi, święta i obrzędy — w różnych religiach.",
-      "icon": "🛐"
-    },
-    "terror": {
-      "name": "Ataki terrorystyczne",
-      "description": "Niesławne zamachy i akty terroru.",
-      "icon": "💥"
+      "description": "Ludy i narodowości — ten sam region, różne korzenie."
     },
     "infamous": {
       "name": "Krytyczne Miejsca",
-      "description": "Miejsca tragedii: masakry, wojny, katastrofy.",
-      "icon": "🕯️"
+      "description": "Miejsca tragedii: masakry, wojny, katastrofy."
+    },
+    "terror": {
+      "name": "Ataki terrorystyczne",
+      "description": "Niesławne zamachy i akty terroru."
+    },
+    "religions": {
+      "name": "Religie",
+      "description": "Wyznania, święte księgi, święta i obrzędy — w różnych religiach."
     }
   },
   "customList": {
     "description_one": "Twoja lista ({{count}} para)",
-    "description_few": "Twoja lista ({{count}} pary)",
-    "description_many": "Twoja lista ({{count}} par)",
     "description_other": "Twoja lista ({{count}} par)",
     "fallback": "Własna"
+  },
+  "options": {
+    "title": "Ustawienia",
+    "languageLabel": "Język",
+    "wordListsLabel": "Twoje listy słów",
+    "wordListsHint": "Twórz i edytuj własne pary słów cywil / szpieg."
+  },
+  "install": {
+    "title": "Dodaj Spy do ekranu głównego",
+    "desc": "Otwiera się jak aplikacja i działa offline, gotowa na kolejny wieczór gier.",
+    "button": "Zainstaluj",
+    "iosHint": "W Safari stuknij Udostępnij, a potem „Do ekranu początkowego”."
   }
 }

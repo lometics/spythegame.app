@@ -7,16 +7,24 @@ import type {
   Pair,
 } from './types'
 import { BUILTIN_CATEGORY_IDS, samplePair } from './pairs'
-import { startRoundState } from './machine'
+import { normalizeSpyCount, startRoundState } from './machine'
 import { AVATARS, avatarForIndex, nextAvatar } from '../data/avatars'
+import { DEFAULT_LIST_ICON, isListIcon } from './icons'
 
 const DEFAULT_SETTINGS: GameSettings = {
   timerSeconds: 180,
   pairSource: { selectedCategoryIds: [...BUILTIN_CATEGORY_IDS] },
   difficulty: 'hard',
-  spyCount: 1,
+  spyCount: [1],
   spiesKnowEachOther: false,
 }
+
+const ROUND_RESET = {
+  phase: 'lobby',
+  pair: null,
+  revealIndex: 0,
+  firstClueGiverId: null,
+} satisfies Partial<GameState>
 
 const INITIAL: GameState = {
   players: [],
@@ -35,6 +43,8 @@ type Actions = {
   addPlayer: (name: string) => void
   removePlayer: (id: string) => void
   renamePlayer: (id: string, name: string) => void
+  /** Reorder the roster; cards are dealt in this order, so it should match the seating. */
+  movePlayer: (from: number, to: number) => void
   cycleAvatar: (id: string) => void
   setSettings: (patch: Partial<GameSettings>) => void
   toggleCategory: (id: string) => void
@@ -44,8 +54,9 @@ type Actions = {
   deleteCustomList: (id: string) => void
   setOnlineName: (name: string) => void
   setJoinCode: (code: string) => void
-  startRound: () => void
-  advanceReveal: () => void
+  /** Starts a round; returns an error message instead of throwing. */
+  startRound: () => string | null
+  setRevealIndex: (i: number) => void
   goToDiscussion: () => void
   revealAnswer: () => void
   playAgainSamePlayers: () => void
@@ -66,8 +77,9 @@ export const useGame = create<GameState & Actions>()(
           const free = AVATARS.find((a) => !used.has(a))
           const avatar = free ?? avatarForIndex(s.players.length)
           return {
+            ...ROUND_RESET,
             players: [
-              ...s.players,
+              ...s.players.map((p) => ({ ...p, isSpy: false })),
               {
                 id: crypto.randomUUID(),
                 name: trimmed,
@@ -80,12 +92,27 @@ export const useGame = create<GameState & Actions>()(
       },
 
       removePlayer: (id) =>
-        set((s) => ({ players: s.players.filter((p) => p.id !== id) })),
+        set((s) => ({
+          ...ROUND_RESET,
+          players: s.players
+            .filter((p) => p.id !== id)
+            .map((p) => ({ ...p, isSpy: false })),
+        })),
 
       renamePlayer: (id, name) =>
         set((s) => ({
           players: s.players.map((p) => (p.id === id ? { ...p, name } : p)),
         })),
+
+      movePlayer: (from, to) =>
+        set((s) => {
+          const n = s.players.length
+          if (from === to || from < 0 || from >= n || to < 0 || to >= n) return s
+          const players = [...s.players]
+          const [moved] = players.splice(from, 1)
+          players.splice(to, 0, moved)
+          return { players }
+        }),
 
       cycleAvatar: (id) =>
         set((s) => ({
@@ -179,25 +206,23 @@ export const useGame = create<GameState & Actions>()(
 
       startRound: () => {
         const { players, settings, customLists, round } = get()
-        const pair: Pair = samplePair(
-          settings.pairSource,
-          customLists,
-          settings.difficulty,
-        )
-        set((s) => ({
-          ...s,
-          ...startRoundState(players, pair, round, settings.spyCount),
-        }))
-      },
-
-      advanceReveal: () => {
-        const { revealIndex, players } = get()
-        if (revealIndex + 1 >= players.length) {
-          set({ phase: 'discussion' })
-        } else {
-          set({ revealIndex: revealIndex + 1 })
+        try {
+          const pair: Pair = samplePair(
+            settings.pairSource,
+            customLists,
+            settings.difficulty,
+          )
+          set(startRoundState(players, pair, round, settings.spyCount))
+          return null
+        } catch (e) {
+          return e instanceof Error ? e.message : String(e)
         }
       },
+
+      setRevealIndex: (i) =>
+        set((s) => ({
+          revealIndex: Math.max(0, Math.min(i, s.players.length - 1)),
+        })),
 
       goToDiscussion: () => set({ phase: 'discussion' }),
       revealAnswer: () => set({ phase: 'result' }),
@@ -205,11 +230,8 @@ export const useGame = create<GameState & Actions>()(
       playAgainSamePlayers: () => {
         const { players } = get()
         set({
+          ...ROUND_RESET,
           players: players.map((p) => ({ ...p, isSpy: false })),
-          phase: 'lobby',
-          pair: null,
-          revealIndex: 0,
-          firstClueGiverId: null,
         })
       },
 
@@ -217,7 +239,7 @@ export const useGame = create<GameState & Actions>()(
     }),
     {
       name: 'spy-the-game-local',
-      version: 6,
+      version: 8,
       // Drop old persisted state on schema change so we don't ship users a half-broken settings object.
       migrate: (persisted, fromVersion) => {
         let p = persisted as Record<string, unknown>
@@ -260,7 +282,7 @@ export const useGame = create<GameState & Actions>()(
             settings: {
               ...DEFAULT_SETTINGS,
               ...((p?.settings as Partial<GameSettings>) ?? {}),
-              spyCount: 1,
+              spyCount: [1],
               spiesKnowEachOther: false,
             },
           }
@@ -284,15 +306,47 @@ export const useGame = create<GameState & Actions>()(
             },
           }
         }
+        if (fromVersion < 7) {
+          // Custom list icons moved from emoji to icon keys.
+          const lists = Array.isArray(p?.customLists)
+            ? (p.customLists as CustomList[])
+            : []
+          p = {
+            ...p,
+            customLists: lists.map((l) => ({
+              ...l,
+              icon: isListIcon(l.icon) ? l.icon : DEFAULT_LIST_ICON,
+            })),
+          }
+        }
+        if (fromVersion < 8) {
+          // Spy count became a set of allowed numbers (was a number or a {min,max} range).
+          const prev = (p?.settings as Partial<GameSettings> & { spyCount?: unknown }) ?? {}
+          p = {
+            ...p,
+            settings: {
+              ...DEFAULT_SETTINGS,
+              ...prev,
+              spyCount: normalizeSpyCount(prev.spyCount),
+            },
+          }
+        }
         return p as unknown
       },
+      // The running round is persisted too, so a reload or an accidental
+      // back-swipe never loses who the spy is.
       partialize: (s) => ({
         players: s.players.map((p) => ({
           id: p.id,
           name: p.name,
-          isSpy: false,
+          isSpy: p.isSpy,
           avatar: p.avatar,
         })),
+        phase: s.phase,
+        pair: s.pair,
+        revealIndex: s.revealIndex,
+        firstClueGiverId: s.firstClueGiverId,
+        round: s.round,
         settings: s.settings,
         customLists: s.customLists,
         onlineName: s.onlineName,
