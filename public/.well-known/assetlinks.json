@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.spythegame",
+      "sha256_cert_fingerprints": [
+        "A8:2A:45:3C:6B:FE:93:33:9A:25:F8:AA:87:31:25:FF:4B:1A:09:A2:12:FE:0D:CE:6C:DE:53:81:23:B5:B1:12"
+      ]
+    }
+  }
+]

@@ -345,7 +345,8 @@
     "title": "Ajustes",
     "languageLabel": "Idioma",
     "wordListsLabel": "Tus listas de palabras",
-    "wordListsHint": "Crea y edita tus propios pares de palabras civil / espía."
+    "wordListsHint": "Crea y edita tus propios pares de palabras civil / espía.",
+    "privacy": "Privacidad"
   },
   "install": {
     "title": "Añade Spy a tu pantalla de inicio",

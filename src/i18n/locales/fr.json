@@ -345,7 +345,8 @@
     "title": "Réglages",
     "languageLabel": "Langue",
     "wordListsLabel": "Vos listes de mots",
-    "wordListsHint": "Créez et modifiez vos propres paires de mots civil / espion."
+    "wordListsHint": "Créez et modifiez vos propres paires de mots civil / espion.",
+    "privacy": "Confidentialité"
   },
   "install": {
     "title": "Ajoutez Spy à votre écran d'accueil",

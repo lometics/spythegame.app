@@ -52,6 +52,7 @@ export default defineConfig({
         // must not be swallowed by the SPA fallback.
         navigateFallbackDenylist: [
           /^\/how-to-play/,
+          /^\/privacy/,
           /^\/(en|de|fr|it|es|pt|nl|pl|sv|tr|ru|ar|ja|ko|zh)(\/|$)/,
           /^\/robots\.txt/,
           /^\/sitemap\.xml/,

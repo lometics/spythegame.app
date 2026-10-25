@@ -345,7 +345,8 @@
     "title": "Settings",
     "languageLabel": "Language",
     "wordListsLabel": "Your word lists",
-    "wordListsHint": "Create and edit custom civilian / spy word pairs."
+    "wordListsHint": "Create and edit custom civilian / spy word pairs.",
+    "privacy": "Privacy policy"
   },
   "install": {
     "title": "Add Spy to your home screen",

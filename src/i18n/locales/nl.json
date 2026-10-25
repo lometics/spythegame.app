@@ -345,7 +345,8 @@
     "title": "Instellingen",
     "languageLabel": "Taal",
     "wordListsLabel": "Jouw woordlijsten",
-    "wordListsHint": "Maak en bewerk eigen woordparen voor burgers / spion."
+    "wordListsHint": "Maak en bewerk eigen woordparen voor burgers / spion.",
+    "privacy": "Privacybeleid"
   },
   "install": {
     "title": "Zet Spy op je beginscherm",

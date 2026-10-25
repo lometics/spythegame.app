@@ -345,7 +345,8 @@
     "title": "Ayarlar",
     "languageLabel": "Dil",
     "wordListsLabel": "Kelime listelerin",
-    "wordListsHint": "Kendi sivil / casus kelime çiftlerini oluştur ve düzenle."
+    "wordListsHint": "Kendi sivil / casus kelime çiftlerini oluştur ve düzenle.",
+    "privacy": "Gizlilik politikası"
   },
   "install": {
     "title": "Spy'ı ana ekrana ekle",

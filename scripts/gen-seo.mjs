@@ -97,6 +97,7 @@ function page({ lang, path, title, description, alternates, body, jsonLd }) {
       </header>
 ${body}
       <nav class="langs">${LANGS.map((l) => `<a href="/${l}/" hreflang="${l}">${esc(t(l, `languages.${l}`))}</a>`).join('')}</nav>
+      <p><a href="/privacy/">${esc(t(lang, 'options.privacy'))}</a></p>
     </main>
     <div class="cta"><a href="/?lang=${lang}">${esc(t(lang, 'seo.play'))}</a></div>
   </body>

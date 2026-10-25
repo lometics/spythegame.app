@@ -345,7 +345,8 @@
     "title": "설정",
     "languageLabel": "언어",
     "wordListsLabel": "내 단어 목록",
-    "wordListsHint": "시민 / 스파이 단어 쌍을 직접 만들고 편집하세요."
+    "wordListsHint": "시민 / 스파이 단어 쌍을 직접 만들고 편집하세요.",
+    "privacy": "개인정보 처리방침"
   },
   "install": {
     "title": "Spy를 홈 화면에 추가",

@@ -345,7 +345,8 @@
     "title": "設定",
     "languageLabel": "言語",
     "wordListsLabel": "マイワードリスト",
-    "wordListsHint": "市民／スパイのワードペアを作成・編集。"
+    "wordListsHint": "市民／スパイのワードペアを作成・編集。",
+    "privacy": "プライバシーポリシー"
   },
   "install": {
     "title": "Spyをホーム画面に追加",

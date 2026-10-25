@@ -33,3 +33,7 @@ ui-debug.log
 *.sw?
 .vercel
 .env*
+
+# Android (Trusted Web Activity): only the config is versioned, the project is generated
+/android/*
+!/android/twa-manifest.json

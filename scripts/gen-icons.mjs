@@ -58,6 +58,26 @@ async function faviconIco(sizes = [16, 32, 48]) {
   console.log('wrote public/favicon.ico')
 }
 
+/** Google Play feature graphic (1024x500), saved next to the store texts. */
+async function featureGraphic() {
+  const mark = await sharp(svg, { density: 384 }).resize(200, 200).toBuffer()
+  const text = Buffer.from(`
+    <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="500">
+      <style>.t { font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; fill: #fafafa; }</style>
+      <text x="370" y="230" class="t" font-size="104" font-weight="800">Spy</text>
+      <text x="374" y="296" class="t" font-size="38" font-weight="500" fill-opacity="0.8">The party word game</text>
+      <text x="374" y="350" class="t" font-size="27" fill-opacity="0.55">One phone or many · Free · No sign-up</text>
+    </svg>`)
+  await sharp({ create: { width: 1024, height: 500, channels: 4, background: BG } })
+    .composite([
+      { input: mark, top: 150, left: 120 },
+      { input: text, top: 0, left: 0 },
+    ])
+    .png()
+    .toFile(join(__dirname, '..', 'docs', 'play-store', 'feature-graphic.png'))
+  console.log('wrote docs/play-store/feature-graphic.png')
+}
+
 async function ogImage() {
   const mark = await sharp(svg, { density: 384 }).resize(220, 220).toBuffer()
   const text = Buffer.from(`
@@ -87,3 +107,4 @@ await icon(192, 'icon-192.png')
 await icon(512, 'icon-512.png')
 await icon(512, 'icon-maskable.png', { padding: 72, background: '#f59f0a' })
 await ogImage()
+await featureGraphic()

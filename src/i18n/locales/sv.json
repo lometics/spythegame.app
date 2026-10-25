@@ -345,7 +345,8 @@
     "title": "Inställningar",
     "languageLabel": "Språk",
     "wordListsLabel": "Dina ordlistor",
-    "wordListsHint": "Skapa och redigera egna ordpar för civila / spion."
+    "wordListsHint": "Skapa och redigera egna ordpar för civila / spion.",
+    "privacy": "Integritetspolicy"
   },
   "install": {
     "title": "Lägg till Spy på hemskärmen",

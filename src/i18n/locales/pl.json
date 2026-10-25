@@ -355,7 +355,8 @@
     "title": "Ustawienia",
     "languageLabel": "Język",
     "wordListsLabel": "Twoje listy słów",
-    "wordListsHint": "Twórz i edytuj własne pary słów cywil / szpieg."
+    "wordListsHint": "Twórz i edytuj własne pary słów cywil / szpieg.",
+    "privacy": "Prywatność"
   },
   "install": {
     "title": "Dodaj Spy do ekranu głównego",

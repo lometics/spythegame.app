@@ -345,7 +345,8 @@
     "title": "Einstellungen",
     "languageLabel": "Sprache",
     "wordListsLabel": "Deine Wortlisten",
-    "wordListsHint": "Eigene Wortpaare für Zivilisten / Spion erstellen und bearbeiten."
+    "wordListsHint": "Eigene Wortpaare für Zivilisten / Spion erstellen und bearbeiten.",
+    "privacy": "Datenschutz"
   },
   "install": {
     "title": "Spy zum Home-Bildschirm hinzufügen",

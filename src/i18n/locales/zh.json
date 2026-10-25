@@ -345,7 +345,8 @@
     "title": "设置",
     "languageLabel": "语言",
     "wordListsLabel": "我的词库",
-    "wordListsHint": "创建和编辑自定义的平民 / 间谍词对。"
+    "wordListsHint": "创建和编辑自定义的平民 / 间谍词对。",
+    "privacy": "隐私政策"
   },
   "install": {
     "title": "将 Spy 添加到主屏幕",

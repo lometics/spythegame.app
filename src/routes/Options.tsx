@@ -113,6 +113,10 @@ export default function Options() {
         </div>
         <p className="px-1 pt-2 text-sm muted">{t('options.wordListsHint')}</p>
       </section>
+
+      <a href="/privacy/" className="mt-auto px-1 pb-4 text-center text-sm muted underline">
+        {t('options.privacy')}
+      </a>
     </Screen>
   )
 }

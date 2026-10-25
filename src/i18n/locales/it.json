@@ -345,7 +345,8 @@
     "title": "Impostazioni",
     "languageLabel": "Lingua",
     "wordListsLabel": "Le tue liste di parole",
-    "wordListsHint": "Crea e modifica coppie di parole civile / spia personalizzate."
+    "wordListsHint": "Crea e modifica coppie di parole civile / spia personalizzate.",
+    "privacy": "Privacy"
   },
   "install": {
     "title": "Aggiungi Spy alla schermata Home",
