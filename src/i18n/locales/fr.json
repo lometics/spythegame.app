@@ -155,7 +155,6 @@
     "howTo": "Faites le tour, un court indice chacun. Puis discutez et votez pour éliminer l'espion.",
     "order": "Ordre",
     "reveal": "Révéler l'espion",
-    "confirmTitle": "Révéler l'espion ?",
     "confirmBody": "Tout le monde verra qui était l'espion et les deux mots."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "Inviter",
     "copied": "Lien copié",
     "scanQr": "Scanner le QR code",
-    "qrScanTitle": "Scanner le QR de la partie",
     "qrScanHint": "Pointez votre caméra sur le QR code de l'hôte.",
     "qrCameraError": "Impossible d'ouvrir la caméra",
     "qrInvalid": "Ce QR code n'est pas un lien de partie.",

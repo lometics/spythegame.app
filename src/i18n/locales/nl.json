@@ -155,7 +155,6 @@
     "howTo": "Ga de kring rond, ieder één korte hint. Overleg daarna en stem de spion weg.",
     "order": "Volgorde",
     "reveal": "Spion onthullen",
-    "confirmTitle": "Spion onthullen?",
     "confirmBody": "Iedereen ziet wie de spion was en beide woorden."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "Uitnodigen",
     "copied": "Link gekopieerd",
     "scanQr": "QR-code scannen",
-    "qrScanTitle": "Kamer QR scannen",
     "qrScanHint": "Richt je camera op de QR van de host.",
     "qrCameraError": "Kan camera niet openen",
     "qrInvalid": "Die QR is geen kamerlink.",

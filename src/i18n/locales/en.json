@@ -155,7 +155,6 @@
     "howTo": "Go around the circle, one short clue each. Then discuss and vote out the spy.",
     "order": "Order",
     "reveal": "Reveal the spy",
-    "confirmTitle": "Reveal the spy?",
     "confirmBody": "Everyone will see who the spy was and both words."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "Invite",
     "copied": "Link copied",
     "scanQr": "Scan QR code",
-    "qrScanTitle": "Scan room QR code",
     "qrScanHint": "Point your camera at the host's QR code.",
     "qrCameraError": "Couldn't open camera",
     "qrInvalid": "That QR code isn't a room link.",

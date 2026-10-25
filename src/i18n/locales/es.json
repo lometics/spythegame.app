@@ -155,7 +155,6 @@
     "howTo": "Por turnos, cada uno da una pista corta. Después, a debatir y votar quién es el espía.",
     "order": "Orden",
     "reveal": "Revelar al espía",
-    "confirmTitle": "¿Revelar al espía?",
     "confirmBody": "Todos verán quién era el espía y ambas palabras."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "Invitar",
     "copied": "Enlace copiado",
     "scanQr": "Escanear QR",
-    "qrScanTitle": "Escanear QR de la sala",
     "qrScanHint": "Apunta la cámara al código QR del anfitrión.",
     "qrCameraError": "No se pudo abrir la cámara",
     "qrInvalid": "Este código QR no es un enlace a la sala.",

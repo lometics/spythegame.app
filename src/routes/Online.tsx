@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ScanLine } from 'lucide-react'
 import Screen from '../components/Screen'
-import QrScannerModal from '../components/QrScannerModal'
+import QrScanPanel from '../components/QrScanPanel'
 import { useGame } from '../game/state'
 import { createRoom, joinRoom } from '../online/room'
 import { isFirebaseConfigured } from '../online/firebase'
@@ -98,46 +98,46 @@ export default function Online() {
       </div>
 
       <section className="space-y-3">
-        <div className="flex gap-2">
-          <input
-            className="input flex-1 text-center font-mono text-2xl uppercase tracking-[0.4em]"
-            value={joinCode}
-            maxLength={4}
-            placeholder="ABCD"
-            aria-label={t('online.roomCode')}
-            autoCapitalize="characters"
-            autoComplete="off"
-            enterKeyHint="go"
-            onChange={(e) => setJoinCode(e.target.value.replace(/[^a-z0-9]/gi, ''))}
-            onKeyDown={(e) => e.key === 'Enter' && name && code.length === 4 && join(code)}
-          />
-          <button
-            type="button"
-            className="btn-secondary w-[3.25rem] px-0"
-            onClick={() => setScannerOpen(true)}
-            disabled={!configured}
-            aria-label={t('online.scanQr')}
-          >
-            <ScanLine size={22} />
-          </button>
-        </div>
-        <button
-          type="button"
-          className="btn-secondary w-full"
-          disabled={!configured || !name || code.length !== 4 || busy !== null}
-          onClick={() => join(code)}
-        >
-          {busy === 'join' ? t('online.joining') : t('online.join')}
-        </button>
+        {scannerOpen ? (
+          <QrScanPanel onResult={onScan} onCancel={() => setScannerOpen(false)} />
+        ) : (
+          <>
+            <div className="flex gap-2">
+              <input
+                className="input flex-1 text-center font-mono text-2xl uppercase tracking-[0.4em]"
+                value={joinCode}
+                maxLength={4}
+                placeholder="ABCD"
+                aria-label={t('online.roomCode')}
+                autoCapitalize="characters"
+                autoComplete="off"
+                enterKeyHint="go"
+                onChange={(e) => setJoinCode(e.target.value.replace(/[^a-z0-9]/gi, ''))}
+                onKeyDown={(e) => e.key === 'Enter' && name && code.length === 4 && join(code)}
+              />
+              <button
+                type="button"
+                className="btn-secondary w-[3.25rem] px-0"
+                onClick={() => setScannerOpen(true)}
+                disabled={!configured}
+                aria-label={t('online.scanQr')}
+              >
+                <ScanLine size={22} />
+              </button>
+            </div>
+            <button
+              type="button"
+              className="btn-secondary w-full"
+              disabled={!configured || !name || code.length !== 4 || busy !== null}
+              onClick={() => join(code)}
+            >
+              {busy === 'join' ? t('online.joining') : t('online.join')}
+            </button>
+          </>
+        )}
       </section>
 
       {error && <p className="text-center text-sm text-spy">{error}</p>}
-
-      <QrScannerModal
-        open={scannerOpen}
-        onResult={onScan}
-        onClose={() => setScannerOpen(false)}
-      />
     </Screen>
   )
 }

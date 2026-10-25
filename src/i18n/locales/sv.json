@@ -155,7 +155,6 @@
     "howTo": "Gå laget runt, en kort ledtråd var. Diskutera sedan och rösta ut spionen.",
     "order": "Ordning",
     "reveal": "Avslöja spionen",
-    "confirmTitle": "Avslöja spionen?",
     "confirmBody": "Alla får se vem spionen var och båda orden."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "Bjud in",
     "copied": "Länk kopierad",
     "scanQr": "Skanna QR-kod",
-    "qrScanTitle": "Skanna rummets QR",
     "qrScanHint": "Rikta kameran mot värdens QR.",
     "qrCameraError": "Kunde inte öppna kamera",
     "qrInvalid": "Den QR-koden är inte en rumslänk.",

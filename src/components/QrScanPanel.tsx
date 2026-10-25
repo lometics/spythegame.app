@@ -1,16 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import QrScanner from 'qr-scanner'
-import Sheet from './Sheet'
 
-export default function QrScannerModal({
-  open,
+/** Camera view shown in place of the code field while scanning a room QR code. */
+export default function QrScanPanel({
   onResult,
-  onClose,
+  onCancel,
 }: {
-  open: boolean
   onResult: (text: string) => void
-  onClose: () => void
+  onCancel: () => void
 }) {
   const { t } = useTranslation()
   const videoRef = useRef<HTMLVideoElement | null>(null)
@@ -22,11 +20,9 @@ export default function QrScannerModal({
   }, [onResult])
 
   useEffect(() => {
-    if (!open) return
     const video = videoRef.current
     if (!video) return
     let cancelled = false
-    setError(null)
 
     const scanner = new QrScanner(
       video,
@@ -50,15 +46,18 @@ export default function QrScannerModal({
       scanner.stop()
       scanner.destroy()
     }
-  }, [open, t])
+  }, [t])
 
   return (
-    <Sheet open={open} onClose={onClose} title={t('online.qrScanTitle')}>
-      <p className="pb-3 text-sm muted">{t('online.qrScanHint')}</p>
+    <div className="animate-in space-y-3">
+      <p className="text-sm muted">{t('online.qrScanHint')}</p>
       <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-black">
         <video ref={videoRef} className="h-full w-full object-cover" playsInline muted />
       </div>
-      {error && <p className="pt-3 text-sm text-spy">{error}</p>}
-    </Sheet>
+      {error && <p className="text-sm text-spy">{error}</p>}
+      <button type="button" className="btn-secondary w-full" onClick={onCancel}>
+        {t('common.cancel')}
+      </button>
+    </div>
   )
 }

@@ -155,7 +155,6 @@
     "howTo": "Sırayla herkes kısa bir ipucu versin. Sonra tartışın ve oylamayla casusu çıkarın.",
     "order": "Sıra",
     "reveal": "Casusu açıkla",
-    "confirmTitle": "Casus açıklansın mı?",
     "confirmBody": "Herkes casusun kim olduğunu ve iki kelimeyi de görecek."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "Davet et",
     "copied": "Bağlantı kopyalandı",
     "scanQr": "QR kodu tara",
-    "qrScanTitle": "Oda QR'ını tara",
     "qrScanHint": "Kamerayı host'un QR'ına tut.",
     "qrCameraError": "Kamera açılamadı",
     "qrInvalid": "Bu QR bir oda bağlantısı değil.",

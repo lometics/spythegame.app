@@ -155,7 +155,6 @@
     "howTo": "돌아가며 한 명씩 짧은 힌트를 말해요. 그다음 토론하고 투표로 스파이를 찾아내요.",
     "order": "순서",
     "reveal": "스파이 공개",
-    "confirmTitle": "스파이를 공개할까요?",
     "confirmBody": "스파이가 누구였는지와 두 단어가 모두에게 공개돼요."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "초대",
     "copied": "링크 복사됨",
     "scanQr": "QR 코드 스캔",
-    "qrScanTitle": "방 QR 스캔",
     "qrScanHint": "호스트 QR에 카메라를 향하세요.",
     "qrCameraError": "카메라를 열 수 없음",
     "qrInvalid": "이 QR은 방 링크가 아닙니다.",

@@ -155,7 +155,6 @@
     "howTo": "順番に1人ずつ短いヒントを言おう。そのあと話し合って、投票でスパイを当てよう。",
     "order": "順番",
     "reveal": "スパイを公開",
-    "confirmTitle": "スパイを公開する？",
     "confirmBody": "スパイが誰だったかと両方のワードが全員に表示されます。"
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "招待",
     "copied": "リンクをコピーしました",
     "scanQr": "QRコードを読み取る",
-    "qrScanTitle": "部屋のQRをスキャン",
     "qrScanHint": "ホストのQRにカメラを向ける。",
     "qrCameraError": "カメラを開けません",
     "qrInvalid": "そのQRは部屋リンクではありません。",

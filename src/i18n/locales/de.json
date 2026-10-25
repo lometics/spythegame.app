@@ -155,7 +155,6 @@
     "howTo": "Reihum gibt jeder einen kurzen Hinweis. Dann diskutiert ihr und wählt den Spion raus.",
     "order": "Reihenfolge",
     "reveal": "Spion aufdecken",
-    "confirmTitle": "Spion aufdecken?",
     "confirmBody": "Alle sehen, wer der Spion war, und beide Wörter."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "Einladen",
     "copied": "Link kopiert",
     "scanQr": "QR-Code scannen",
-    "qrScanTitle": "Raum-QR-Code scannen",
     "qrScanHint": "Richte die Kamera auf den QR-Code des Gastgebers.",
     "qrCameraError": "Kamera konnte nicht geöffnet werden",
     "qrInvalid": "Dieser QR-Code ist kein Raum-Link.",

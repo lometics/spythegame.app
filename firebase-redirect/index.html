@@ -8,10 +8,18 @@
     <link rel="canonical" href="https://spythegame.app/" />
     <script>
       // Old host: send every path (room links, #/room hash links) to the new domain.
-      location.replace('https://spythegame.app' + location.pathname + location.search + location.hash)
+      // A browser with a stale DNS entry can land here *as* spythegame.app; never
+      // redirect to ourselves then, or it loops. Drop old caches and show a link.
+      if (!/(^|\.)spythegame\.app$/.test(location.hostname)) {
+        location.replace('https://spythegame.app' + location.pathname + location.search + location.hash)
+      } else {
+        navigator.serviceWorker?.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()))
+        if (window.caches) caches.keys().then((ks) => ks.forEach((k) => caches.delete(k)))
+      }
     </script>
   </head>
   <body style="font-family: system-ui, sans-serif; background: #0b0b0b; color: #eee; text-align: center; padding: 4rem 1rem">
     <p>Spy has moved to <a href="https://spythegame.app/" style="color: #f5b400">spythegame.app</a>.</p>
+    <p style="color: #999; font-size: 0.9rem">If this page keeps coming back, your browser still has an old copy. Wait a few minutes or clear this site's data, then reload.</p>
   </body>
 </html>

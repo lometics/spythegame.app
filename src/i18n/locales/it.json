@@ -155,7 +155,6 @@
     "howTo": "Fate il giro, un breve indizio a testa. Poi discutete e votate per eliminare la spia.",
     "order": "Ordine",
     "reveal": "Smaschera la spia",
-    "confirmTitle": "Smascherare la spia?",
     "confirmBody": "Tutti vedranno chi era la spia ed entrambe le parole."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "Invita",
     "copied": "Link copiato",
     "scanQr": "Scansiona QR",
-    "qrScanTitle": "Scansiona il QR della stanza",
     "qrScanHint": "Punta la fotocamera sul QR code dell'host.",
     "qrCameraError": "Impossibile aprire la fotocamera",
     "qrInvalid": "Questo QR code non è un link a una stanza.",

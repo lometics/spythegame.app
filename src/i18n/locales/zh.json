@@ -155,7 +155,6 @@
     "howTo": "依次每人说一个简短提示，然后讨论并投票找出间谍。",
     "order": "顺序",
     "reveal": "揭晓间谍",
-    "confirmTitle": "揭晓间谍？",
     "confirmBody": "所有人都会看到谁是间谍以及两个词。"
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "邀请",
     "copied": "链接已复制",
     "scanQr": "扫描二维码",
-    "qrScanTitle": "扫描房间二维码",
     "qrScanHint": "将相机对准房主二维码。",
     "qrCameraError": "无法打开相机",
     "qrInvalid": "该二维码不是房间链接。",

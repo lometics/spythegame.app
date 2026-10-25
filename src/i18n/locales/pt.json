@@ -155,7 +155,6 @@
     "howTo": "Na roda, cada um dá uma dica curta. Depois discutam e votem para eliminar o espião.",
     "order": "Ordem",
     "reveal": "Revelar o espião",
-    "confirmTitle": "Revelar o espião?",
     "confirmBody": "Todos vão ver quem era o espião e as duas palavras."
   },
   "result": {
@@ -198,7 +197,6 @@
     "invite": "Convidar",
     "copied": "Link copiado",
     "scanQr": "Escanear QR code",
-    "qrScanTitle": "Escanear QR da sala",
     "qrScanHint": "Aponte a câmera para o QR do anfitrião.",
     "qrCameraError": "Não foi possível abrir a câmera",
     "qrInvalid": "Este QR não é um link de sala.",

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Check, Crown, Eye, EyeOff, Share2, X } from 'lucide-react'
 import Screen from '../components/Screen'
-import Sheet from '../components/Sheet'
+import ConfirmBar from '../components/ConfirmBar'
 import QrCode from '../components/QrCode'
 import SettingsSummary from '../components/SettingsSummary'
 import { RoleCard } from '../components/RoleCard'
@@ -193,12 +193,25 @@ export default function OnlineRoom() {
             <button
               type="button"
               className="btn-secondary w-full"
-              onClick={() => setPeekOpen(true)}
+              onClick={() => setPeekOpen(!peekOpen)}
             >
-              <Eye size={20} />
-              {t('peek.button')}
+              {peekOpen ? <EyeOff size={20} /> : <Eye size={20} />}
+              {peekOpen ? t('peek.hide') : t('peek.button')}
             </button>
-            {isHost ? (
+            {!isHost ? (
+              waiting(t('online.waitReveal'))
+            ) : confirmReveal ? (
+              <ConfirmBar
+                question={t('discuss.confirmBody')}
+                confirmLabel={t('discuss.reveal')}
+                onCancel={() => setConfirmReveal(false)}
+                onConfirm={() => {
+                  setConfirmReveal(false)
+                  setPeekOpen(false)
+                  revealOnline(code)
+                }}
+              />
+            ) : (
               <button
                 type="button"
                 className="btn-primary w-full"
@@ -206,45 +219,18 @@ export default function OnlineRoom() {
               >
                 {t('discuss.reveal')}
               </button>
-            ) : (
-              waiting(t('online.waitReveal'))
             )}
           </>
         }
       >
-        <DiscussionView
-          order={clueOrder(roster, room.round?.firstClueGiverId ?? null)}
-          timerSeconds={room.round?.timerSeconds ?? 180}
-        />
-        <Sheet open={peekOpen} onClose={() => setPeekOpen(false)} title={t('peek.title')}>
-          {card}
-        </Sheet>
-        <Sheet
-          open={confirmReveal}
-          onClose={() => setConfirmReveal(false)}
-          title={t('discuss.confirmTitle')}
-        >
-          <p className="pb-4 muted">{t('discuss.confirmBody')}</p>
-          <div className="flex flex-col gap-2">
-            <button
-              type="button"
-              className="btn-primary w-full"
-              onClick={() => {
-                setConfirmReveal(false)
-                revealOnline(code)
-              }}
-            >
-              {t('discuss.reveal')}
-            </button>
-            <button
-              type="button"
-              className="btn-secondary w-full"
-              onClick={() => setConfirmReveal(false)}
-            >
-              {t('common.cancel')}
-            </button>
-          </div>
-        </Sheet>
+        {/* Hidden, not unmounted, while the card shows: the timer keeps running. */}
+        <div className={peekOpen ? 'hidden' : 'flex flex-col gap-6'}>
+          <DiscussionView
+            order={clueOrder(roster, room.round?.firstClueGiverId ?? null)}
+            timerSeconds={room.round?.timerSeconds ?? 180}
+          />
+        </div>
+        {peekOpen && <div className="flex flex-1 flex-col justify-center">{card}</div>}
       </Screen>
     )
   }

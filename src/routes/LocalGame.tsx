@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ChevronRight, Eye, EyeOff } from 'lucide-react'
 import Screen from '../components/Screen'
-import Sheet from '../components/Sheet'
+import ConfirmBar from '../components/ConfirmBar'
 import { PassCard, RoleCard } from '../components/RoleCard'
 import { DiscussionView, ResultView } from '../components/RoundViews'
 import InstallPrompt from '../components/InstallPrompt'
@@ -130,58 +130,49 @@ export default function LocalGame() {
             <button
               type="button"
               className="btn-secondary w-full"
-              onClick={() => setPeekOpen(true)}
+              onClick={() => setPeekOpen(!peekOpen)}
             >
-              <Eye size={20} />
-              {t('peek.button')}
+              {!peekOpen && <Eye size={20} />}
+              {peekOpen ? t('common.cancel') : t('peek.button')}
             </button>
-            <button
-              type="button"
-              className="btn-primary w-full"
-              onClick={() => setConfirmReveal(true)}
-            >
-              {t('discuss.reveal')}
-            </button>
+            {confirmReveal ? (
+              <ConfirmBar
+                question={t('discuss.confirmBody')}
+                confirmLabel={t('discuss.reveal')}
+                onCancel={() => setConfirmReveal(false)}
+                onConfirm={() => {
+                  setConfirmReveal(false)
+                  setPeekOpen(false)
+                  revealAnswer()
+                }}
+              />
+            ) : (
+              <button
+                type="button"
+                className="btn-primary w-full"
+                onClick={() => setConfirmReveal(true)}
+              >
+                {t('discuss.reveal')}
+              </button>
+            )}
           </>
         }
       >
-        <DiscussionView
-          order={clueOrder(players, firstClueGiverId)}
-          timerSeconds={settings.timerSeconds}
-        />
-        <PeekSheet
-          open={peekOpen}
-          onClose={() => setPeekOpen(false)}
-          players={players}
-          pair={pair}
-          spiesKnowEachOther={settings.spiesKnowEachOther}
-        />
-        <Sheet
-          open={confirmReveal}
-          onClose={() => setConfirmReveal(false)}
-          title={t('discuss.confirmTitle')}
-        >
-          <p className="pb-4 muted">{t('discuss.confirmBody')}</p>
-          <div className="flex flex-col gap-2">
-            <button
-              type="button"
-              className="btn-primary w-full"
-              onClick={() => {
-                setConfirmReveal(false)
-                revealAnswer()
-              }}
-            >
-              {t('discuss.reveal')}
-            </button>
-            <button
-              type="button"
-              className="btn-secondary w-full"
-              onClick={() => setConfirmReveal(false)}
-            >
-              {t('common.cancel')}
-            </button>
-          </div>
-        </Sheet>
+        {/* Hidden, not unmounted, while someone checks a card: the timer keeps running. */}
+        <div className={peekOpen ? 'hidden' : 'flex flex-col gap-6'}>
+          <DiscussionView
+            order={clueOrder(players, firstClueGiverId)}
+            timerSeconds={settings.timerSeconds}
+          />
+        </div>
+        {peekOpen && (
+          <PeekPanel
+            players={players}
+            pair={pair}
+            spiesKnowEachOther={settings.spiesKnowEachOther}
+            onDone={() => setPeekOpen(false)}
+          />
+        )}
       </Screen>
     )
   }
@@ -221,35 +212,28 @@ export default function LocalGame() {
   )
 }
 
-/** Lets a player who forgot their word look again, mid-round. */
-function PeekSheet({
-  open,
-  onClose,
+/** Lets a player who forgot their word look again, mid-round, in place of the discussion. */
+function PeekPanel({
   players,
   pair,
   spiesKnowEachOther,
+  onDone,
 }: {
-  open: boolean
-  onClose: () => void
   players: Player[]
   pair: Pair
   spiesKnowEachOther: boolean
+  onDone: () => void
 }) {
   const { t } = useTranslation()
   const [pickedId, setPickedId] = useState<string | null>(null)
   const [shown, setShown] = useState(false)
   const picked = players.find((p) => p.id === pickedId) ?? null
 
-  const close = () => {
-    setPickedId(null)
-    setShown(false)
-    onClose()
-  }
-
   return (
-    <Sheet open={open} onClose={close} title={t('peek.title')}>
+    <section className="animate-in flex flex-1 flex-col justify-center">
       {!picked ? (
         <>
+          <div className="pb-1 text-lg font-semibold">{t('peek.title')}</div>
           <p className="pb-3 text-sm muted">{t('peek.pick')}</p>
           <div className="group-list">
             {players.map((p) => (
@@ -281,7 +265,7 @@ function PeekSheet({
             spiesKnowEachOther={spiesKnowEachOther}
           />
           {shown ? (
-            <button type="button" className="btn-primary w-full" onClick={close}>
+            <button type="button" className="btn-primary w-full" onClick={onDone}>
               <EyeOff size={20} />
               {t('peek.hide')}
             </button>
@@ -297,6 +281,6 @@ function PeekSheet({
           )}
         </div>
       )}
-    </Sheet>
+    </section>
   )
 }

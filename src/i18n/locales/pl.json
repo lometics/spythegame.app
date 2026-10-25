@@ -163,7 +163,6 @@
     "howTo": "Po kolei każdy daje jedną krótką wskazówkę. Potem dyskutujcie i wybierzcie szpiega w głosowaniu.",
     "order": "Kolejność",
     "reveal": "Pokaż szpiega",
-    "confirmTitle": "Pokazać szpiega?",
     "confirmBody": "Wszyscy zobaczą, kto był szpiegiem, i oba słowa."
   },
   "result": {
@@ -206,7 +205,6 @@
     "invite": "Zaproś",
     "copied": "Link skopiowany",
     "scanQr": "Skanuj kod QR",
-    "qrScanTitle": "Skanuj QR pokoju",
     "qrScanHint": "Skieruj aparat na QR hosta.",
     "qrCameraError": "Nie można otworzyć aparatu",
     "qrInvalid": "Ten QR nie jest linkiem do pokoju.",

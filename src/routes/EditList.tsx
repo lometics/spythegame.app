@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Plus, Trash2, X } from 'lucide-react'
 import Screen from '../components/Screen'
-import Sheet from '../components/Sheet'
+import ConfirmBar from '../components/ConfirmBar'
 import { useGame } from '../game/state'
 import { DEFAULT_LIST_ICON, LIST_ICONS } from '../game/icons'
 import type { CustomList } from '../game/types'
@@ -89,9 +89,22 @@ export default function EditList() {
         )
       }
       footer={
-        <button type="button" className="btn-primary w-full" disabled={!canSave} onClick={save}>
-          {existing ? t('common.save') : t('editList.create')}
-        </button>
+        confirmDelete ? (
+          <ConfirmBar
+            question={`${t('editList.deleteConfirmTitle')} ${t('editList.deleteConfirmDesc')}`}
+            confirmLabel={t('common.delete')}
+            danger
+            onCancel={() => setConfirmDelete(false)}
+            onConfirm={() => {
+              if (existing) deleteList(existing.id)
+              navigate(-1)
+            }}
+          />
+        ) : (
+          <button type="button" className="btn-primary w-full" disabled={!canSave} onClick={save}>
+            {existing ? t('common.save') : t('editList.create')}
+          </button>
+        )
       }
     >
       <section>
@@ -173,32 +186,6 @@ export default function EditList() {
         </button>
       </section>
 
-      <Sheet
-        open={confirmDelete}
-        onClose={() => setConfirmDelete(false)}
-        title={t('editList.deleteConfirmTitle')}
-      >
-        <p className="pb-4 muted">{t('editList.deleteConfirmDesc')}</p>
-        <div className="flex flex-col gap-2">
-          <button
-            type="button"
-            className="btn-danger w-full"
-            onClick={() => {
-              if (existing) deleteList(existing.id)
-              navigate(-1)
-            }}
-          >
-            {t('common.delete')}
-          </button>
-          <button
-            type="button"
-            className="btn-secondary w-full"
-            onClick={() => setConfirmDelete(false)}
-          >
-            {t('common.cancel')}
-          </button>
-        </div>
-      </Sheet>
     </Screen>
   )
 }
