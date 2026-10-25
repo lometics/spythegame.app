@@ -5,6 +5,9 @@ import './index.css'
 import { i18nReady } from './i18n'
 import App from './App.tsx'
 import { Analytics } from '@vercel/analytics/react'
+import { installErrorReporting } from './errorReport'
+
+installErrorReporting()
 
 // Old builds used hash URLs (#/room/ABCD); keep those links and QR codes working.
 if (window.location.hash.startsWith('#/')) {

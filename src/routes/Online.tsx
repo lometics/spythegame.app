@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ScanLine } from 'lucide-react'
 import Screen from '../components/Screen'
 import QrScanPanel from '../components/QrScanPanel'
 import { useGame } from '../game/state'
-import { createRoom } from '../online/room'
+import { cleanupStaleRooms, createRoom } from '../online/room'
 import { isFirebaseConfigured } from '../online/firebase'
 import { extractRoomCode } from '../online/roster'
 
@@ -24,6 +24,11 @@ export default function Online() {
   const [scannerOpen, setScannerOpen] = useState(false)
 
   const configured = isFirebaseConfigured()
+
+  useEffect(() => {
+    if (configured) cleanupStaleRooms().catch(() => {})
+  }, [configured])
+
   const code = joinCode.trim().toUpperCase()
 
   const create = async () => {

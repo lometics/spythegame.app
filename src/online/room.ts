@@ -6,6 +6,10 @@ import {
   update,
   onValue,
   serverTimestamp,
+  query,
+  orderByChild,
+  endAt,
+  limitToFirst,
 } from 'firebase/database'
 import { db, ensureSignedIn } from './firebase'
 import { samplePair } from '../game/pairs'
@@ -28,6 +32,8 @@ export type OnlinePlayer = {
 
 export type OnlineMeta = {
   createdAt: number
+  /** Last time anyone did something in the room; old rooms get cleaned up. */
+  lastActive?: number
   phase: GamePhase
   round: number
 }
@@ -81,6 +87,7 @@ export async function createRoom(name: string): Promise<string> {
     await set(ref(db, `rooms/${code}`), {
       meta: {
         createdAt: serverTimestamp(),
+        lastActive: serverTimestamp(),
         phase: 'lobby',
         round: 0,
       },
@@ -108,7 +115,50 @@ export async function joinRoom(code: string, name: string) {
     name: name.trim() || i18n.t('online.defaultGuestName'),
     joinedAt: serverTimestamp(),
   })
+  await touchRoom(code).catch(() => {})
   return user.uid
+}
+
+/** Marks the room as in use, so the cleanup below leaves it alone. */
+export async function touchRoom(code: string) {
+  if (!db) return
+  await update(ref(db, `rooms/${code}/meta`), { lastActive: serverTimestamp() })
+}
+
+const DAY = 24 * 60 * 60 * 1000
+/** Must match the 30 days in rules.json. */
+export const STALE_ROOM_MS = 30 * DAY
+const CLEANUP_KEY = 'spy-room-cleanup'
+
+/**
+ * Deletes rooms nobody has used for 30 days. There's no server for this: any
+ * device that opens online play does a small batch at most once a day, and the
+ * database rules only allow deleting rooms that really are stale.
+ */
+export async function cleanupStaleRooms() {
+  if (!db) return
+  try {
+    if (Date.now() - Number(localStorage.getItem(CLEANUP_KEY) ?? 0) < DAY) return
+    localStorage.setItem(CLEANUP_KEY, String(Date.now()))
+  } catch {
+    return
+  }
+  await ensureSignedIn()
+  // A day of margin so a fast device clock can't ask for rooms the rules don't allow.
+  const stale = query(
+    ref(db, 'rooms'),
+    orderByChild('meta/lastActive'),
+    endAt(Date.now() - STALE_ROOM_MS - DAY),
+    limitToFirst(25),
+  )
+  const codes = Object.keys((await get(stale)).val() ?? {})
+  for (const code of codes) {
+    await update(ref(db), {
+      [`privateWords/${code}`]: null,
+      [`pairReveals/${code}`]: null,
+    }).catch(() => {})
+    await set(ref(db, `rooms/${code}`), null).catch(() => {})
+  }
 }
 
 const EMPTY_ROOM: RoomState = {
@@ -293,6 +343,7 @@ export async function startOnlineRound(
   const updates: Record<string, unknown> = {
     [`rooms/${code}/meta/phase`]: 'reveal',
     [`rooms/${code}/meta/round`]: nextRound,
+    [`rooms/${code}/meta/lastActive`]: serverTimestamp(),
     [`rooms/${code}/round`]: {
       pairPublic: { categoryId: pair.categoryId },
       hintLevel: difficulty,
@@ -308,18 +359,19 @@ export async function startOnlineRound(
 
 export async function setPhase(code: string, phase: GamePhase) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
-  await update(ref(db, `rooms/${code}/meta`), { phase })
+  await update(ref(db, `rooms/${code}/meta`), { phase, lastActive: serverTimestamp() })
 }
 
 export async function revealOnline(code: string) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
-  await update(ref(db, `rooms/${code}/meta`), { phase: 'result' })
+  await update(ref(db, `rooms/${code}/meta`), { phase: 'result', lastActive: serverTimestamp() })
 }
 
 export async function backToLobby(code: string) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   await update(ref(db), {
     [`rooms/${code}/meta/phase`]: 'lobby',
+    [`rooms/${code}/meta/lastActive`]: serverTimestamp(),
     [`rooms/${code}/round`]: null,
     [`privateWords/${code}`]: null,
     [`pairReveals/${code}`]: null,

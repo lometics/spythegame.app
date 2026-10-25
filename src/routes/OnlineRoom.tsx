@@ -12,6 +12,7 @@ import {
   backToLobby,
   joinRoom,
   kickPlayer,
+  touchRoom,
   leaveRoom,
   renamePlayerInRoom,
   revealOnline,
@@ -70,6 +71,12 @@ export default function OnlineRoom() {
   useEffect(() => {
     if (me && activeRoom !== code) setActiveRoom(code)
   }, [me, activeRoom, code, setActiveRoom])
+
+  // Opening the room counts as using it (keeps it from being cleaned up).
+  const isMember = !!me
+  useEffect(() => {
+    if (isMember) touchRoom(code).catch(() => {})
+  }, [isMember, code])
 
   // Rooms from older builds have no shared settings yet: the first member here brings theirs.
   const seededRef = useRef(false)
