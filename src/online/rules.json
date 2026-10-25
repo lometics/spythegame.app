@@ -1,12 +1,12 @@
 {
   "rules": {
     "rooms": {
-      ".read": "auth != null && query.orderByChild === 'meta/lastActive' && query.endAt <= now - 2592000000 && query.limitToFirst <= 25",
+      ".read": "auth != null && query.orderByChild == 'lastActive' && query.limitToFirst <= 25",
       ".indexOn": [
-        "meta/lastActive"
+        "lastActive"
       ],
       "$code": {
-        ".write": "auth != null && (!data.exists() || (!newData.exists() && (!data.exists() || (data.child('meta').child('lastActive').exists() && data.child('meta').child('lastActive').val() < now - 2592000000) || (!data.child('meta').child('lastActive').exists() && (!data.child('meta').child('createdAt').exists() || data.child('meta').child('createdAt').val() < now - 2592000000)))))",
+        ".write": "auth != null && (!data.exists() || (!newData.exists() && (!data.exists() || (data.child('lastActive').exists() && data.child('lastActive').val() < now - 2592000000) || (!data.child('lastActive').exists() && (!data.child('meta').child('createdAt').exists() || data.child('meta').child('createdAt').val() < now - 2592000000)))))",
         "meta": {
           ".read": "auth != null",
           ".write": "auth != null && (!data.exists() || root.child('rooms').child($code).child('players').child(auth.uid).exists())"
@@ -30,12 +30,17 @@
               ".write": "auth != null && ($uid === auth.uid || root.child('rooms').child($code).child('players').child(auth.uid).exists())"
             }
           }
+        },
+        "lastActive": {
+          ".read": "auth != null",
+          ".write": "auth != null && root.child('rooms').child($code).child('players').child(auth.uid).exists()",
+          ".validate": "newData.val() === now"
         }
       }
     },
     "privateWords": {
       "$code": {
-        ".write": "(auth != null && root.child('rooms').child($code).child('players').child(auth.uid).exists()) || (auth != null && !newData.exists() && (!root.child('rooms').child($code).exists() || (root.child('rooms').child($code).child('meta').child('lastActive').exists() && root.child('rooms').child($code).child('meta').child('lastActive').val() < now - 2592000000) || (!root.child('rooms').child($code).child('meta').child('lastActive').exists() && (!root.child('rooms').child($code).child('meta').child('createdAt').exists() || root.child('rooms').child($code).child('meta').child('createdAt').val() < now - 2592000000))))",
+        ".write": "(auth != null && root.child('rooms').child($code).child('players').child(auth.uid).exists()) || (auth != null && !newData.exists() && (!root.child('rooms').child($code).exists() || (root.child('rooms').child($code).child('lastActive').exists() && root.child('rooms').child($code).child('lastActive').val() < now - 2592000000) || (!root.child('rooms').child($code).child('lastActive').exists() && (!root.child('rooms').child($code).child('meta').child('createdAt').exists() || root.child('rooms').child($code).child('meta').child('createdAt').val() < now - 2592000000))))",
         "$uid": {
           ".read": "auth != null && $uid === auth.uid",
           ".write": "auth != null && $uid === auth.uid && !newData.exists()"
@@ -44,7 +49,7 @@
     },
     "pairReveals": {
       "$code": {
-        ".write": "(auth != null && root.child('rooms').child($code).child('players').child(auth.uid).exists()) || (auth != null && !newData.exists() && (!root.child('rooms').child($code).exists() || (root.child('rooms').child($code).child('meta').child('lastActive').exists() && root.child('rooms').child($code).child('meta').child('lastActive').val() < now - 2592000000) || (!root.child('rooms').child($code).child('meta').child('lastActive').exists() && (!root.child('rooms').child($code).child('meta').child('createdAt').exists() || root.child('rooms').child($code).child('meta').child('createdAt').val() < now - 2592000000))))",
+        ".write": "(auth != null && root.child('rooms').child($code).child('players').child(auth.uid).exists()) || (auth != null && !newData.exists() && (!root.child('rooms').child($code).exists() || (root.child('rooms').child($code).child('lastActive').exists() && root.child('rooms').child($code).child('lastActive').val() < now - 2592000000) || (!root.child('rooms').child($code).child('lastActive').exists() && (!root.child('rooms').child($code).child('meta').child('createdAt').exists() || root.child('rooms').child($code).child('meta').child('createdAt').val() < now - 2592000000))))",
         ".read": "auth != null && root.child('rooms').child($code).child('meta').child('phase').val() === 'result'"
       }
     },

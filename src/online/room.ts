@@ -32,8 +32,6 @@ export type OnlinePlayer = {
 
 export type OnlineMeta = {
   createdAt: number
-  /** Last time anyone did something in the room; old rooms get cleaned up. */
-  lastActive?: number
   phase: GamePhase
   round: number
 }
@@ -87,7 +85,6 @@ export async function createRoom(name: string): Promise<string> {
     await set(ref(db, `rooms/${code}`), {
       meta: {
         createdAt: serverTimestamp(),
-        lastActive: serverTimestamp(),
         phase: 'lobby',
         round: 0,
       },
@@ -98,6 +95,8 @@ export async function createRoom(name: string): Promise<string> {
         },
       },
       settings: toRoomData(seedRoomSettings(settings, customLists)),
+      // Last time anyone did something here; rooms unused for 30 days get cleaned up.
+      lastActive: serverTimestamp(),
     })
     return code
   }
@@ -122,7 +121,7 @@ export async function joinRoom(code: string, name: string) {
 /** Marks the room as in use, so the cleanup below leaves it alone. */
 export async function touchRoom(code: string) {
   if (!db) return
-  await update(ref(db, `rooms/${code}/meta`), { lastActive: serverTimestamp() })
+  await set(ref(db, `rooms/${code}/lastActive`), serverTimestamp())
 }
 
 const DAY = 24 * 60 * 60 * 1000
@@ -147,7 +146,7 @@ export async function cleanupStaleRooms() {
   // A day of margin so a fast device clock can't ask for rooms the rules don't allow.
   const stale = query(
     ref(db, 'rooms'),
-    orderByChild('meta/lastActive'),
+    orderByChild('lastActive'),
     endAt(Date.now() - STALE_ROOM_MS - DAY),
     limitToFirst(25),
   )
@@ -343,7 +342,7 @@ export async function startOnlineRound(
   const updates: Record<string, unknown> = {
     [`rooms/${code}/meta/phase`]: 'reveal',
     [`rooms/${code}/meta/round`]: nextRound,
-    [`rooms/${code}/meta/lastActive`]: serverTimestamp(),
+    [`rooms/${code}/lastActive`]: serverTimestamp(),
     [`rooms/${code}/round`]: {
       pairPublic: { categoryId: pair.categoryId },
       hintLevel: difficulty,
@@ -359,19 +358,19 @@ export async function startOnlineRound(
 
 export async function setPhase(code: string, phase: GamePhase) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
-  await update(ref(db, `rooms/${code}/meta`), { phase, lastActive: serverTimestamp() })
+  await update(ref(db, `rooms/${code}`), { 'meta/phase': phase, lastActive: serverTimestamp() })
 }
 
 export async function revealOnline(code: string) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
-  await update(ref(db, `rooms/${code}/meta`), { phase: 'result', lastActive: serverTimestamp() })
+  await update(ref(db, `rooms/${code}`), { 'meta/phase': 'result', lastActive: serverTimestamp() })
 }
 
 export async function backToLobby(code: string) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
   await update(ref(db), {
     [`rooms/${code}/meta/phase`]: 'lobby',
-    [`rooms/${code}/meta/lastActive`]: serverTimestamp(),
+    [`rooms/${code}/lastActive`]: serverTimestamp(),
     [`rooms/${code}/round`]: null,
     [`privateWords/${code}`]: null,
     [`pairReveals/${code}`]: null,

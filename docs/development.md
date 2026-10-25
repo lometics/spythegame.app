@@ -19,12 +19,12 @@ VITE_FIREBASE_PROJECT_ID=
 VITE_FIREBASE_APP_ID=
 ```
 
-`npm test` runs the tests, `npm run lint` the linter, `npm run build` type-checks and builds `dist/`.
+`npm test` runs the tests, `npm run lint` the linter, `npm run build` type-checks and builds `dist/`. `npm run test:rules` checks the database rules in the Firebase emulator (needs Java 21+).
 
 ## Deploy
 
 - **Site**: Vercel builds every push to `main` (`vercel.json`). The Firebase values above are set as Vercel environment variables.
-- **Database rules**: `src/online/rules.json`, deployed by the GitHub workflow on every push to `main`. They keep each player's word private and hide the answer until the round ends.
+- **Database rules**: `src/online/rules.json`, deployed by the GitHub workflow on every push to `main`. They keep each player's word private, hide the answer until the round ends, let any device delete rooms nobody used for 30 days, and accept write-only crash reports in `errors/`.
 
 ## Words
 
