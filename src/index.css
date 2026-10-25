@@ -22,6 +22,12 @@ body,
   min-height: 100%;
 }
 
+/* Always reserve the scrollbar's space, so pages that scroll and pages that
+   don't are laid out at the same width (no sideways jump when navigating). */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
