@@ -2,6 +2,7 @@ import i18n from 'i18next'
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from 'react-i18next'
 import { loadPairs } from '../data/pairStore'
+import { loadWords } from '../game/words'
 
 export const SUPPORTED = ['en', 'de', 'fr', 'it', 'es', 'pt', 'nl', 'pl', 'sv', 'tr', 'ru', 'ja', 'zh', 'ko', 'ar'] as const
 export type Lang = (typeof SUPPORTED)[number]
@@ -15,7 +16,7 @@ export const baseLang = (lng: string | undefined) => (lng || 'en').split('-')[0]
 
 async function loadLanguage(lng: string) {
   const base = baseLang(lng)
-  const tasks: Promise<unknown>[] = [loadPairs(base)]
+  const tasks: Promise<unknown>[] = [loadPairs(base), loadWords(base)]
   if (!i18n.hasResourceBundle(base, 't')) {
     const loader = locales[`./locales/${base}.json`]
     if (loader) {

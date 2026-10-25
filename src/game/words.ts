@@ -1,9 +1,4 @@
 import metaJson from '../data/words/meta.json'
-import enWords from '../data/words/en.json'
-import deWords from '../data/words/de.json'
-import frWords from '../data/words/fr.json'
-import itWords from '../data/words/it.json'
-import esWords from '../data/words/es.json'
 
 /**
  * Word bank: one entry per secret word, with hints graded by how close
@@ -45,19 +40,43 @@ export type WordEntry = WordMeta & WordText & { subName: string }
 
 export const WORD_META = metaJson as WordMetaFile
 
-export const WORD_LANGS: Record<string, WordLangFile> = {
-  en: enWords as WordLangFile,
-  de: deWords as WordLangFile,
-  fr: frWords as WordLangFile,
-  it: itWords as WordLangFile,
-  es: esWords as WordLangFile,
+/** Built-in categories the word bank covers; their old pairs are no longer used. */
+export const WORD_BANK_CATEGORIES: ReadonlySet<string> = new Set(
+  WORD_META.entries.map((e) => e.category),
+)
+
+// One chunk per language, loaded on demand (meta.json doesn't match the pattern).
+const loaders = import.meta.glob<{ default: WordLangFile }>('../data/words/[a-z][a-z].json')
+const cache: Record<string, WordLangFile> = {}
+
+function loaderFor(lang: string) {
+  return loaders[`../data/words/${lang}.json`]
+}
+
+export const WORD_BANK_LANGS = Object.keys(loaders).map((p) => p.slice(-7, -5))
+
+/** Languages without their own word bank play with the English one. */
+export function wordLanguage(lang: string): string {
+  return loaderFor(lang) ? lang : 'en'
+}
+
+export async function loadWords(lang: string): Promise<void> {
+  const key = wordLanguage(lang)
+  if (cache[key]) return
+  cache[key] = (await loaderFor(key)()).default
+}
+
+/** A loaded language file, or undefined before loadWords() finished. */
+export function wordFile(lang: string): WordLangFile | undefined {
+  return cache[wordLanguage(lang)] ?? cache.en
 }
 
 export const MIN_HINTS_PER_TIER = 2
 
-/** Merged entries for one language (falls back to English). */
+/** Merged entries for one language (empty until loaded). */
 export function wordEntries(lang: string): WordEntry[] {
-  const file = WORD_LANGS[lang] ?? WORD_LANGS.en
+  const file = wordFile(lang)
+  if (!file) return []
   return WORD_META.entries.map((m) => ({
     ...m,
     ...file.entries[m.id],

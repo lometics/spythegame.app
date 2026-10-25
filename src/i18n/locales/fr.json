@@ -98,15 +98,19 @@
     "intro": "Ce que l'espion voit à la place du vrai mot. Moins il a d'aide, plus il est facile à démasquer.",
     "exampleWord": "Les civils voient",
     "exampleHint": "L'espion voit",
-    "hard": {
+    "word": {
       "label": "Mot proche",
-      "desc": "Un mot presque identique. Le plus dur à démasquer."
+      "desc": "Un autre mot du même genre. Le plus dur à démasquer."
     },
-    "medium": {
-      "label": "Même catégorie",
-      "desc": "Un autre mot de la même catégorie."
+    "close": {
+      "label": "Indice proche",
+      "desc": "Quelque chose de lié au mot."
     },
-    "easy": {
+    "category": {
+      "label": "Catégorie",
+      "desc": "Seulement le type de chose."
+    },
+    "none": {
       "label": "Aucun indice",
       "desc": "L'espion n'a rien et doit bluffer."
     }
@@ -127,6 +131,8 @@
     "yourHint": "Votre indice",
     "noHint": "Aucun indice",
     "spyTip": "Les autres ont un mot différent. Fondez-vous dans la masse.",
+    "spyTipClose": "Ton indice est lié au mot des autres. Devine-le et fonds-toi dans le groupe.",
+    "spyTipCategory": "Le mot des autres est de ce type. Écoute et fonds-toi dans le groupe.",
     "noHintTip": "Écoutez bien et bluffez.",
     "otherSpies": "Autres espions",
     "onlySpy": "Vous êtes le seul espion."

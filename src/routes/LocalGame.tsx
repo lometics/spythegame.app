@@ -35,6 +35,7 @@ function SecretCard({
       name={player.name}
       isSpy={player.isSpy}
       word={player.isSpy ? pair.spy : pair.civilian}
+      hintLevel={pair.hintLevel}
       fellowSpyNames={
         player.isSpy && spiesKnowEachOther ? fellowSpies(players, player) : undefined
       }

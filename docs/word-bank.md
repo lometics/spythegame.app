@@ -5,7 +5,7 @@ Secret words with hints graded by closeness. Lives in `src/data/words/`:
 - `meta.json`: language-neutral data: `id`, `category`, `sub`, `difficulty` (1 = everyone knows it, 3 = niche), and the sub-category ids per category.
 - `<lang>.json`: text per language, keyed by the same ids: `word`, `associated[]`, `sibling[]`, plus labels for sub-categories.
 
-Loader and checker: `src/game/words.ts`. Not wired into the game yet; `src/data/pairs.*.json` still drives play.
+Loader and checker: `src/game/words.ts`. Each language file loads on demand, with English as the fallback. In play (`src/game/pairs.ts`), categories covered by the word bank (food, places) come from here. All other categories and custom lists still use `src/data/pairs.*.json`; there the one curated spy word is used as both decoy and close hint, and the category name serves as the category hint.
 
 ## Hint ladder
 

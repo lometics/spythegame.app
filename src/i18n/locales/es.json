@@ -98,15 +98,19 @@
     "intro": "Lo que ve el espía en lugar de la palabra real. Cuanta menos ayuda, más fácil es atraparlo.",
     "exampleWord": "Los civiles ven",
     "exampleHint": "El espía ve",
-    "hard": {
+    "word": {
       "label": "Palabra parecida",
-      "desc": "Una palabra casi igual. La más difícil de descubrir."
+      "desc": "Otra palabra del mismo tipo. El más difícil de descubrir."
     },
-    "medium": {
-      "label": "Misma categoría",
-      "desc": "Otra palabra de la misma categoría."
+    "close": {
+      "label": "Pista cercana",
+      "desc": "Algo relacionado con la palabra."
     },
-    "easy": {
+    "category": {
+      "label": "Categoría",
+      "desc": "Solo qué tipo de cosa es."
+    },
+    "none": {
       "label": "Sin pista",
       "desc": "El espía no recibe nada y tiene que fingir."
     }
@@ -127,6 +131,8 @@
     "yourHint": "Tu pista",
     "noHint": "Sin pista",
     "spyTip": "Los demás tienen otra palabra. Disimula.",
+    "spyTipClose": "Tu pista está relacionada con la palabra de los demás. Adivínala y pasa desapercibido.",
+    "spyTipCategory": "La palabra de los demás es de este tipo. Escucha y pasa desapercibido.",
     "noHintTip": "Escucha bien y finge.",
     "otherSpies": "Otros espías",
     "onlySpy": "Eres el único espía."

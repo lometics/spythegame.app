@@ -98,15 +98,19 @@
     "intro": "What the spy sees instead of the real word. Less help makes the spy easier to catch.",
     "exampleWord": "Civilians see",
     "exampleHint": "Spy sees",
-    "hard": {
-      "label": "Close word",
-      "desc": "A word that's almost the same. Hardest to catch."
+    "word": {
+      "label": "Similar word",
+      "desc": "A different word of the same kind. Hardest to catch."
     },
-    "medium": {
-      "label": "Same category",
-      "desc": "Another word from the same category."
+    "close": {
+      "label": "Close hint",
+      "desc": "Something linked to the word."
     },
-    "easy": {
+    "category": {
+      "label": "Category",
+      "desc": "Only what kind of thing it is."
+    },
+    "none": {
       "label": "No hint",
       "desc": "The spy gets nothing and has to bluff."
     }
@@ -127,6 +131,8 @@
     "yourHint": "Your hint",
     "noHint": "No hint",
     "spyTip": "The others have a different word. Blend in.",
+    "spyTipClose": "Your hint is linked to the others' word. Work it out and blend in.",
+    "spyTipCategory": "The others' word is this kind of thing. Listen and blend in.",
     "noHintTip": "Listen closely and bluff.",
     "otherSpies": "Other spies",
     "onlySpy": "You are the only spy."

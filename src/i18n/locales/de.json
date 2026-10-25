@@ -98,15 +98,19 @@
     "intro": "Was der Spion statt des echten Worts sieht. Je weniger Hilfe, desto leichter ist der Spion zu entlarven.",
     "exampleWord": "Zivilisten sehen",
     "exampleHint": "Spion sieht",
-    "hard": {
+    "word": {
       "label": "Ähnliches Wort",
-      "desc": "Ein fast gleiches Wort. Am schwersten zu entlarven."
+      "desc": "Ein anderes Wort derselben Art. Am schwersten zu entlarven."
     },
-    "medium": {
-      "label": "Gleiche Kategorie",
-      "desc": "Ein anderes Wort aus derselben Kategorie."
+    "close": {
+      "label": "Naher Hinweis",
+      "desc": "Etwas, das mit dem Wort zusammenhängt."
     },
-    "easy": {
+    "category": {
+      "label": "Kategorie",
+      "desc": "Nur, was für eine Art Ding es ist."
+    },
+    "none": {
       "label": "Kein Hinweis",
       "desc": "Der Spion bekommt nichts und muss bluffen."
     }
@@ -127,6 +131,8 @@
     "yourHint": "Dein Hinweis",
     "noHint": "Kein Hinweis",
     "spyTip": "Die anderen haben ein anderes Wort. Fall nicht auf.",
+    "spyTipClose": "Dein Hinweis hängt mit dem Wort der anderen zusammen. Kombiniere und fall nicht auf.",
+    "spyTipCategory": "Das Wort der anderen gehört zu dieser Art. Hör zu und fall nicht auf.",
     "noHintTip": "Hör genau zu und bluffe.",
     "otherSpies": "Andere Spione",
     "onlySpy": "Du bist der einzige Spion."

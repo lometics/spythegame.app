@@ -98,15 +98,19 @@
     "intro": "Det spionen ser i stället för det riktiga ordet. Mindre hjälp gör spionen lättare att avslöja.",
     "exampleWord": "Civila ser",
     "exampleHint": "Spionen ser",
-    "hard": {
+    "word": {
       "label": "Liknande ord",
-      "desc": "Ett nästan likadant ord. Svårast att avslöja."
+      "desc": "Ett annat ord av samma slag. Svårast att avslöja."
     },
-    "medium": {
-      "label": "Samma kategori",
-      "desc": "Ett annat ord från samma kategori."
+    "close": {
+      "label": "Nära ledtråd",
+      "desc": "Något som hänger ihop med ordet."
     },
-    "easy": {
+    "category": {
+      "label": "Kategori",
+      "desc": "Bara vad det är för slags sak."
+    },
+    "none": {
       "label": "Ingen ledtråd",
       "desc": "Spionen får inget och måste bluffa."
     }
@@ -127,6 +131,8 @@
     "yourHint": "Din ledtråd",
     "noHint": "Ingen ledtråd",
     "spyTip": "De andra har ett annat ord. Smält in.",
+    "spyTipClose": "Din ledtråd hänger ihop med de andras ord. Lista ut det och smält in.",
+    "spyTipCategory": "De andras ord är av det här slaget. Lyssna och smält in.",
     "noHintTip": "Lyssna noga och bluffa.",
     "otherSpies": "Andra spioner",
     "onlySpy": "Du är den enda spionen."

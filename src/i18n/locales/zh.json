@@ -98,15 +98,19 @@
     "intro": "间谍看到的内容，用来代替真正的词。提示越少，间谍越容易被识破。",
     "exampleWord": "平民看到",
     "exampleHint": "间谍看到",
-    "hard": {
+    "word": {
       "label": "相近词",
-      "desc": "几乎一样的词，最难识破。"
+      "desc": "同类的另一个词。最难识破。"
     },
-    "medium": {
-      "label": "同一类别",
-      "desc": "同类别中的另一个词。"
+    "close": {
+      "label": "相近提示",
+      "desc": "与词语相关的东西。"
     },
-    "easy": {
+    "category": {
+      "label": "类别",
+      "desc": "只告诉是哪类东西。"
+    },
+    "none": {
       "label": "无提示",
       "desc": "间谍什么都拿不到，只能靠蒙混。"
     }
@@ -127,6 +131,8 @@
     "yourHint": "你的提示",
     "noHint": "无提示",
     "spyTip": "其他人的词和你不同。混在人群里别露馅。",
+    "spyTipClose": "你的提示与其他人的词有关。猜出来并混在其中。",
+    "spyTipCategory": "其他人的词属于这一类。仔细听，别露馅。",
     "noHintTip": "仔细听，靠蒙混过关。",
     "otherSpies": "其他间谍",
     "onlySpy": "你是唯一的间谍。"

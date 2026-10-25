@@ -98,15 +98,19 @@
     "intro": "O que o espião vê no lugar da palavra real. Quanto menos ajuda, mais fácil pegar o espião.",
     "exampleWord": "Os civis veem",
     "exampleHint": "O espião vê",
-    "hard": {
+    "word": {
       "label": "Palavra parecida",
-      "desc": "Uma palavra quase igual. A mais difícil de descobrir."
+      "desc": "Outra palavra do mesmo tipo. O mais difícil de descobrir."
     },
-    "medium": {
-      "label": "Mesma categoria",
-      "desc": "Outra palavra da mesma categoria."
+    "close": {
+      "label": "Dica próxima",
+      "desc": "Algo ligado à palavra."
     },
-    "easy": {
+    "category": {
+      "label": "Categoria",
+      "desc": "Só o tipo de coisa."
+    },
+    "none": {
       "label": "Sem dica",
       "desc": "O espião não recebe nada e tem que blefar."
     }
@@ -127,6 +131,8 @@
     "yourHint": "Sua dica",
     "noHint": "Sem dica",
     "spyTip": "Os outros têm uma palavra diferente. Disfarce.",
+    "spyTipClose": "Sua dica está ligada à palavra dos outros. Descubra e disfarce.",
+    "spyTipCategory": "A palavra dos outros é desse tipo. Escute e disfarce.",
     "noHintTip": "Preste atenção e blefe.",
     "otherSpies": "Outros espiões",
     "onlySpy": "Você é o único espião."

@@ -1,13 +1,17 @@
 import { describe, expect, it } from 'vitest'
 import {
-  WORD_LANGS,
+  WORD_BANK_LANGS,
   WORD_META,
+  loadWords,
   sharesRoot,
   validateWordBank,
   wordEntries,
+  wordFile,
   type WordLangFile,
   type WordMetaFile,
 } from './words'
+
+await Promise.all(WORD_BANK_LANGS.map(loadWords))
 
 describe('sharesRoot', () => {
   it.each([
@@ -70,8 +74,16 @@ describe('validateWordBank', () => {
 })
 
 describe('shipped word bank', () => {
-  it.each(Object.keys(WORD_LANGS))('%s passes every rule', (lang) => {
-    expect(validateWordBank(WORD_META, lang, WORD_LANGS[lang])).toEqual([])
+  it('ships en, de, fr, it and es', () => {
+    expect([...WORD_BANK_LANGS].sort()).toEqual(['de', 'en', 'es', 'fr', 'it'])
+  })
+
+  it.each(WORD_BANK_LANGS)('%s passes every rule', (lang) => {
+    expect(validateWordBank(WORD_META, lang, wordFile(lang)!)).toEqual([])
+  })
+
+  it('falls back to English for languages without a word bank', () => {
+    expect(wordEntries('ja').find((e) => e.id === 'bakery')?.word).toBe('Bakery')
   })
 
   it('has 40 entries for food and places', () => {

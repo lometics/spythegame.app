@@ -23,7 +23,7 @@ describe('persisted game state', () => {
     s.addPlayer('Anna')
     s.setSettings({
       timerSeconds: 300,
-      difficulty: 'easy',
+      difficulty: 'none',
       spyCount: [1, 2],
       spiesKnowEachOther: true,
       pairSource: { selectedCategoryIds: ['animals'] },
@@ -39,6 +39,19 @@ describe('persisted game state', () => {
     for (const key of ['phase', 'pair', 'revealIndex', 'firstClueGiverId', 'round']) {
       expect(saved).toHaveProperty(key)
     }
+  })
+
+  it.each([
+    ['hard', 'word'],
+    ['medium', 'close'],
+    ['easy', 'none'],
+    [undefined, 'close'],
+  ])('migrates saved hint level %s to %s', (old, now) => {
+    const migrate = useGame.persist.getOptions().migrate!
+    const p = migrate({ settings: { difficulty: old } }, 8) as {
+      settings: { difficulty: string }
+    }
+    expect(p.settings.difficulty).toBe(now)
   })
 
   it('reorders players without touching anyone else', () => {

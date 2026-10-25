@@ -98,15 +98,19 @@
     "intro": "Wat de spion ziet in plaats van het echte woord. Hoe minder hulp, hoe makkelijker de spion te ontmaskeren is.",
     "exampleWord": "Burgers zien",
     "exampleHint": "Spion ziet",
-    "hard": {
+    "word": {
       "label": "Vergelijkbaar woord",
-      "desc": "Een woord dat bijna hetzelfde is. Het moeilijkst te ontmaskeren."
+      "desc": "Een ander woord van dezelfde soort. Het moeilijkst te ontmaskeren."
     },
-    "medium": {
-      "label": "Zelfde categorie",
-      "desc": "Een ander woord uit dezelfde categorie."
+    "close": {
+      "label": "Nabije hint",
+      "desc": "Iets dat met het woord te maken heeft."
     },
-    "easy": {
+    "category": {
+      "label": "Categorie",
+      "desc": "Alleen wat voor soort ding het is."
+    },
+    "none": {
       "label": "Geen hint",
       "desc": "De spion krijgt niets en moet bluffen."
     }
@@ -127,6 +131,8 @@
     "yourHint": "Jouw hint",
     "noHint": "Geen hint",
     "spyTip": "De anderen hebben een ander woord. Val niet op.",
+    "spyTipClose": "Je hint hangt samen met het woord van de anderen. Raad het en val niet op.",
+    "spyTipCategory": "Het woord van de anderen is van deze soort. Luister en val niet op.",
     "noHintTip": "Luister goed en bluf.",
     "otherSpies": "Andere spionnen",
     "onlySpy": "Jij bent de enige spion."

@@ -98,15 +98,19 @@
     "intro": "Casusun gerçek kelime yerine gördüğü şey. Yardım ne kadar azsa casusu yakalamak o kadar kolay.",
     "exampleWord": "Siviller görür",
     "exampleHint": "Casus görür",
-    "hard": {
+    "word": {
       "label": "Yakın kelime",
-      "desc": "Neredeyse aynı bir kelime. Yakalaması en zor."
+      "desc": "Aynı türden başka bir kelime. Yakalaması en zor."
     },
-    "medium": {
-      "label": "Aynı kategori",
-      "desc": "Aynı kategoriden başka bir kelime."
+    "close": {
+      "label": "Yakın ipucu",
+      "desc": "Kelimeyle bağlantılı bir şey."
     },
-    "easy": {
+    "category": {
+      "label": "Kategori",
+      "desc": "Sadece ne tür bir şey olduğu."
+    },
+    "none": {
       "label": "İpucu yok",
       "desc": "Casus hiçbir şey almaz ve blöf yapmak zorundadır."
     }
@@ -127,6 +131,8 @@
     "yourHint": "İpucun",
     "noHint": "İpucu yok",
     "spyTip": "Diğerlerinin kelimesi farklı. Belli etme.",
+    "spyTipClose": "İpucun diğerlerinin kelimesiyle bağlantılı. Tahmin et ve fark edilme.",
+    "spyTipCategory": "Diğerlerinin kelimesi bu türden. Dinle ve fark edilme.",
     "noHintTip": "Dikkatle dinle ve blöf yap.",
     "otherSpies": "Diğer casuslar",
     "onlySpy": "Tek casus sensin."

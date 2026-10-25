@@ -7,7 +7,7 @@ import { useGame } from '../game/state'
 import { hintExample, listCategories } from '../game/pairs'
 import { iconFor } from '../game/icons'
 import { availableSpyCounts, maxSpiesFor, toggleSpyCount } from '../game/machine'
-import type { Difficulty } from '../game/types'
+import { DIFFICULTIES } from '../game/types'
 
 function DoneFooter() {
   const { t } = useTranslation()
@@ -359,20 +359,18 @@ export function SpiesPage() {
 
 /* --------------------------------------------------------------------- hint */
 
-const LEVELS: Difficulty[] = ['hard', 'medium', 'easy']
-
 export function HintPage() {
   const { t } = useTranslation()
   const difficulty = useGame((s) => s.settings.difficulty)
   const setSettings = useGame((s) => s.setSettings)
   const ex = hintExample()
-  const spyWord = { hard: ex.hard, medium: ex.medium, easy: null }
+  const spyWord = ex.hints
 
   return (
     <Screen title={t('setup.hint')} back footer={<DoneFooter />}>
       <p className="px-1 muted">{t('hint.intro')}</p>
       <div className="space-y-2" role="radiogroup">
-        {LEVELS.map((lvl) => (
+        {DIFFICULTIES.map((lvl) => (
           <button
             key={lvl}
             type="button"

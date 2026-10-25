@@ -98,15 +98,19 @@
     "intro": "Cosa vede la spia al posto della parola vera. Meno aiuto rende la spia più facile da smascherare.",
     "exampleWord": "I civili vedono",
     "exampleHint": "La spia vede",
-    "hard": {
+    "word": {
       "label": "Parola simile",
-      "desc": "Una parola quasi uguale. La più difficile da smascherare."
+      "desc": "Un'altra parola dello stesso tipo. Il più difficile da scoprire."
     },
-    "medium": {
-      "label": "Stessa categoria",
-      "desc": "Un'altra parola della stessa categoria."
+    "close": {
+      "label": "Indizio vicino",
+      "desc": "Qualcosa di legato alla parola."
     },
-    "easy": {
+    "category": {
+      "label": "Categoria",
+      "desc": "Solo che tipo di cosa è."
+    },
+    "none": {
       "label": "Nessun indizio",
       "desc": "La spia non riceve niente e deve bluffare."
     }
@@ -127,6 +131,8 @@
     "yourHint": "Il tuo indizio",
     "noHint": "Nessun indizio",
     "spyTip": "Gli altri hanno una parola diversa. Mimetizzati.",
+    "spyTipClose": "Il tuo indizio è legato alla parola degli altri. Intuiscila e mimetizzati.",
+    "spyTipCategory": "La parola degli altri è di questo tipo. Ascolta e mimetizzati.",
     "noHintTip": "Ascolta bene e bluffa.",
     "otherSpies": "Altre spie",
     "onlySpy": "Sei l'unica spia."

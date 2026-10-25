@@ -1,5 +1,14 @@
 import { useTranslation } from 'react-i18next'
 import { Eye } from 'lucide-react'
+import type { Difficulty } from '../game/types'
+
+/** What the spy's tip says about their hint. */
+const SPY_TIP: Record<Difficulty, string> = {
+  word: 'card.spyTip',
+  close: 'card.spyTipClose',
+  category: 'card.spyTipCategory',
+  none: 'card.noHintTip',
+}
 
 /**
  * A player's secret. Deliberately plain: neutral surface, only the role word
@@ -9,11 +18,14 @@ export function RoleCard({
   name,
   isSpy,
   word,
+  hintLevel = 'word',
   fellowSpyNames,
 }: {
   name: string
   isSpy: boolean
   word: string
+  /** Kind of hint a spy's `word` is; rounds from older versions are decoy words. */
+  hintLevel?: Difficulty
   /** Shown to spies when "spies know each other" is on. */
   fellowSpyNames?: string[]
 }) {
@@ -42,7 +54,7 @@ export function RoleCard({
         )}
         {isSpy && (
           <p className="mx-auto max-w-xs text-sm muted">
-            {word ? t('card.spyTip') : t('card.noHintTip')}
+            {t(word ? SPY_TIP[hintLevel] : SPY_TIP.none)}
           </p>
         )}
       </div>

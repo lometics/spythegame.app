@@ -106,15 +106,19 @@
     "intro": "Co widzi szpieg zamiast prawdziwego słowa. Im mniej pomocy, tym łatwiej złapać szpiega.",
     "exampleWord": "Cywile widzą",
     "exampleHint": "Szpieg widzi",
-    "hard": {
+    "word": {
       "label": "Bliskie słowo",
-      "desc": "Prawie takie samo słowo. Najtrudniej złapać szpiega."
+      "desc": "Inne słowo tego samego rodzaju. Najtrudniej zdemaskować."
     },
-    "medium": {
-      "label": "Ta sama kategoria",
-      "desc": "Inne słowo z tej samej kategorii."
+    "close": {
+      "label": "Bliska podpowiedź",
+      "desc": "Coś związanego ze słowem."
     },
-    "easy": {
+    "category": {
+      "label": "Kategoria",
+      "desc": "Tylko rodzaj rzeczy."
+    },
+    "none": {
       "label": "Bez wskazówki",
       "desc": "Szpieg nie dostaje nic i musi blefować."
     }
@@ -135,6 +139,8 @@
     "yourHint": "Twoja wskazówka",
     "noHint": "Bez wskazówki",
     "spyTip": "Pozostali mają inne słowo. Wtop się w tłum.",
+    "spyTipClose": "Twoja podpowiedź wiąże się ze słowem innych. Odgadnij je i nie daj się zdemaskować.",
+    "spyTipCategory": "Słowo innych należy do tej kategorii. Słuchaj i nie daj się zdemaskować.",
     "noHintTip": "Słuchaj uważnie i blefuj.",
     "otherSpies": "Pozostali szpiedzy",
     "onlySpy": "Jesteś jedynym szpiegiem."

@@ -2,8 +2,10 @@ import { describe, expect, it, vi } from 'vitest'
 
 vi.mock('../i18n', () => ({ default: { language: 'en', t: (k: string) => k } }))
 
-const { hintExample, samplePair } = await import('./pairs')
+const { hintExample, listCategories, samplePair } = await import('./pairs')
 await (await import('../data/pairStore')).loadPairs('en')
+const { loadWords, wordEntries } = await import('./words')
+await loadWords('en')
 
 const list = {
   id: 'l1',
@@ -17,23 +19,56 @@ const list = {
   ],
 }
 const onlyCustom = { selectedCategoryIds: ['custom:l1'] }
+const places = { selectedCategoryIds: ['places'] }
+const bank = new Map(wordEntries('en').map((e) => [e.word, e]))
+
+describe('samplePair: custom lists', () => {
+  it('word and close: the curated spy word', () => {
+    for (const level of ['word', 'close'] as const) {
+      for (let i = 0; i < 30; i++) {
+        const p = samplePair(onlyCustom, [list], level)
+        expect([['Cat', 'Lynx'], ['Dog', 'Wolf']]).toContainEqual([p.civilian, p.spy])
+        expect(p.hintLevel).toBe(level)
+      }
+    }
+  })
+  it('category: the list name', () => {
+    expect(samplePair(onlyCustom, [list], 'category').spy).toBe('Mine')
+  })
+  it('none: no hint', () => {
+    expect(samplePair(onlyCustom, [list], 'none').spy).toBe('')
+  })
+})
+
+describe('samplePair: word bank categories', () => {
+  it('word: one of the decoys', () => {
+    for (let i = 0; i < 50; i++) {
+      const p = samplePair(places, [], 'word')
+      expect(bank.get(p.civilian)?.sibling).toContain(p.spy)
+    }
+  })
+  it('close: one of the associated hints', () => {
+    for (let i = 0; i < 50; i++) {
+      const p = samplePair(places, [], 'close')
+      expect(bank.get(p.civilian)?.associated).toContain(p.spy)
+    }
+  })
+  it('category: the sub-category name', () => {
+    for (let i = 0; i < 50; i++) {
+      const p = samplePair(places, [], 'category')
+      expect(p.spy).toBe(bank.get(p.civilian)?.subName)
+    }
+  })
+  it('replaces the old pairs of that category', () => {
+    for (let i = 0; i < 50; i++) {
+      expect(bank.has(samplePair(places, []).civilian)).toBe(true)
+    }
+  })
+})
 
 describe('samplePair', () => {
-  it('hard: returns the curated pair', () => {
-    for (let i = 0; i < 50; i++) {
-      const p = samplePair(onlyCustom, [list], 'hard')
-      expect([['Cat', 'Lynx'], ['Dog', 'Wolf']]).toContainEqual([p.civilian, p.spy])
-    }
-  })
-  it('medium: spy gets a different civilian word from the same category', () => {
-    for (let i = 0; i < 50; i++) {
-      const p = samplePair(onlyCustom, [list], 'medium')
-      expect(p.spy).not.toBe(p.civilian)
-      expect(['Cat', 'Dog']).toContain(p.spy)
-    }
-  })
-  it('easy: spy gets no word', () => {
-    expect(samplePair(onlyCustom, [list], 'easy').spy).toBe('')
+  it('defaults to the close hint', () => {
+    expect(samplePair(places, []).hintLevel).toBe('close')
   })
   it('throws when nothing is selected', () => {
     expect(() => samplePair({ selectedCategoryIds: [] }, [list])).toThrow()
@@ -43,11 +78,29 @@ describe('samplePair', () => {
       expect(samplePair({ selectedCategoryIds: ['animals'] }, []).categoryId).toBe('animals')
     }
   })
+  it('old-pair categories use the category name as category hint', () => {
+    expect(samplePair({ selectedCategoryIds: ['animals'] }, [], 'category').spy).toBe(
+      'categories.animals.name',
+    )
+  })
+})
+
+describe('listCategories', () => {
+  it('counts word bank entries for the categories it covers', () => {
+    const t = ((k: string) => k) as never
+    const counts = new Map(listCategories([], t).map((c) => [c.id, c.pairCount]))
+    expect(counts.get('food')).toBe(40)
+    expect(counts.get('places')).toBe(40)
+    expect(counts.get('animals')).toBeGreaterThan(0)
+  })
 })
 
 describe('hintExample', () => {
-  it('gives three distinct words', () => {
+  it('gives the word and a distinct hint per level', () => {
     const ex = hintExample()
-    expect(new Set([ex.word, ex.hard, ex.medium]).size).toBe(3)
+    expect(ex.word).toBe('Bakery')
+    expect(ex.hints.none).toBeNull()
+    const shown = [ex.word, ex.hints.word, ex.hints.close, ex.hints.category]
+    expect(new Set(shown).size).toBe(4)
   })
 })

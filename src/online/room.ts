@@ -38,6 +38,8 @@ export type OnlineRound = {
   startedAt: number
   /** Host's discussion timer setting; 0 = off. Missing on older rounds. */
   timerSeconds?: number
+  /** Host's hint level, so every spy's card explains its hint the same way. */
+  hintLevel?: Difficulty
 }
 
 export type PairReveal = {
@@ -210,7 +212,7 @@ export async function startOnlineRound(
   pairSource: PairSource,
   customLists: CustomList[],
   players: Record<string, OnlinePlayer>,
-  difficulty: Difficulty = 'hard',
+  difficulty: Difficulty = 'close',
   spyCount: SpyCountSetting = [1],
   spiesKnowEachOther = false,
   timerSeconds = 0,
@@ -256,6 +258,7 @@ export async function startOnlineRound(
     [`rooms/${code}/meta/round`]: nextRound,
     [`rooms/${code}/round`]: {
       pairPublic: { categoryId: pair.categoryId },
+      hintLevel: difficulty,
       firstClueGiverId,
       startedAt: serverTimestamp(),
       timerSeconds,

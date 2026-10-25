@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type {
   CustomList,
+  Difficulty,
   GameState,
   GameSettings,
   Pair,
@@ -14,7 +15,7 @@ import { DEFAULT_LIST_ICON, isListIcon } from './icons'
 const DEFAULT_SETTINGS: GameSettings = {
   timerSeconds: 180,
   pairSource: { selectedCategoryIds: [...BUILTIN_CATEGORY_IDS] },
-  difficulty: 'hard',
+  difficulty: 'close',
   spyCount: [1],
   spiesKnowEachOther: false,
 }
@@ -239,7 +240,7 @@ export const useGame = create<GameState & Actions>()(
     }),
     {
       name: 'spy-the-game-local',
-      version: 8,
+      version: 9,
       // Drop old persisted state on schema change so we don't ship users a half-broken settings object.
       migrate: (persisted, fromVersion) => {
         let p = persisted as Record<string, unknown>
@@ -328,6 +329,19 @@ export const useGame = create<GameState & Actions>()(
               ...DEFAULT_SETTINGS,
               ...prev,
               spyCount: normalizeSpyCount(prev.spyCount),
+            },
+          }
+        }
+        if (fromVersion < 9) {
+          // Hint levels now follow the word bank: hard/medium/easy → word/close/none.
+          const prev = (p?.settings as Partial<GameSettings> & { difficulty?: string }) ?? {}
+          const map: Record<string, Difficulty> = { hard: 'word', medium: 'close', easy: 'none' }
+          p = {
+            ...p,
+            settings: {
+              ...DEFAULT_SETTINGS,
+              ...prev,
+              difficulty: map[prev.difficulty ?? ''] ?? DEFAULT_SETTINGS.difficulty,
             },
           }
         }

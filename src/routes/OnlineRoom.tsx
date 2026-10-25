@@ -131,6 +131,7 @@ export default function OnlineRoom() {
       name={me.name}
       isSpy={myPrivate.isSpy}
       word={myPrivate.word ?? ''}
+      hintLevel={room.round?.hintLevel}
       fellowSpyNames={myPrivate.fellowSpyNames ?? undefined}
     />
   )
