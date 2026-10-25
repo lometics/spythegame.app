@@ -83,7 +83,8 @@
     "newList": "Nouvelle liste",
     "newListDesc": "Vos propres paires de mots",
     "editList": "Modifier la liste",
-    "pickOne": "Choisissez au moins une catégorie."
+    "pickOne": "Choisissez au moins une catégorie.",
+    "inSeason": "De saison"
   },
   "spies": {
     "count": "Nombre d'espions",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "Religions",
       "description": "Croyances, livres sacrés, jours saints et rites — toutes confessions confondues."
+    },
+    "halloween": {
+      "name": "Halloween",
+      "description": "Fantômes, citrouilles, déguisements et tout ce qui fait peur."
+    },
+    "christmas": {
+      "name": "Noël & Nouvel An",
+      "description": "Sapins, cadeaux, repas de fête et feux d'artifice."
+    },
+    "easter": {
+      "name": "Pâques & Printemps",
+      "description": "Œufs, lapins, fleurs et premiers jours de soleil."
+    },
+    "summer": {
+      "name": "Été",
+      "description": "Plage, vacances, glaces et festivals."
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "Les civils gagnent s’ils démasquent l’espion. L’espion gagne si personne ne le trouve, ou en devinant le mot.",
     "players": "3 joueurs ou plus. Un seul téléphone qui tourne, ou chacun le sien.",
     "play": "C’est parti"
+  },
+  "seo": {
+    "title": "Spy – jeu de l'espion gratuit en ligne, façon Undercover",
+    "description": "Jeu de mots gratuit dès 3 joueurs : chacun reçoit un mot secret, l'espion un simple indice. Sur un seul téléphone ou chacun le sien. Sans inscription.",
+    "h1": "Spy, le jeu de mots pour soirées",
+    "intro": "Gratuit dans le navigateur, sans compte. Faites passer un téléphone autour de la table, ou chacun rejoint une partie sur son propre téléphone.",
+    "hintTitle": "Combien d'aide reçoit l'espion",
+    "categoriesTitle": "Catégories de mots",
+    "categoryTitle": "{{category}} : mots pour le jeu Spy",
+    "categoryDescription": "{{count}} mots pour Spy, le jeu de mots pour soirées. {{description}}",
+    "categoryIntro": "Les {{count}} mots de cette catégorie. Choisissez-la dans le jeu et l'un d'eux deviendra le mot secret.",
+    "moreCategories": "Autres catégories",
+    "play": "Jouer gratuitement"
+  },
+  "share": {
+    "button": "Partager",
+    "copied": "Copié",
+    "result": "L'espion était {{spy}}. Le mot était {{word}}. Jouez à Spy gratuitement :",
+    "invite": "Rejoignez ma partie de Spy, code {{code}}",
+    "inviteDescription": "Touchez pour rejoindre. Chacun reçoit un mot, l'espion en reçoit un autre."
+  },
+  "lists": {
+    "share": "Partager la liste",
+    "importTitle": "Ajouter une liste de mots",
+    "importButton": "Ajouter à mes listes",
+    "importInvalid": "Ce lien de liste est cassé ou incomplet.",
+    "imported": "Ajoutée à vos listes"
   }
 }

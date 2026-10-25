@@ -83,7 +83,8 @@
     "newList": "새 리스트",
     "newListDesc": "나만의 단어 쌍",
     "editList": "리스트 편집",
-    "pickOne": "카테고리를 하나 이상 선택하세요."
+    "pickOne": "카테고리를 하나 이상 선택하세요.",
+    "inSeason": "지금 시즌"
   },
   "spies": {
     "count": "스파이 수",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "종교",
       "description": "신앙, 경전, 축일, 의식 — 여러 교파를 가로질러."
+    },
+    "halloween": {
+      "name": "할로윈",
+      "description": "유령, 호박, 코스튬, 그리고 으스스한 모든 것."
+    },
+    "christmas": {
+      "name": "크리스마스와 새해",
+      "description": "트리, 선물, 파티 음식, 불꽃놀이."
+    },
+    "easter": {
+      "name": "부활절과 봄",
+      "description": "달걀, 토끼, 꽃, 그리고 첫 화창한 날들."
+    },
+    "summer": {
+      "name": "여름",
+      "description": "해변, 휴가, 아이스크림, 축제."
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "시민은 스파이를 찾으면 이겨요. 스파이는 아무도 못 찾거나 단어를 맞히면 이겨요.",
     "players": "3명 이상. 휴대폰 하나를 돌리거나 각자 자기 폰으로.",
     "play": "시작하기"
+  },
+  "seo": {
+    "title": "스파이(Spy) – 라이어 게임처럼 즐기는 무료 파티 단어 게임",
+    "description": "3명 이상이 즐기는 무료 단어 게임. 모두 비밀 단어를 받고, 스파이는 힌트만 받아요. 휴대폰 하나를 돌려가며 또는 각자 휴대폰으로. 가입 필요 없음.",
+    "h1": "스파이, 파티 단어 게임",
+    "intro": "브라우저에서 무료, 계정 필요 없음. 휴대폰 하나를 돌려가며 하거나 각자 휴대폰으로 방에 참가하세요.",
+    "hintTitle": "스파이가 받는 도움의 정도",
+    "categoriesTitle": "단어 카테고리",
+    "categoryTitle": "{{category}}: 스파이 게임 단어",
+    "categoryDescription": "파티 단어 게임 스파이를 위한 단어 {{count}}개. {{description}}",
+    "categoryIntro": "이 카테고리의 단어 {{count}}개 전체. 게임에서 선택하면 그중 하나가 비밀 단어가 돼요.",
+    "moreCategories": "다른 카테고리",
+    "play": "지금 무료로 플레이"
+  },
+  "share": {
+    "button": "공유",
+    "copied": "복사됨",
+    "result": "스파이: {{spy}}. 단어: {{word}}. 스파이 게임 무료로 하기:",
+    "invite": "내 스파이 게임에 참가하세요, 방 {{code}}",
+    "inviteDescription": "탭해서 참가하세요. 모두 단어를 받고, 스파이만 다른 단어를 받아요."
+  },
+  "lists": {
+    "share": "리스트 공유",
+    "importTitle": "단어 리스트 추가",
+    "importButton": "내 리스트에 추가",
+    "importInvalid": "이 리스트 링크가 깨졌거나 불완전해요.",
+    "imported": "내 리스트에 추가됨"
   }
 }

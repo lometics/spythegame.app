@@ -231,9 +231,29 @@ body {
   animation: sheet-up 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
+/* Seasonal decorations on the home screen (SeasonalDecor). */
+@keyframes decor-snow {
+  from { transform: translateY(-2vh); }
+  to { transform: translateY(102vh); }
+}
+.decor-snow {
+  animation: decor-snow linear infinite;
+}
+@keyframes decor-float {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-10px) rotate(4deg); }
+}
+.decor-float {
+  animation: decor-float 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-in,
-  .animate-sheet {
+  .animate-sheet,
+  .decor-float {
     animation: none;
+  }
+  .decor-snow {
+    display: none;
   }
 }

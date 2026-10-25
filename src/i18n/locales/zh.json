@@ -83,7 +83,8 @@
     "newList": "新列表",
     "newListDesc": "你自己的词对",
     "editList": "编辑列表",
-    "pickOne": "请至少选择一个类别。"
+    "pickOne": "请至少选择一个类别。",
+    "inSeason": "当季"
   },
   "spies": {
     "count": "间谍人数",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "宗教",
       "description": "信仰、经典、节日与仪式——跨越教派。"
+    },
+    "halloween": {
+      "name": "万圣节",
+      "description": "幽灵、南瓜、变装，还有一切吓人的东西。"
+    },
+    "christmas": {
+      "name": "圣诞与新年",
+      "description": "圣诞树、礼物、节日美食和烟花。"
+    },
+    "easter": {
+      "name": "复活节与春天",
+      "description": "彩蛋、兔子、花开和第一批晴朗的春日。"
+    },
+    "summer": {
+      "name": "夏天",
+      "description": "海滩、假期、冰淇淋和音乐节。"
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "平民找出卧底就赢。卧底没被发现，或猜中词语就赢。",
     "players": "3人以上。一部手机轮流传，或每人用自己的手机。",
     "play": "开始玩"
+  },
+  "seo": {
+    "title": "间谍 Spy – 类似谁是卧底的免费在线派对游戏",
+    "description": "3人以上即可玩的免费词语游戏：每人拿到一个秘密词，间谍只拿到一个提示。一部手机轮流传，或各用各的手机。无需注册。",
+    "h1": "间谍，派对文字游戏",
+    "intro": "在浏览器中免费玩，无需账号。一部手机在桌边轮流传，或让每个人用自己的手机加入房间。",
+    "hintTitle": "间谍能得到多少帮助",
+    "categoriesTitle": "词语类别",
+    "categoryTitle": "{{category}}：间谍游戏词库",
+    "categoryDescription": "派对文字游戏“间谍”的 {{count}} 个词。{{description}}",
+    "categoryIntro": "该类别的全部 {{count}} 个词。在游戏中选择它，其中一个就会成为秘密词。",
+    "moreCategories": "更多类别",
+    "play": "立即免费玩"
+  },
+  "share": {
+    "button": "分享",
+    "copied": "已复制",
+    "result": "间谍是{{spy}}，词语是{{word}}。免费玩“间谍”：",
+    "invite": "加入我的“间谍”游戏，房间 {{code}}",
+    "inviteDescription": "点按加入。每人拿到一个词，间谍拿到的却不一样。"
+  },
+  "lists": {
+    "share": "分享列表",
+    "importTitle": "添加词列表",
+    "importButton": "添加到我的列表",
+    "importInvalid": "这个列表链接已损坏或不完整。",
+    "imported": "已添加到你的列表"
   }
 }

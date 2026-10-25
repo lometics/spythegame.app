@@ -83,7 +83,8 @@
     "newList": "Nieuwe lijst",
     "newListDesc": "Je eigen woordparen",
     "editList": "Lijst bewerken",
-    "pickOne": "Kies minstens één categorie."
+    "pickOne": "Kies minstens één categorie.",
+    "inSeason": "Van het seizoen"
   },
   "spies": {
     "count": "Aantal spionnen",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "Religies",
       "description": "Geloven, heilige boeken, feestdagen en riten — door alle gezindten heen."
+    },
+    "halloween": {
+      "name": "Halloween",
+      "description": "Spoken, pompoenen, verkleedkleren en alles wat eng is."
+    },
+    "christmas": {
+      "name": "Kerst en Nieuwjaar",
+      "description": "Kerstbomen, cadeaus, feestelijk eten en vuurwerk."
+    },
+    "easter": {
+      "name": "Pasen en Lente",
+      "description": "Eieren, paashazen, bloesem en de eerste zonnige dagen."
+    },
+    "summer": {
+      "name": "Zomer",
+      "description": "Stranddagen, vakanties, ijsjes en festivals."
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "De burgers winnen als ze de spion vinden. De spion wint als niemand hem ontmaskert, of door het woord te raden.",
     "players": "3 of meer spelers. Eén telefoon die rondgaat, of iedereen op zijn eigen.",
     "play": "Spelen maar"
+  },
+  "seo": {
+    "title": "Wie is de spion? Gratis online woordspel voor feestjes – Spy",
+    "description": "Gratis woordspel voor 3 of meer spelers: iedereen krijgt een geheim woord, de spion alleen een hint. Op één telefoon of ieder op de eigen. Zonder account.",
+    "h1": "Spion, het woordspel voor feestjes",
+    "intro": "Gratis in je browser, geen account nodig. Geef één telefoon door aan tafel, of laat iedereen met de eigen telefoon een kamer in gaan.",
+    "hintTitle": "Hoeveel hulp de spion krijgt",
+    "categoriesTitle": "Woordcategorieën",
+    "categoryTitle": "{{category}}: woorden voor het spel Spion",
+    "categoryDescription": "{{count}} woorden voor Spion, het woordspel voor feestjes. {{description}}",
+    "categoryIntro": "Alle {{count}} woorden in deze categorie. Kies de categorie in het spel en een van deze woorden wordt het geheime woord.",
+    "moreCategories": "Meer categorieën",
+    "play": "Nu gratis spelen"
+  },
+  "share": {
+    "button": "Delen",
+    "copied": "Gekopieerd",
+    "result": "De spion was {{spy}}. Het woord was {{word}}. Speel Spion gratis:",
+    "invite": "Doe mee met mijn Spion-spel, kamer {{code}}",
+    "inviteDescription": "Tik om mee te doen. Iedereen krijgt een woord, de spion een ander."
+  },
+  "lists": {
+    "share": "Lijst delen",
+    "importTitle": "Woordenlijst toevoegen",
+    "importButton": "Toevoegen aan mijn lijsten",
+    "importInvalid": "Deze lijstlink is kapot of onvolledig.",
+    "imported": "Toegevoegd aan je lijsten"
   }
 }

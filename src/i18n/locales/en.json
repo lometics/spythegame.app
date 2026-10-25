@@ -83,7 +83,8 @@
     "newList": "New list",
     "newListDesc": "Your own word pairs",
     "editList": "Edit list",
-    "pickOne": "Pick at least one category."
+    "pickOne": "Pick at least one category.",
+    "inSeason": "In season"
   },
   "spies": {
     "count": "Number of spies",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "Religions",
       "description": "Faiths, sacred books, holy days and rites — across creeds."
+    },
+    "halloween": {
+      "name": "Halloween",
+      "description": "Ghosts, pumpkins, costumes and everything spooky."
+    },
+    "christmas": {
+      "name": "Christmas & New Year",
+      "description": "Trees, presents, festive food and fireworks."
+    },
+    "easter": {
+      "name": "Easter & Spring",
+      "description": "Eggs, bunnies, blossoms and the first sunny days."
+    },
+    "summer": {
+      "name": "Summer",
+      "description": "Beach days, holidays, ice cream and festivals."
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "Civilians win if they catch the spy. The spy wins if nobody finds them, or by guessing the word.",
     "players": "3 or more players. Pass one phone around, or everyone uses their own.",
     "play": "Let's play"
+  },
+  "seo": {
+    "title": "Spy – free online party word game (like Undercover & Imposter)",
+    "description": "Free word game for 3 or more players. Everyone gets a secret word, the spy gets a hint. Play on one phone or everyone on their own. No sign-up.",
+    "h1": "Spy, the party word game",
+    "intro": "Free in your browser, no account needed. Pass one phone around the table, or let everyone join a room on their own phone.",
+    "hintTitle": "How much help the spy gets",
+    "categoriesTitle": "Word categories",
+    "categoryTitle": "{{category}}: words for the Spy game",
+    "categoryDescription": "{{count}} words for Spy, the party word game. {{description}}",
+    "categoryIntro": "All {{count}} words in this category. Pick it in the game and one of them becomes the secret word.",
+    "moreCategories": "More categories",
+    "play": "Play now, free"
+  },
+  "share": {
+    "button": "Share",
+    "copied": "Copied",
+    "result": "The spy was {{spy}}. The word was {{word}}. Play Spy for free:",
+    "invite": "Join my Spy game, room {{code}}",
+    "inviteDescription": "Tap to join. Everyone gets a word, the spy gets a different one."
+  },
+  "lists": {
+    "share": "Share list",
+    "importTitle": "Add word list",
+    "importButton": "Add to my lists",
+    "importInvalid": "This list link is broken or incomplete.",
+    "imported": "Added to your lists"
   }
 }

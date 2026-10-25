@@ -7,14 +7,14 @@ import type {
   GameSettings,
   Pair,
 } from './types'
-import { BUILTIN_CATEGORY_IDS, samplePair } from './pairs'
+import { BUILTIN_CATEGORY_IDS, defaultCategoryIds, samplePair } from './pairs'
 import { normalizeSpyCount, startRoundState } from './machine'
 import { AVATARS, avatarForIndex, nextAvatar } from '../data/avatars'
 import { DEFAULT_LIST_ICON, isListIcon } from './icons'
 
 const DEFAULT_SETTINGS: GameSettings = {
   timerSeconds: 0,
-  pairSource: { selectedCategoryIds: [...BUILTIN_CATEGORY_IDS] },
+  pairSource: { selectedCategoryIds: defaultCategoryIds() },
   difficulty: 'close',
   spyCount: [1],
   spiesKnowEachOther: false,

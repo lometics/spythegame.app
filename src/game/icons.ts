@@ -6,6 +6,10 @@ import {
   Clapperboard,
   CloudRain,
   Coffee,
+  Egg,
+  Gift,
+  Snowflake,
+  Sun,
   Crown,
   Drama,
   Flame,
@@ -36,6 +40,15 @@ import {
   Zap,
   type LucideIcon,
 } from 'lucide-react'
+import type { Season } from './season'
+
+/** Small icon on the home screen logo during a season. */
+export const SEASON_BADGE: Record<Season, LucideIcon> = {
+  halloween: Ghost,
+  christmas: Snowflake,
+  easter: Egg,
+  summer: Sun,
+}
 
 export const CATEGORY_ICONS: Record<string, LucideIcon> = {
   food: Pizza,
@@ -52,6 +65,10 @@ export const CATEGORY_ICONS: Record<string, LucideIcon> = {
   clothing: Shirt,
   body: HeartPulse,
   myth: Sparkles,
+  halloween: Ghost,
+  christmas: Gift,
+  easter: Egg,
+  summer: Sun,
   tricky: Shuffle,
   tyrants: Crown,
   darkhumor: Skull,

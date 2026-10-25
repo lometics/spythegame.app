@@ -74,8 +74,10 @@ describe('validateWordBank', () => {
 })
 
 describe('shipped word bank', () => {
-  it('ships en, de, fr, it and es', () => {
-    expect([...WORD_BANK_LANGS].sort()).toEqual(['de', 'en', 'es', 'fr', 'it'])
+  it('ships every app language', () => {
+    expect([...WORD_BANK_LANGS].sort()).toEqual(
+      ['ar', 'de', 'en', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt', 'ru', 'sv', 'tr', 'zh'],
+    )
   })
 
   it.each(WORD_BANK_LANGS)('%s passes every rule', (lang) => {
@@ -83,7 +85,7 @@ describe('shipped word bank', () => {
   })
 
   it('falls back to English for languages without a word bank', () => {
-    expect(wordEntries('ja').find((e) => e.id === 'bakery')?.word).toBe('Bakery')
+    expect(wordEntries('xx').find((e) => e.id === 'bakery')?.word).toBe('Bakery')
   })
 
   it('has 40 entries for food and places', () => {

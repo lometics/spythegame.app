@@ -13,7 +13,7 @@ You need 3 or more players. Pass one phone around the table, or let everyone joi
 
 ## Good to know
 
-- Over 700 words in more than 20 categories, from food and animals to myth and tech.
+- Over 800 words in more than 25 categories, from food and animals to myth and tech, plus packs for Halloween, Christmas, Easter and summer.
 - You choose how much help the spy gets: a similar word, a close hint, just the category, or nothing at all.
 - Make your own word lists for in-jokes and themed nights.
 - Available in 15 languages.

@@ -83,7 +83,8 @@
     "newList": "Nova lista",
     "newListDesc": "Seus próprios pares de palavras",
     "editList": "Editar lista",
-    "pickOne": "Escolha pelo menos uma categoria."
+    "pickOne": "Escolha pelo menos uma categoria.",
+    "inSeason": "Da estação"
   },
   "spies": {
     "count": "Número de espiões",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "Religiões",
       "description": "Credos, livros sagrados, dias santos e ritos — entre confissões."
+    },
+    "halloween": {
+      "name": "Halloween",
+      "description": "Fantasmas, abóboras, fantasias e tudo que dá medo."
+    },
+    "christmas": {
+      "name": "Natal e Ano-Novo",
+      "description": "Árvores, presentes, ceia e fogos de artifício."
+    },
+    "easter": {
+      "name": "Páscoa e Primavera",
+      "description": "Ovos, coelhos, flores e os primeiros dias de sol."
+    },
+    "summer": {
+      "name": "Verão",
+      "description": "Praia, férias, sorvete e festivais."
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "Os civis vencem se pegarem o espião. O espião vence se ninguém o descobrir, ou adivinhando a palavra.",
     "players": "3 ou mais jogadores. Um celular passando de mão em mão, ou cada um com o seu.",
     "play": "Vamos jogar"
+  },
+  "seo": {
+    "title": "Spy – jogo do espião grátis online: quem é o impostor?",
+    "description": "Jogo de palavras grátis para 3 ou mais jogadores: todos recebem uma palavra secreta, o espião só uma dica. Em um celular só ou cada um no seu. Sem cadastro.",
+    "h1": "Espião, o jogo de palavras para festas",
+    "intro": "Grátis no navegador, sem conta. Passem um celular pela mesa ou cada um entra em uma sala pelo próprio celular.",
+    "hintTitle": "Quanta ajuda o espião recebe",
+    "categoriesTitle": "Categorias de palavras",
+    "categoryTitle": "{{category}}: palavras para o jogo do espião",
+    "categoryDescription": "{{count}} palavras para o Espião, o jogo de palavras para festas. {{description}}",
+    "categoryIntro": "Todas as {{count}} palavras desta categoria. Escolha-a no jogo e uma delas vira a palavra secreta.",
+    "moreCategories": "Mais categorias",
+    "play": "Jogar agora, grátis"
+  },
+  "share": {
+    "button": "Compartilhar",
+    "copied": "Copiado",
+    "result": "O espião era {{spy}}. A palavra era {{word}}. Jogue Espião de graça:",
+    "invite": "Entre no meu jogo de Espião, sala {{code}}",
+    "inviteDescription": "Toque para entrar. Todo mundo recebe uma palavra, o espião recebe outra."
+  },
+  "lists": {
+    "share": "Compartilhar lista",
+    "importTitle": "Adicionar lista de palavras",
+    "importButton": "Adicionar às minhas listas",
+    "importInvalid": "Este link de lista está quebrado ou incompleto.",
+    "imported": "Adicionada às suas listas"
   }
 }

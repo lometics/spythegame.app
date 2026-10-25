@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Check, Eye, EyeOff, LogOut, Share2, X } from 'lucide-react'
 import Screen from '../components/Screen'
 import ConfirmBar from '../components/ConfirmBar'
+import { shareOrCopy } from '../share'
 import QrCode from '../components/QrCode'
 import SettingsSummary from '../components/SettingsSummary'
 import { RoleCard } from '../components/RoleCard'
@@ -356,18 +357,16 @@ export default function OnlineRoom() {
 }
 
 function ShareCard({ code }: { code: string }) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [copied, setCopied] = useState(false)
-  const joinUrl = `${window.location.origin}/join/${code}`
+  // ?l= only sets the language of the link preview, not of the app.
+  const joinUrl = `${window.location.origin}/join/${code}?l=${i18n.language.split('-')[0]}`
 
   const share = async () => {
-    if (navigator.share) {
-      await navigator.share({ title: t('meta.title'), url: joinUrl }).catch(() => {})
-      return
+    if ((await shareOrCopy({ title: t('share.invite', { code }), url: joinUrl })) === 'copied') {
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1500)
     }
-    await navigator.clipboard?.writeText(joinUrl).catch(() => {})
-    setCopied(true)
-    window.setTimeout(() => setCopied(false), 1500)
   }
 
   return (

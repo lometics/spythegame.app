@@ -2,6 +2,7 @@ import type { TFunction } from 'i18next'
 import i18n from '../i18n'
 import { getPairs, type RawPair } from '../data/pairStore'
 import { WORD_BANK_CATEGORIES, isPlayable, wordEntries } from './words'
+import { SEASONS, currentSeason, type Season } from './season'
 import type { Category, CustomList, Difficulty, Pair, PairSource } from './types'
 
 export const BUILTIN_CATEGORY_IDS = [
@@ -19,6 +20,7 @@ export const BUILTIN_CATEGORY_IDS = [
   'clothing',
   'body',
   'myth',
+  ...SEASONS,
   'tricky',
   'tyrants',
   'darkhumor',
@@ -29,6 +31,16 @@ export const BUILTIN_CATEGORY_IDS = [
   'infamous',
   'religions',
 ]
+
+const isSeasonal = (id: string) => (SEASONS as readonly string[]).includes(id)
+
+/**
+ * Categories selected for new players: everything except seasonal packs that
+ * are out of season (Christmas words in July would be odd).
+ */
+export function defaultCategoryIds(season: Season | null = currentSeason()): string[] {
+  return BUILTIN_CATEGORY_IDS.filter((id) => !isSeasonal(id) || id === season)
+}
 
 /** One playable word with every kind of hint the spy can get for it. */
 type Candidate = {
@@ -74,12 +86,16 @@ export function listCategories(
   t: TFunction,
 ): Category[] {
   const pool = builtInCandidates()
-  const builtIns: Category[] = BUILTIN_CATEGORY_IDS.map((id) => ({
+  const season = currentSeason()
+  // The pack that's in season goes first.
+  const order = season ? [season, ...BUILTIN_CATEGORY_IDS.filter((id) => id !== season)] : BUILTIN_CATEGORY_IDS
+  const builtIns: Category[] = order.map((id) => ({
     id,
     name: t(`categories.${id}.name`),
     description: t(`categories.${id}.description`),
     isCustom: false,
     pairCount: pool.filter((p) => p.categoryId === id).length,
+    inSeason: id === season,
   }))
   const customs: Category[] = customLists.map((l) => ({
     id: customCategoryId(l.id),

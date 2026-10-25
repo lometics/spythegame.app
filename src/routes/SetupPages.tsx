@@ -241,7 +241,14 @@ export function WordsPage() {
                 <span className="row-icon">
                   <Icon size={20} />
                 </span>
-                <span className="min-w-0 flex-1 truncate font-medium">{c.name}</span>
+                <span className="min-w-0 flex-1 truncate font-medium">
+                  {c.name}
+                  {c.inSeason && (
+                    <span className="ml-2 rounded-full bg-accent/15 px-2 py-0.5 align-middle text-xs font-semibold text-accent">
+                      {t('words.inSeason')}
+                    </span>
+                  )}
+                </span>
                 <span className="shrink-0 text-sm tabular-nums muted">
                   {t('words.pairCount', { count: c.pairCount })}
                 </span>

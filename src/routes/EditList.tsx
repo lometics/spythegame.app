@@ -1,12 +1,14 @@
 import { useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { Plus, Trash2, X } from 'lucide-react'
+import { Check, Plus, Share2, Trash2, X } from 'lucide-react'
 import Screen from '../components/Screen'
 import ConfirmBar from '../components/ConfirmBar'
 import { useGame } from '../game/state'
 import { DEFAULT_LIST_ICON, LIST_ICONS } from '../game/icons'
 import type { CustomList } from '../game/types'
+import { listLink } from '../game/listLink'
+import { shareOrCopy } from '../share'
 
 type DraftPair = { civilian: string; spy: string }
 
@@ -186,6 +188,26 @@ export default function EditList() {
         </button>
       </section>
 
+      {existing && existing.pairs.length > 0 && <ShareListButton list={existing} />}
     </Screen>
+  )
+}
+
+/** Shares the saved list as a link that adds it on the other phone. */
+function ShareListButton({ list }: { list: CustomList }) {
+  const { t } = useTranslation()
+  const [copied, setCopied] = useState(false)
+  const share = async () => {
+    const url = listLink(window.location.origin, list)
+    if ((await shareOrCopy({ title: list.name, url })) === 'copied') {
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1500)
+    }
+  }
+  return (
+    <button type="button" className="btn-secondary w-full" onClick={share}>
+      {copied ? <Check size={20} /> : <Share2 size={20} />}
+      {copied ? t('share.copied') : t('lists.share')}
+    </button>
   )
 }

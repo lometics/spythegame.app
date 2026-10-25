@@ -83,7 +83,8 @@
     "newList": "Neue Liste",
     "newListDesc": "Deine eigenen Wortpaare",
     "editList": "Liste bearbeiten",
-    "pickOne": "Wähle mindestens eine Kategorie."
+    "pickOne": "Wähle mindestens eine Kategorie.",
+    "inSeason": "Saisonal"
   },
   "spies": {
     "count": "Anzahl Spione",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "Religionen",
       "description": "Glauben, heilige Schriften, Festtage und Riten — quer durch die Bekenntnisse."
+    },
+    "halloween": {
+      "name": "Halloween",
+      "description": "Geister, Kürbisse, Kostüme und alles Gruselige."
+    },
+    "christmas": {
+      "name": "Weihnachten & Silvester",
+      "description": "Tannenbäume, Geschenke, Festessen und Feuerwerk."
+    },
+    "easter": {
+      "name": "Ostern & Frühling",
+      "description": "Eier, Hasen, Blüten und die ersten sonnigen Tage."
+    },
+    "summer": {
+      "name": "Sommer",
+      "description": "Strandtage, Ferien, Eis und Festivals."
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "Die Zivilisten gewinnen, wenn sie den Spion finden. Der Spion gewinnt, wenn ihn niemand entlarvt oder wenn er das Wort errät.",
     "players": "Ab 3 Spielern. Ein Handy herumreichen oder jeder am eigenen.",
     "play": "Los geht’s"
+  },
+  "seo": {
+    "title": "Spy – Wer ist der Spion? Kostenloses Wortspiel für Partys",
+    "description": "Kostenloses Wortspiel ab 3 Spielern: Alle bekommen ein geheimes Wort, der Spion nur einen Hinweis. Auf einem Handy oder jeder am eigenen. Ohne Anmeldung.",
+    "h1": "Spy, das Party-Wortspiel",
+    "intro": "Kostenlos im Browser, ohne Konto. Reicht ein Handy am Tisch herum oder lasst alle mit dem eigenen Handy einem Raum beitreten.",
+    "hintTitle": "Wie viel Hilfe der Spion bekommt",
+    "categoriesTitle": "Wortkategorien",
+    "categoryTitle": "{{category}}: Wörter für das Spiel Spy",
+    "categoryDescription": "{{count}} Wörter für Spy, das Party-Wortspiel. {{description}}",
+    "categoryIntro": "Alle {{count}} Wörter dieser Kategorie. Wähle sie im Spiel aus, und eines davon wird zum geheimen Wort.",
+    "moreCategories": "Weitere Kategorien",
+    "play": "Jetzt kostenlos spielen"
+  },
+  "share": {
+    "button": "Teilen",
+    "copied": "Kopiert",
+    "result": "Der Spion war {{spy}}. Das Wort war {{word}}. Spiel Spy kostenlos:",
+    "invite": "Spiel mit bei Spy, Raum {{code}}",
+    "inviteDescription": "Tippen zum Beitreten. Alle bekommen ein Wort, der Spion ein anderes."
+  },
+  "lists": {
+    "share": "Liste teilen",
+    "importTitle": "Wortliste hinzufügen",
+    "importButton": "Zu meinen Listen hinzufügen",
+    "importInvalid": "Dieser Listen-Link ist defekt oder unvollständig.",
+    "imported": "Zu deinen Listen hinzugefügt"
   }
 }

@@ -83,7 +83,8 @@
     "newList": "Nueva lista",
     "newListDesc": "Tus propios pares de palabras",
     "editList": "Editar lista",
-    "pickOne": "Elige al menos una categoría."
+    "pickOne": "Elige al menos una categoría.",
+    "inSeason": "De temporada"
   },
   "spies": {
     "count": "Número de espías",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "Religiones",
       "description": "Credos, libros sagrados, días santos y ritos — entre confesiones."
+    },
+    "halloween": {
+      "name": "Halloween",
+      "description": "Fantasmas, calabazas, disfraces y todo lo que da miedo."
+    },
+    "christmas": {
+      "name": "Navidad & Año Nuevo",
+      "description": "Árboles, regalos, comida de fiesta y fuegos artificiales."
+    },
+    "easter": {
+      "name": "Pascua & Primavera",
+      "description": "Huevos, conejos, flores y los primeros días de sol."
+    },
+    "summer": {
+      "name": "Verano",
+      "description": "Días de playa, vacaciones, helados y festivales."
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "Los civiles ganan si descubren al espía. El espía gana si nadie lo descubre, o si adivina la palabra.",
     "players": "3 jugadores o más. Un solo móvil que va pasando, o cada uno el suyo.",
     "play": "A jugar"
+  },
+  "seo": {
+    "title": "Spy – juego del espía gratis online: ¿quién es el impostor?",
+    "description": "Juego de palabras gratis para 3 o más jugadores: todos reciben una palabra secreta, el espía solo una pista. En un teléfono o cada uno en el suyo. Sin registro.",
+    "h1": "Spy, el juego de palabras para fiestas",
+    "intro": "Gratis en el navegador, sin cuenta. Pasad un teléfono de mano en mano o que cada uno se una a una sala desde su teléfono.",
+    "hintTitle": "Cuánta ayuda recibe el espía",
+    "categoriesTitle": "Categorías de palabras",
+    "categoryTitle": "{{category}}: palabras para el juego Spy",
+    "categoryDescription": "{{count}} palabras para Spy, el juego de palabras para fiestas. {{description}}",
+    "categoryIntro": "Las {{count}} palabras de esta categoría. Elígela en el juego y una de ellas será la palabra secreta.",
+    "moreCategories": "Más categorías",
+    "play": "Jugar gratis ahora"
+  },
+  "share": {
+    "button": "Compartir",
+    "copied": "Copiado",
+    "result": "El espía era {{spy}}. La palabra era {{word}}. Juega a Spy gratis:",
+    "invite": "Únete a mi partida de Spy, sala {{code}}",
+    "inviteDescription": "Toca para unirte. Todos reciben una palabra, el espía otra distinta."
+  },
+  "lists": {
+    "share": "Compartir lista",
+    "importTitle": "Añadir lista de palabras",
+    "importButton": "Añadir a mis listas",
+    "importInvalid": "Este enlace de lista está roto o incompleto.",
+    "imported": "Añadida a tus listas"
   }
 }

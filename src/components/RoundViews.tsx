@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Check, Share2 } from 'lucide-react'
+import { shareOrCopy } from '../share'
 import DiscussionTimer from './DiscussionTimer'
 import { useGame } from '../game/state'
 import { categoryName } from '../game/pairs'
@@ -98,8 +101,28 @@ export function ResultView({ spies, pair }: { spies: Person[]; pair: Pair | null
               name: categoryName(pair.categoryId, customLists, t),
             })}
           </div>
+          <ShareResult spies={spies} word={pair.civilian} />
         </section>
       )}
     </>
+  )
+}
+
+/** "The spy was Ben. The word was Library." plus a link to the game. */
+function ShareResult({ spies, word }: { spies: Person[]; word: string }) {
+  const { t } = useTranslation()
+  const [copied, setCopied] = useState(false)
+  const share = async () => {
+    const text = t('share.result', { spy: spies.map((s) => s.name).join(', ') || '—', word })
+    if ((await shareOrCopy({ text, url: 'https://spythegame.app' })) === 'copied') {
+      setCopied(true)
+      window.setTimeout(() => setCopied(false), 1500)
+    }
+  }
+  return (
+    <button type="button" className="btn-secondary col-span-2 min-h-11 text-sm" onClick={share}>
+      {copied ? <Check size={18} /> : <Share2 size={18} />}
+      {copied ? t('share.copied') : t('share.button')}
+    </button>
   )
 }

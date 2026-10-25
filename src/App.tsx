@@ -28,6 +28,7 @@ const OnlineRoom = lazy(() => import('./routes/OnlineRoom'))
 const EditList = lazy(() => import('./routes/EditList'))
 const Options = lazy(() => import('./routes/Options'))
 const Rules = lazy(() => import('./routes/Rules'))
+const ImportList = lazy(() => import('./routes/ImportList'))
 
 function JoinRedirect() {
   const { code } = useParams()
@@ -74,6 +75,7 @@ export default function App() {
             <Route path="/lists/:id" element={<EditList />} />
             <Route path="/options" element={<Options />} />
             <Route path="/rules" element={<Rules />} />
+            <Route path="/list" element={<ImportList />} />
             <Route path="/online" element={<Online />} />
             <Route path="/room/:code" element={<OnlineRoom />} />
             <Route path="/join/:code" element={<JoinRedirect />} />

@@ -38,7 +38,9 @@ for (const f of fs.readdirSync(DIR).filter((f) => /^guesses-.*\.json$/.test(f)))
 for (const [id, hints] of Object.entries(recheck.ranks ?? {})) Object.assign((rank[id] ??= {}), hints)
 for (const [id, verdicts] of Object.entries(recheck.siblings ?? {})) Object.assign((sib[id] ??= {}), verdicts)
 
-const rows = meta.entries.map((m) => {
+// Only words this review covers (suitability.json); others keep their grade.
+const reviewed = (m) => Object.keys(suit).length === 0 || m.id in suit
+const rows = meta.entries.filter(reviewed).map((m) => {
   const e = en.entries[m.id]
   const s = suit[m.id] ?? {}
   const tested = !!rank[m.id]

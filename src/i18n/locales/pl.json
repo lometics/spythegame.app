@@ -91,7 +91,8 @@
     "newList": "Nowa lista",
     "newListDesc": "Twoje własne pary słów",
     "editList": "Edytuj listę",
-    "pickOne": "Wybierz co najmniej jedną kategorię."
+    "pickOne": "Wybierz co najmniej jedną kategorię.",
+    "inSeason": "Sezonowe"
   },
   "spies": {
     "count": "Liczba szpiegów",
@@ -327,6 +328,22 @@
     "religions": {
       "name": "Religie",
       "description": "Wyznania, święte księgi, święta i obrzędy — w różnych religiach."
+    },
+    "halloween": {
+      "name": "Halloween",
+      "description": "Duchy, dynie, przebrania i wszystko, co straszne."
+    },
+    "christmas": {
+      "name": "Boże Narodzenie i Nowy Rok",
+      "description": "Choinki, prezenty, świąteczne jedzenie i fajerwerki."
+    },
+    "easter": {
+      "name": "Wielkanoc i Wiosna",
+      "description": "Pisanki, zajączki, kwiaty i pierwsze słoneczne dni."
+    },
+    "summer": {
+      "name": "Lato",
+      "description": "Plaża, wakacje, lody i festiwale."
     }
   },
   "customList": {
@@ -355,5 +372,32 @@
     "win": "Cywile wygrywają, jeśli złapią szpiega. Szpieg wygrywa, jeśli nikt go nie zdemaskuje, albo zgadując słowo.",
     "players": "Od 3 graczy. Jeden telefon krąży albo każdy ma swój.",
     "play": "Gramy"
+  },
+  "seo": {
+    "title": "Szpieg (Spy) – darmowa gra w szpiega online na imprezę",
+    "description": "Darmowa gra słowna dla 3 lub więcej graczy: każdy dostaje tajne słowo, szpieg tylko wskazówkę. Na jednym telefonie lub każdy na swoim. Bez rejestracji.",
+    "h1": "Szpieg, imprezowa gra słowna",
+    "intro": "Za darmo w przeglądarce, bez konta. Podawajcie jeden telefon wokół stołu albo niech każdy dołączy do pokoju na swoim telefonie.",
+    "hintTitle": "Ile pomocy dostaje szpieg",
+    "categoriesTitle": "Kategorie słów",
+    "categoryTitle": "{{category}}: słowa do gry w szpiega",
+    "categoryDescription": "Słowa do gry Szpieg, imprezowej gry słownej. Łącznie: {{count}}. {{description}}",
+    "categoryIntro": "Wszystkie słowa z tej kategorii (łącznie: {{count}}). Wybierz ją w grze, a jedno z nich zostanie tajnym słowem.",
+    "moreCategories": "Więcej kategorii",
+    "play": "Graj teraz za darmo"
+  },
+  "share": {
+    "button": "Udostępnij",
+    "copied": "Skopiowano",
+    "result": "Szpieg: {{spy}}. Słowo: {{word}}. Zagraj w Szpiega za darmo:",
+    "invite": "Dołącz do mojej gry w Szpiega, pokój {{code}}",
+    "inviteDescription": "Dotknij, aby dołączyć. Każdy dostaje słowo, szpieg dostaje inne."
+  },
+  "lists": {
+    "share": "Udostępnij listę",
+    "importTitle": "Dodaj listę słów",
+    "importButton": "Dodaj do moich list",
+    "importInvalid": "Ten link do listy jest uszkodzony lub niekompletny.",
+    "imported": "Dodano do twoich list"
   }
 }

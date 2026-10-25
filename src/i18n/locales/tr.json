@@ -83,7 +83,8 @@
     "newList": "Yeni liste",
     "newListDesc": "Kendi kelime çiftlerin",
     "editList": "Listeyi düzenle",
-    "pickOne": "En az bir kategori seç."
+    "pickOne": "En az bir kategori seç.",
+    "inSeason": "Mevsimlik"
   },
   "spies": {
     "count": "Casus sayısı",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "Dinler",
       "description": "İnançlar, kutsal kitaplar, kutsal günler ve ritüeller — mezhepler arası."
+    },
+    "halloween": {
+      "name": "Cadılar Bayramı",
+      "description": "Hayaletler, balkabakları, kostümler ve ürkütücü her şey."
+    },
+    "christmas": {
+      "name": "Noel ve Yılbaşı",
+      "description": "Çam ağaçları, hediyeler, yılbaşı sofrası ve havai fişekler."
+    },
+    "easter": {
+      "name": "Paskalya ve Bahar",
+      "description": "Yumurtalar, tavşanlar, çiçekler ve ilk güneşli günler."
+    },
+    "summer": {
+      "name": "Yaz",
+      "description": "Plaj günleri, tatiller, dondurma ve festivaller."
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "Siviller casusu yakalarsa kazanır. Casus kimse onu bulamazsa ya da kelimeyi tahmin ederse kazanır.",
     "players": "3 veya daha fazla oyuncu. Tek telefon elden ele ya da herkes kendi telefonuyla.",
     "play": "Hadi oynayalım"
+  },
+  "seo": {
+    "title": "Casus Kim? Ücretsiz online parti kelime oyunu – Casus (Spy)",
+    "description": "3+ oyuncu için ücretsiz kelime oyunu: herkes gizli bir kelime alır, casus yalnızca bir ipucu. Tek telefonda ya da herkes kendi telefonunda. Kayıt gerekmez.",
+    "h1": "Casus, parti kelime oyunu",
+    "intro": "Tarayıcıda ücretsiz, hesap gerekmez. Tek bir telefonu masada elden ele dolaştırın ya da herkes kendi telefonundan bir odaya katılsın.",
+    "hintTitle": "Casus ne kadar yardım alır",
+    "categoriesTitle": "Kelime kategorileri",
+    "categoryTitle": "{{category}}: Casus oyunu için kelimeler",
+    "categoryDescription": "Parti kelime oyunu Casus için {{count}} kelime. {{description}}",
+    "categoryIntro": "Bu kategorideki {{count}} kelimenin tamamı. Oyunda bu kategoriyi seç; bunlardan biri gizli kelime olur.",
+    "moreCategories": "Diğer kategoriler",
+    "play": "Hemen ücretsiz oyna"
+  },
+  "share": {
+    "button": "Paylaş",
+    "copied": "Kopyalandı",
+    "result": "Casus: {{spy}}. Kelime: {{word}}. Casus'u ücretsiz oyna:",
+    "invite": "Casus oyunuma katıl, oda {{code}}",
+    "inviteDescription": "Katılmak için dokun. Herkes bir kelime alır, casus farklı bir kelime alır."
+  },
+  "lists": {
+    "share": "Listeyi paylaş",
+    "importTitle": "Kelime listesi ekle",
+    "importButton": "Listelerime ekle",
+    "importInvalid": "Bu liste bağlantısı bozuk ya da eksik.",
+    "imported": "Listelerine eklendi"
   }
 }

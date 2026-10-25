@@ -48,8 +48,15 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
-        // The static how-to-play page must not be swallowed by the SPA fallback.
-        navigateFallbackDenylist: [/^\/how-to-play/, /^\/robots\.txt/, /^\/sitemap\.xml/],
+        // Static pages (how-to-play, the per-language pages from scripts/gen-seo.mjs)
+        // must not be swallowed by the SPA fallback.
+        navigateFallbackDenylist: [
+          /^\/how-to-play/,
+          /^\/(en|de|fr|it|es|pt|nl|pl|sv|tr|ru|ar|ja|ko|zh)(\/|$)/,
+          /^\/robots\.txt/,
+          /^\/sitemap\.xml/,
+          /^\/api\//,
+        ],
       },
       devOptions: {
         enabled: true,

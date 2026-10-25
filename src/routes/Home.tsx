@@ -11,6 +11,9 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { useGame } from '../game/state'
+import SeasonalDecor from '../components/SeasonalDecor'
+import { SEASON_BADGE } from '../game/icons'
+import { currentSeason } from '../game/season'
 
 function ModeTile({
   to,
@@ -57,17 +60,28 @@ export default function Home() {
       ? `${players.slice(0, 2).map((p) => p.name).join(', ')} +${players.length - 2}`
       : players.map((p) => p.name).join(', ')
 
+  const season = currentSeason()
+  const Badge = season ? SEASON_BADGE[season] : null
+
   return (
-    <div className="flex flex-1 flex-col">
-      <header className="safe-top flex h-14 items-center justify-end">
+    <div className="relative flex flex-1 flex-col">
+      <SeasonalDecor />
+      <header className="safe-top relative flex h-14 items-center justify-end">
         <Link to="/options" className="btn-icon" aria-label={t('options.title')}>
           <Settings size={22} />
         </Link>
       </header>
 
-      <div className="flex flex-1 flex-col justify-center gap-10 pb-6">
+      <div className="relative flex flex-1 flex-col justify-center gap-10 pb-6">
         <div className="flex flex-col items-center gap-4 text-center">
-          <img src="/favicon.svg" alt="" width={80} height={80} className="h-20 w-20" />
+          <span className="relative">
+            <img src="/favicon.svg" alt="" width={80} height={80} className="h-20 w-20" />
+            {Badge && (
+              <span className="absolute -bottom-1 -right-1 flex h-8 w-8 items-center justify-center rounded-full border-2 border-background bg-surface-2 text-accent">
+                <Badge size={16} />
+              </span>
+            )}
+          </span>
           <div>
             <h1 className="text-4xl font-extrabold">{t('home.title')}</h1>
             <p className="mt-1 muted">{t('home.tagline')}</p>

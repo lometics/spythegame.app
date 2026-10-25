@@ -16,6 +16,8 @@ export type Category = {
   isCustom: boolean
   /** Number of pairs currently in this category (computed). */
   pairCount: number
+  /** A seasonal pack whose season is now (listed first, marked). */
+  inSeason?: boolean
 }
 
 export type CustomList = {

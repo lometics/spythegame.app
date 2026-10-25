@@ -83,7 +83,8 @@
     "newList": "Ny lista",
     "newListDesc": "Dina egna ordpar",
     "editList": "Redigera lista",
-    "pickOne": "Välj minst en kategori."
+    "pickOne": "Välj minst en kategori.",
+    "inSeason": "I säsong"
   },
   "spies": {
     "count": "Antal spioner",
@@ -317,6 +318,22 @@
     "religions": {
       "name": "Religioner",
       "description": "Tro, heliga skrifter, högtider och riter — över trosriktningar."
+    },
+    "halloween": {
+      "name": "Halloween",
+      "description": "Spöken, pumpor, utklädnader och allt som är läskigt."
+    },
+    "christmas": {
+      "name": "Jul och Nyår",
+      "description": "Granar, julklappar, festmat och fyrverkerier."
+    },
+    "easter": {
+      "name": "Påsk och Vår",
+      "description": "Ägg, påskharar, blommor och de första soliga dagarna."
+    },
+    "summer": {
+      "name": "Sommar",
+      "description": "Stranddagar, semester, glass och festivaler."
     }
   },
   "customList": {
@@ -345,5 +362,32 @@
     "win": "Civilisterna vinner om de hittar spionen. Spionen vinner om ingen avslöjar hen, eller genom att gissa ordet.",
     "players": "3 eller fler spelare. En telefon som går runt, eller allas egna.",
     "play": "Nu kör vi"
+  },
+  "seo": {
+    "title": "Spion (Spy) – gratis spion-spel online: vem är spionen?",
+    "description": "Gratis ordspel för 3 eller fler spelare: alla får ett hemligt ord, spionen bara en ledtråd. På en telefon eller var och en på sin egen. Ingen inloggning.",
+    "h1": "Spion, ordspelet för fester",
+    "intro": "Gratis i webbläsaren, inget konto behövs. Skicka en telefon runt bordet, eller låt alla gå med i ett rum på sin egen telefon.",
+    "hintTitle": "Hur mycket hjälp spionen får",
+    "categoriesTitle": "Ordkategorier",
+    "categoryTitle": "{{category}}: ord till spion-spelet",
+    "categoryDescription": "{{count}} ord till Spion, ordspelet för fester. {{description}}",
+    "categoryIntro": "Alla {{count}} ord i den här kategorin. Välj den i spelet så blir ett av dem det hemliga ordet.",
+    "moreCategories": "Fler kategorier",
+    "play": "Spela nu, gratis"
+  },
+  "share": {
+    "button": "Dela",
+    "copied": "Kopierat",
+    "result": "Spionen var {{spy}}. Ordet var {{word}}. Spela Spion gratis:",
+    "invite": "Gå med i mitt spel Spion, rum {{code}}",
+    "inviteDescription": "Tryck för att gå med. Alla får ett ord, spionen får ett annat."
+  },
+  "lists": {
+    "share": "Dela lista",
+    "importTitle": "Lägg till ordlista",
+    "importButton": "Lägg till i mina listor",
+    "importInvalid": "Den här listlänken är trasig eller ofullständig.",
+    "imported": "Tillagd i dina listor"
   }
 }
