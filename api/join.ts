@@ -1,21 +1,21 @@
 // Invite links (/join/ABCD, see vercel.json) get their own link preview in
 // WhatsApp, iMessage & co: "Join my Spy game, room ABCD" in the inviter's
 // language (?l=de). Everything else is the normal app page, which opens the room.
-import en from '../src/i18n/locales/en.json'
-import de from '../src/i18n/locales/de.json'
-import fr from '../src/i18n/locales/fr.json'
-import it from '../src/i18n/locales/it.json'
-import es from '../src/i18n/locales/es.json'
-import pt from '../src/i18n/locales/pt.json'
-import nl from '../src/i18n/locales/nl.json'
-import pl from '../src/i18n/locales/pl.json'
-import sv from '../src/i18n/locales/sv.json'
-import tr from '../src/i18n/locales/tr.json'
-import ru from '../src/i18n/locales/ru.json'
-import ar from '../src/i18n/locales/ar.json'
-import ja from '../src/i18n/locales/ja.json'
-import ko from '../src/i18n/locales/ko.json'
-import zh from '../src/i18n/locales/zh.json'
+import en from '../src/i18n/locales/en.json' with { type: 'json' }
+import de from '../src/i18n/locales/de.json' with { type: 'json' }
+import fr from '../src/i18n/locales/fr.json' with { type: 'json' }
+import it from '../src/i18n/locales/it.json' with { type: 'json' }
+import es from '../src/i18n/locales/es.json' with { type: 'json' }
+import pt from '../src/i18n/locales/pt.json' with { type: 'json' }
+import nl from '../src/i18n/locales/nl.json' with { type: 'json' }
+import pl from '../src/i18n/locales/pl.json' with { type: 'json' }
+import sv from '../src/i18n/locales/sv.json' with { type: 'json' }
+import tr from '../src/i18n/locales/tr.json' with { type: 'json' }
+import ru from '../src/i18n/locales/ru.json' with { type: 'json' }
+import ar from '../src/i18n/locales/ar.json' with { type: 'json' }
+import ja from '../src/i18n/locales/ja.json' with { type: 'json' }
+import ko from '../src/i18n/locales/ko.json' with { type: 'json' }
+import zh from '../src/i18n/locales/zh.json' with { type: 'json' }
 
 type Share = { invite: string; inviteDescription: string }
 const LOCALES: Record<string, { share?: Partial<Share> }> = { en, de, fr, it, es, pt, nl, pl, sv, tr, ru, ar, ja, ko, zh }
