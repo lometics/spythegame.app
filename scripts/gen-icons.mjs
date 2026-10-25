@@ -2,7 +2,7 @@
 // Run via: node scripts/gen-icons.mjs
 
 import sharp from 'sharp'
-import { readFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -28,6 +28,36 @@ async function icon(size, outName, { padding = 0, background = null } = {}) {
   console.log(`wrote public/${outName}`)
 }
 
+async function png(size) {
+  return sharp(svg, { density: 384 }).resize(size, size).png().toBuffer()
+}
+
+/**
+ * favicon.ico with 16, 32 and 48 px PNG images inside. Google Search wants a
+ * favicon that is a multiple of 48 px; browsers pick the size they need.
+ */
+async function faviconIco(sizes = [16, 32, 48]) {
+  const images = await Promise.all(sizes.map(png))
+  const header = Buffer.alloc(6)
+  header.writeUInt16LE(0, 0) // reserved
+  header.writeUInt16LE(1, 2) // type: icon
+  header.writeUInt16LE(sizes.length, 4)
+  let offset = 6 + 16 * sizes.length
+  const entries = sizes.map((size, i) => {
+    const e = Buffer.alloc(16)
+    e.writeUInt8(size % 256, 0) // width (0 means 256)
+    e.writeUInt8(size % 256, 1) // height
+    e.writeUInt16LE(1, 4) // color planes
+    e.writeUInt16LE(32, 6) // bits per pixel
+    e.writeUInt32LE(images[i].length, 8)
+    e.writeUInt32LE(offset, 12)
+    offset += images[i].length
+    return e
+  })
+  writeFileSync(join(PUBLIC, 'favicon.ico'), Buffer.concat([header, ...entries, ...images]))
+  console.log('wrote public/favicon.ico')
+}
+
 async function ogImage() {
   const mark = await sharp(svg, { density: 384 }).resize(220, 220).toBuffer()
   const text = Buffer.from(`
@@ -49,7 +79,9 @@ async function ogImage() {
   console.log('wrote public/og-image.png')
 }
 
-await icon(32, 'favicon-32.png')
+await faviconIco()
+await icon(48, 'favicon-48.png')
+await icon(96, 'favicon-96.png')
 await icon(180, 'apple-touch-icon.png', { padding: 0, background: BG })
 await icon(192, 'icon-192.png')
 await icon(512, 'icon-512.png')
