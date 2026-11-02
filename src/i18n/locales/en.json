@@ -365,7 +365,7 @@
     "play": "Let's play"
   },
   "seo": {
-    "title": "Spy – free online party word game (like Undercover & Imposter)",
+    "title": "How to play Spy: rules, spy hints and word lists (like Undercover & Imposter)",
     "description": "Free word game for 3 or more players. Everyone gets a secret word, the spy gets a hint. Play on one phone or everyone on their own. No sign-up.",
     "h1": "Spy, the party word game",
     "intro": "Free in your browser, no account needed. Pass one phone around the table, or let everyone join a room on their own phone.",
@@ -375,7 +375,12 @@
     "categoryDescription": "{{count}} words for Spy, the party word game. {{description}}",
     "categoryIntro": "All {{count}} words in this category. Pick it in the game and one of them becomes the secret word.",
     "moreCategories": "More categories",
-    "play": "Play now, free"
+    "play": "Play now, free",
+    "categoryHowTo": "Each row is one round: everyone gets the word in the first column, the spy gets the similar word or the close hint, depending on how much help you pick. Playing without phones? Print the list, or copy it and write the pairs on slips of paper.",
+    "copyWords": "Copy word list",
+    "copied": "Copied!",
+    "seasonalTitle": "Seasonal word packs",
+    "guidesTitle": "Guides & tips"
   },
   "share": {
     "button": "Share",

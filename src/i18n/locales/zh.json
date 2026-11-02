@@ -375,7 +375,12 @@
     "categoryDescription": "派对文字游戏“间谍”的 {{count}} 个词。{{description}}",
     "categoryIntro": "该类别的全部 {{count}} 个词。在游戏中选择它，其中一个就会成为秘密词。",
     "moreCategories": "更多类别",
-    "play": "立即免费玩"
+    "play": "立即免费玩",
+    "categoryHowTo": "每一行就是一局：所有人拿到第一列的词，卧底根据你们选择的帮助程度拿到相近词或相近提示。不用手机玩？把列表打印出来，或者复制后把词对写在小纸条上。",
+    "copyWords": "复制词语列表",
+    "copied": "已复制！",
+    "seasonalTitle": "季节词包",
+    "guidesTitle": "攻略与技巧"
   },
   "share": {
     "button": "分享",

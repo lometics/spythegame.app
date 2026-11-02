@@ -375,7 +375,12 @@
     "categoryDescription": "파티 단어 게임 스파이를 위한 단어 {{count}}개. {{description}}",
     "categoryIntro": "이 카테고리의 단어 {{count}}개 전체. 게임에서 선택하면 그중 하나가 비밀 단어가 돼요.",
     "moreCategories": "다른 카테고리",
-    "play": "지금 무료로 플레이"
+    "play": "지금 무료로 플레이",
+    "categoryHowTo": "한 줄이 한 라운드예요. 모두 첫 번째 열의 단어를 받고, 스파이는 고른 도움 수준에 따라 비슷한 단어나 가까운 힌트를 받아요. 휴대폰 없이 하나요? 목록을 인쇄하거나 복사해서 단어 쌍을 쪽지에 적으세요.",
+    "copyWords": "단어 목록 복사",
+    "copied": "복사했어요!",
+    "seasonalTitle": "시즌 단어 팩",
+    "guidesTitle": "가이드와 팁"
   },
   "share": {
     "button": "공유",

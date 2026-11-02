@@ -30,6 +30,10 @@ VITE_FIREBASE_APP_ID=
 
 The word bank and how it's written, reviewed and graded: [word-bank.md](word-bank.md). Categories it doesn't cover still use `src/data/pairs.<lang>.json`.
 
+## Search pages
+
+After the app build, `scripts/gen-seo.mjs` writes static pages for search engines: a landing page per language, every word category with the spy's words, and the guides in `content/guides/<id>/<lang>.md` (frontmatter: `slug`, `title`, `description`, optional `category` to link it from that category page). It also writes `sitemap.xml` and `404.html`. Only the app routes listed in `vercel.json` get the app; every other URL is a real 404, so a new route needs a rewrite there too (a test checks this).
+
 ## Icons
 
 `node scripts/gen-icons.mjs` regenerates every icon, the favicons and the share image from `public/favicon.svg`.

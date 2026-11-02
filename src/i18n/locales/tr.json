@@ -375,7 +375,12 @@
     "categoryDescription": "Parti kelime oyunu Casus için {{count}} kelime. {{description}}",
     "categoryIntro": "Bu kategorideki {{count}} kelimenin tamamı. Oyunda bu kategoriyi seç; bunlardan biri gizli kelime olur.",
     "moreCategories": "Diğer kategoriler",
-    "play": "Hemen ücretsiz oyna"
+    "play": "Hemen ücretsiz oyna",
+    "categoryHowTo": "Her satır bir turdur: herkes ilk sütundaki kelimeyi alır, casus ise seçtiğiniz yardıma göre yakın kelimeyi ya da yakın ipucunu alır. Telefonsuz mu oynuyorsunuz? Listeyi yazdırın ya da kopyalayıp çiftleri kâğıtlara yazın.",
+    "copyWords": "Kelime listesini kopyala",
+    "copied": "Kopyalandı!",
+    "seasonalTitle": "Mevsimlik kelime paketleri",
+    "guidesTitle": "Rehberler ve ipuçları"
   },
   "share": {
     "button": "Paylaş",

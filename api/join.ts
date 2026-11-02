@@ -58,5 +58,7 @@ export default async function handler(req: Req, res: Res) {
 
   res.setHeader('Content-Type', 'text/html; charset=utf-8')
   res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=600')
+  // Crawlers may fetch invite links (for link previews) but must not list them.
+  res.setHeader('X-Robots-Tag', 'noindex')
   res.status(200).send(html)
 }

@@ -375,7 +375,12 @@
     "categoryDescription": "{{count}} mots pour Spy, le jeu de mots pour soirées. {{description}}",
     "categoryIntro": "Les {{count}} mots de cette catégorie. Choisissez-la dans le jeu et l'un d'eux deviendra le mot secret.",
     "moreCategories": "Autres catégories",
-    "play": "Jouer gratuitement"
+    "play": "Jouer gratuitement",
+    "categoryHowTo": "Chaque ligne correspond à une manche : tout le monde reçoit le mot de la première colonne, l’espion reçoit le mot proche ou l’indice proche, selon l’aide choisie. Vous jouez sans téléphone ? Imprimez la liste, ou copiez-la et écrivez les paires sur des bouts de papier.",
+    "copyWords": "Copier la liste de mots",
+    "copied": "Copié !",
+    "seasonalTitle": "Packs de mots de saison",
+    "guidesTitle": "Guides et astuces"
   },
   "share": {
     "button": "Partager",

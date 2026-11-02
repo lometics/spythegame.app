@@ -62,7 +62,8 @@ export default function App() {
       <ResumeOnStart />
       <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-4">
         <Suspense fallback={null}>
-            <Routes>
+          {/* Every route also needs the index.html rewrite in vercel.json; other URLs get a 404. */}
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/local" element={<LocalSetup />} />
             <Route path="/local/play" element={<LocalGame />} />

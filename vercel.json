@@ -3,13 +3,20 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/how-to-play/?",
+      "destination": "/en/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/join/:code",
       "destination": "/api/join?code=:code"
     },
     {
-      "source": "/((?!_vercel/|api/).*)",
+      "source": "/(local|local/play|setup/[^/]+|lists/[^/]+|options|rules|list|online|room/[^/]+)/?",
       "destination": "/index.html"
     }
   ],
@@ -38,6 +45,15 @@
         {
           "key": "Cache-Control",
           "value": "no-cache"
+        }
+      ]
+    },
+    {
+      "source": "/(join|room)/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
         }
       ]
     }

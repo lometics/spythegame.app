@@ -385,7 +385,12 @@
     "categoryDescription": "Słowa do gry Szpieg, imprezowej gry słownej. Łącznie: {{count}}. {{description}}",
     "categoryIntro": "Wszystkie słowa z tej kategorii (łącznie: {{count}}). Wybierz ją w grze, a jedno z nich zostanie tajnym słowem.",
     "moreCategories": "Więcej kategorii",
-    "play": "Graj teraz za darmo"
+    "play": "Graj teraz za darmo",
+    "categoryHowTo": "Każdy wiersz to jedna runda: wszyscy dostają słowo z pierwszej kolumny, a szpieg bliskie słowo albo bliską podpowiedź, zależnie od wybranej pomocy. Gracie bez telefonów? Wydrukujcie listę albo ją skopiujcie i wypiszcie pary na karteczkach.",
+    "copyWords": "Kopiuj listę słów",
+    "copied": "Skopiowano!",
+    "seasonalTitle": "Sezonowe pakiety słów",
+    "guidesTitle": "Poradniki i wskazówki"
   },
   "share": {
     "button": "Udostępnij",

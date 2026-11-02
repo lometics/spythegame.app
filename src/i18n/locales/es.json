@@ -375,7 +375,12 @@
     "categoryDescription": "{{count}} palabras para Spy, el juego de palabras para fiestas. {{description}}",
     "categoryIntro": "Las {{count}} palabras de esta categoría. Elígela en el juego y una de ellas será la palabra secreta.",
     "moreCategories": "Más categorías",
-    "play": "Jugar gratis ahora"
+    "play": "Jugar gratis ahora",
+    "categoryHowTo": "Cada fila es una ronda: todos reciben la palabra de la primera columna y el espía recibe la palabra parecida o la pista cercana, según la ayuda que elijáis. ¿Jugáis sin móviles? Imprimid la lista, o copiadla y escribid las parejas en papelitos.",
+    "copyWords": "Copiar la lista de palabras",
+    "copied": "¡Copiado!",
+    "seasonalTitle": "Packs de palabras de temporada",
+    "guidesTitle": "Guías y consejos"
   },
   "share": {
     "button": "Compartir",

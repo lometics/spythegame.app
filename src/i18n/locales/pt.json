@@ -375,7 +375,12 @@
     "categoryDescription": "{{count}} palavras para o Espião, o jogo de palavras para festas. {{description}}",
     "categoryIntro": "Todas as {{count}} palavras desta categoria. Escolha-a no jogo e uma delas vira a palavra secreta.",
     "moreCategories": "Mais categorias",
-    "play": "Jogar agora, grátis"
+    "play": "Jogar agora, grátis",
+    "categoryHowTo": "Cada linha é uma rodada: todos recebem a palavra da primeira coluna e o espião recebe a palavra parecida ou a dica próxima, conforme a ajuda escolhida. Vão jogar sem celular? Imprimam a lista, ou copiem e escrevam os pares em papeizinhos.",
+    "copyWords": "Copiar lista de palavras",
+    "copied": "Copiado!",
+    "seasonalTitle": "Pacotes de palavras sazonais",
+    "guidesTitle": "Guias e dicas"
   },
   "share": {
     "button": "Compartilhar",

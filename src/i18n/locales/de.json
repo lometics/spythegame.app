@@ -375,7 +375,12 @@
     "categoryDescription": "{{count}} Wörter für Spy, das Party-Wortspiel. {{description}}",
     "categoryIntro": "Alle {{count}} Wörter dieser Kategorie. Wähle sie im Spiel aus, und eines davon wird zum geheimen Wort.",
     "moreCategories": "Weitere Kategorien",
-    "play": "Jetzt kostenlos spielen"
+    "play": "Jetzt kostenlos spielen",
+    "categoryHowTo": "Jede Zeile ist eine Runde: Alle bekommen das Wort aus der ersten Spalte, der Spion je nach gewählter Hilfe das ähnliche Wort oder den nahen Hinweis. Ihr spielt ohne Handys? Druckt die Liste aus oder kopiert sie und schreibt die Paare auf Zettel.",
+    "copyWords": "Wortliste kopieren",
+    "copied": "Kopiert!",
+    "seasonalTitle": "Saisonale Wortpakete",
+    "guidesTitle": "Anleitungen & Tipps"
   },
   "share": {
     "button": "Teilen",

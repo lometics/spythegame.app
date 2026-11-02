@@ -48,8 +48,8 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
-        // Static pages (how-to-play, the per-language pages from scripts/gen-seo.mjs)
-        // must not be swallowed by the SPA fallback.
+        // Static pages (privacy, the per-language pages from scripts/gen-seo.mjs) and
+        // the /how-to-play redirect must not be swallowed by the SPA fallback.
         navigateFallbackDenylist: [
           /^\/how-to-play/,
           /^\/privacy/,

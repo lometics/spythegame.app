@@ -375,7 +375,12 @@
     "categoryDescription": "{{count}} woorden voor Spion, het woordspel voor feestjes. {{description}}",
     "categoryIntro": "Alle {{count}} woorden in deze categorie. Kies de categorie in het spel en een van deze woorden wordt het geheime woord.",
     "moreCategories": "Meer categorieën",
-    "play": "Nu gratis spelen"
+    "play": "Nu gratis spelen",
+    "categoryHowTo": "Elke rij is één ronde: iedereen krijgt het woord uit de eerste kolom, de spion krijgt het vergelijkbare woord of de nabije hint, afhankelijk van de hulp die je kiest. Spelen zonder telefoons? Print de lijst, of kopieer hem en schrijf de paren op briefjes.",
+    "copyWords": "Woordenlijst kopiëren",
+    "copied": "Gekopieerd!",
+    "seasonalTitle": "Seizoenswoordpakketten",
+    "guidesTitle": "Gidsen en tips"
   },
   "share": {
     "button": "Delen",
