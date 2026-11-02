@@ -9,11 +9,14 @@ const MAX_PER_PAGE = 5
 /** Noise that isn't ours to fix. */
 const IGNORED = [/ResizeObserver loop/i, /chrome-extension:\/\//, /moz-extension:\/\//, /Script error\.?$/]
 
+/** Crawlers and read-aloud bots run the page in odd sandboxes (e.g. a fake service worker API). */
+const BOT_UA = /bot\/|crawler|spider|Google-Read-Aloud|HeadlessChrome/i
+
 /** Decides which errors get sent: no duplicates, no noise, at most a few per page load. */
 export function createReportFilter(max = MAX_PER_PAGE) {
   const seen = new Set<string>()
-  return (msg: string, stack = ''): boolean => {
-    if (!msg || IGNORED.some((re) => re.test(msg) || re.test(stack))) return false
+  return (msg: string, stack = '', ua = ''): boolean => {
+    if (!msg || BOT_UA.test(ua) || IGNORED.some((re) => re.test(msg) || re.test(stack))) return false
     const key = `${msg}|${stack.split('\n')[1] ?? ''}`
     if (seen.has(key) || seen.size >= max) return false
     seen.add(key)
@@ -24,7 +27,7 @@ export function createReportFilter(max = MAX_PER_PAGE) {
 const shouldReport = createReportFilter()
 
 async function report(msg: string, stack?: string) {
-  if (!import.meta.env.PROD || !shouldReport(msg, stack)) return
+  if (!import.meta.env.PROD || !shouldReport(msg, stack, navigator.userAgent)) return
   try {
     const { db, ensureSignedIn } = await import('./online/firebase')
     if (!db) return
