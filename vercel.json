@@ -5,18 +5,18 @@
   "outputDirectory": "dist",
   "redirects": [
     {
-      "source": "/how-to-play/?",
+      "source": "/how-to-play{/}?",
       "destination": "/en/",
       "permanent": true
     }
   ],
   "rewrites": [
     {
-      "source": "/join/:code",
+      "source": "/join/:code{/}?",
       "destination": "/api/join?code=:code"
     },
     {
-      "source": "/(local|local/play|setup/[^/]+|lists/[^/]+|options|rules|list|online|room/[^/]+)/?",
+      "source": "/(local|local/play|setup/[^/]+|lists/[^/]+|options|rules|list|online|room/[^/]+){/}?",
       "destination": "/index.html"
     }
   ],
