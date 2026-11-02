@@ -66,7 +66,8 @@
     "minutes_many": "{{count}} min",
     "minutes_other": "{{count}} min",
     "none": "Brak",
-    "start": "Zacznij rundę"
+    "start": "Zacznij rundę",
+    "civiliansSee": "Widzą ją cywile"
   },
   "players": {
     "namePlaceholder": "Dodaj gracza",
@@ -123,7 +124,10 @@
     "none": {
       "label": "Bez wskazówki",
       "desc": "Szpieg nie dostaje nic i musi blefować."
-    }
+    },
+    "civiliansSeeLabel": "Cywile widzą podpowiedź szpiega",
+    "civiliansSeeDesc": "Pozostali też widzą, co dostał szpieg, więc wiedzą, które podpowiedzi zdradzają za dużo.",
+    "civiliansSeeNone": "Przy „Bez wskazówki” nie ma czego pokazać."
   },
   "timer": {
     "intro": "Odliczanie na dyskusję. Możesz je w każdej chwili zatrzymać lub zacząć od nowa.",
@@ -145,7 +149,8 @@
     "spyTipCategory": "Słowo innych należy do tej kategorii. Słuchaj i nie daj się zdemaskować.",
     "noHintTip": "Słuchaj uważnie i blefuj.",
     "otherSpies": "Pozostali szpiedzy",
-    "onlySpy": "Jesteś jedynym szpiegiem."
+    "onlySpy": "Jesteś jedynym szpiegiem.",
+    "spySees": "Szpieg widzi"
   },
   "reveal": {
     "title": "Karty",
@@ -387,6 +392,7 @@
     "moreCategories": "Więcej kategorii",
     "play": "Graj teraz za darmo",
     "categoryHowTo": "Każdy wiersz to jedna runda: wszyscy dostają słowo z pierwszej kolumny, a szpieg bliskie słowo albo bliską podpowiedź, zależnie od wybranej pomocy. Gracie bez telefonów? Wydrukujcie listę albo ją skopiujcie i wypiszcie pary na karteczkach.",
+    "printWords": "Drukuj listę słów",
     "copyWords": "Kopiuj listę słów",
     "copied": "Skopiowano!",
     "seasonalTitle": "Sezonowe pakiety słów",

@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} min",
     "minutes_other": "{{count}} min",
     "none": "None",
-    "start": "Start round"
+    "start": "Start round",
+    "civiliansSee": "Civilians see it"
   },
   "players": {
     "namePlaceholder": "Add a player",
@@ -115,7 +116,10 @@
     "none": {
       "label": "No hint",
       "desc": "The spy gets nothing and has to bluff."
-    }
+    },
+    "civiliansSeeLabel": "Civilians see the spy's hint",
+    "civiliansSeeDesc": "Everyone else also sees what the spy got, so they know which clues give too much away.",
+    "civiliansSeeNone": "With No hint there is nothing to show."
   },
   "timer": {
     "intro": "Countdown for the discussion. You can pause or restart it anytime.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "The others' word is this kind of thing. Listen and blend in.",
     "noHintTip": "Listen closely and bluff.",
     "otherSpies": "Other spies",
-    "onlySpy": "You are the only spy."
+    "onlySpy": "You are the only spy.",
+    "spySees": "The spy sees"
   },
   "reveal": {
     "title": "Cards",
@@ -377,6 +382,7 @@
     "moreCategories": "More categories",
     "play": "Play now, free",
     "categoryHowTo": "Each row is one round: everyone gets the word in the first column, the spy gets the similar word or the close hint, depending on how much help you pick. Playing without phones? Print the list, or copy it and write the pairs on slips of paper.",
+    "printWords": "Print word list",
     "copyWords": "Copy word list",
     "copied": "Copied!",
     "seasonalTitle": "Seasonal word packs",

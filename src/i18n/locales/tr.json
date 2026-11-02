@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} dk",
     "minutes_other": "{{count}} dk",
     "none": "Yok",
-    "start": "Turu başlat"
+    "start": "Turu başlat",
+    "civiliansSee": "Siviller görür"
   },
   "players": {
     "namePlaceholder": "Oyuncu ekle",
@@ -115,7 +116,10 @@
     "none": {
       "label": "İpucu yok",
       "desc": "Casus hiçbir şey almaz ve blöf yapmak zorundadır."
-    }
+    },
+    "civiliansSeeLabel": "Siviller casusun ipucunu görür",
+    "civiliansSeeDesc": "Diğerleri de casusun ne aldığını görür, böylece hangi ipuçlarının fazla şey ele verdiğini bilir.",
+    "civiliansSeeNone": "“İpucu yok” seçiliyken gösterilecek bir şey yok."
   },
   "timer": {
     "intro": "Tartışma için geri sayım. İstediğin zaman duraklatabilir veya yeniden başlatabilirsin.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "Diğerlerinin kelimesi bu türden. Dinle ve fark edilme.",
     "noHintTip": "Dikkatle dinle ve blöf yap.",
     "otherSpies": "Diğer casuslar",
-    "onlySpy": "Tek casus sensin."
+    "onlySpy": "Tek casus sensin.",
+    "spySees": "Casusun gördüğü"
   },
   "reveal": {
     "title": "Kartlar",
@@ -377,6 +382,7 @@
     "moreCategories": "Diğer kategoriler",
     "play": "Hemen ücretsiz oyna",
     "categoryHowTo": "Her satır bir turdur: herkes ilk sütundaki kelimeyi alır, casus ise seçtiğiniz yardıma göre yakın kelimeyi ya da yakın ipucunu alır. Telefonsuz mu oynuyorsunuz? Listeyi yazdırın ya da kopyalayıp çiftleri kâğıtlara yazın.",
+    "printWords": "Kelime listesini yazdır",
     "copyWords": "Kelime listesini kopyala",
     "copied": "Kopyalandı!",
     "seasonalTitle": "Mevsimlik kelime paketleri",

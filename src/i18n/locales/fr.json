@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} min",
     "minutes_other": "{{count}} min",
     "none": "Aucun",
-    "start": "Lancer la manche"
+    "start": "Lancer la manche",
+    "civiliansSee": "Visible par les civils"
   },
   "players": {
     "namePlaceholder": "Ajouter un joueur",
@@ -115,7 +116,10 @@
     "none": {
       "label": "Aucun indice",
       "desc": "L'espion n'a rien et doit bluffer."
-    }
+    },
+    "civiliansSeeLabel": "Les civils voient l’indice de l’espion",
+    "civiliansSeeDesc": "Les autres voient aussi ce que l’espion a reçu et savent quels indices en disent trop.",
+    "civiliansSeeNone": "Avec « Aucun indice », il n’y a rien à montrer."
   },
   "timer": {
     "intro": "Compte à rebours pour la discussion. Vous pouvez le mettre en pause ou le relancer à tout moment.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "Le mot des autres est de ce type. Écoute et fonds-toi dans le groupe.",
     "noHintTip": "Écoutez bien et bluffez.",
     "otherSpies": "Autres espions",
-    "onlySpy": "Vous êtes le seul espion."
+    "onlySpy": "Vous êtes le seul espion.",
+    "spySees": "L’espion voit"
   },
   "reveal": {
     "title": "Cartes",
@@ -377,6 +382,7 @@
     "moreCategories": "Autres catégories",
     "play": "Jouer gratuitement",
     "categoryHowTo": "Chaque ligne correspond à une manche : tout le monde reçoit le mot de la première colonne, l’espion reçoit le mot proche ou l’indice proche, selon l’aide choisie. Vous jouez sans téléphone ? Imprimez la liste, ou copiez-la et écrivez les paires sur des bouts de papier.",
+    "printWords": "Imprimer la liste de mots",
     "copyWords": "Copier la liste de mots",
     "copied": "Copié !",
     "seasonalTitle": "Packs de mots de saison",

@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} min",
     "minutes_other": "{{count}} min",
     "none": "Nenhum",
-    "start": "Começar rodada"
+    "start": "Começar rodada",
+    "civiliansSee": "Visível para os civis"
   },
   "players": {
     "namePlaceholder": "Adicionar jogador",
@@ -115,7 +116,10 @@
     "none": {
       "label": "Sem dica",
       "desc": "O espião não recebe nada e tem que blefar."
-    }
+    },
+    "civiliansSeeLabel": "Os civis veem a dica do espião",
+    "civiliansSeeDesc": "Os outros também veem o que o espião recebeu e sabem quais dicas entregam demais.",
+    "civiliansSeeNone": "Com “Sem dica” não há nada para mostrar."
   },
   "timer": {
     "intro": "Contagem regressiva para a discussão. Você pode pausar ou reiniciar a qualquer momento.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "A palavra dos outros é desse tipo. Escute e disfarce.",
     "noHintTip": "Preste atenção e blefe.",
     "otherSpies": "Outros espiões",
-    "onlySpy": "Você é o único espião."
+    "onlySpy": "Você é o único espião.",
+    "spySees": "O espião vê"
   },
   "reveal": {
     "title": "Cartas",
@@ -377,6 +382,7 @@
     "moreCategories": "Mais categorias",
     "play": "Jogar agora, grátis",
     "categoryHowTo": "Cada linha é uma rodada: todos recebem a palavra da primeira coluna e o espião recebe a palavra parecida ou a dica próxima, conforme a ajuda escolhida. Vão jogar sem celular? Imprimam a lista, ou copiem e escrevam os pares em papeizinhos.",
+    "printWords": "Imprimir lista de palavras",
     "copyWords": "Copiar lista de palavras",
     "copied": "Copiado!",
     "seasonalTitle": "Pacotes de palavras sazonais",

@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} min",
     "minutes_other": "{{count}} min",
     "none": "Geen",
-    "start": "Ronde starten"
+    "start": "Ronde starten",
+    "civiliansSee": "Zichtbaar voor burgers"
   },
   "players": {
     "namePlaceholder": "Speler toevoegen",
@@ -115,7 +116,10 @@
     "none": {
       "label": "Geen hint",
       "desc": "De spion krijgt niets en moet bluffen."
-    }
+    },
+    "civiliansSeeLabel": "Burgers zien de hint van de spion",
+    "civiliansSeeDesc": "De anderen zien ook wat de spion kreeg, zodat ze weten welke hints te veel verraden.",
+    "civiliansSeeNone": "Met ‘Geen hint’ is er niets te tonen."
   },
   "timer": {
     "intro": "Aftellen voor de discussie. Je kunt hem altijd pauzeren of herstarten.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "Het woord van de anderen is van deze soort. Luister en val niet op.",
     "noHintTip": "Luister goed en bluf.",
     "otherSpies": "Andere spionnen",
-    "onlySpy": "Jij bent de enige spion."
+    "onlySpy": "Jij bent de enige spion.",
+    "spySees": "De spion ziet"
   },
   "reveal": {
     "title": "Kaarten",
@@ -377,6 +382,7 @@
     "moreCategories": "Meer categorieën",
     "play": "Nu gratis spelen",
     "categoryHowTo": "Elke rij is één ronde: iedereen krijgt het woord uit de eerste kolom, de spion krijgt het vergelijkbare woord of de nabije hint, afhankelijk van de hulp die je kiest. Spelen zonder telefoons? Print de lijst, of kopieer hem en schrijf de paren op briefjes.",
+    "printWords": "Woordenlijst afdrukken",
     "copyWords": "Woordenlijst kopiëren",
     "copied": "Gekopieerd!",
     "seasonalTitle": "Seizoenswoordpakketten",

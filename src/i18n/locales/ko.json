@@ -60,7 +60,8 @@
     "minutes_one": "{{count}}분",
     "minutes_other": "{{count}}분",
     "none": "없음",
-    "start": "라운드 시작"
+    "start": "라운드 시작",
+    "civiliansSee": "시민도 봄"
   },
   "players": {
     "namePlaceholder": "플레이어 추가",
@@ -115,7 +116,10 @@
     "none": {
       "label": "힌트 없음",
       "desc": "스파이는 아무것도 받지 않고 연기해야 해요."
-    }
+    },
+    "civiliansSeeLabel": "시민도 스파이의 힌트를 봐요",
+    "civiliansSeeDesc": "다른 사람들도 스파이가 받은 것을 볼 수 있어서 어떤 힌트가 너무 많이 알려 주는지 알 수 있어요.",
+    "civiliansSeeNone": "'힌트 없음'에서는 보여 줄 것이 없어요."
   },
   "timer": {
     "intro": "토론 카운트다운. 언제든 일시정지하거나 다시 시작할 수 있어요.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "다른 사람들의 단어는 이 종류예요. 잘 듣고 자연스럽게 섞이세요.",
     "noHintTip": "잘 듣고 연기하세요.",
     "otherSpies": "다른 스파이",
-    "onlySpy": "스파이는 당신뿐이에요."
+    "onlySpy": "스파이는 당신뿐이에요.",
+    "spySees": "스파이가 보는 것"
   },
   "reveal": {
     "title": "카드",
@@ -377,6 +382,7 @@
     "moreCategories": "다른 카테고리",
     "play": "지금 무료로 플레이",
     "categoryHowTo": "한 줄이 한 라운드예요. 모두 첫 번째 열의 단어를 받고, 스파이는 고른 도움 수준에 따라 비슷한 단어나 가까운 힌트를 받아요. 휴대폰 없이 하나요? 목록을 인쇄하거나 복사해서 단어 쌍을 쪽지에 적으세요.",
+    "printWords": "단어 목록 인쇄",
     "copyWords": "단어 목록 복사",
     "copied": "복사했어요!",
     "seasonalTitle": "시즌 단어 팩",

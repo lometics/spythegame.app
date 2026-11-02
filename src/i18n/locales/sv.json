@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} min",
     "minutes_other": "{{count}} min",
     "none": "Inga",
-    "start": "Starta runda"
+    "start": "Starta runda",
+    "civiliansSee": "Civila ser den"
   },
   "players": {
     "namePlaceholder": "Lägg till spelare",
@@ -115,7 +116,10 @@
     "none": {
       "label": "Ingen ledtråd",
       "desc": "Spionen får inget och måste bluffa."
-    }
+    },
+    "civiliansSeeLabel": "Civila ser spionens ledtråd",
+    "civiliansSeeDesc": "Alla andra ser också vad spionen fick, så de vet vilka ledtrådar som avslöjar för mycket.",
+    "civiliansSeeNone": "Med ”Ingen ledtråd” finns inget att visa."
   },
   "timer": {
     "intro": "Nedräkning för diskussionen. Du kan pausa eller starta om den när som helst.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "De andras ord är av det här slaget. Lyssna och smält in.",
     "noHintTip": "Lyssna noga och bluffa.",
     "otherSpies": "Andra spioner",
-    "onlySpy": "Du är den enda spionen."
+    "onlySpy": "Du är den enda spionen.",
+    "spySees": "Spionen ser"
   },
   "reveal": {
     "title": "Kort",
@@ -377,6 +382,7 @@
     "moreCategories": "Fler kategorier",
     "play": "Spela nu, gratis",
     "categoryHowTo": "Varje rad är en runda: alla får ordet i första kolumnen, spionen får det liknande ordet eller den nära ledtråden, beroende på hur mycket hjälp ni väljer. Spelar ni utan mobiler? Skriv ut listan, eller kopiera den och skriv paren på lappar.",
+    "printWords": "Skriv ut ordlistan",
     "copyWords": "Kopiera ordlistan",
     "copied": "Kopierat!",
     "seasonalTitle": "Säsongens ordpaket",

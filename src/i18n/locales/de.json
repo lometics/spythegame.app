@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} Min.",
     "minutes_other": "{{count}} Min.",
     "none": "Keine",
-    "start": "Runde starten"
+    "start": "Runde starten",
+    "civiliansSee": "Zivilisten sehen ihn"
   },
   "players": {
     "namePlaceholder": "Spieler hinzufügen",
@@ -115,7 +116,10 @@
     "none": {
       "label": "Kein Hinweis",
       "desc": "Der Spion bekommt nichts und muss bluffen."
-    }
+    },
+    "civiliansSeeLabel": "Zivilisten sehen den Hinweis des Spions",
+    "civiliansSeeDesc": "Alle anderen sehen auch, was der Spion bekommen hat, und wissen so, welche Hinweise zu viel verraten.",
+    "civiliansSeeNone": "Bei „Kein Hinweis“ gibt es nichts zu zeigen."
   },
   "timer": {
     "intro": "Countdown für die Diskussion. Du kannst ihn jederzeit pausieren oder neu starten.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "Das Wort der anderen gehört zu dieser Art. Hör zu und fall nicht auf.",
     "noHintTip": "Hör genau zu und bluffe.",
     "otherSpies": "Andere Spione",
-    "onlySpy": "Du bist der einzige Spion."
+    "onlySpy": "Du bist der einzige Spion.",
+    "spySees": "Der Spion sieht"
   },
   "reveal": {
     "title": "Karten",
@@ -377,6 +382,7 @@
     "moreCategories": "Weitere Kategorien",
     "play": "Jetzt kostenlos spielen",
     "categoryHowTo": "Jede Zeile ist eine Runde: Alle bekommen das Wort aus der ersten Spalte, der Spion je nach gewählter Hilfe das ähnliche Wort oder den nahen Hinweis. Ihr spielt ohne Handys? Druckt die Liste aus oder kopiert sie und schreibt die Paare auf Zettel.",
+    "printWords": "Wortliste drucken",
     "copyWords": "Wortliste kopieren",
     "copied": "Kopiert!",
     "seasonalTitle": "Saisonale Wortpakete",

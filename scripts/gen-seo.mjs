@@ -104,13 +104,28 @@ p,li{color:#b9b9c2}strong{color:#fafafa}a{color:#f5b400}ol,ul{padding-inline-sta
 .cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr));gap:.75rem}
 .cats a{display:block;margin:0;text-decoration:none;color:#fafafa}.cats small{display:block;color:#8d8d96}
 .links{padding:0;list-style:none}.links li{margin:.4rem 0}
-table{width:100%;border-collapse:collapse;font-size:.95rem}th,td{text-align:start;padding:.45rem .5rem;border-bottom:1px solid #27272c}
+table{width:100%;table-layout:fixed;border-collapse:collapse;font-size:.95rem}col.w{width:36%}col.s,col.c{width:32%}
+th,td{text-align:start;padding:.45rem .5rem;border-bottom:1px solid #27272c;overflow-wrap:anywhere}
 th{color:#8d8d96;font-weight:600;font-size:.8rem}td:first-child{color:#fafafa;font-weight:600}td{color:#b9b9c2}
-.copy{font:inherit;font-size:.9rem;background:#212126;color:#fafafa;border:1px solid #27272c;border-radius:999px;padding:.4rem 1rem;cursor:pointer}
+.actions{display:flex;flex-wrap:wrap;gap:.5rem}
+.actions button{font:inherit;font-size:.9rem;background:#212126;color:#fafafa;border:1px solid #27272c;border-radius:999px;padding:.4rem 1rem;cursor:pointer}
+.print-head{display:none}
 nav.langs{font-size:.85rem;display:flex;flex-wrap:wrap;gap:.2rem .8rem}nav.langs a{color:#8d8d96}
 .cta{position:fixed;left:0;right:0;bottom:0;padding:1rem 1rem max(env(safe-area-inset-bottom),1rem);background:linear-gradient(to top,#0a0a0c 70%,transparent)}
 .cta a{display:block;max-width:40rem;margin:0 auto;text-align:center;background:#fafafa;color:#0a0a0c;font-weight:700;text-decoration:none;padding:.95rem;border-radius:1rem}
-@media print{body{background:#fff;color:#000}p,li,td,th,h3,strong,td:first-child{color:#000}.cta,.copy,nav.langs,header{display:none}main{padding:0}th,td{border-color:#ccc}}`
+@page{margin:14mm 14mm 16mm;@bottom-center{content:"spythegame.app · " counter(page);font:9pt system-ui,sans-serif;color:#888}}
+@media print{
+:root{color-scheme:light;background:#fff}.group{break-inside:avoid}
+body{background:#fff;color:#111;font-size:10.5pt;line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+main{max-width:none;padding:0}header,.cta,nav.langs,.foot,.no-print{display:none}
+.print-head{display:flex;align-items:center;gap:8pt;padding-bottom:8pt;margin-bottom:14pt;border-bottom:2pt solid #f5b400;font-weight:700;font-size:12pt}
+.print-head span{margin-inline-start:auto;font-weight:400;font-size:9pt;color:#666}
+h1{font-size:20pt;margin:0 0 4pt;color:#111}p{color:#444}a{color:inherit;text-decoration:none}
+h3{font-size:11pt;margin:16pt 0 4pt;padding-inline-start:6pt;border-inline-start:3pt solid #f5b400;color:#111;break-after:avoid}
+table{font-size:10pt}thead{display:table-header-group}tr{break-inside:avoid}
+th{color:#666;font-size:8pt;text-transform:uppercase;letter-spacing:.04em;border-bottom:1pt solid #111}
+td{color:#333;border-bottom:.5pt solid #ddd;padding:4pt 6pt}td:first-child{color:#111}
+tbody tr:nth-child(even) td{background:#f6f6f4}}`
 
 /** hreflang links for a set of language versions; x-default is the page for everyone else. */
 const hreflang = (alternates, xDefault) =>
@@ -151,7 +166,7 @@ function page({ lang, path, title, description, alternates, xDefault, body, json
       </header>
 ${body}
       <nav class="langs">${LANGS.map((l) => `<a href="/${l}/" hreflang="${l}">${esc(t(l, `languages.${l}`))}</a>`).join('')}</nav>
-      <p><a href="/privacy/">${esc(t(lang, 'options.privacy'))}</a></p>
+      <p class="foot"><a href="/privacy/">${esc(t(lang, 'options.privacy'))}</a></p>
     </main>
     <div class="cta"><a href="/?lang=${lang}">${esc(t(lang, 'seo.play'))}</a></div>${script ? `\n    <script>${script}</script>` : ''}
   </body>
@@ -165,8 +180,9 @@ function write(path, html) {
   writeFileSync(join(dir, 'index.html'), html)
 }
 
-/** Copies the word table as tab-separated text (pastes into sheets and notes alike). */
-const COPY_SCRIPT = `(function(){var b=document.querySelector('.copy');if(!navigator.clipboard){b.remove();return}
+/** Print button, and copying the word table as tab-separated text (pastes into sheets and notes alike). */
+const WORDS_SCRIPT = `document.querySelector('.print').onclick=function(){window.print()};
+(function(){var b=document.querySelector('.copy');if(!navigator.clipboard){b.remove();return}
 b.onclick=function(){var trs=[document.querySelector('thead tr')].concat([].slice.call(document.querySelectorAll('tbody tr')));
 var rows=trs.map(function(r){return [].map.call(r.cells,function(c){return c.textContent}).join('\\t')});
 navigator.clipboard.writeText(rows.join('\\n')).then(function(){b.textContent=b.dataset.done})}})()`
@@ -256,8 +272,10 @@ ${seasonal.map((c) => categoryCard(lang, c)).join('\n')}
           .map((w) => `<tr><td>${esc(w.word)}</td><td>${esc(w.sibling[0] ?? '')}</td><td>${esc(w.associated[0] ?? '')}</td></tr>`)
         if (!rows.length) return ''
         const label = words[lang].subs?.[sub] ?? words.en.subs[sub]
-        return `      <h3>${esc(label)}</h3>
-      <table><thead>${head}</thead><tbody>${rows.join('')}</tbody></table>`
+        return `      <section class="group">
+      <h3>${esc(label)}</h3>
+      <table><colgroup><col class="w" /><col class="s" /><col class="c" /></colgroup><thead>${head}</thead><tbody>${rows.join('')}</tbody></table>
+      </section>`
       })
       .join('\n')
     const others = CATEGORIES.filter((c) => c !== cat)
@@ -276,15 +294,18 @@ ${seasonal.map((c) => categoryCard(lang, c)).join('\n')}
         }),
         alternates,
         xDefault: `/en/${cat}/`,
-        script: COPY_SCRIPT,
-        body: `      <h1>${esc(t(lang, 'seo.categoryTitle', { category: name }))}</h1>
-      <p>${esc(t(lang, 'seo.categoryIntro', { count: list.length }))}</p>
+        script: WORDS_SCRIPT,
+        body: `      <div class="print-head"><img src="/favicon.svg" alt="" width="22" height="22" /> Spy<span dir="ltr">spythegame.app/${lang}/${cat}/</span></div>
+      <h1>${esc(t(lang, 'seo.categoryTitle', { category: name }))}</h1>
+      <p class="no-print">${esc(t(lang, 'seo.categoryIntro', { count: list.length }))}</p>
       <p>${esc(t(lang, 'seo.categoryHowTo'))}</p>
-      <p><button type="button" class="copy" data-done="${esc(t(lang, 'seo.copied'))}">${esc(t(lang, 'seo.copyWords'))}</button></p>
+      <p class="actions no-print"><button type="button" class="print">${esc(t(lang, 'seo.printWords'))}</button><button type="button" class="copy" data-done="${esc(t(lang, 'seo.copied'))}">${esc(t(lang, 'seo.copyWords'))}</button></p>
 ${groups}
+      <div class="no-print">
 ${related.length ? `      <h2>${esc(t(lang, 'seo.guidesTitle'))}</h2>\n${guideLinks(related)}\n` : ''}      <h2>${esc(t(lang, 'seo.moreCategories'))}</h2>
       <p>${others}</p>
-      <p><a href="/${lang}/">${esc(t(lang, 'rules.title'))}</a></p>`,
+      <p><a href="/${lang}/">${esc(t(lang, 'rules.title'))}</a></p>
+      </div>`,
       }),
     )
     sitemap.push({ path: `/${lang}/${cat}/`, alternates, xDefault: `/en/${cat}/`, lastmod })

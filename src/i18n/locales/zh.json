@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} 分钟",
     "minutes_other": "{{count}} 分钟",
     "none": "无",
-    "start": "开始回合"
+    "start": "开始回合",
+    "civiliansSee": "平民可见"
   },
   "players": {
     "namePlaceholder": "添加玩家",
@@ -115,7 +116,10 @@
     "none": {
       "label": "无提示",
       "desc": "间谍什么都拿不到，只能靠蒙混。"
-    }
+    },
+    "civiliansSeeLabel": "平民也能看到卧底的提示",
+    "civiliansSeeDesc": "其他人也能看到卧底拿到了什么，从而知道哪些描述说得太多。",
+    "civiliansSeeNone": "选择“无提示”时没有可显示的内容。"
   },
   "timer": {
     "intro": "讨论倒计时，可随时暂停或重新开始。",
@@ -137,7 +141,8 @@
     "spyTipCategory": "其他人的词属于这一类。仔细听，别露馅。",
     "noHintTip": "仔细听，靠蒙混过关。",
     "otherSpies": "其他间谍",
-    "onlySpy": "你是唯一的间谍。"
+    "onlySpy": "你是唯一的间谍。",
+    "spySees": "卧底看到"
   },
   "reveal": {
     "title": "卡片",
@@ -377,6 +382,7 @@
     "moreCategories": "更多类别",
     "play": "立即免费玩",
     "categoryHowTo": "每一行就是一局：所有人拿到第一列的词，卧底根据你们选择的帮助程度拿到相近词或相近提示。不用手机玩？把列表打印出来，或者复制后把词对写在小纸条上。",
+    "printWords": "打印词语列表",
     "copyWords": "复制词语列表",
     "copied": "已复制！",
     "seasonalTitle": "季节词包",

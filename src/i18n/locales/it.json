@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} min",
     "minutes_other": "{{count}} min",
     "none": "Nessuno",
-    "start": "Inizia il round"
+    "start": "Inizia il round",
+    "civiliansSee": "Visibile ai civili"
   },
   "players": {
     "namePlaceholder": "Aggiungi un giocatore",
@@ -115,7 +116,10 @@
     "none": {
       "label": "Nessun indizio",
       "desc": "La spia non riceve niente e deve bluffare."
-    }
+    },
+    "civiliansSeeLabel": "I civili vedono l’indizio della spia",
+    "civiliansSeeDesc": "Anche gli altri vedono cosa ha ricevuto la spia, così sanno quali indizi rivelano troppo.",
+    "civiliansSeeNone": "Con «Nessun indizio» non c’è niente da mostrare."
   },
   "timer": {
     "intro": "Conto alla rovescia per la discussione. Puoi metterlo in pausa o farlo ripartire quando vuoi.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "La parola degli altri è di questo tipo. Ascolta e mimetizzati.",
     "noHintTip": "Ascolta bene e bluffa.",
     "otherSpies": "Altre spie",
-    "onlySpy": "Sei l'unica spia."
+    "onlySpy": "Sei l'unica spia.",
+    "spySees": "La spia vede"
   },
   "reveal": {
     "title": "Carte",
@@ -377,6 +382,7 @@
     "moreCategories": "Altre categorie",
     "play": "Gioca ora, gratis",
     "categoryHowTo": "Ogni riga è un round: tutti ricevono la parola della prima colonna, la spia riceve la parola simile o l’indizio vicino, in base all’aiuto scelto. Giocate senza telefoni? Stampate la lista, oppure copiatela e scrivete le coppie su dei bigliettini.",
+    "printWords": "Stampa l’elenco di parole",
     "copyWords": "Copia l’elenco di parole",
     "copied": "Copiato!",
     "seasonalTitle": "Pacchetti di parole stagionali",

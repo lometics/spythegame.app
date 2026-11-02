@@ -60,7 +60,8 @@
     "minutes_one": "{{count}} min",
     "minutes_other": "{{count}} min",
     "none": "Ninguno",
-    "start": "Empezar ronda"
+    "start": "Empezar ronda",
+    "civiliansSee": "Visible para los civiles"
   },
   "players": {
     "namePlaceholder": "Añadir jugador",
@@ -115,7 +116,10 @@
     "none": {
       "label": "Sin pista",
       "desc": "El espía no recibe nada y tiene que fingir."
-    }
+    },
+    "civiliansSeeLabel": "Los civiles ven la pista del espía",
+    "civiliansSeeDesc": "Los demás también ven lo que recibió el espía, así saben qué pistas revelan demasiado.",
+    "civiliansSeeNone": "Con «Sin pista» no hay nada que mostrar."
   },
   "timer": {
     "intro": "Cuenta atrás para el debate. Puedes pausarla o reiniciarla cuando quieras.",
@@ -137,7 +141,8 @@
     "spyTipCategory": "La palabra de los demás es de este tipo. Escucha y pasa desapercibido.",
     "noHintTip": "Escucha bien y finge.",
     "otherSpies": "Otros espías",
-    "onlySpy": "Eres el único espía."
+    "onlySpy": "Eres el único espía.",
+    "spySees": "El espía ve"
   },
   "reveal": {
     "title": "Cartas",
@@ -377,6 +382,7 @@
     "moreCategories": "Más categorías",
     "play": "Jugar gratis ahora",
     "categoryHowTo": "Cada fila es una ronda: todos reciben la palabra de la primera columna y el espía recibe la palabra parecida o la pista cercana, según la ayuda que elijáis. ¿Jugáis sin móviles? Imprimid la lista, o copiadla y escribid las parejas en papelitos.",
+    "printWords": "Imprimir la lista de palabras",
     "copyWords": "Copiar la lista de palabras",
     "copied": "¡Copiado!",
     "seasonalTitle": "Packs de palabras de temporada",
