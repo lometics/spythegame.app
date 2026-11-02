@@ -20,6 +20,7 @@ export function RoleCard({
   word,
   hintLevel = 'word',
   fellowSpyNames,
+  spyHint,
 }: {
   name: string
   isSpy: boolean
@@ -28,6 +29,8 @@ export function RoleCard({
   hintLevel?: Difficulty
   /** Shown to spies when "spies know each other" is on. */
   fellowSpyNames?: string[]
+  /** Shown to civilians when "civilians see the spy's hint" is on. */
+  spyHint?: string
 }) {
   const { t } = useTranslation()
   return (
@@ -58,6 +61,15 @@ export function RoleCard({
           </p>
         )}
       </div>
+
+      {!isSpy && spyHint && (
+        <div className="space-y-1.5">
+          <div className="text-xs font-semibold uppercase tracking-wider muted">
+            {t('card.spySees')}
+          </div>
+          <div className="break-words text-lg font-semibold text-spy">{spyHint}</div>
+        </div>
+      )}
 
       {isSpy && fellowSpyNames && (
         <div className="space-y-1.5">

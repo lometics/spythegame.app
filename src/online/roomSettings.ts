@@ -19,6 +19,7 @@ export type RoomSettingsData = {
   difficulty: Difficulty
   spyCount: number[]
   spiesKnowEachOther: boolean
+  civiliansSeeHint: boolean
   categories: string[]
   lists: Record<string, Omit<CustomList, 'id'>>
 }
@@ -80,6 +81,7 @@ export function normalizeRoomSettings(raw: unknown): RoomSettings | null {
           : r.spyCount,
       ),
       spiesKnowEachOther: r.spiesKnowEachOther === true,
+      civiliansSeeHint: r.civiliansSeeHint === true,
       pairSource: { selectedCategoryIds: asStrings(r.categories) },
     },
     lists,
@@ -92,6 +94,7 @@ export function toRoomData({ settings, lists }: RoomSettings): RoomSettingsData 
     difficulty: settings.difficulty,
     spyCount: settings.spyCount,
     spiesKnowEachOther: settings.spiesKnowEachOther,
+    civiliansSeeHint: settings.civiliansSeeHint,
     categories: settings.pairSource.selectedCategoryIds,
     lists: Object.fromEntries(
       lists.map(({ id, ...rest }) => [

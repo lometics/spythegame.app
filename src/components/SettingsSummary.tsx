@@ -128,6 +128,11 @@ export default function SettingsSummary({
         icon={Lightbulb}
         label={t('setup.hint')}
         value={t(`hint.${settings.difficulty}.label`)}
+        sub={
+          settings.civiliansSeeHint && settings.difficulty !== 'none'
+            ? t('setup.civiliansSee')
+            : undefined
+        }
       />
       <Row
         to={`/setup/timer${rq}`}

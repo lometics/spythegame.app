@@ -29,6 +29,7 @@ const settings: GameSettings = {
   difficulty: 'word',
   spyCount: [1, 2],
   spiesKnowEachOther: true,
+  civiliansSeeHint: true,
   pairSource: { selectedCategoryIds: [BUILTIN_CATEGORY_IDS[0], 'custom:a'] },
 }
 
@@ -50,6 +51,7 @@ describe('normalizeRoomSettings', () => {
       difficulty: 'close',
       spyCount: [1],
       spiesKnowEachOther: false,
+      civiliansSeeHint: false,
       pairSource: { selectedCategoryIds: [] },
     })
     expect(rs.lists).toEqual([])

@@ -26,6 +26,7 @@ describe('persisted game state', () => {
       difficulty: 'none',
       spyCount: [1, 2],
       spiesKnowEachOther: true,
+      civiliansSeeHint: true,
       pairSource: { selectedCategoryIds: ['animals'] },
     })
     s.setOnlineName('Agent')
@@ -52,6 +53,14 @@ describe('persisted game state', () => {
       settings: { difficulty: string }
     }
     expect(p.settings.difficulty).toBe(now)
+  })
+
+  it('adds the civilians-see-hint setting, off, to older saves without touching the rest', () => {
+    const migrate = useGame.persist.getOptions().migrate!
+    const p = migrate({ settings: { difficulty: 'word', spiesKnowEachOther: true } }, 9) as {
+      settings: { difficulty: string; spiesKnowEachOther: boolean; civiliansSeeHint: boolean }
+    }
+    expect(p.settings).toMatchObject({ difficulty: 'word', spiesKnowEachOther: true, civiliansSeeHint: false })
   })
 
   it('reorders players without touching anyone else', () => {

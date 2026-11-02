@@ -14,6 +14,7 @@ import {
 import { db, ensureSignedIn } from './firebase'
 import { samplePair } from '../game/pairs'
 import { resolveSpyCount } from '../game/machine'
+import { privateCards } from './deal'
 import { useGame } from '../game/state'
 import i18n from '../i18n'
 import type { Difficulty, GamePhase, Pair } from '../game/types'
@@ -250,15 +251,18 @@ export function useMyPrivate(
   word: string | null
   isSpy: boolean
   fellowSpyNames: string[] | null
+  spyHint: string | null
 } {
   const [v, setV] = useState<{
     word: string | null
     isSpy: boolean
     fellowSpyNames: string[] | null
+    spyHint: string | null
   }>({
     word: null,
     isSpy: false,
     fellowSpyNames: null,
+    spyHint: null,
   })
   useEffect(() => {
     if (!db || !code || !uid) return
@@ -270,6 +274,7 @@ export function useMyPrivate(
         word: data?.word ?? null,
         isSpy: Boolean(data?.isSpy),
         fellowSpyNames: Array.isArray(rawFellow) ? (rawFellow as string[]) : null,
+        spyHint: typeof data?.spyHint === 'string' ? data.spyHint : null,
       })
     })
     return () => unsub()
@@ -303,7 +308,7 @@ export async function startOnlineRound(
   players: Record<string, OnlinePlayer>,
 ) {
   if (!db) throw new Error(i18n.t('online.errNotConfigured'))
-  const { difficulty, spyCount, spiesKnowEachOther, timerSeconds } = settings
+  const { difficulty, spyCount, timerSeconds } = settings
   const pair: Pair = samplePair(settings.pairSource, lists, difficulty)
   const uids = Object.keys(players)
   if (uids.length < 3) throw new Error(i18n.t('online.errMinPlayers'))
@@ -314,27 +319,9 @@ export async function startOnlineRound(
     ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
   }
   const spyUids = shuffled.slice(0, n)
-  const spySet = new Set(spyUids)
   const firstClueGiverId = uids[Math.floor(Math.random() * uids.length)]
-
-  const privateUpdates: Record<
-    string,
-    { word: string; isSpy: boolean; fellowSpyNames?: string[] }
-  > = {}
-  for (const uid of uids) {
-    const isSpy = spySet.has(uid)
-    const entry: { word: string; isSpy: boolean; fellowSpyNames?: string[] } = {
-      word: isSpy ? pair.spy : pair.civilian,
-      isSpy,
-    }
-    if (isSpy && spiesKnowEachOther) {
-      entry.fellowSpyNames = spyUids
-        .filter((u) => u !== uid)
-        .map((u) => players[u]?.name ?? '')
-        .filter((name) => name.length > 0)
-    }
-    privateUpdates[uid] = entry
-  }
+  const names = Object.fromEntries(uids.map((uid) => [uid, players[uid]?.name ?? '']))
+  const privateUpdates = privateCards(pair, uids, spyUids, names, settings)
 
   const currentRoundSnap = await get(ref(db, `rooms/${code}/meta/round`))
   const nextRound = (currentRoundSnap.val() ?? 0) + 1

@@ -416,6 +416,26 @@ export function HintPage() {
           </button>
         ))}
       </div>
+
+      <section className="group-list">
+        <div className="row py-3">
+          <span className="min-w-0 flex-1">
+            <span className="block font-medium">{t('hint.civiliansSeeLabel')}</span>
+            <span className="block text-sm muted">
+              {difficulty === 'none' ? t('hint.civiliansSeeNone') : t('hint.civiliansSeeDesc')}
+            </span>
+          </span>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={settings.civiliansSeeHint}
+            aria-label={t('hint.civiliansSeeLabel')}
+            disabled={difficulty === 'none'}
+            onClick={() => setSettings({ civiliansSeeHint: !settings.civiliansSeeHint })}
+            className="switch"
+          />
+        </div>
+      </section>
     </Screen>
   )
 }

@@ -162,6 +162,7 @@ export default function OnlineRoom() {
       word={myPrivate.word ?? ''}
       hintLevel={room.round?.hintLevel}
       fellowSpyNames={myPrivate.fellowSpyNames ?? undefined}
+      spyHint={myPrivate.spyHint ?? undefined}
     />
   )
 

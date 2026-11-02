@@ -60,6 +60,8 @@ export type GameSettings = {
   /** Allowed spy counts; each round picks one at random. */
   spyCount: number[]
   spiesKnowEachOther: boolean
+  /** Civilians' cards also show the spy's hint, so they know what the spy knows. */
+  civiliansSeeHint: boolean
 }
 
 export type GameState = {

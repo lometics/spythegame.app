@@ -18,6 +18,7 @@ const DEFAULT_SETTINGS: GameSettings = {
   difficulty: 'close',
   spyCount: [1],
   spiesKnowEachOther: false,
+  civiliansSeeHint: false,
 }
 
 const ROUND_RESET = {
@@ -243,7 +244,7 @@ export const useGame = create<GameState & Actions>()(
     }),
     {
       name: 'spy-the-game-local',
-      version: 9,
+      version: 10,
       // Drop old persisted state on schema change so we don't ship users a half-broken settings object.
       migrate: (persisted, fromVersion) => {
         let p = persisted as Record<string, unknown>
@@ -347,6 +348,11 @@ export const useGame = create<GameState & Actions>()(
               difficulty: map[prev.difficulty ?? ''] ?? DEFAULT_SETTINGS.difficulty,
             },
           }
+        }
+        if (fromVersion < 10) {
+          // New setting: civilians can see the spy's hint (off unless chosen).
+          const prev = (p?.settings as Partial<GameSettings>) ?? {}
+          p = { ...p, settings: { ...DEFAULT_SETTINGS, ...prev, civiliansSeeHint: false } }
         }
         return p as unknown
       },

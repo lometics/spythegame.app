@@ -22,12 +22,14 @@ function SecretCard({
   pair,
   shown,
   spiesKnowEachOther,
+  civiliansSeeHint,
 }: {
   player: Player
   players: Player[]
   pair: Pair
   shown: boolean
   spiesKnowEachOther: boolean
+  civiliansSeeHint: boolean
 }) {
   if (!shown) return <PassCard name={player.name} avatar={player.avatar} />
   return (
@@ -39,6 +41,7 @@ function SecretCard({
       fellowSpyNames={
         player.isSpy && spiesKnowEachOther ? fellowSpies(players, player) : undefined
       }
+      spyHint={!player.isSpy && civiliansSeeHint ? pair.spy : undefined}
     />
   )
 }
@@ -114,6 +117,7 @@ export default function LocalGame() {
             pair={pair}
             shown={shown}
             spiesKnowEachOther={settings.spiesKnowEachOther}
+            civiliansSeeHint={settings.civiliansSeeHint}
           />
         </div>
       </Screen>
@@ -170,6 +174,7 @@ export default function LocalGame() {
             players={players}
             pair={pair}
             spiesKnowEachOther={settings.spiesKnowEachOther}
+            civiliansSeeHint={settings.civiliansSeeHint}
             onDone={() => setPeekOpen(false)}
           />
         )}
@@ -217,11 +222,13 @@ function PeekPanel({
   players,
   pair,
   spiesKnowEachOther,
+  civiliansSeeHint,
   onDone,
 }: {
   players: Player[]
   pair: Pair
   spiesKnowEachOther: boolean
+  civiliansSeeHint: boolean
   onDone: () => void
 }) {
   const { t } = useTranslation()
@@ -263,6 +270,7 @@ function PeekPanel({
             pair={pair}
             shown={shown}
             spiesKnowEachOther={spiesKnowEachOther}
+            civiliansSeeHint={civiliansSeeHint}
           />
           {shown ? (
             <button type="button" className="btn-primary w-full" onClick={onDone}>
