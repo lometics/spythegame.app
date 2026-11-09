@@ -61,7 +61,8 @@
     "minutes_other": "{{count}}分",
     "none": "なし",
     "start": "ラウンド開始",
-    "civiliansSee": "市民にも表示"
+    "civiliansSee": "市民にも表示",
+    "spiesUnaware": "本人も知らない"
   },
   "players": {
     "namePlaceholder": "プレイヤーを追加",
@@ -74,7 +75,9 @@
     "needMore_one": "あと{{count}}人追加すると開始できます。",
     "needMore_other": "あと{{count}}人追加すると開始できます。",
     "tip": "座っている順にドラッグで並べ替えてください。カードはこの順番で回ります。",
-    "reorder": "{{name}}を移動"
+    "reorder": "{{name}}を移動",
+    "pickAvatar": "{{name}}の画像を選ぶ",
+    "avatarN": "画像{{n}}"
   },
   "words": {
     "selectAll": "全選択",
@@ -95,7 +98,11 @@
     "knowHint": "スパイのカードに他のスパイが表示されます。",
     "knowNeedsTwo": "スパイが2人以上のときのみ有効。",
     "pickHint": "数字を1つ、または複数選ぶと人数がわからなくなります。",
-    "randomPick": "各ラウンドのスパイの人数は{{list}}からランダム。誰にも人数はわかりません。"
+    "randomPick": "各ラウンドのスパイの人数は{{list}}からランダム。誰にも人数はわかりません。",
+    "unawareLabel": "スパイは自分がスパイだと知らない",
+    "unawareHint": "どのカードにもワードだけが表示されます。スパイのワードだけ違い、誰が持っているかはスパイ本人も知りません。",
+    "unawareNeedsWord": "スパイが使えるワードが必要なため、「似たワード」か「近いヒント」でのみ使えます。",
+    "knowUnaware": "スパイが自分の役を知らない間はオフになります。"
   },
   "hint": {
     "intro": "スパイが本物のワードの代わりに見るもの。ヒントが少ないほどスパイを見破りやすくなります。",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "市民にもスパイのヒントを表示",
     "civiliansSeeDesc": "スパイが受け取った内容を他の全員も見られるので、どのヒントが言いすぎか分かります。",
-    "civiliansSeeNone": "「ヒントなし」では表示するものがありません。"
+    "civiliansSeeNone": "「ヒントなし」では表示するものがありません。",
+    "civiliansSeeUnaware": "スパイが自分の役を知らない間はオフになります。表示するとスパイだとばれてしまいます。"
   },
   "timer": {
     "intro": "話し合いのカウントダウン。いつでも一時停止やリスタートができます。",
@@ -142,13 +150,17 @@
     "noHintTip": "よく聞いて、はったりで乗り切ろう。",
     "otherSpies": "他のスパイ",
     "onlySpy": "スパイはあなただけです。",
-    "spySees": "スパイに表示"
+    "spySees": "スパイに表示",
+    "roleUnknown": "スパイか市民か？",
+    "unawareTip": "誰かが知らずに違うワードを持っているかも。それはあなたかもしれません。"
   },
   "reveal": {
     "title": "カード",
     "show": "カードを見る",
     "hideAndPass": "隠して次へ渡す",
-    "hideAndDiscuss": "隠して話し合い開始"
+    "hideAndDiscuss": "隠して話し合い開始",
+    "progress": "プレイヤー",
+    "goTo": "{{name}}へ移動"
   },
   "peek": {
     "button": "カードを確認",

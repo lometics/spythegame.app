@@ -9,7 +9,7 @@ import type {
 } from './types'
 import { BUILTIN_CATEGORY_IDS, defaultCategoryIds, samplePair } from './pairs'
 import { normalizeSpyCount, startRoundState } from './machine'
-import { AVATARS, avatarForIndex, nextAvatar } from '../data/avatars'
+import { AVATARS, avatarForIndex } from '../data/avatars'
 import { DEFAULT_LIST_ICON, isListIcon } from './icons'
 
 const DEFAULT_SETTINGS: GameSettings = {
@@ -19,6 +19,7 @@ const DEFAULT_SETTINGS: GameSettings = {
   spyCount: [1],
   spiesKnowEachOther: false,
   civiliansSeeHint: false,
+  unawareSpy: false,
 }
 
 const ROUND_RESET = {
@@ -48,7 +49,8 @@ type Actions = {
   renamePlayer: (id: string, name: string) => void
   /** Reorder the roster; cards are dealt in this order, so it should match the seating. */
   movePlayer: (from: number, to: number) => void
-  cycleAvatar: (id: string) => void
+  /** Give a player one of the preset pictures; anything else is ignored. */
+  setAvatar: (id: string, avatar: string) => void
   setSettings: (patch: Partial<GameSettings>) => void
   toggleCategory: (id: string) => void
   selectAllCategories: () => void
@@ -118,12 +120,12 @@ export const useGame = create<GameState & Actions>()(
           return { players }
         }),
 
-      cycleAvatar: (id) =>
-        set((s) => ({
-          players: s.players.map((p) =>
-            p.id === id ? { ...p, avatar: nextAvatar(p.avatar) } : p,
-          ),
-        })),
+      setAvatar: (id, avatar) =>
+        set((s) =>
+          AVATARS.includes(avatar)
+            ? { players: s.players.map((p) => (p.id === id ? { ...p, avatar } : p)) }
+            : s,
+        ),
 
       setSettings: (patch) =>
         set((s) => ({ settings: { ...s.settings, ...patch } })),
@@ -244,7 +246,7 @@ export const useGame = create<GameState & Actions>()(
     }),
     {
       name: 'spy-the-game-local',
-      version: 10,
+      version: 11,
       // Drop old persisted state on schema change so we don't ship users a half-broken settings object.
       migrate: (persisted, fromVersion) => {
         let p = persisted as Record<string, unknown>
@@ -353,6 +355,11 @@ export const useGame = create<GameState & Actions>()(
           // New setting: civilians can see the spy's hint (off unless chosen).
           const prev = (p?.settings as Partial<GameSettings>) ?? {}
           p = { ...p, settings: { ...DEFAULT_SETTINGS, ...prev, civiliansSeeHint: false } }
+        }
+        if (fromVersion < 11) {
+          // New setting: spies may not be told they are the spy (off unless chosen).
+          const prev = (p?.settings as Partial<GameSettings>) ?? {}
+          p = { ...p, settings: { ...DEFAULT_SETTINGS, ...prev, unawareSpy: false } }
         }
         return p as unknown
       },

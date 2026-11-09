@@ -61,7 +61,8 @@
     "minutes_other": "{{count}} min",
     "none": "Nenhum",
     "start": "Começar rodada",
-    "civiliansSee": "Visível para os civis"
+    "civiliansSee": "Visível para os civis",
+    "spiesUnaware": "Não sabem"
   },
   "players": {
     "namePlaceholder": "Adicionar jogador",
@@ -74,7 +75,9 @@
     "needMore_one": "Adicione mais {{count}} jogador para começar.",
     "needMore_other": "Adicione mais {{count}} jogadores para começar.",
     "tip": "Arraste para seguir a ordem em que vocês estão sentados; as cartas passam nessa ordem.",
-    "reorder": "Mover {{name}}"
+    "reorder": "Mover {{name}}",
+    "pickAvatar": "Escolha uma imagem para {{name}}",
+    "avatarN": "Imagem {{n}}"
   },
   "words": {
     "selectAll": "Selecionar tudo",
@@ -95,7 +98,11 @@
     "knowHint": "Os espiões veem os outros espiões na carta.",
     "knowNeedsTwo": "Só faz diferença com dois ou mais espiões.",
     "pickHint": "Toque em um número, ou em vários para deixar todos na dúvida.",
-    "randomPick": "Cada rodada tem, ao acaso, {{list}} espiões. Ninguém sabe quantos."
+    "randomPick": "Cada rodada tem, ao acaso, {{list}} espiões. Ninguém sabe quantos.",
+    "unawareLabel": "Espiões não sabem que são espiões",
+    "unawareHint": "Cada carta mostra só uma palavra. A do espião é outra, e ninguém sabe quem a tem, nem o próprio espião.",
+    "unawareNeedsWord": "Precisa da dica Palavra parecida ou Dica próxima, para o espião ter uma palavra para jogar.",
+    "knowUnaware": "Desligado enquanto os espiões não souberem que são espiões."
   },
   "hint": {
     "intro": "O que o espião vê no lugar da palavra real. Quanto menos ajuda, mais fácil pegar o espião.",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "Os civis veem a dica do espião",
     "civiliansSeeDesc": "Os outros também veem o que o espião recebeu e sabem quais dicas entregam demais.",
-    "civiliansSeeNone": "Com “Sem dica” não há nada para mostrar."
+    "civiliansSeeNone": "Com “Sem dica” não há nada para mostrar.",
+    "civiliansSeeUnaware": "Desligado enquanto os espiões não souberem que são espiões, porque os entregaria."
   },
   "timer": {
     "intro": "Contagem regressiva para a discussão. Você pode pausar ou reiniciar a qualquer momento.",
@@ -142,13 +150,17 @@
     "noHintTip": "Preste atenção e blefe.",
     "otherSpies": "Outros espiões",
     "onlySpy": "Você é o único espião.",
-    "spySees": "O espião vê"
+    "spySees": "O espião vê",
+    "roleUnknown": "Espião ou civil?",
+    "unawareTip": "Alguém pode ter uma palavra diferente sem saber. Pode ser você."
   },
   "reveal": {
     "title": "Cartas",
     "show": "Ver minha carta",
     "hideAndPass": "Esconder e passar",
-    "hideAndDiscuss": "Esconder e começar a discussão"
+    "hideAndDiscuss": "Esconder e começar a discussão",
+    "progress": "Jogadores",
+    "goTo": "Ir para {{name}}"
   },
   "peek": {
     "button": "Rever minha carta",

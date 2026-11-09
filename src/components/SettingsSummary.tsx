@@ -12,6 +12,7 @@ import {
 import type { ReactNode } from 'react'
 import { useGame } from '../game/state'
 import { availableSpyCounts } from '../game/machine'
+import { cardRules } from '../game/cards'
 import { BUILTIN_CATEGORY_IDS } from '../game/pairs'
 import { visibleRoomLists, type RoomSettings } from '../online/roomSettings'
 
@@ -77,9 +78,11 @@ export default function SettingsSummary({
 
   const spyCounts = availableSpyCounts(settings.spyCount, Math.max(playerCount, 3))
   const spiesValue = spyCounts.join(' / ')
+  const rules = cardRules(settings, settings.difficulty)
   const spiesSub = [
     spyCounts.length > 1 ? t('setup.randomEachRound') : null,
-    settings.spiesKnowEachOther ? t('setup.spiesKnow') : null,
+    rules.unawareSpy ? t('setup.spiesUnaware') : null,
+    rules.spiesKnowEachOther ? t('setup.spiesKnow') : null,
   ]
     .filter(Boolean)
     .join(' · ')
@@ -128,11 +131,7 @@ export default function SettingsSummary({
         icon={Lightbulb}
         label={t('setup.hint')}
         value={t(`hint.${settings.difficulty}.label`)}
-        sub={
-          settings.civiliansSeeHint && settings.difficulty !== 'none'
-            ? t('setup.civiliansSee')
-            : undefined
-        }
+        sub={rules.civiliansSeeHint ? t('setup.civiliansSee') : undefined}
       />
       <Row
         to={`/setup/timer${rq}`}

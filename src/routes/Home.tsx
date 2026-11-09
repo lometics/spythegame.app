@@ -72,10 +72,16 @@ export default function Home() {
         </Link>
       </header>
 
-      <div className="relative flex flex-1 flex-col justify-center gap-10 pb-6">
-        <div className="flex flex-col items-center gap-4 text-center">
+      <div className="relative flex flex-1 flex-col justify-center gap-10 pb-6 lg:flex-row lg:items-center lg:gap-20">
+        <div className="flex flex-col items-center gap-4 text-center lg:flex-1 lg:items-start lg:gap-6 lg:text-start">
           <span className="relative">
-            <img src="/favicon.svg" alt="" width={80} height={80} className="h-20 w-20" />
+            <img
+              src="/favicon.svg"
+              alt=""
+              width={80}
+              height={80}
+              className="h-20 w-20 lg:h-28 lg:w-28"
+            />
             {Badge && (
               <span className="absolute -bottom-1 -right-1 flex h-8 w-8 items-center justify-center rounded-full border-2 border-background bg-surface-2 text-accent">
                 <Badge size={16} />
@@ -83,16 +89,16 @@ export default function Home() {
             )}
           </span>
           <div>
-            <h1 className="text-4xl font-extrabold">{t('home.title')}</h1>
-            <p className="mt-1 muted">{t('home.tagline')}</p>
+            <h1 className="text-4xl font-extrabold lg:text-6xl">{t('home.title')}</h1>
+            <p className="mt-1 muted lg:mt-3 lg:max-w-sm lg:text-xl">{t('home.tagline')}</p>
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 md:grid md:grid-cols-2 md:gap-3 md:space-y-0 lg:flex-1 lg:grid-cols-1">
           {activeRoom && (
             <Link
               to={`/room/${activeRoom}`}
-              className="option gap-4 border-accent bg-accent/10 py-4"
+              className="option gap-4 border-accent bg-accent/10 py-4 md:col-span-2 lg:col-span-1"
             >
               <Users size={26} className="shrink-0 text-accent" />
               <span className="flex-1 font-semibold">
@@ -104,7 +110,7 @@ export default function Home() {
           {roundInProgress && (
             <Link
               to="/local/play"
-              className="option gap-4 border-accent bg-accent/10 py-4"
+              className="option gap-4 border-accent bg-accent/10 py-4 md:col-span-2 lg:col-span-1"
             >
               <PlayCircle size={26} className="shrink-0 text-accent" />
               <span className="flex-1 font-semibold">{t('home.continueRound')}</span>
@@ -115,7 +121,7 @@ export default function Home() {
             <button
               type="button"
               onClick={quickPlay}
-              className="option gap-4 border-accent bg-accent/10 py-4"
+              className="option gap-4 border-accent bg-accent/10 py-4 md:col-span-2 lg:col-span-1"
             >
               <RotateCcw size={24} className="shrink-0 text-accent" />
               <span className="min-w-0 flex-1">

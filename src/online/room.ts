@@ -252,17 +252,20 @@ export function useMyPrivate(
   isSpy: boolean
   fellowSpyNames: string[] | null
   spyHint: string | null
+  unaware: boolean
 } {
   const [v, setV] = useState<{
     word: string | null
     isSpy: boolean
     fellowSpyNames: string[] | null
     spyHint: string | null
+  unaware: boolean
   }>({
     word: null,
     isSpy: false,
     fellowSpyNames: null,
     spyHint: null,
+    unaware: false,
   })
   useEffect(() => {
     if (!db || !code || !uid) return
@@ -275,6 +278,7 @@ export function useMyPrivate(
         isSpy: Boolean(data?.isSpy),
         fellowSpyNames: Array.isArray(rawFellow) ? (rawFellow as string[]) : null,
         spyHint: typeof data?.spyHint === 'string' ? data.spyHint : null,
+        unaware: data?.unaware === true,
       })
     })
     return () => unsub()

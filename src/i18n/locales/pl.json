@@ -67,7 +67,8 @@
     "minutes_other": "{{count}} min",
     "none": "Brak",
     "start": "Zacznij rundę",
-    "civiliansSee": "Widzą ją cywile"
+    "civiliansSee": "Widzą ją cywile",
+    "spiesUnaware": "Nie wiedzą"
   },
   "players": {
     "namePlaceholder": "Dodaj gracza",
@@ -82,7 +83,9 @@
     "needMore_many": "Dodaj jeszcze {{count}} graczy, aby zacząć.",
     "needMore_other": "Dodaj jeszcze {{count}} gracza, aby zacząć.",
     "tip": "Przeciągnij, aby ustawić kolejność siedzenia; karty krążą w tej kolejności.",
-    "reorder": "Przesuń: {{name}}"
+    "reorder": "Przesuń: {{name}}",
+    "pickAvatar": "Wybierz obrazek dla {{name}}",
+    "avatarN": "Obrazek {{n}}"
   },
   "words": {
     "selectAll": "Zaznacz wszystko",
@@ -103,7 +106,11 @@
     "knowHint": "Szpiedzy widzą pozostałych szpiegów na swojej karcie.",
     "knowNeedsTwo": "Ma znaczenie tylko przy dwóch lub więcej szpiegach.",
     "pickHint": "Wybierz jedną liczbę albo kilka, żeby wszyscy zgadywali.",
-    "randomPick": "Każda runda losuje liczbę szpiegów: {{list}}. Nikt nie wie ilu."
+    "randomPick": "Każda runda losuje liczbę szpiegów: {{list}}. Nikt nie wie ilu.",
+    "unawareLabel": "Szpiedzy nie wiedzą, że są szpiegami",
+    "unawareHint": "Każda karta pokazuje tylko słowo. Szpieg ma inne, i nikt nie wie, kto je ma, nawet sam szpieg.",
+    "unawareNeedsWord": "Wymaga podpowiedzi Bliskie słowo lub Bliska podpowiedź, żeby szpieg miał słowo do gry.",
+    "knowUnaware": "Wyłączone, gdy szpiedzy nie wiedzą, że są szpiegami."
   },
   "hint": {
     "intro": "Co widzi szpieg zamiast prawdziwego słowa. Im mniej pomocy, tym łatwiej złapać szpiega.",
@@ -127,7 +134,8 @@
     },
     "civiliansSeeLabel": "Cywile widzą podpowiedź szpiega",
     "civiliansSeeDesc": "Pozostali też widzą, co dostał szpieg, więc wiedzą, które podpowiedzi zdradzają za dużo.",
-    "civiliansSeeNone": "Przy „Bez wskazówki” nie ma czego pokazać."
+    "civiliansSeeNone": "Przy „Bez wskazówki” nie ma czego pokazać.",
+    "civiliansSeeUnaware": "Wyłączone, gdy szpiedzy nie wiedzą, że są szpiegami, bo by ich to zdradziło."
   },
   "timer": {
     "intro": "Odliczanie na dyskusję. Możesz je w każdej chwili zatrzymać lub zacząć od nowa.",
@@ -150,13 +158,17 @@
     "noHintTip": "Słuchaj uważnie i blefuj.",
     "otherSpies": "Pozostali szpiedzy",
     "onlySpy": "Jesteś jedynym szpiegiem.",
-    "spySees": "Szpieg widzi"
+    "spySees": "Szpieg widzi",
+    "roleUnknown": "Szpieg czy cywil?",
+    "unawareTip": "Ktoś może mieć inne słowo, nie wiedząc o tym. Możesz to być ty."
   },
   "reveal": {
     "title": "Karty",
     "show": "Pokaż moją kartę",
     "hideAndPass": "Ukryj i podaj dalej",
-    "hideAndDiscuss": "Ukryj i zacznij dyskusję"
+    "hideAndDiscuss": "Ukryj i zacznij dyskusję",
+    "progress": "Gracze",
+    "goTo": "Przejdź do {{name}}"
   },
   "peek": {
     "button": "Sprawdź kartę",

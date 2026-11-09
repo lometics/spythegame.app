@@ -61,7 +61,8 @@
     "minutes_other": "{{count}} dk",
     "none": "Yok",
     "start": "Turu başlat",
-    "civiliansSee": "Siviller görür"
+    "civiliansSee": "Siviller görür",
+    "spiesUnaware": "Bilmiyorlar"
   },
   "players": {
     "namePlaceholder": "Oyuncu ekle",
@@ -74,7 +75,9 @@
     "needMore_one": "Başlamak için {{count}} oyuncu daha ekle.",
     "needMore_other": "Başlamak için {{count}} oyuncu daha ekle.",
     "tip": "Oturma sıranıza göre sürükleyin; kartlar bu sırayla dolaşır.",
-    "reorder": "Taşı: {{name}}"
+    "reorder": "Taşı: {{name}}",
+    "pickAvatar": "{{name}} için resim seç",
+    "avatarN": "Resim {{n}}"
   },
   "words": {
     "selectAll": "Hepsini seç",
@@ -95,7 +98,11 @@
     "knowHint": "Casuslar kartlarında diğer casusları görür.",
     "knowNeedsTwo": "Sadece iki veya daha fazla casusla işe yarar.",
     "pickHint": "Bir sayı seç ya da herkes tahmin etsin diye birkaç tane.",
-    "randomPick": "Her turda rastgele {{list}} casus olur. Kimse kaç tane olduğunu bilmez."
+    "randomPick": "Her turda rastgele {{list}} casus olur. Kimse kaç tane olduğunu bilmez.",
+    "unawareLabel": "Casuslar casus olduklarını bilmez",
+    "unawareHint": "Her kartta sadece bir kelime var. Casusun kelimesi farklı ve kimde olduğunu kimse bilmez, casus bile.",
+    "unawareNeedsWord": "Casusun oynayacak bir kelimesi olması için Yakın kelime veya Yakın ipucu gerekir.",
+    "knowUnaware": "Casuslar casus olduklarını bilmediği sürece kapalı."
   },
   "hint": {
     "intro": "Casusun gerçek kelime yerine gördüğü şey. Yardım ne kadar azsa casusu yakalamak o kadar kolay.",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "Siviller casusun ipucunu görür",
     "civiliansSeeDesc": "Diğerleri de casusun ne aldığını görür, böylece hangi ipuçlarının fazla şey ele verdiğini bilir.",
-    "civiliansSeeNone": "“İpucu yok” seçiliyken gösterilecek bir şey yok."
+    "civiliansSeeNone": "“İpucu yok” seçiliyken gösterilecek bir şey yok.",
+    "civiliansSeeUnaware": "Casuslar casus olduklarını bilmediği sürece kapalı, yoksa onları ele verir."
   },
   "timer": {
     "intro": "Tartışma için geri sayım. İstediğin zaman duraklatabilir veya yeniden başlatabilirsin.",
@@ -142,13 +150,17 @@
     "noHintTip": "Dikkatle dinle ve blöf yap.",
     "otherSpies": "Diğer casuslar",
     "onlySpy": "Tek casus sensin.",
-    "spySees": "Casusun gördüğü"
+    "spySees": "Casusun gördüğü",
+    "roleUnknown": "Casus mu, sivil mi?",
+    "unawareTip": "Birinin farkında olmadan farklı bir kelimesi olabilir. Bu sen olabilirsin."
   },
   "reveal": {
     "title": "Kartlar",
     "show": "Kartımı göster",
     "hideAndPass": "Gizle ve sıradakine ver",
-    "hideAndDiscuss": "Gizle ve tartışmayı başlat"
+    "hideAndDiscuss": "Gizle ve tartışmayı başlat",
+    "progress": "Oyuncular",
+    "goTo": "{{name}} oyuncusuna git"
   },
   "peek": {
     "button": "Kartıma bak",

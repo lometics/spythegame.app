@@ -61,7 +61,8 @@
     "minutes_other": "{{count}} min",
     "none": "Geen",
     "start": "Ronde starten",
-    "civiliansSee": "Zichtbaar voor burgers"
+    "civiliansSee": "Zichtbaar voor burgers",
+    "spiesUnaware": "Weten het niet"
   },
   "players": {
     "namePlaceholder": "Speler toevoegen",
@@ -74,7 +75,9 @@
     "needMore_one": "Voeg nog {{count}} speler toe om te starten.",
     "needMore_other": "Voeg nog {{count}} spelers toe om te starten.",
     "tip": "Sleep in de volgorde waarin jullie zitten; de kaarten gaan in deze volgorde rond.",
-    "reorder": "{{name}} verplaatsen"
+    "reorder": "{{name}} verplaatsen",
+    "pickAvatar": "Kies een afbeelding voor {{name}}",
+    "avatarN": "Afbeelding {{n}}"
   },
   "words": {
     "selectAll": "Alles selecteren",
@@ -95,7 +98,11 @@
     "knowHint": "Spionnen zien de andere spionnen op hun kaart.",
     "knowNeedsTwo": "Alleen van belang bij twee of meer spionnen.",
     "pickHint": "Tik één getal aan, of meerdere om iedereen te laten gissen.",
-    "randomPick": "Elke ronde heeft willekeurig {{list}} spionnen. Niemand weet hoeveel."
+    "randomPick": "Elke ronde heeft willekeurig {{list}} spionnen. Niemand weet hoeveel.",
+    "unawareLabel": "Spionnen weten niet dat ze spion zijn",
+    "unawareHint": "Elke kaart toont alleen een woord. De spion heeft een ander woord, en niemand weet wie, zelfs de spion niet.",
+    "unawareNeedsWord": "Werkt alleen met de hint Vergelijkbaar woord of Nabije hint, zodat de spion een woord heeft om mee te spelen.",
+    "knowUnaware": "Uit zolang spionnen niet weten dat ze spion zijn."
   },
   "hint": {
     "intro": "Wat de spion ziet in plaats van het echte woord. Hoe minder hulp, hoe makkelijker de spion te ontmaskeren is.",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "Burgers zien de hint van de spion",
     "civiliansSeeDesc": "De anderen zien ook wat de spion kreeg, zodat ze weten welke hints te veel verraden.",
-    "civiliansSeeNone": "Met ‘Geen hint’ is er niets te tonen."
+    "civiliansSeeNone": "Met ‘Geen hint’ is er niets te tonen.",
+    "civiliansSeeUnaware": "Uit zolang spionnen niet weten dat ze spion zijn, anders zou het ze verraden."
   },
   "timer": {
     "intro": "Aftellen voor de discussie. Je kunt hem altijd pauzeren of herstarten.",
@@ -142,13 +150,17 @@
     "noHintTip": "Luister goed en bluf.",
     "otherSpies": "Andere spionnen",
     "onlySpy": "Jij bent de enige spion.",
-    "spySees": "De spion ziet"
+    "spySees": "De spion ziet",
+    "roleUnknown": "Spion of burger?",
+    "unawareTip": "Misschien heeft iemand een ander woord zonder het te weten. Dat kun jij zijn."
   },
   "reveal": {
     "title": "Kaarten",
     "show": "Mijn kaart tonen",
     "hideAndPass": "Verbergen en doorgeven",
-    "hideAndDiscuss": "Verbergen en discussie starten"
+    "hideAndDiscuss": "Verbergen en discussie starten",
+    "progress": "Spelers",
+    "goTo": "Naar {{name}}"
   },
   "peek": {
     "button": "Mijn kaart bekijken",

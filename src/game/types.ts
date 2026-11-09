@@ -62,6 +62,8 @@ export type GameSettings = {
   spiesKnowEachOther: boolean
   /** Civilians' cards also show the spy's hint, so they know what the spy knows. */
   civiliansSeeHint: boolean
+  /** Spies get a normal-looking card with their word and are not told they are the spy. */
+  unawareSpy: boolean
 }
 
 export type GameState = {

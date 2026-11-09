@@ -61,7 +61,8 @@
     "minutes_other": "{{count}} min",
     "none": "Aucun",
     "start": "Lancer la manche",
-    "civiliansSee": "Visible par les civils"
+    "civiliansSee": "Visible par les civils",
+    "spiesUnaware": "Ne le savent pas"
   },
   "players": {
     "namePlaceholder": "Ajouter un joueur",
@@ -74,7 +75,9 @@
     "needMore_one": "Ajoutez encore {{count}} joueur pour commencer.",
     "needMore_other": "Ajoutez encore {{count}} joueurs pour commencer.",
     "tip": "Faites glisser pour suivre l'ordre autour de la table ; les cartes passent dans cet ordre.",
-    "reorder": "Déplacer {{name}}"
+    "reorder": "Déplacer {{name}}",
+    "pickAvatar": "Choisir une image pour {{name}}",
+    "avatarN": "Image {{n}}"
   },
   "words": {
     "selectAll": "Tout sélectionner",
@@ -95,7 +98,11 @@
     "knowHint": "Les espions voient les autres espions sur leur carte.",
     "knowNeedsTwo": "Utile seulement avec deux espions ou plus.",
     "pickHint": "Touchez un nombre, ou plusieurs pour garder le suspense.",
-    "randomPick": "Chaque manche compte au hasard {{list}} espions. Personne ne sait combien."
+    "randomPick": "Chaque manche compte au hasard {{list}} espions. Personne ne sait combien.",
+    "unawareLabel": "Les espions ignorent qu’ils sont espions",
+    "unawareHint": "Chaque carte montre juste un mot. L’espion a un mot différent, et personne ne sait qui l’a, pas même l’espion.",
+    "unawareNeedsWord": "Nécessite l’indice Mot proche ou Indice proche, pour que l’espion ait un mot à jouer.",
+    "knowUnaware": "Désactivé tant que les espions ignorent qu’ils sont espions."
   },
   "hint": {
     "intro": "Ce que l'espion voit à la place du vrai mot. Moins il a d'aide, plus il est facile à démasquer.",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "Les civils voient l’indice de l’espion",
     "civiliansSeeDesc": "Les autres voient aussi ce que l’espion a reçu et savent quels indices en disent trop.",
-    "civiliansSeeNone": "Avec « Aucun indice », il n’y a rien à montrer."
+    "civiliansSeeNone": "Avec « Aucun indice », il n’y a rien à montrer.",
+    "civiliansSeeUnaware": "Désactivé tant que les espions ignorent qu’ils sont espions, sinon ils le devineraient."
   },
   "timer": {
     "intro": "Compte à rebours pour la discussion. Vous pouvez le mettre en pause ou le relancer à tout moment.",
@@ -142,13 +150,17 @@
     "noHintTip": "Écoutez bien et bluffez.",
     "otherSpies": "Autres espions",
     "onlySpy": "Vous êtes le seul espion.",
-    "spySees": "L’espion voit"
+    "spySees": "L’espion voit",
+    "roleUnknown": "Espion ou civil ?",
+    "unawareTip": "Quelqu’un a peut-être un mot différent sans le savoir. Ça pourrait être vous."
   },
   "reveal": {
     "title": "Cartes",
     "show": "Voir ma carte",
     "hideAndPass": "Cacher et passer",
-    "hideAndDiscuss": "Cacher et lancer la discussion"
+    "hideAndDiscuss": "Cacher et lancer la discussion",
+    "progress": "Joueurs",
+    "goTo": "Aller à {{name}}"
   },
   "peek": {
     "button": "Revoir ma carte",

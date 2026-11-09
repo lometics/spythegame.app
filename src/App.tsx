@@ -60,7 +60,7 @@ export default function App() {
     <BrowserRouter>
       <BackHandler />
       <ResumeOnStart />
-      <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-4">
+      <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-4 md:max-w-5xl md:px-8">
         <Suspense fallback={null}>
           {/* Every route also needs the index.html rewrite in vercel.json; other URLs get a 404. */}
           <Routes>

@@ -3,10 +3,12 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Check, GripVertical, Pencil, Plus, X } from 'lucide-react'
 import Screen from '../components/Screen'
+import { AvatarButton } from '../components/AvatarPicker'
 import { useGame } from '../game/state'
 import { hintExample, listCategories } from '../game/pairs'
 import { iconFor } from '../game/icons'
 import { availableSpyCounts, maxSpiesFor, toggleSpyCount } from '../game/machine'
+import { cardRules, UNAWARE_HINTS } from '../game/cards'
 import { DIFFICULTIES } from '../game/types'
 import { useSettingsEditor } from '../online/settingsEditor'
 
@@ -24,11 +26,21 @@ function DoneFooter() {
 
 export function PlayersPage() {
   const { t } = useTranslation()
+  return (
+    <Screen title={t('setup.players')} back footer={<DoneFooter />}>
+      <PlayersEditor />
+    </Screen>
+  )
+}
+
+/** Add, rename, reorder, re-picture and remove players; its own page on phones, a panel on desktop. */
+export function PlayersEditor() {
+  const { t } = useTranslation()
   const players = useGame((s) => s.players)
   const addPlayer = useGame((s) => s.addPlayer)
   const removePlayer = useGame((s) => s.removePlayer)
   const renamePlayer = useGame((s) => s.renamePlayer)
-  const cycleAvatar = useGame((s) => s.cycleAvatar)
+  const setAvatar = useGame((s) => s.setAvatar)
   const movePlayer = useGame((s) => s.movePlayer)
   const [name, setName] = useState('')
   const inputRef = useRef<HTMLInputElement>(null)
@@ -79,7 +91,7 @@ export function PlayersPage() {
   }
 
   return (
-    <Screen title={t('setup.players')} back footer={<DoneFooter />}>
+    <>
       <form className="flex gap-2" onSubmit={submit}>
         <input
           ref={inputRef}
@@ -135,14 +147,12 @@ export function PlayersPage() {
               >
                 <GripVertical size={20} />
               </button>
-              <button
-                type="button"
-                onClick={() => cycleAvatar(p.id)}
-                className="h-10 w-10 shrink-0 overflow-hidden rounded-full border border-border bg-surface-2 active:scale-95"
-                aria-label={t('players.changeAvatar')}
-              >
-                <img src={p.avatar} alt="" className="h-full w-full" />
-              </button>
+              <AvatarButton
+                name={p.name}
+                avatar={p.avatar}
+                onPick={(a) => setAvatar(p.id, a)}
+                className="h-10 w-10"
+              />
               <input
                 className="min-w-0 flex-1 bg-transparent py-3 font-medium focus:outline-none"
                 defaultValue={p.name}
@@ -176,7 +186,7 @@ export function PlayersPage() {
           ? t('players.needMore', { count: 3 - players.length })
           : t('players.tip')}
       </p>
-    </Screen>
+    </>
   )
 }
 
@@ -199,6 +209,7 @@ export function WordsPage() {
     <Screen
       title={t('setup.words')}
       back
+      wide
       footer={
         <>
           {selected.length === 0 && (
@@ -221,7 +232,7 @@ export function WordsPage() {
         </button>
       </div>
 
-      <div className="group-list">
+      <div className="group-list group-grid">
         {categories.map((c) => {
           const Icon = iconFor(c.id, c.icon)
           const sel = selectedSet.has(c.id)
@@ -300,6 +311,8 @@ export function SpiesPage() {
   const options = Array.from({ length: Math.min(max, 5) }, (_, i) => i + 1)
   const active = availableSpyCounts(settings.spyCount, Math.max(playerCount, 3))
   const canHaveMany = active[active.length - 1] > 1
+  const rules = cardRules(settings, settings.difficulty)
+  const unawarePossible = UNAWARE_HINTS.includes(settings.difficulty)
 
   const toggle = (n: number) => {
     // Start from what's actually in effect, so counts hidden by a smaller group don't linger.
@@ -342,17 +355,38 @@ export function SpiesPage() {
       <section className="group-list">
         <div className="row py-3">
           <span className="min-w-0 flex-1">
-            <span className="block font-medium">{t('spies.knowLabel')}</span>
+            <span className="block font-medium">{t('spies.unawareLabel')}</span>
             <span className="block text-sm muted">
-              {canHaveMany ? t('spies.knowHint') : t('spies.knowNeedsTwo')}
+              {unawarePossible ? t('spies.unawareHint') : t('spies.unawareNeedsWord')}
             </span>
           </span>
           <button
             type="button"
             role="switch"
-            aria-checked={settings.spiesKnowEachOther}
+            aria-checked={rules.unawareSpy}
+            aria-label={t('spies.unawareLabel')}
+            disabled={!unawarePossible}
+            onClick={() => setSettings({ unawareSpy: !settings.unawareSpy })}
+            className="switch"
+          />
+        </div>
+        <div className="row py-3">
+          <span className="min-w-0 flex-1">
+            <span className="block font-medium">{t('spies.knowLabel')}</span>
+            <span className="block text-sm muted">
+              {rules.unawareSpy
+                ? t('spies.knowUnaware')
+                : canHaveMany
+                  ? t('spies.knowHint')
+                  : t('spies.knowNeedsTwo')}
+            </span>
+          </span>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={rules.spiesKnowEachOther}
             aria-label={t('spies.knowLabel')}
-            disabled={!canHaveMany}
+            disabled={!canHaveMany || rules.unawareSpy}
             onClick={() =>
               setSettings({ spiesKnowEachOther: !settings.spiesKnowEachOther })
             }
@@ -372,11 +406,12 @@ export function HintPage() {
   const difficulty = settings.difficulty
   const ex = hintExample()
   const spyWord = ex.hints
+  const rules = cardRules(settings, difficulty)
 
   return (
     <Screen title={t('setup.hint')} back footer={<DoneFooter />}>
       <p className="px-1 muted">{t('hint.intro')}</p>
-      <div className="space-y-2" role="radiogroup">
+      <div className="grid gap-2 md:grid-cols-2" role="radiogroup">
         {DIFFICULTIES.map((lvl) => (
           <button
             key={lvl}
@@ -422,15 +457,19 @@ export function HintPage() {
           <span className="min-w-0 flex-1">
             <span className="block font-medium">{t('hint.civiliansSeeLabel')}</span>
             <span className="block text-sm muted">
-              {difficulty === 'none' ? t('hint.civiliansSeeNone') : t('hint.civiliansSeeDesc')}
+              {difficulty === 'none'
+                ? t('hint.civiliansSeeNone')
+                : rules.unawareSpy
+                  ? t('hint.civiliansSeeUnaware')
+                  : t('hint.civiliansSeeDesc')}
             </span>
           </span>
           <button
             type="button"
             role="switch"
-            aria-checked={settings.civiliansSeeHint}
+            aria-checked={rules.civiliansSeeHint}
             aria-label={t('hint.civiliansSeeLabel')}
-            disabled={difficulty === 'none'}
+            disabled={difficulty === 'none' || rules.unawareSpy}
             onClick={() => setSettings({ civiliansSeeHint: !settings.civiliansSeeHint })}
             className="switch"
           />

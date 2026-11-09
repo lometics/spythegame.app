@@ -61,7 +61,8 @@
     "minutes_other": "{{count}} Min.",
     "none": "Keine",
     "start": "Runde starten",
-    "civiliansSee": "Zivilisten sehen ihn"
+    "civiliansSee": "Zivilisten sehen ihn",
+    "spiesUnaware": "Wissen es nicht"
   },
   "players": {
     "namePlaceholder": "Spieler hinzufügen",
@@ -74,7 +75,9 @@
     "needMore_one": "Füge noch {{count}} Spieler hinzu, um zu starten.",
     "needMore_other": "Füge noch {{count}} Spieler hinzu, um zu starten.",
     "tip": "Zieh die Spieler in eure Sitzreihenfolge; die Karten gehen in dieser Reihenfolge herum.",
-    "reorder": "{{name}} verschieben"
+    "reorder": "{{name}} verschieben",
+    "pickAvatar": "Bild für {{name}} wählen",
+    "avatarN": "Bild {{n}}"
   },
   "words": {
     "selectAll": "Alle auswählen",
@@ -95,7 +98,11 @@
     "knowHint": "Spione sehen die anderen Spione auf ihrer Karte.",
     "knowNeedsTwo": "Nur relevant ab zwei Spionen.",
     "pickHint": "Tippe eine Zahl an, oder mehrere, damit alle rätseln.",
-    "randomPick": "Jede Runde hat zufällig {{list}} Spione. Niemand weiß, wie viele."
+    "randomPick": "Jede Runde hat zufällig {{list}} Spione. Niemand weiß, wie viele.",
+    "unawareLabel": "Spione wissen nicht, dass sie Spione sind",
+    "unawareHint": "Jede Karte zeigt nur ein Wort. Der Spion hat ein anderes, und niemand weiss, wer es hat, nicht einmal der Spion.",
+    "unawareNeedsWord": "Braucht den Hinweis Ähnliches Wort oder Naher Hinweis, damit der Spion ein Wort zum Spielen hat.",
+    "knowUnaware": "Aus, solange Spione nicht wissen, dass sie Spione sind."
   },
   "hint": {
     "intro": "Was der Spion statt des echten Worts sieht. Je weniger Hilfe, desto leichter ist der Spion zu entlarven.",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "Zivilisten sehen den Hinweis des Spions",
     "civiliansSeeDesc": "Alle anderen sehen auch, was der Spion bekommen hat, und wissen so, welche Hinweise zu viel verraten.",
-    "civiliansSeeNone": "Bei „Kein Hinweis“ gibt es nichts zu zeigen."
+    "civiliansSeeNone": "Bei „Kein Hinweis“ gibt es nichts zu zeigen.",
+    "civiliansSeeUnaware": "Aus, solange Spione nicht wissen, dass sie Spione sind, sonst würden sie es merken."
   },
   "timer": {
     "intro": "Countdown für die Diskussion. Du kannst ihn jederzeit pausieren oder neu starten.",
@@ -142,13 +150,17 @@
     "noHintTip": "Hör genau zu und bluffe.",
     "otherSpies": "Andere Spione",
     "onlySpy": "Du bist der einzige Spion.",
-    "spySees": "Der Spion sieht"
+    "spySees": "Der Spion sieht",
+    "roleUnknown": "Spion oder Zivilist?",
+    "unawareTip": "Vielleicht hat jemand ein anderes Wort, ohne es zu wissen. Das könntest du sein."
   },
   "reveal": {
     "title": "Karten",
     "show": "Meine Karte zeigen",
     "hideAndPass": "Verdecken und weitergeben",
-    "hideAndDiscuss": "Verdecken und Diskussion starten"
+    "hideAndDiscuss": "Verdecken und Diskussion starten",
+    "progress": "Spieler",
+    "goTo": "Zu {{name}}"
   },
   "peek": {
     "button": "Meine Karte ansehen",

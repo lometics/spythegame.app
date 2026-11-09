@@ -110,6 +110,24 @@ body {
   a.row:active {
     background-color: hsl(var(--foreground) / 0.05);
   }
+  @media (hover: hover) {
+    button.row:not(:disabled):hover,
+    a.row:hover,
+    .option:not(:disabled):hover,
+    .chip:not(:disabled):hover {
+      /* An overlay, so selected and tinted backgrounds stay as they are. */
+      box-shadow: inset 0 0 0 100vmax hsl(var(--foreground) / 0.05);
+    }
+    .btn-icon:hover {
+      background-color: hsl(var(--foreground) / 0.08);
+    }
+    .btn-primary:hover {
+      filter: brightness(0.9);
+    }
+    .btn-secondary:hover {
+      background-color: hsl(var(--foreground) / 0.12);
+    }
+  }
   .row-icon {
     @apply inline-flex items-center justify-center w-9 h-9 rounded-xl shrink-0;
     background-color: hsl(var(--surface-2));
@@ -199,6 +217,25 @@ body {
     hsl(var(--background)) 70%,
     hsl(var(--background) / 0)
   );
+}
+
+/* Wide screens: a grouped list turns into a grid of separate tiles. */
+@media (min-width: 768px) {
+  .group-list.group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 0.75rem;
+    background: none;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+  }
+  .group-list.group-grid > * {
+    background-color: hsl(var(--surface));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
 }
 
 .safe-top {

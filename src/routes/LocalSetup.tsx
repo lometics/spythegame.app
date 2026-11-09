@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next'
 import Screen from '../components/Screen'
 import SettingsSummary from '../components/SettingsSummary'
 import { useGame } from '../game/state'
+import { PlayersEditor } from './SetupPages'
+import { DESKTOP, useMediaQuery } from '../useMediaQuery'
 
 /** Round configuration overview for pass-and-play. */
 export default function LocalSetup() {
@@ -13,6 +15,7 @@ export default function LocalSetup() {
   const selected = useGame((s) => s.settings.pairSource.selectedCategoryIds)
   const startRound = useGame((s) => s.startRound)
   const [error, setError] = useState<string | null>(null)
+  const desktop = useMediaQuery(DESKTOP)
 
   const blocker =
     players.length < 3
@@ -31,6 +34,7 @@ export default function LocalSetup() {
     <Screen
       title={t('home.oneDevice')}
       back="/"
+      wide={desktop}
       footer={
         <>
           {(blocker || error) && (
@@ -47,7 +51,23 @@ export default function LocalSetup() {
         </>
       }
     >
-      <SettingsSummary playerCount={players.length} showPlayers />
+      {desktop ? (
+        // Desktop: edit players right here, settings beside them.
+        <div className="grid grid-cols-2 items-start gap-10">
+          <section className="flex flex-col gap-4">
+            <h2 className="section-label">
+              {t('setup.players')} · {players.length}
+            </h2>
+            <PlayersEditor />
+          </section>
+          <section>
+            <h2 className="section-label">{t('online.roundSettings')}</h2>
+            <SettingsSummary playerCount={players.length} />
+          </section>
+        </div>
+      ) : (
+        <SettingsSummary playerCount={players.length} showPlayers />
+      )}
     </Screen>
   )
 }

@@ -17,7 +17,7 @@ export default function Rules() {
         </Link>
       }
     >
-      <ol className="space-y-3">
+      <ol className="space-y-3 md:grid md:grid-cols-2 md:gap-3 md:space-y-0">
         {STEPS.map((step, i) => (
           <li key={step} className="card flex items-start gap-4">
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent font-bold text-background">

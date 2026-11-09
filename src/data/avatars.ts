@@ -7,8 +7,3 @@ export const AVATARS: string[] = Array.from(
 export function avatarForIndex(i: number): string {
   return AVATARS[((i % AVATARS.length) + AVATARS.length) % AVATARS.length]
 }
-
-export function nextAvatar(current: string | undefined): string {
-  const idx = current ? AVATARS.indexOf(current) : -1
-  return AVATARS[(idx + 1) % AVATARS.length]
-}

@@ -1,19 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ChevronRight, Eye, EyeOff } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Eye, EyeOff } from 'lucide-react'
 import Screen from '../components/Screen'
 import ConfirmBar from '../components/ConfirmBar'
 import { PassCard, RoleCard } from '../components/RoleCard'
 import { DiscussionView, ResultView } from '../components/RoundViews'
 import InstallPrompt from '../components/InstallPrompt'
+import { RevealProgress } from '../components/RevealProgress'
 import { useGame } from '../game/state'
 import { clueOrder } from '../game/machine'
+import { dealCard, type CardFlags } from '../game/cards'
 import type { Pair, Player } from '../game/types'
-
-function fellowSpies(players: Player[], me: Player): string[] {
-  return players.filter((p) => p.isSpy && p.id !== me.id).map((p) => p.name)
-}
 
 /** One player's turn with the phone: covered until they choose to look. */
 function SecretCard({
@@ -21,27 +19,34 @@ function SecretCard({
   players,
   pair,
   shown,
-  spiesKnowEachOther,
-  civiliansSeeHint,
+  flags,
+  onPickAvatar,
 }: {
   player: Player
   players: Player[]
   pair: Pair
   shown: boolean
-  spiesKnowEachOther: boolean
-  civiliansSeeHint: boolean
+  flags: CardFlags
+  onPickAvatar?: (avatar: string) => void
 }) {
-  if (!shown) return <PassCard name={player.name} avatar={player.avatar} />
+  if (!shown) {
+    return (
+      <PassCard name={player.name} avatar={player.avatar} onPickAvatar={onPickAvatar} />
+    )
+  }
+  const otherSpies = players
+    .filter((p) => p.isSpy && p.id !== player.id)
+    .map((p) => p.name)
+  const card = dealCard(pair, player.isSpy, otherSpies, flags)
   return (
     <RoleCard
       name={player.name}
-      isSpy={player.isSpy}
-      word={player.isSpy ? pair.spy : pair.civilian}
+      isSpy={card.isSpy}
+      word={card.word}
       hintLevel={pair.hintLevel}
-      fellowSpyNames={
-        player.isSpy && spiesKnowEachOther ? fellowSpies(players, player) : undefined
-      }
-      spyHint={!player.isSpy && civiliansSeeHint ? pair.spy : undefined}
+      fellowSpyNames={card.fellowSpyNames}
+      spyHint={card.spyHint}
+      unaware={card.unaware}
     />
   )
 }
@@ -60,10 +65,13 @@ export default function LocalGame() {
   const revealAnswer = useGame((s) => s.revealAnswer)
   const playAgain = useGame((s) => s.playAgainSamePlayers)
   const startRound = useGame((s) => s.startRound)
+  const setAvatar = useGame((s) => s.setAvatar)
 
   const [shown, setShown] = useState(false)
   const [peekOpen, setPeekOpen] = useState(false)
   const [confirmReveal, setConfirmReveal] = useState(false)
+  // Furthest card reached this round, so the track can jump forward again after going back.
+  const [furthest, setFurthest] = useState(revealIndex)
 
   if (phase === 'lobby' || !pair || players.length === 0) {
     return <Navigate to="/local" replace />
@@ -72,15 +80,23 @@ export default function LocalGame() {
   if (phase === 'reveal') {
     const player = players[revealIndex] ?? players[0]
     const isLast = revealIndex >= players.length - 1
+    const reached = Math.max(furthest, revealIndex)
+    const jump = (i: number) => {
+      setShown(false)
+      setRevealIndex(i)
+    }
     const back = () => {
       if (shown) setShown(false)
-      else if (revealIndex > 0) setRevealIndex(revealIndex - 1)
+      else if (revealIndex > 0) jump(revealIndex - 1)
       else navigate('/local')
     }
     const next = () => {
       setShown(false)
       if (isLast) goToDiscussion()
-      else setRevealIndex(revealIndex + 1)
+      else {
+        setFurthest(Math.max(reached, revealIndex + 1))
+        setRevealIndex(revealIndex + 1)
+      }
     }
     return (
       <Screen
@@ -92,32 +108,45 @@ export default function LocalGame() {
           </span>
         }
         footer={
-          shown ? (
-            <button type="button" className="btn-primary w-full" onClick={next}>
-              <EyeOff size={20} />
-              {isLast ? t('reveal.hideAndDiscuss') : t('reveal.hideAndPass')}
+          <div className="flex gap-2">
+            <button type="button" className="btn-secondary px-4" onClick={back}>
+              <ChevronLeft size={20} className="rtl:rotate-180" />
+              {t('common.back')}
             </button>
-          ) : (
-            <button
-              type="button"
-              className="btn-primary w-full"
-              onClick={() => setShown(true)}
-            >
-              <Eye size={20} />
-              {t('reveal.show')}
-            </button>
-          )
+            {shown ? (
+              <button type="button" className="btn-primary flex-1" onClick={next}>
+                <EyeOff size={20} />
+                {isLast ? t('reveal.hideAndDiscuss') : t('reveal.hideAndPass')}
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn-primary flex-1"
+                onClick={() => setShown(true)}
+              >
+                <Eye size={20} />
+                {t('reveal.show')}
+              </button>
+            )}
+          </div>
         }
       >
-        <div className="flex flex-1 flex-col justify-center">
+        <RevealKeys onBack={back} onForward={shown ? next : () => setShown(true)} />
+        <RevealProgress
+          players={players}
+          current={revealIndex}
+          furthest={reached}
+          onJump={jump}
+        />
+        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
           <SecretCard
             key={`${player.id}-${shown}`}
             player={player}
             players={players}
             pair={pair}
             shown={shown}
-            spiesKnowEachOther={settings.spiesKnowEachOther}
-            civiliansSeeHint={settings.civiliansSeeHint}
+            flags={settings}
+            onPickAvatar={(a) => setAvatar(player.id, a)}
           />
         </div>
       </Screen>
@@ -129,6 +158,7 @@ export default function LocalGame() {
       <Screen
         title={t('discuss.title')}
         back="/"
+        wide
         footer={
           <>
             <button
@@ -173,8 +203,7 @@ export default function LocalGame() {
           <PeekPanel
             players={players}
             pair={pair}
-            spiesKnowEachOther={settings.spiesKnowEachOther}
-            civiliansSeeHint={settings.civiliansSeeHint}
+            flags={settings}
             onDone={() => setPeekOpen(false)}
           />
         )}
@@ -221,14 +250,12 @@ export default function LocalGame() {
 function PeekPanel({
   players,
   pair,
-  spiesKnowEachOther,
-  civiliansSeeHint,
+  flags,
   onDone,
 }: {
   players: Player[]
   pair: Pair
-  spiesKnowEachOther: boolean
-  civiliansSeeHint: boolean
+  flags: CardFlags
   onDone: () => void
 }) {
   const { t } = useTranslation()
@@ -269,8 +296,7 @@ function PeekPanel({
             players={players}
             pair={pair}
             shown={shown}
-            spiesKnowEachOther={spiesKnowEachOther}
-            civiliansSeeHint={civiliansSeeHint}
+            flags={flags}
           />
           {shown ? (
             <button type="button" className="btn-primary w-full" onClick={onDone}>
@@ -291,4 +317,23 @@ function PeekPanel({
       )}
     </section>
   )
+}
+
+/** Desktop: left arrow goes back, right arrow shows the card or passes on. */
+function RevealKeys({ onBack, onForward }: { onBack: () => void; onForward: () => void }) {
+  const latest = useRef({ onBack, onForward })
+  useEffect(() => {
+    latest.current = { onBack, onForward }
+  })
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.altKey || e.ctrlKey || e.metaKey || e.repeat) return
+      const rtl = document.documentElement.dir === 'rtl'
+      if (e.key === (rtl ? 'ArrowRight' : 'ArrowLeft')) latest.current.onBack()
+      else if (e.key === (rtl ? 'ArrowLeft' : 'ArrowRight')) latest.current.onForward()
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+  return null
 }

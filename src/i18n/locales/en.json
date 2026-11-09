@@ -61,7 +61,8 @@
     "minutes_other": "{{count}} min",
     "none": "None",
     "start": "Start round",
-    "civiliansSee": "Civilians see it"
+    "civiliansSee": "Civilians see it",
+    "spiesUnaware": "Don't know it"
   },
   "players": {
     "namePlaceholder": "Add a player",
@@ -74,7 +75,9 @@
     "needMore_one": "Add {{count}} more player to start.",
     "needMore_other": "Add {{count}} more players to start.",
     "tip": "Drag to match your seating order; cards go round in this order.",
-    "reorder": "Move {{name}}"
+    "reorder": "Move {{name}}",
+    "pickAvatar": "Pick a picture for {{name}}",
+    "avatarN": "Picture {{n}}"
   },
   "words": {
     "selectAll": "Select all",
@@ -95,7 +98,11 @@
     "knowHint": "Spies see the other spies on their card.",
     "knowNeedsTwo": "Only matters with two or more spies.",
     "pickHint": "Tap one number, or several to keep everyone guessing.",
-    "randomPick": "Each round randomly has {{list}} spies. Nobody knows how many."
+    "randomPick": "Each round randomly has {{list}} spies. Nobody knows how many.",
+    "unawareLabel": "Spies don't know they're spies",
+    "unawareHint": "Every card just shows a word. The spy's word is a different one, and nobody knows who has it, not even the spy.",
+    "unawareNeedsWord": "Needs the Similar word or Close hint, so the spy gets a word to play with.",
+    "knowUnaware": "Off while spies don't know they're spies."
   },
   "hint": {
     "intro": "What the spy sees instead of the real word. Less help makes the spy easier to catch.",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "Civilians see the spy's hint",
     "civiliansSeeDesc": "Everyone else also sees what the spy got, so they know which clues give too much away.",
-    "civiliansSeeNone": "With No hint there is nothing to show."
+    "civiliansSeeNone": "With No hint there is nothing to show.",
+    "civiliansSeeUnaware": "Off while spies don't know they're spies, since it would give them away."
   },
   "timer": {
     "intro": "Countdown for the discussion. You can pause or restart it anytime.",
@@ -142,13 +150,17 @@
     "noHintTip": "Listen closely and bluff.",
     "otherSpies": "Other spies",
     "onlySpy": "You are the only spy.",
-    "spySees": "The spy sees"
+    "spySees": "The spy sees",
+    "roleUnknown": "Spy or civilian?",
+    "unawareTip": "Someone may have a different word without knowing it. It could be you."
   },
   "reveal": {
     "title": "Cards",
     "show": "Show my card",
     "hideAndPass": "Hide and pass on",
-    "hideAndDiscuss": "Hide and start discussion"
+    "hideAndDiscuss": "Hide and start discussion",
+    "progress": "Players",
+    "goTo": "Go to {{name}}"
   },
   "peek": {
     "button": "Check my card",

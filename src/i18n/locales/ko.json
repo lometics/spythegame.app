@@ -61,7 +61,8 @@
     "minutes_other": "{{count}}분",
     "none": "없음",
     "start": "라운드 시작",
-    "civiliansSee": "시민도 봄"
+    "civiliansSee": "시민도 봄",
+    "spiesUnaware": "본인도 모름"
   },
   "players": {
     "namePlaceholder": "플레이어 추가",
@@ -74,7 +75,9 @@
     "needMore_one": "시작하려면 {{count}}명을 더 추가하세요.",
     "needMore_other": "시작하려면 {{count}}명을 더 추가하세요.",
     "tip": "앉은 순서대로 끌어서 정렬하세요. 카드는 이 순서로 돌아갑니다.",
-    "reorder": "{{name}} 이동"
+    "reorder": "{{name}} 이동",
+    "pickAvatar": "{{name}}의 사진 선택",
+    "avatarN": "사진 {{n}}"
   },
   "words": {
     "selectAll": "전체 선택",
@@ -95,7 +98,11 @@
     "knowHint": "스파이는 카드에서 다른 스파이를 볼 수 있어요.",
     "knowNeedsTwo": "스파이가 2명 이상일 때만 적용돼요.",
     "pickHint": "숫자를 하나, 또는 여러 개 골라 모두가 추측하게 하세요.",
-    "randomPick": "라운드마다 스파이 수가 {{list}} 중에서 무작위로 정해져요. 몇 명인지 아무도 몰라요."
+    "randomPick": "라운드마다 스파이 수가 {{list}} 중에서 무작위로 정해져요. 몇 명인지 아무도 몰라요.",
+    "unawareLabel": "스파이는 자신이 스파이인 줄 몰라요",
+    "unawareHint": "모든 카드에 단어만 보여요. 스파이의 단어만 다르고, 누가 가졌는지는 스파이 본인도 몰라요.",
+    "unawareNeedsWord": "스파이가 쓸 단어가 필요해서 '비슷한 단어'나 '가까운 힌트'에서만 쓸 수 있어요.",
+    "knowUnaware": "스파이가 자기 역할을 모르는 동안에는 꺼져요."
   },
   "hint": {
     "intro": "스파이가 진짜 단어 대신 보는 것. 힌트가 적을수록 스파이를 잡기 쉬워요.",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "시민도 스파이의 힌트를 봐요",
     "civiliansSeeDesc": "다른 사람들도 스파이가 받은 것을 볼 수 있어서 어떤 힌트가 너무 많이 알려 주는지 알 수 있어요.",
-    "civiliansSeeNone": "'힌트 없음'에서는 보여 줄 것이 없어요."
+    "civiliansSeeNone": "'힌트 없음'에서는 보여 줄 것이 없어요.",
+    "civiliansSeeUnaware": "스파이가 자기 역할을 모르는 동안에는 꺼져요. 켜면 스파이가 눈치채요."
   },
   "timer": {
     "intro": "토론 카운트다운. 언제든 일시정지하거나 다시 시작할 수 있어요.",
@@ -142,13 +150,17 @@
     "noHintTip": "잘 듣고 연기하세요.",
     "otherSpies": "다른 스파이",
     "onlySpy": "스파이는 당신뿐이에요.",
-    "spySees": "스파이가 보는 것"
+    "spySees": "스파이가 보는 것",
+    "roleUnknown": "스파이일까, 시민일까?",
+    "unawareTip": "누군가 모르는 채로 다른 단어를 받았을 수 있어요. 당신일 수도 있어요."
   },
   "reveal": {
     "title": "카드",
     "show": "내 카드 보기",
     "hideAndPass": "숨기고 넘기기",
-    "hideAndDiscuss": "숨기고 토론 시작"
+    "hideAndDiscuss": "숨기고 토론 시작",
+    "progress": "플레이어",
+    "goTo": "{{name}}(으)로 이동"
   },
   "peek": {
     "button": "내 카드 확인",

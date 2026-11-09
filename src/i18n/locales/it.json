@@ -61,7 +61,8 @@
     "minutes_other": "{{count}} min",
     "none": "Nessuno",
     "start": "Inizia il round",
-    "civiliansSee": "Visibile ai civili"
+    "civiliansSee": "Visibile ai civili",
+    "spiesUnaware": "Non lo sanno"
   },
   "players": {
     "namePlaceholder": "Aggiungi un giocatore",
@@ -74,7 +75,9 @@
     "needMore_one": "Aggiungi ancora {{count}} giocatore per iniziare.",
     "needMore_other": "Aggiungi ancora {{count}} giocatori per iniziare.",
     "tip": "Trascina per seguire l'ordine in cui siete seduti; le carte girano in quest'ordine.",
-    "reorder": "Sposta {{name}}"
+    "reorder": "Sposta {{name}}",
+    "pickAvatar": "Scegli un’immagine per {{name}}",
+    "avatarN": "Immagine {{n}}"
   },
   "words": {
     "selectAll": "Seleziona tutto",
@@ -95,7 +98,11 @@
     "knowHint": "Le spie vedono le altre spie sulla propria carta.",
     "knowNeedsTwo": "Conta solo con due o più spie.",
     "pickHint": "Tocca un numero, o più numeri per lasciare tutti nel dubbio.",
-    "randomPick": "Ogni round ha a caso {{list}} spie. Nessuno sa quante."
+    "randomPick": "Ogni round ha a caso {{list}} spie. Nessuno sa quante.",
+    "unawareLabel": "Le spie non sanno di essere spie",
+    "unawareHint": "Ogni carta mostra solo una parola. Quella della spia è diversa, e nessuno sa chi ce l’ha, nemmeno la spia.",
+    "unawareNeedsWord": "Serve l’indizio Parola simile o Indizio vicino, così la spia ha una parola con cui giocare.",
+    "knowUnaware": "Disattivato finché le spie non sanno di essere spie."
   },
   "hint": {
     "intro": "Cosa vede la spia al posto della parola vera. Meno aiuto rende la spia più facile da smascherare.",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "I civili vedono l’indizio della spia",
     "civiliansSeeDesc": "Anche gli altri vedono cosa ha ricevuto la spia, così sanno quali indizi rivelano troppo.",
-    "civiliansSeeNone": "Con «Nessun indizio» non c’è niente da mostrare."
+    "civiliansSeeNone": "Con «Nessun indizio» non c’è niente da mostrare.",
+    "civiliansSeeUnaware": "Disattivato finché le spie non sanno di essere spie, altrimenti lo capirebbero."
   },
   "timer": {
     "intro": "Conto alla rovescia per la discussione. Puoi metterlo in pausa o farlo ripartire quando vuoi.",
@@ -142,13 +150,17 @@
     "noHintTip": "Ascolta bene e bluffa.",
     "otherSpies": "Altre spie",
     "onlySpy": "Sei l'unica spia.",
-    "spySees": "La spia vede"
+    "spySees": "La spia vede",
+    "roleUnknown": "Spia o civile?",
+    "unawareTip": "Qualcuno potrebbe avere una parola diversa senza saperlo. Potresti essere tu."
   },
   "reveal": {
     "title": "Carte",
     "show": "Mostra la mia carta",
     "hideAndPass": "Nascondi e passa",
-    "hideAndDiscuss": "Nascondi e inizia la discussione"
+    "hideAndDiscuss": "Nascondi e inizia la discussione",
+    "progress": "Giocatori",
+    "goTo": "Vai a {{name}}"
   },
   "peek": {
     "button": "Rivedi la mia carta",

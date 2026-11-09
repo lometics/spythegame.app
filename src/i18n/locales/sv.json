@@ -61,7 +61,8 @@
     "minutes_other": "{{count}} min",
     "none": "Inga",
     "start": "Starta runda",
-    "civiliansSee": "Civila ser den"
+    "civiliansSee": "Civila ser den",
+    "spiesUnaware": "Vet inte om det"
   },
   "players": {
     "namePlaceholder": "Lägg till spelare",
@@ -74,7 +75,9 @@
     "needMore_one": "Lägg till {{count}} spelare till för att starta.",
     "needMore_other": "Lägg till {{count}} spelare till för att starta.",
     "tip": "Dra för att matcha hur ni sitter; korten går runt i den här ordningen.",
-    "reorder": "Flytta {{name}}"
+    "reorder": "Flytta {{name}}",
+    "pickAvatar": "Välj en bild för {{name}}",
+    "avatarN": "Bild {{n}}"
   },
   "words": {
     "selectAll": "Välj alla",
@@ -95,7 +98,11 @@
     "knowHint": "Spionerna ser de andra spionerna på sitt kort.",
     "knowNeedsTwo": "Spelar bara roll med två eller fler spioner.",
     "pickHint": "Tryck på ett tal, eller flera så att alla får gissa.",
-    "randomPick": "Varje runda har slumpmässigt {{list}} spioner. Ingen vet hur många."
+    "randomPick": "Varje runda har slumpmässigt {{list}} spioner. Ingen vet hur många.",
+    "unawareLabel": "Spioner vet inte att de är spioner",
+    "unawareHint": "Varje kort visar bara ett ord. Spionen har ett annat, och ingen vet vem som har det, inte ens spionen.",
+    "unawareNeedsWord": "Kräver ledtråden Liknande ord eller Nära ledtråd, så att spionen får ett ord att spela med.",
+    "knowUnaware": "Av så länge spioner inte vet att de är spioner."
   },
   "hint": {
     "intro": "Det spionen ser i stället för det riktiga ordet. Mindre hjälp gör spionen lättare att avslöja.",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "Civila ser spionens ledtråd",
     "civiliansSeeDesc": "Alla andra ser också vad spionen fick, så de vet vilka ledtrådar som avslöjar för mycket.",
-    "civiliansSeeNone": "Med ”Ingen ledtråd” finns inget att visa."
+    "civiliansSeeNone": "Med ”Ingen ledtråd” finns inget att visa.",
+    "civiliansSeeUnaware": "Av så länge spioner inte vet att de är spioner, annars skulle det avslöja dem."
   },
   "timer": {
     "intro": "Nedräkning för diskussionen. Du kan pausa eller starta om den när som helst.",
@@ -142,13 +150,17 @@
     "noHintTip": "Lyssna noga och bluffa.",
     "otherSpies": "Andra spioner",
     "onlySpy": "Du är den enda spionen.",
-    "spySees": "Spionen ser"
+    "spySees": "Spionen ser",
+    "roleUnknown": "Spion eller civil?",
+    "unawareTip": "Någon kan ha ett annat ord utan att veta om det. Det kan vara du."
   },
   "reveal": {
     "title": "Kort",
     "show": "Visa mitt kort",
     "hideAndPass": "Dölj och skicka vidare",
-    "hideAndDiscuss": "Dölj och starta diskussion"
+    "hideAndDiscuss": "Dölj och starta diskussion",
+    "progress": "Spelare",
+    "goTo": "Gå till {{name}}"
   },
   "peek": {
     "button": "Kolla mitt kort",

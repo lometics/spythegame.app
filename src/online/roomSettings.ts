@@ -20,6 +20,7 @@ export type RoomSettingsData = {
   spyCount: number[]
   spiesKnowEachOther: boolean
   civiliansSeeHint: boolean
+  unawareSpy: boolean
   categories: string[]
   lists: Record<string, Omit<CustomList, 'id'>>
 }
@@ -82,6 +83,7 @@ export function normalizeRoomSettings(raw: unknown): RoomSettings | null {
       ),
       spiesKnowEachOther: r.spiesKnowEachOther === true,
       civiliansSeeHint: r.civiliansSeeHint === true,
+      unawareSpy: r.unawareSpy === true,
       pairSource: { selectedCategoryIds: asStrings(r.categories) },
     },
     lists,
@@ -95,6 +97,7 @@ export function toRoomData({ settings, lists }: RoomSettings): RoomSettingsData 
     spyCount: settings.spyCount,
     spiesKnowEachOther: settings.spiesKnowEachOther,
     civiliansSeeHint: settings.civiliansSeeHint,
+    unawareSpy: settings.unawareSpy,
     categories: settings.pairSource.selectedCategoryIds,
     lists: Object.fromEntries(
       lists.map(({ id, ...rest }) => [

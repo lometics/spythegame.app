@@ -20,14 +20,16 @@ export function DiscussionView({
 }) {
   const { t } = useTranslation()
   return (
-    <>
-      <div className="text-center">
-        <div className="text-sm muted">{t('discuss.starts')}</div>
-        <div className="text-3xl font-extrabold text-accent">{order[0]?.name}</div>
-        <p className="mx-auto mt-2 max-w-xs text-sm muted">{t('discuss.howTo')}</p>
-      </div>
+    <div className="flex flex-col gap-6 md:grid md:grid-cols-2 md:items-start md:gap-8">
+      <div className="flex flex-col gap-6">
+        <div className="text-center">
+          <div className="text-sm muted">{t('discuss.starts')}</div>
+          <div className="text-3xl font-extrabold text-accent">{order[0]?.name}</div>
+          <p className="mx-auto mt-2 max-w-xs text-sm muted">{t('discuss.howTo')}</p>
+        </div>
 
-      {timerSeconds > 0 && <DiscussionTimer seconds={timerSeconds} />}
+        {timerSeconds > 0 && <DiscussionTimer seconds={timerSeconds} />}
+      </div>
 
       <section>
         <div className="section-label">{t('discuss.order')}</div>
@@ -47,7 +49,7 @@ export function DiscussionView({
           ))}
         </ol>
       </section>
-    </>
+    </div>
   )
 }
 

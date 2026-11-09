@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { AvatarButton } from './AvatarPicker'
 import { Eye } from 'lucide-react'
 import type { Difficulty } from '../game/types'
 
@@ -21,6 +22,7 @@ export function RoleCard({
   hintLevel = 'word',
   fellowSpyNames,
   spyHint,
+  unaware = false,
 }: {
   name: string
   isSpy: boolean
@@ -31,6 +33,8 @@ export function RoleCard({
   fellowSpyNames?: string[]
   /** Shown to civilians when "civilians see the spy's hint" is on. */
   spyHint?: string
+  /** Nobody is told their role: the spy holds a different word without knowing it. */
+  unaware?: boolean
 }) {
   const { t } = useTranslation()
   return (
@@ -40,7 +44,7 @@ export function RoleCard({
         <div
           className={`text-3xl font-extrabold ${isSpy ? 'text-spy' : 'text-foreground'}`}
         >
-          {isSpy ? t('card.spy') : t('card.civilian')}
+          {unaware ? t('card.roleUnknown') : isSpy ? t('card.spy') : t('card.civilian')}
         </div>
       </div>
 
@@ -59,6 +63,9 @@ export function RoleCard({
           <p className="mx-auto max-w-xs text-sm muted">
             {t(word ? SPY_TIP[hintLevel] : SPY_TIP.none)}
           </p>
+        )}
+        {unaware && (
+          <p className="mx-auto max-w-xs text-sm muted">{t('card.unawareTip')}</p>
         )}
       </div>
 
@@ -89,12 +96,22 @@ export function RoleCard({
   )
 }
 
-/** Covered card: who should take the phone next. */
-export function PassCard({ name, avatar }: { name: string; avatar?: string }) {
+/** Covered card: who should take the phone next. Tapping the picture lets them change it. */
+export function PassCard({
+  name,
+  avatar,
+  onPickAvatar,
+}: {
+  name: string
+  avatar?: string
+  onPickAvatar?: (avatar: string) => void
+}) {
   const { t } = useTranslation()
   return (
     <div className="card animate-in flex flex-col items-center gap-4 px-6 py-10 text-center">
-      {avatar ? (
+      {avatar && onPickAvatar ? (
+        <AvatarButton name={name} avatar={avatar} onPick={onPickAvatar} className="h-24 w-24 border-2" />
+      ) : avatar ? (
         <img
           src={avatar}
           alt=""

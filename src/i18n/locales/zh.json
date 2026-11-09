@@ -61,7 +61,8 @@
     "minutes_other": "{{count}} 分钟",
     "none": "无",
     "start": "开始回合",
-    "civiliansSee": "平民可见"
+    "civiliansSee": "平民可见",
+    "spiesUnaware": "自己不知道"
   },
   "players": {
     "namePlaceholder": "添加玩家",
@@ -74,7 +75,9 @@
     "needMore_one": "再添加 {{count}} 名玩家即可开始。",
     "needMore_other": "再添加 {{count}} 名玩家即可开始。",
     "tip": "拖动排成你们的座位顺序；卡牌按此顺序传递。",
-    "reorder": "移动 {{name}}"
+    "reorder": "移动 {{name}}",
+    "pickAvatar": "为{{name}}选择头像",
+    "avatarN": "头像{{n}}"
   },
   "words": {
     "selectAll": "全选",
@@ -95,7 +98,11 @@
     "knowHint": "间谍能在自己的卡片上看到其他间谍。",
     "knowNeedsTwo": "仅在有两名及以上间谍时生效。",
     "pickHint": "选一个数字，或选多个让大家猜不到。",
-    "randomPick": "每局随机有 {{list}} 名间谍。没人知道有几个。"
+    "randomPick": "每局随机有 {{list}} 名间谍。没人知道有几个。",
+    "unawareLabel": "间谍不知道自己是间谍",
+    "unawareHint": "每张卡只显示一个词。间谍的词不同，但没人知道是谁，连间谍自己也不知道。",
+    "unawareNeedsWord": "需要“相近词”或“相近提示”，间谍才有词可用。",
+    "knowUnaware": "间谍不知道自己身份时会关闭。"
   },
   "hint": {
     "intro": "间谍看到的内容，用来代替真正的词。提示越少，间谍越容易被识破。",
@@ -119,7 +126,8 @@
     },
     "civiliansSeeLabel": "平民也能看到卧底的提示",
     "civiliansSeeDesc": "其他人也能看到卧底拿到了什么，从而知道哪些描述说得太多。",
-    "civiliansSeeNone": "选择“无提示”时没有可显示的内容。"
+    "civiliansSeeNone": "选择“无提示”时没有可显示的内容。",
+    "civiliansSeeUnaware": "间谍不知道自己身份时会关闭，否则会暴露他们。"
   },
   "timer": {
     "intro": "讨论倒计时，可随时暂停或重新开始。",
@@ -142,13 +150,17 @@
     "noHintTip": "仔细听，靠蒙混过关。",
     "otherSpies": "其他间谍",
     "onlySpy": "你是唯一的间谍。",
-    "spySees": "卧底看到"
+    "spySees": "卧底看到",
+    "roleUnknown": "间谍还是平民？",
+    "unawareTip": "也许有人拿到了不同的词却不知道。可能就是你。"
   },
   "reveal": {
     "title": "卡片",
     "show": "查看我的卡片",
     "hideAndPass": "隐藏并传给下一位",
-    "hideAndDiscuss": "隐藏并开始讨论"
+    "hideAndDiscuss": "隐藏并开始讨论",
+    "progress": "玩家",
+    "goTo": "前往{{name}}"
   },
   "peek": {
     "button": "查看我的卡片",

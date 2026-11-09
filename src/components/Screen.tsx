@@ -11,10 +11,15 @@ type Props = {
   children: ReactNode
   /** Sticky bottom actions (primary button etc.). */
   footer?: ReactNode
+  /**
+   * On tablets and desktops content sits in a centred, readable column; `wide`
+   * pages (dashboards, grids) use the whole container instead.
+   */
+  wide?: boolean
 }
 
 /** Page shell: top bar, scrolling content, sticky bottom action area. */
-export default function Screen({ title, back, right, children, footer }: Props) {
+export default function Screen({ title, back, right, children, footer, wide }: Props) {
   const { t } = useTranslation()
   const navigate = useNavigate()
 
@@ -26,7 +31,7 @@ export default function Screen({ title, back, right, children, footer }: Props) 
 
   return (
     <div className="flex flex-1 flex-col">
-      <header className="safe-top sticky top-0 z-20 -mx-4 bg-background/90 px-2 backdrop-blur">
+      <header className="safe-top sticky top-0 z-20 -mx-4 bg-background/90 px-2 backdrop-blur md:-mx-8 md:px-6">
         <div className="flex h-14 items-center gap-1">
           {back !== undefined ? (
             <button
@@ -46,10 +51,18 @@ export default function Screen({ title, back, right, children, footer }: Props) 
           <div className="flex w-11 justify-end">{right}</div>
         </div>
       </header>
-      <div className="animate-in flex flex-1 flex-col gap-6 pt-2">
+      <div
+        className={`animate-in flex flex-1 flex-col gap-6 pt-2 ${
+          wide ? 'md:pt-4' : 'md:mx-auto md:w-full md:max-w-2xl md:pt-4'
+        }`}
+      >
         {children}
       </div>
-      {footer && <div className="action-bar flex flex-col gap-2">{footer}</div>}
+      {footer && (
+        <div className="action-bar flex flex-col gap-2 md:flex-row md:px-[max(0px,calc((100%-42rem)/2))] md:flex-wrap md:items-end md:[&>*]:flex-1 md:[&>p]:basis-full">
+          {footer}
+        </div>
+      )}
     </div>
   )
 }

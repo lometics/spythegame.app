@@ -29,6 +29,7 @@ import { sortedRoster, type RosterEntry } from '../online/roster'
 import { seedRoomSettings } from '../online/roomSettings'
 import { useGame } from '../game/state'
 import { clueOrder } from '../game/machine'
+import { DESKTOP, useMediaQuery } from '../useMediaQuery'
 
 export default function OnlineRoom() {
   const { t } = useTranslation()
@@ -53,6 +54,7 @@ export default function OnlineRoom() {
   const [peekOpen, setPeekOpen] = useState(false)
   const [confirmReveal, setConfirmReveal] = useState(false)
   const [confirmLeave, setConfirmLeave] = useState(false)
+  const desktop = useMediaQuery(DESKTOP)
 
   useEffect(() => {
     if (!isFirebaseConfigured()) return
@@ -163,6 +165,7 @@ export default function OnlineRoom() {
       hintLevel={room.round?.hintLevel}
       fellowSpyNames={myPrivate.fellowSpyNames ?? undefined}
       spyHint={myPrivate.spyHint ?? undefined}
+      unaware={myPrivate.unaware}
     />
   )
 
@@ -214,6 +217,7 @@ export default function OnlineRoom() {
       <Screen
         title={t('discuss.title')}
         back="/"
+        wide
         footer={
           <>
             <button
@@ -306,6 +310,7 @@ export default function OnlineRoom() {
     <Screen
       title={t('online.roomTitle', { code })}
       back="/"
+      wide={desktop}
       footer={
         <>
           {(blocker || error) && (
@@ -322,38 +327,60 @@ export default function OnlineRoom() {
         </>
       }
     >
-      <ShareCard code={code} />
-      <PlayerList code={code} uid={uid} roster={roster} />
-      {room.settings && (
-        <section>
-          <div className="section-label">{t('online.roundSettings')}</div>
-          <SettingsSummary
-            playerCount={roster.length}
-            room={{ code, settings: room.settings }}
-          />
-        </section>
-      )}
-      <section className="mt-auto">
-        {confirmLeave ? (
-          <ConfirmBar
-            question={t('online.leaveConfirm')}
-            confirmLabel={t('online.leaveRoom')}
-            danger
-            onCancel={() => setConfirmLeave(false)}
-            onConfirm={leave}
-          />
-        ) : (
-          <button
-            type="button"
-            className="btn-secondary w-full"
-            onClick={() => setConfirmLeave(true)}
-          >
-            <LogOut size={18} />
-            {t('online.leaveRoom')}
-          </button>
-        )}
-      </section>
+      {/* Desktop: invite and players on the left, settings on the right. */}
+      <div className="flex flex-1 flex-col gap-6 lg:grid lg:flex-none lg:grid-cols-2 lg:items-start lg:gap-10">
+        <div className="flex flex-col gap-6">
+          <ShareCard code={code} />
+          <PlayerList code={code} uid={uid} roster={roster} />
+        </div>
+        <div className="flex flex-1 flex-col gap-6">
+          {room.settings && (
+            <section>
+              <div className="section-label">{t('online.roundSettings')}</div>
+              <SettingsSummary
+                playerCount={roster.length}
+                room={{ code, settings: room.settings }}
+              />
+            </section>
+          )}
+          <LeaveRoom confirm={confirmLeave} setConfirm={setConfirmLeave} onLeave={leave} />
+        </div>
+      </div>
     </Screen>
+  )
+}
+
+function LeaveRoom({
+  confirm,
+  setConfirm,
+  onLeave,
+}: {
+  confirm: boolean
+  setConfirm: (v: boolean) => void
+  onLeave: () => void
+}) {
+  const { t } = useTranslation()
+  return (
+    <section className="mt-auto">
+      {confirm ? (
+        <ConfirmBar
+          question={t('online.leaveConfirm')}
+          confirmLabel={t('online.leaveRoom')}
+          danger
+          onCancel={() => setConfirm(false)}
+          onConfirm={onLeave}
+        />
+      ) : (
+        <button
+          type="button"
+          className="btn-secondary w-full"
+          onClick={() => setConfirm(true)}
+        >
+          <LogOut size={18} />
+          {t('online.leaveRoom')}
+        </button>
+      )}
+    </section>
   )
 }
 
