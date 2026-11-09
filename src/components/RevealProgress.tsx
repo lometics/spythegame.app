@@ -23,7 +23,7 @@ export function RevealProgress({
   const fill = n > 1 ? (current / (n - 1)) * (100 - 2 * inset) : 0
 
   return (
-    <nav aria-label={t('reveal.progress')} className="relative w-full">
+    <nav aria-label={t('reveal.progress')} className="relative">
       <div
         className="absolute top-1/2 h-1 -translate-y-1/2 rounded-full bg-surface-2"
         style={{ insetInlineStart: `${inset}%`, insetInlineEnd: `${inset}%` }}

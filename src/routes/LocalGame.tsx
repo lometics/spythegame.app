@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ChevronLeft, ChevronRight, Eye, EyeOff } from 'lucide-react'
@@ -131,14 +131,13 @@ export default function LocalGame() {
           </div>
         }
       >
-        <RevealKeys onBack={back} onForward={shown ? next : () => setShown(true)} />
         <RevealProgress
           players={players}
           current={revealIndex}
           furthest={reached}
           onJump={jump}
         />
-        <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center">
+        <div className="flex flex-1 flex-col justify-center">
           <SecretCard
             key={`${player.id}-${shown}`}
             player={player}
@@ -158,7 +157,6 @@ export default function LocalGame() {
       <Screen
         title={t('discuss.title')}
         back="/"
-        wide
         footer={
           <>
             <button
@@ -317,23 +315,4 @@ function PeekPanel({
       )}
     </section>
   )
-}
-
-/** Desktop: left arrow goes back, right arrow shows the card or passes on. */
-function RevealKeys({ onBack, onForward }: { onBack: () => void; onForward: () => void }) {
-  const latest = useRef({ onBack, onForward })
-  useEffect(() => {
-    latest.current = { onBack, onForward }
-  })
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.altKey || e.ctrlKey || e.metaKey || e.repeat) return
-      const rtl = document.documentElement.dir === 'rtl'
-      if (e.key === (rtl ? 'ArrowRight' : 'ArrowLeft')) latest.current.onBack()
-      else if (e.key === (rtl ? 'ArrowLeft' : 'ArrowRight')) latest.current.onForward()
-    }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [])
-  return null
 }

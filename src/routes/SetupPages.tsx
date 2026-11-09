@@ -26,16 +26,6 @@ function DoneFooter() {
 
 export function PlayersPage() {
   const { t } = useTranslation()
-  return (
-    <Screen title={t('setup.players')} back footer={<DoneFooter />}>
-      <PlayersEditor />
-    </Screen>
-  )
-}
-
-/** Add, rename, reorder, re-picture and remove players; its own page on phones, a panel on desktop. */
-export function PlayersEditor() {
-  const { t } = useTranslation()
   const players = useGame((s) => s.players)
   const addPlayer = useGame((s) => s.addPlayer)
   const removePlayer = useGame((s) => s.removePlayer)
@@ -91,7 +81,7 @@ export function PlayersEditor() {
   }
 
   return (
-    <>
+    <Screen title={t('setup.players')} back footer={<DoneFooter />}>
       <form className="flex gap-2" onSubmit={submit}>
         <input
           ref={inputRef}
@@ -186,7 +176,7 @@ export function PlayersEditor() {
           ? t('players.needMore', { count: 3 - players.length })
           : t('players.tip')}
       </p>
-    </>
+    </Screen>
   )
 }
 
@@ -209,7 +199,6 @@ export function WordsPage() {
     <Screen
       title={t('setup.words')}
       back
-      wide
       footer={
         <>
           {selected.length === 0 && (
@@ -232,7 +221,7 @@ export function WordsPage() {
         </button>
       </div>
 
-      <div className="group-list group-grid">
+      <div className="group-list">
         {categories.map((c) => {
           const Icon = iconFor(c.id, c.icon)
           const sel = selectedSet.has(c.id)
@@ -411,7 +400,7 @@ export function HintPage() {
   return (
     <Screen title={t('setup.hint')} back footer={<DoneFooter />}>
       <p className="px-1 muted">{t('hint.intro')}</p>
-      <div className="grid gap-2 md:grid-cols-2" role="radiogroup">
+      <div className="space-y-2" role="radiogroup">
         {DIFFICULTIES.map((lvl) => (
           <button
             key={lvl}
