@@ -2,7 +2,7 @@
 
 Vite + React + TypeScript + Tailwind + Zustand. Online rooms use Firebase (Realtime Database + Anonymous Auth).
 
-Signing in with Google is optional (Settings → Account). Signed in, `src/account/` keeps the game settings and own word lists at `users/<uid>` and syncs them between devices: newest settings win as a block, lists merge one by one (newest copy wins) and deleted lists leave a tombstone so they don't come back. An anonymous user who signs in is upgraded in place, so they stay in their room. Google sign-in has to be enabled in the Firebase console (Authentication → Sign-in method), and every domain the app runs on must be listed under Authentication → Settings → Authorized domains.
+Signing in with Google is optional: the home screen, Settings and a tip under your own word lists lead to the account page (`/account`), which shows the sync status and lets you sign out or delete the saved data. Signed in, `src/account/` keeps the game settings and own word lists at `users/<uid>` and syncs them between devices: newest settings win as a block, lists merge one by one (newest copy wins) and deleted lists leave a tombstone so they don't come back. An anonymous user who signs in is upgraded in place, so they stay in their room. Google sign-in has to be enabled in the Firebase console (Authentication → Sign-in method), and every domain the app runs on must be listed under Authentication → Settings → Authorized domains.
 
 ## Run locally
 

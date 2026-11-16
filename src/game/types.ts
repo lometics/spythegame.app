@@ -94,4 +94,6 @@ export type GameState = {
   deletedLists: Record<string, number>
   /** Signed-in Google account, or null (signing in is optional). */
   account: Account | null
+  /** The "sign in to keep your lists" tip was closed. */
+  syncNudgeDismissed: boolean
 }

@@ -5,18 +5,9 @@ import {
   type User,
 } from 'firebase/auth'
 import { getDatabase } from 'firebase/database'
+import { firebaseConfig as config, isFirebaseConfigured } from './firebaseConfig'
 
-const config = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-}
-
-export function isFirebaseConfigured(): boolean {
-  return Boolean(config.apiKey && config.databaseURL && config.projectId)
-}
+export { isFirebaseConfigured }
 
 const app = isFirebaseConfigured()
   ? getApps()[0] ?? initializeApp(config)

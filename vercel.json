@@ -16,7 +16,7 @@
       "destination": "/api/join?code=:code"
     },
     {
-      "source": "/(local|local/play|setup/[^/]+|lists/[^/]+|options|rules|list|online|room/[^/]+){/}?",
+      "source": "/(local|local/play|setup/[^/]+|lists/[^/]+|options|account|rules|list|online|room/[^/]+){/}?",
       "destination": "/index.html"
     }
   ],

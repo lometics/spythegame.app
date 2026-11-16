@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ChevronRight, Languages, Plus, UserRound } from 'lucide-react'
 import Screen from '../components/Screen'
-import AccountSection from '../components/AccountSection'
+import AccountBadge from '../components/AccountBadge'
+import GoogleLogo from '../components/GoogleLogo'
+import SyncStatusLine from '../components/SyncStatusLine'
+import { isFirebaseConfigured } from '../online/firebaseConfig'
 import { useGame } from '../game/state'
 import { iconFor } from '../game/icons'
 import { SUPPORTED, setLanguage } from '../i18n'
@@ -15,6 +18,7 @@ export default function Options() {
   const onlineName = useGame((s) => s.onlineName)
   const setOnlineName = useGame((s) => s.setOnlineName)
   const activeRoom = useGame((s) => s.activeRoom)
+  const account = useGame((s) => s.account)
   const [name, setName] = useState(onlineName)
   const currentLang = i18n.language?.split('-')[0] ?? 'en'
 
@@ -35,6 +39,32 @@ export default function Options() {
 
   return (
     <Screen title={t('options.title')} back>
+      {isFirebaseConfigured() && (
+        <section>
+          <div className="section-label">{t('account.label')}</div>
+          <button type="button" className="group-list row" onClick={() => navigate('/account')}>
+            {account ? (
+              <AccountBadge account={account} size={36} />
+            ) : (
+              <span className="row-icon">
+                <GoogleLogo />
+              </span>
+            )}
+            <span className="min-w-0 flex-1">
+              <span className="block truncate font-medium">
+                {account ? account.name || account.email : t('account.signIn')}
+              </span>
+              {account ? (
+                <SyncStatusLine className="mt-0.5" />
+              ) : (
+                <span className="block text-sm muted">{t('account.rowHint')}</span>
+              )}
+            </span>
+            <ChevronRight size={20} className="text-foreground/30 rtl:rotate-180" />
+          </button>
+        </section>
+      )}
+
       <section>
         <label className="section-label block" htmlFor="options-name">
           {t('online.yourName')}
@@ -114,8 +144,6 @@ export default function Options() {
         </div>
         <p className="px-1 pt-2 text-sm muted">{t('options.wordListsHint')}</p>
       </section>
-
-      <AccountSection />
 
       <a href="/privacy/" className="mt-auto px-1 pb-4 text-center text-sm muted underline">
         {t('options.privacy')}

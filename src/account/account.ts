@@ -6,10 +6,11 @@ import {
   linkWithPopup,
   signInWithCredential,
   signInWithPopup,
+  deleteUser,
   signOut as fbSignOut,
   type User,
 } from 'firebase/auth'
-import { onValue, ref, update } from 'firebase/database'
+import { onValue, ref, remove, update } from 'firebase/database'
 import { FirebaseError } from 'firebase/app'
 import { auth, db } from '../online/firebase'
 import { useGame } from '../game/state'
@@ -23,6 +24,7 @@ import {
   stableJson,
   type Profile,
 } from './profile'
+import { setSyncState } from './status'
 
 function toAccount(user: User): Account {
   const google = user.providerData.find((p) => p.providerId === 'google.com')
@@ -65,6 +67,20 @@ export async function signInWithGoogle(): Promise<Account> {
   return account
 }
 
+/**
+ * Deletes what the account has saved (and the sign-in itself, when Firebase
+ * allows it without signing in again). Settings and lists stay on this device.
+ */
+export async function deleteAccountData(): Promise<void> {
+  const user = auth?.currentUser
+  if (!db || !user || user.isAnonymous) return
+  stopSync()
+  await remove(ref(db, `users/${user.uid}`))
+  useGame.getState().setAccount(null)
+  // Needs a recent sign-in; if it's too long ago, signing out is enough.
+  await deleteUser(user).catch(() => auth && fbSignOut(auth))
+}
+
 /** Signs out; settings and lists stay on this device, they're just no longer synced. */
 export async function signOut(): Promise<void> {
   stopSync()
@@ -92,6 +108,7 @@ let stopCurrent: (() => void) | null = null
 function stopSync() {
   stopCurrent?.()
   stopCurrent = null
+  setSyncState('off')
 }
 
 const SAVE_DELAY_MS = 800
@@ -107,6 +124,14 @@ function startSync(uid: string) {
   let remote: Profile | null = null
   let loaded = false
   let timer: ReturnType<typeof setTimeout> | undefined
+  let online = true
+  let pending = 0
+  setSyncState('connecting')
+
+  const settle = () => {
+    if (!loaded) return
+    setSyncState(!online ? 'offline' : pending > 0 ? 'saving' : 'synced')
+  }
 
   const reconcile = () => {
     const state = useGame.getState()
@@ -123,7 +148,20 @@ function startSync(uid: string) {
     const writes = remoteUpdates(remote, merged)
     if (Object.keys(writes).length > 0) {
       // Offline writes are queued by the SDK and sent when the connection is back.
-      update(node, writes).catch((err) => console.warn('account sync failed', err))
+      pending++
+      settle()
+      update(node, writes)
+        .then(() => {
+          pending--
+          settle()
+        })
+        .catch((err) => {
+          pending--
+          console.warn('account sync failed', err)
+          setSyncState('error')
+        })
+    } else {
+      settle()
     }
   }
 
@@ -135,19 +173,28 @@ function startSync(uid: string) {
       clearTimeout(timer)
       reconcile()
     },
-    (err) => console.warn('account sync stopped', err),
+    (err) => {
+      console.warn('account sync stopped', err)
+      setSyncState('error')
+    },
   )
+  const offConnected = onValue(ref(db, '.info/connected'), (snap) => {
+    online = snap.val() === true
+    settle()
+  })
   const offStore = useGame.subscribe((s, prev) => {
     if (!loaded) return
     const now = syncedPart(s)
     const before = syncedPart(prev)
     if (now.every((v, i) => v === before[i])) return
     clearTimeout(timer)
+    setSyncState(online ? 'saving' : 'offline')
     timer = setTimeout(reconcile, SAVE_DELAY_MS)
   })
   stopCurrent = () => {
     clearTimeout(timer)
     offValue()
+    offConnected()
     offStore()
   }
 }

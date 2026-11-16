@@ -12,6 +12,9 @@ import {
 } from 'lucide-react'
 import { useGame } from '../game/state'
 import SeasonalDecor from '../components/SeasonalDecor'
+import AccountBadge from '../components/AccountBadge'
+import GoogleLogo from '../components/GoogleLogo'
+import { isFirebaseConfigured } from '../online/firebaseConfig'
 import { SEASON_BADGE } from '../game/icons'
 import { currentSeason } from '../game/season'
 
@@ -47,6 +50,7 @@ export default function Home() {
   const activeRoom = useGame((s) => s.activeRoom)
   const players = useGame((s) => s.players)
   const startRound = useGame((s) => s.startRound)
+  const account = useGame((s) => s.account)
   const roundInProgress = phase !== 'lobby' && players.length > 0
   // Returning groups get a one-tap restart with the same players and settings.
   const canQuickPlay = !roundInProgress && players.length >= 3
@@ -66,7 +70,22 @@ export default function Home() {
   return (
     <div className="relative flex flex-1 flex-col">
       <SeasonalDecor />
-      <header className="safe-top relative flex h-14 items-center justify-end">
+      <header className="safe-top relative flex h-14 items-center justify-between">
+        {!isFirebaseConfigured() ? (
+          <span />
+        ) : account ? (
+          <Link to="/account" className="btn-icon" aria-label={t('account.title')}>
+            <AccountBadge account={account} size={30} />
+          </Link>
+        ) : (
+          <Link
+            to="/account"
+            className="inline-flex h-9 items-center gap-2 rounded-full border border-border bg-surface px-3 text-sm font-semibold transition active:scale-95"
+          >
+            <GoogleLogo size={16} />
+            {t('account.signInShort')}
+          </Link>
+        )}
         <Link to="/options" className="btn-icon" aria-label={t('options.title')}>
           <Settings size={22} />
         </Link>

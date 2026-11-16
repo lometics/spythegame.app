@@ -37,6 +37,7 @@ const INITIAL: GameState = {
   settingsUpdatedAt: 0,
   deletedLists: {},
   account: null,
+  syncNudgeDismissed: false,
 }
 
 type Actions = {
@@ -57,6 +58,7 @@ type Actions = {
   setJoinCode: (code: string) => void
   setActiveRoom: (code: string) => void
   setAccount: (account: Account | null) => void
+  dismissSyncNudge: () => void
   /** Replaces settings and word lists with a synced copy; doesn't count as a local edit. */
   applySynced: (synced: {
     settings: GameSettings
@@ -230,6 +232,7 @@ export const useGame = create<GameState & Actions>()(
       setJoinCode: (code) => set({ joinCode: code.toUpperCase() }),
       setActiveRoom: (code) => set({ activeRoom: code }),
       setAccount: (account) => set({ account }),
+      dismissSyncNudge: () => set({ syncNudgeDismissed: true }),
       applySynced: (synced) => set(synced),
 
       startRound: () => {
@@ -405,6 +408,7 @@ export const useGame = create<GameState & Actions>()(
         settingsUpdatedAt: s.settingsUpdatedAt,
         deletedLists: s.deletedLists,
         account: s.account,
+        syncNudgeDismissed: s.syncNudgeDismissed,
       }),
     },
   ),

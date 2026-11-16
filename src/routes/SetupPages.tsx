@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Check, GripVertical, Pencil, Plus, X } from 'lucide-react'
+import SyncNudge from '../components/SyncNudge'
 import Screen from '../components/Screen'
 import { AvatarButton } from '../components/AvatarPicker'
 import { useGame } from '../game/state'
@@ -283,6 +284,7 @@ export function WordsPage() {
           </span>
         </button>
       </div>
+      <SyncNudge />
     </Screen>
   )
 }
