@@ -423,5 +423,14 @@
     "importButton": "Dodaj do moich list",
     "importInvalid": "Ten link do listy jest uszkodzony lub niekompletny.",
     "imported": "Dodano do twoich list"
+  },
+  "account": {
+    "label": "Konto",
+    "signIn": "Zaloguj się przez Google",
+    "signOut": "Wyloguj się",
+    "hintSignedOut": "Opcjonalne. Zapisuje ustawienia i listy słów na Twoim koncie Google, żeby były na każdym urządzeniu.",
+    "hintSignedIn": "Ustawienia i listy słów są zapisane na Twoim koncie i synchronizowane między urządzeniami.",
+    "failed": "Nie udało się zalogować. Spróbuj ponownie.",
+    "popupBlocked": "Okno logowania zostało zablokowane. Zezwól na wyskakujące okna dla tej strony i spróbuj ponownie."
   }
 }

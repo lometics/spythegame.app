@@ -413,5 +413,14 @@
     "importButton": "내 리스트에 추가",
     "importInvalid": "이 리스트 링크가 깨졌거나 불완전해요.",
     "imported": "내 리스트에 추가됨"
+  },
+  "account": {
+    "label": "계정",
+    "signIn": "Google로 로그인",
+    "signOut": "로그아웃",
+    "hintSignedOut": "선택 사항입니다. 설정과 단어 목록을 Google 계정에 저장해 모든 기기에서 쓸 수 있어요.",
+    "hintSignedIn": "설정과 단어 목록이 계정에 저장되어 기기 간에 동기화됩니다.",
+    "failed": "로그인하지 못했어요. 다시 시도해 주세요.",
+    "popupBlocked": "로그인 창이 차단되었어요. 이 사이트의 팝업을 허용하고 다시 시도해 주세요."
   }
 }

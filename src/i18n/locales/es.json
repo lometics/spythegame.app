@@ -413,5 +413,14 @@
     "importButton": "Añadir a mis listas",
     "importInvalid": "Este enlace de lista está roto o incompleto.",
     "imported": "Añadida a tus listas"
+  },
+  "account": {
+    "label": "Cuenta",
+    "signIn": "Iniciar sesión con Google",
+    "signOut": "Cerrar sesión",
+    "hintSignedOut": "Opcional. Guarda tus ajustes y listas de palabras en tu cuenta de Google para tenerlos en todos tus dispositivos.",
+    "hintSignedIn": "Tus ajustes y listas de palabras se guardan en tu cuenta y se sincronizan entre tus dispositivos.",
+    "failed": "No se pudo iniciar sesión. Inténtalo de nuevo.",
+    "popupBlocked": "Se bloqueó la ventana de inicio de sesión. Permite las ventanas emergentes para este sitio e inténtalo de nuevo."
   }
 }

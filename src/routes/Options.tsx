@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ChevronRight, Languages, Plus, UserRound } from 'lucide-react'
 import Screen from '../components/Screen'
+import AccountSection from '../components/AccountSection'
 import { useGame } from '../game/state'
 import { iconFor } from '../game/icons'
 import { SUPPORTED, setLanguage } from '../i18n'
@@ -113,6 +114,8 @@ export default function Options() {
         </div>
         <p className="px-1 pt-2 text-sm muted">{t('options.wordListsHint')}</p>
       </section>
+
+      <AccountSection />
 
       <a href="/privacy/" className="mt-auto px-1 pb-4 text-center text-sm muted underline">
         {t('options.privacy')}

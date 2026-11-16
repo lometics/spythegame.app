@@ -413,5 +413,14 @@
     "importButton": "Aggiungi alle mie liste",
     "importInvalid": "Questo link della lista è rotto o incompleto.",
     "imported": "Aggiunta alle tue liste"
+  },
+  "account": {
+    "label": "Account",
+    "signIn": "Accedi con Google",
+    "signOut": "Esci",
+    "hintSignedOut": "Facoltativo. Salva impostazioni e liste di parole nel tuo account Google, così le ritrovi su ogni dispositivo.",
+    "hintSignedIn": "Impostazioni e liste di parole sono salvate nel tuo account e sincronizzate tra i tuoi dispositivi.",
+    "failed": "L'accesso non è riuscito. Riprova.",
+    "popupBlocked": "La finestra di accesso è stata bloccata. Consenti i pop-up per questo sito e riprova."
   }
 }

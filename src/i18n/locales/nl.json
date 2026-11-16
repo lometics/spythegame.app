@@ -413,5 +413,14 @@
     "importButton": "Toevoegen aan mijn lijsten",
     "importInvalid": "Deze lijstlink is kapot of onvolledig.",
     "imported": "Toegevoegd aan je lijsten"
+  },
+  "account": {
+    "label": "Account",
+    "signIn": "Inloggen met Google",
+    "signOut": "Uitloggen",
+    "hintSignedOut": "Optioneel. Bewaart je instellingen en woordlijsten in je Google-account, zodat je ze op elk apparaat hebt.",
+    "hintSignedIn": "Je instellingen en woordlijsten worden in je account bewaard en tussen je apparaten gesynchroniseerd.",
+    "failed": "Inloggen is niet gelukt. Probeer het opnieuw.",
+    "popupBlocked": "Het inlogvenster is geblokkeerd. Sta pop-ups toe voor deze site en probeer het opnieuw."
   }
 }

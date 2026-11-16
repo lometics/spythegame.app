@@ -413,5 +413,14 @@
     "importButton": "Add to my lists",
     "importInvalid": "This list link is broken or incomplete.",
     "imported": "Added to your lists"
+  },
+  "account": {
+    "label": "Account",
+    "signIn": "Sign in with Google",
+    "signOut": "Sign out",
+    "hintSignedOut": "Optional. Saves your settings and word lists to your Google account, so you have them on every device.",
+    "hintSignedIn": "Your settings and word lists are saved to your account and synced across your devices.",
+    "failed": "Sign-in didn't work. Please try again.",
+    "popupBlocked": "The sign-in window was blocked. Allow pop-ups for this site and try again."
   }
 }

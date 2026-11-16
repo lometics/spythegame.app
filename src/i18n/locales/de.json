@@ -413,5 +413,14 @@
     "importButton": "Zu meinen Listen hinzufügen",
     "importInvalid": "Dieser Listen-Link ist defekt oder unvollständig.",
     "imported": "Zu deinen Listen hinzugefügt"
+  },
+  "account": {
+    "label": "Konto",
+    "signIn": "Mit Google anmelden",
+    "signOut": "Abmelden",
+    "hintSignedOut": "Optional. Speichert deine Einstellungen und Wortlisten in deinem Google-Konto, damit du sie auf jedem Gerät hast.",
+    "hintSignedIn": "Deine Einstellungen und Wortlisten sind in deinem Konto gespeichert und werden zwischen deinen Geräten abgeglichen.",
+    "failed": "Die Anmeldung hat nicht geklappt. Bitte versuch es noch einmal.",
+    "popupBlocked": "Das Anmeldefenster wurde blockiert. Erlaube Pop-ups für diese Seite und versuch es noch einmal."
   }
 }

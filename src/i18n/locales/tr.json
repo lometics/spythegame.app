@@ -413,5 +413,14 @@
     "importButton": "Listelerime ekle",
     "importInvalid": "Bu liste bağlantısı bozuk ya da eksik.",
     "imported": "Listelerine eklendi"
+  },
+  "account": {
+    "label": "Hesap",
+    "signIn": "Google ile giriş yap",
+    "signOut": "Çıkış yap",
+    "hintSignedOut": "İsteğe bağlı. Ayarlarını ve kelime listelerini Google hesabına kaydeder, böylece her cihazda olurlar.",
+    "hintSignedIn": "Ayarların ve kelime listelerin hesabına kaydedilir ve cihazların arasında eşitlenir.",
+    "failed": "Giriş yapılamadı. Lütfen tekrar dene.",
+    "popupBlocked": "Giriş penceresi engellendi. Bu site için açılır pencerelere izin ver ve tekrar dene."
   }
 }

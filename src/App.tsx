@@ -55,6 +55,10 @@ export default function App() {
   useEffect(() => {
     const { onlineName, setOnlineName } = useGame.getState()
     if (!onlineName.trim()) setOnlineName(randomSpyName())
+    // Signed in with Google: keep settings and word lists in sync. Loads Firebase, so only then.
+    if (useGame.getState().account) {
+      import('./account/account').then((m) => m.resumeSync()).catch(() => {})
+    }
   }, [])
   return (
     <BrowserRouter>

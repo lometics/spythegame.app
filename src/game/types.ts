@@ -27,6 +27,15 @@ export type CustomList = {
   icon: string
   pairs: Array<{ civilian: string; spy: string }>
   createdAt: number
+  /** Last edit; missing on lists saved before account sync existed (then createdAt counts). */
+  updatedAt?: number
+}
+
+/** The Google account this device syncs settings and word lists with. */
+export type Account = {
+  uid: string
+  name: string
+  email: string
 }
 
 export type Player = {
@@ -79,4 +88,10 @@ export type GameState = {
   joinCode: string
   /** Room this device is a member of; reopening the app goes back to it. */
   activeRoom: string
+  /** When settings (incl. selected categories) last changed here; newest wins when syncing. */
+  settingsUpdatedAt: number
+  /** Deleted list id → when; keeps other devices from bringing a deleted list back. */
+  deletedLists: Record<string, number>
+  /** Signed-in Google account, or null (signing in is optional). */
+  account: Account | null
 }

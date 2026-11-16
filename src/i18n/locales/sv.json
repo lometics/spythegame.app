@@ -413,5 +413,14 @@
     "importButton": "Lägg till i mina listor",
     "importInvalid": "Den här listlänken är trasig eller ofullständig.",
     "imported": "Tillagd i dina listor"
+  },
+  "account": {
+    "label": "Konto",
+    "signIn": "Logga in med Google",
+    "signOut": "Logga ut",
+    "hintSignedOut": "Valfritt. Sparar dina inställningar och ordlistor i ditt Google-konto så att du har dem på alla enheter.",
+    "hintSignedIn": "Dina inställningar och ordlistor sparas i ditt konto och synkas mellan dina enheter.",
+    "failed": "Inloggningen fungerade inte. Försök igen.",
+    "popupBlocked": "Inloggningsfönstret blockerades. Tillåt popup-fönster för den här webbplatsen och försök igen."
   }
 }

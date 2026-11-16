@@ -2,6 +2,8 @@
 
 Vite + React + TypeScript + Tailwind + Zustand. Online rooms use Firebase (Realtime Database + Anonymous Auth).
 
+Signing in with Google is optional (Settings → Account). Signed in, `src/account/` keeps the game settings and own word lists at `users/<uid>` and syncs them between devices: newest settings win as a block, lists merge one by one (newest copy wins) and deleted lists leave a tombstone so they don't come back. An anonymous user who signs in is upgraded in place, so they stay in their room. Google sign-in has to be enabled in the Firebase console (Authentication → Sign-in method), and every domain the app runs on must be listed under Authentication → Settings → Authorized domains.
+
 ## Run locally
 
 ```bash
@@ -24,7 +26,7 @@ VITE_FIREBASE_APP_ID=
 ## Deploy
 
 - **Site**: Vercel builds every push to `main` (`vercel.json`). The Firebase values above are set as Vercel environment variables.
-- **Database rules**: `src/online/rules.json`, deployed by the GitHub workflow on every push to `main`. They keep each player's word private, hide the answer until the round ends, let any device delete rooms nobody used for 30 days, and accept write-only crash reports in `errors/`.
+- **Database rules**: `src/online/rules.json`, deployed by the GitHub workflow on every push to `main`. They keep each player's word private, let only the owner read or write their account data in `users/`, hide the answer until the round ends, let any device delete rooms nobody used for 30 days, and accept write-only crash reports in `errors/`.
 
 ## Words
 

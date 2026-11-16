@@ -1,5 +1,5 @@
 // Checks the database rules (src/online/rules.json) in the Firebase emulator:
-// stale-room cleanup and the error log. Needs Java 21+.
+// stale-room cleanup, the error log and account data. Needs Java 21+.
 //   npm run test:rules
 const path = require('path')
 const { initializeApp } = require('firebase/app')
@@ -60,6 +60,19 @@ async function expect(label, want, fn) {
   await expect('error report with extra field', 'denied', () => push(ref(b.db, 'errors'), { msg: 'x', at: serverTimestamp(), evil: 1 }))
   await expect('error report with fake time', 'denied', () => push(ref(b.db, 'errors'), { msg: 'x', at: 5 }))
   await expect('reading error reports', 'denied', () => get(ref(b.db, 'errors')))
+
+  // Account data (settings and word lists): only the owner reads or writes it.
+  const mine = (u, path = '') => ref(u.db, `users/${u.uid}${path}`)
+  const settings = { difficulty: 'close', timerSeconds: 0, spyCount: [1] }
+  await expect('owner saves settings and a list', 'ok', () => update(mine(a), { settings, settingsUpdatedAt: 1, 'lists/l1': { name: 'L', icon: 'star', createdAt: 1, pairs: [{ civilian: 'x', spy: 'y' }] }, 'deleted/l0': 5 }))
+  await expect('owner reads own account data', 'ok', () => get(mine(a)))
+  await expect('someone else reads it', 'denied', () => get(ref(b.db, `users/${a.uid}`)))
+  await expect('someone else writes it', 'denied', () => set(ref(b.db, `users/${a.uid}/settingsUpdatedAt`), 2))
+  await expect('reading all accounts', 'denied', () => get(ref(a.db, 'users')))
+  await expect('unknown field in account data', 'denied', () => set(mine(a, '/evil'), 1))
+  await expect('list without a name', 'denied', () => set(mine(a, '/lists/l2'), { createdAt: 1 }))
+  await expect('list name too long', 'denied', () => set(mine(a, '/lists/l2'), { name: 'x'.repeat(101), createdAt: 1 }))
+  await expect('owner deletes a list', 'ok', () => update(mine(a), { 'lists/l1': null, 'deleted/l1': 9 }))
   console.log(results.join('\n'))
   process.exit(results.some((r) => r.startsWith('FAIL')) ? 1 : 0)
 })().catch((e) => { console.error(e); process.exit(1) })

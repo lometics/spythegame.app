@@ -413,5 +413,14 @@
     "importButton": "添加到我的列表",
     "importInvalid": "这个列表链接已损坏或不完整。",
     "imported": "已添加到你的列表"
+  },
+  "account": {
+    "label": "账号",
+    "signIn": "使用 Google 登录",
+    "signOut": "退出登录",
+    "hintSignedOut": "可选。将你的设置和词表保存到 Google 账号，在所有设备上都能使用。",
+    "hintSignedIn": "你的设置和词表已保存到账号，并在你的设备之间同步。",
+    "failed": "登录失败，请重试。",
+    "popupBlocked": "登录窗口被拦截。请允许此网站弹出窗口后重试。"
   }
 }

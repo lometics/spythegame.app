@@ -1,26 +1,19 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type {
+  Account,
   CustomList,
   Difficulty,
   GameState,
   GameSettings,
   Pair,
 } from './types'
-import { BUILTIN_CATEGORY_IDS, defaultCategoryIds, samplePair } from './pairs'
+import { BUILTIN_CATEGORY_IDS, samplePair } from './pairs'
+import { DEFAULT_SETTINGS } from './defaults'
 import { normalizeSpyCount, startRoundState } from './machine'
 import { AVATARS, avatarForIndex } from '../data/avatars'
 import { DEFAULT_LIST_ICON, isListIcon } from './icons'
 
-const DEFAULT_SETTINGS: GameSettings = {
-  timerSeconds: 0,
-  pairSource: { selectedCategoryIds: defaultCategoryIds() },
-  difficulty: 'close',
-  spyCount: [1],
-  spiesKnowEachOther: false,
-  civiliansSeeHint: false,
-  unawareSpy: false,
-}
 
 const ROUND_RESET = {
   phase: 'lobby',
@@ -41,6 +34,9 @@ const INITIAL: GameState = {
   onlineName: '',
   joinCode: '',
   activeRoom: '',
+  settingsUpdatedAt: 0,
+  deletedLists: {},
+  account: null,
 }
 
 type Actions = {
@@ -60,6 +56,14 @@ type Actions = {
   setOnlineName: (name: string) => void
   setJoinCode: (code: string) => void
   setActiveRoom: (code: string) => void
+  setAccount: (account: Account | null) => void
+  /** Replaces settings and word lists with a synced copy; doesn't count as a local edit. */
+  applySynced: (synced: {
+    settings: GameSettings
+    settingsUpdatedAt: number
+    customLists: CustomList[]
+    deletedLists: Record<string, number>
+  }) => void
   /** Starts a round; returns an error message instead of throwing. */
   startRound: () => string | null
   setRevealIndex: (i: number) => void
@@ -128,13 +132,14 @@ export const useGame = create<GameState & Actions>()(
         ),
 
       setSettings: (patch) =>
-        set((s) => ({ settings: { ...s.settings, ...patch } })),
+        set((s) => ({ settings: { ...s.settings, ...patch }, settingsUpdatedAt: Date.now() })),
 
       toggleCategory: (id) =>
         set((s) => {
           const current = s.settings.pairSource.selectedCategoryIds
           const exists = current.includes(id)
           return {
+            settingsUpdatedAt: Date.now(),
             settings: {
               ...s.settings,
               pairSource: {
@@ -148,6 +153,7 @@ export const useGame = create<GameState & Actions>()(
 
       selectAllCategories: () =>
         set((s) => ({
+          settingsUpdatedAt: Date.now(),
           settings: {
             ...s.settings,
             pairSource: {
@@ -161,14 +167,17 @@ export const useGame = create<GameState & Actions>()(
 
       clearCategories: () =>
         set((s) => ({
+          settingsUpdatedAt: Date.now(),
           settings: {
             ...s.settings,
             pairSource: { selectedCategoryIds: [] },
           },
         })),
 
-      upsertCustomList: (list) =>
+      upsertCustomList: (input) =>
         set((s) => {
+          const now = Date.now()
+          const list = { ...input, updatedAt: now }
           const existing = s.customLists.findIndex((l) => l.id === list.id)
           const customLists =
             existing >= 0
@@ -181,8 +190,13 @@ export const useGame = create<GameState & Actions>()(
             existing >= 0 || selected.includes(cid)
               ? selected
               : [...selected, cid]
+          // Saving a list again (e.g. re-importing it) undoes an earlier delete.
+          const deletedLists = { ...s.deletedLists }
+          delete deletedLists[list.id]
           return {
             customLists,
+            deletedLists,
+            settingsUpdatedAt: selectedCategoryIds === selected ? s.settingsUpdatedAt : now,
             settings: {
               ...s.settings,
               pairSource: { selectedCategoryIds },
@@ -193,8 +207,13 @@ export const useGame = create<GameState & Actions>()(
       deleteCustomList: (id) =>
         set((s) => {
           const cid = `custom:${id}`
+          const now = Date.now()
           return {
             customLists: s.customLists.filter((l) => l.id !== id),
+            deletedLists: { ...s.deletedLists, [id]: now },
+            settingsUpdatedAt: s.settings.pairSource.selectedCategoryIds.includes(cid)
+              ? now
+              : s.settingsUpdatedAt,
             settings: {
               ...s.settings,
               pairSource: {
@@ -210,6 +229,8 @@ export const useGame = create<GameState & Actions>()(
       setOnlineName: (name) => set({ onlineName: name }),
       setJoinCode: (code) => set({ joinCode: code.toUpperCase() }),
       setActiveRoom: (code) => set({ activeRoom: code }),
+      setAccount: (account) => set({ account }),
+      applySynced: (synced) => set(synced),
 
       startRound: () => {
         const { players, settings, customLists, round } = get()
@@ -381,6 +402,9 @@ export const useGame = create<GameState & Actions>()(
         customLists: s.customLists,
         onlineName: s.onlineName,
         activeRoom: s.activeRoom,
+        settingsUpdatedAt: s.settingsUpdatedAt,
+        deletedLists: s.deletedLists,
+        account: s.account,
       }),
     },
   ),

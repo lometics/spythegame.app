@@ -413,5 +413,14 @@
     "importButton": "Ajouter à mes listes",
     "importInvalid": "Ce lien de liste est cassé ou incomplet.",
     "imported": "Ajoutée à vos listes"
+  },
+  "account": {
+    "label": "Compte",
+    "signIn": "Se connecter avec Google",
+    "signOut": "Se déconnecter",
+    "hintSignedOut": "Facultatif. Enregistre vos réglages et vos listes de mots dans votre compte Google pour les retrouver sur tous vos appareils.",
+    "hintSignedIn": "Vos réglages et vos listes de mots sont enregistrés dans votre compte et synchronisés entre vos appareils.",
+    "failed": "La connexion n'a pas fonctionné. Veuillez réessayer.",
+    "popupBlocked": "La fenêtre de connexion a été bloquée. Autorisez les fenêtres pop-up pour ce site et réessayez."
   }
 }

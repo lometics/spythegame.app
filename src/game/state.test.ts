@@ -97,3 +97,36 @@ describe('persisted game state', () => {
     expect(names()).toEqual([before.at(-1), ...before.slice(0, -1)])
   })
 })
+
+describe('account sync bookkeeping', () => {
+  it('stamps settings changes so the newest wins on another device', () => {
+    vi.spyOn(Date, 'now').mockReturnValue(1000)
+    useGame.getState().setSettings({ timerSeconds: 120 })
+    expect(useGame.getState().settingsUpdatedAt).toBe(1000)
+    vi.spyOn(Date, 'now').mockReturnValue(2000)
+    useGame.getState().toggleCategory('food')
+    expect(useGame.getState().settingsUpdatedAt).toBe(2000)
+    vi.restoreAllMocks()
+  })
+
+  it('stamps list edits and remembers deletes until the list is saved again', () => {
+    vi.spyOn(Date, 'now').mockReturnValue(3000)
+    const s = useGame.getState()
+    s.upsertCustomList({ id: 'sync1', name: 'S', icon: 'star', pairs: [], createdAt: 1 })
+    expect(useGame.getState().customLists.find((l) => l.id === 'sync1')?.updatedAt).toBe(3000)
+    vi.spyOn(Date, 'now').mockReturnValue(4000)
+    useGame.getState().deleteCustomList('sync1')
+    expect(useGame.getState().deletedLists.sync1).toBe(4000)
+    useGame.getState().upsertCustomList({ id: 'sync1', name: 'S', icon: 'star', pairs: [], createdAt: 1 })
+    expect(useGame.getState().deletedLists.sync1).toBeUndefined()
+    vi.restoreAllMocks()
+  })
+
+  it('persists the account and sync stamps', () => {
+    useGame.getState().setAccount({ uid: 'u1', name: 'N', email: 'n@example.com' })
+    const saved = JSON.parse(store.get('spy-the-game-local')!).state
+    expect(saved.account).toEqual({ uid: 'u1', name: 'N', email: 'n@example.com' })
+    expect(typeof saved.settingsUpdatedAt).toBe('number')
+    expect(saved.deletedLists).toBeDefined()
+  })
+})

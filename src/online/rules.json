@@ -53,6 +53,31 @@
         ".read": "auth != null && root.child('rooms').child($code).child('meta').child('phase').val() === 'result'"
       }
     },
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "settings": {
+          ".validate": "newData.hasChildren(['difficulty'])"
+        },
+        "settingsUpdatedAt": {
+          ".validate": "newData.isNumber()"
+        },
+        "lists": {
+          "$listId": {
+            ".validate": "newData.hasChildren(['name', 'createdAt']) && newData.child('name').isString() && newData.child('name').val().length <= 100"
+          }
+        },
+        "deleted": {
+          "$listId": {
+            ".validate": "newData.isNumber()"
+          }
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
     "errors": {
       "$id": {
         ".write": "auth != null && !data.exists()",
