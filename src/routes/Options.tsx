@@ -42,26 +42,28 @@ export default function Options() {
       {isFirebaseConfigured() && (
         <section>
           <div className="section-label">{t('account.label')}</div>
-          <button type="button" className="group-list row" onClick={() => navigate('/account')}>
-            {account ? (
-              <AccountBadge account={account} size={36} />
-            ) : (
-              <span className="row-icon">
-                <GoogleLogo />
-              </span>
-            )}
-            <span className="min-w-0 flex-1">
-              <span className="block truncate font-medium">
-                {account ? account.name || account.email : t('account.signIn')}
-              </span>
+          <div className="group-list">
+            <button type="button" className="row" onClick={() => navigate('/account')}>
               {account ? (
-                <SyncStatusLine className="mt-0.5" />
+                <AccountBadge account={account} size={36} />
               ) : (
-                <span className="block text-sm muted">{t('account.rowHint')}</span>
+                <span className="row-icon">
+                  <GoogleLogo />
+                </span>
               )}
-            </span>
-            <ChevronRight size={20} className="text-foreground/30 rtl:rotate-180" />
-          </button>
+              <span className="min-w-0 flex-1">
+                <span className="block truncate font-medium">
+                  {account ? account.name || account.email : t('account.signIn')}
+                </span>
+                {account ? (
+                  <SyncStatusLine className="mt-0.5" />
+                ) : (
+                  <span className="block text-sm muted">{t('account.rowHint')}</span>
+                )}
+              </span>
+              <ChevronRight size={20} className="text-foreground/30 rtl:rotate-180" />
+            </button>
+          </div>
         </section>
       )}
 
@@ -69,78 +71,82 @@ export default function Options() {
         <label className="section-label block" htmlFor="options-name">
           {t('online.yourName')}
         </label>
-        <div className="group-list row">
-          <span className="row-icon">
-            <UserRound size={20} />
-          </span>
-          <input
-            id="options-name"
-            className="min-w-0 flex-1 bg-transparent py-3 font-medium focus:outline-none"
-            value={name}
-            maxLength={20}
-            autoCapitalize="words"
-            enterKeyHint="done"
-            onChange={(e) => setName(e.target.value)}
-            onBlur={saveName}
-            onKeyDown={(e) => e.key === 'Enter' && e.currentTarget.blur()}
-          />
+        <div className="group-list">
+          <div className="row">
+            <span className="row-icon">
+              <UserRound size={20} />
+            </span>
+            <input
+              id="options-name"
+              className="min-w-0 flex-1 bg-transparent py-3 font-medium focus:outline-none"
+              value={name}
+              maxLength={20}
+              autoCapitalize="words"
+              enterKeyHint="done"
+              onChange={(e) => setName(e.target.value)}
+              onBlur={saveName}
+              onKeyDown={(e) => e.key === 'Enter' && e.currentTarget.blur()}
+            />
+          </div>
         </div>
       </section>
 
       <section>
         <div className="section-label">{t('options.languageLabel')}</div>
-        <label className="group-list row relative">
-          <span className="row-icon">
-            <Languages size={20} />
-          </span>
-          <span className="flex-1 font-medium">{t(`languages.${currentLang}`)}</span>
-          <ChevronRight size={20} className="text-foreground/30 rtl:rotate-180" />
-          <select
-            value={currentLang}
-            onChange={(e) => setLanguage(e.target.value)}
-            className="absolute inset-0 cursor-pointer opacity-0"
-            aria-label={t('options.languageLabel')}
-          >
-            {SUPPORTED.map((code) => (
-              <option key={code} value={code}>
-                {t(`languages.${code}`)}
-              </option>
-            ))}
-          </select>
-        </label>
+        <div className="group-list">
+          <label className="row relative">
+            <span className="row-icon">
+              <Languages size={20} />
+            </span>
+            <span className="flex-1 font-medium">{t(`languages.${currentLang}`)}</span>
+            <ChevronRight size={20} className="text-foreground/30 rtl:rotate-180" />
+            <select
+              value={currentLang}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="absolute inset-0 cursor-pointer opacity-0"
+              aria-label={t('options.languageLabel')}
+            >
+              {SUPPORTED.map((code) => (
+                <option key={code} value={code}>
+                  {t(`languages.${code}`)}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
       </section>
 
       <section>
         <div className="section-label">{t('options.wordListsLabel')}</div>
         <div className="group-list">
-          {customLists.map((l) => {
-            const Icon = iconFor(`custom:${l.id}`, l.icon)
-            return (
-              <button
-                key={l.id}
-                type="button"
-                className="row"
-                onClick={() => navigate(`/lists/${l.id}`)}
-              >
-                <span className="row-icon">
-                  <Icon size={20} />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate font-medium">{l.name}</span>
-                  <span className="block text-sm muted">
-                    {t('words.pairCount', { count: l.pairs.length })}
+            {customLists.map((l) => {
+              const Icon = iconFor(`custom:${l.id}`, l.icon)
+              return (
+                <button
+                  key={l.id}
+                  type="button"
+                  className="row"
+                  onClick={() => navigate(`/lists/${l.id}`)}
+                >
+                  <span className="row-icon">
+                    <Icon size={20} />
                   </span>
-                </span>
-                <ChevronRight size={20} className="text-foreground/30 rtl:rotate-180" />
-              </button>
-            )
-          })}
-          <button type="button" className="row" onClick={() => navigate('/lists/new')}>
-            <span className="row-icon">
-              <Plus size={20} />
-            </span>
-            <span className="flex-1 font-medium">{t('words.newList')}</span>
-          </button>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate font-medium">{l.name}</span>
+                    <span className="block text-sm muted">
+                      {t('words.pairCount', { count: l.pairs.length })}
+                    </span>
+                  </span>
+                  <ChevronRight size={20} className="text-foreground/30 rtl:rotate-180" />
+                </button>
+              )
+            })}
+            <button type="button" className="row" onClick={() => navigate('/lists/new')}>
+              <span className="row-icon">
+                <Plus size={20} />
+              </span>
+              <span className="flex-1 font-medium">{t('words.newList')}</span>
+            </button>
         </div>
         <p className="px-1 pt-2 text-sm muted">{t('options.wordListsHint')}</p>
       </section>
